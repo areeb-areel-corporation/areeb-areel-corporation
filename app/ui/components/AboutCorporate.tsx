@@ -61,7 +61,7 @@ export default function AboutCorporate() {
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight">
                 Architecting the <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-600">
-                  Future of Pakistan.
+                  Future of Pakistan
                 </span>
               </h2>
             </motion.div>
@@ -98,7 +98,7 @@ export default function AboutCorporate() {
               sleek building, a corporate boardroom, or abstract architectural lines. 
             */}
             <Image 
-              src="/about-corporate.jpg" // Add an image to your public folder
+              src="/images/petrol pump.png" 
               alt="Areeb & Areel Operations"
               fill
               className="object-cover opacity-60 filter grayscale hover:grayscale-0 transition-all duration-700"
