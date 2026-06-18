@@ -1,8 +1,21 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
-import { ArrowRight, Target, ShieldCheck, Globe } from 'lucide-react'; // Ensure lucide-react is installed
+import { motion, AnimatePresence } from 'framer-motion';
+
+interface SliderImage {
+  id: number;
+  src: string;
+  alt: string;
+}
+
+const sliderImages: SliderImage[] = [
+  { id: 1, src: '/images/petrol pump.png', alt: 'Areeb & Areel Corporate Headquarters' },
+  { id: 2, src: '/images/construction.png', alt: 'Areeb & Areel Energy Networks' },
+  { id: 4, src: '/images/mart.png', alt: 'Areeb & Areel Mega Infrastructure Construction' },
+  { id: 3, src: '/images/housing-society.png', alt: 'Areeb & Areel Premium Communities' },
+];
 
 const stats = [
   { id: 1, value: '15+', label: 'Years of Excellence' },
@@ -10,118 +23,267 @@ const stats = [
   { id: 3, value: '40+', label: 'Energy Hubs Live' },
 ];
 
-const features = [
-  { icon: Globe, title: 'Regional Scale', desc: 'Transforming landscapes across Punjab.' },
-  { icon: Target, title: 'Precision Engineering', desc: 'Flawless execution from blueprint to reality.' },
-  { icon: ShieldCheck, title: 'Legacy of Trust', desc: 'Decades of secure, high-yield investments.' },
-];
+// Particle Interface for Canvas Engine
+interface Particle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  baseVx: number;
+  baseVy: number;
+  radius: number;
+}
 
-export default function AboutCorporate() {
-  // Animation Variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+export default function AboutSlider() {
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  
+  // Canvas Animation Engine References
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const mouseRef = useRef<{ x: number; y: number } | null>(null);
+
+  // Auto-slide effect every 5 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % sliderImages.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, []);
+
+  // --- NATIVE INTERACTIVE PARTICLE NETWORK ENGINE ---
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let particles: Particle[] = [];
+    const particleCount = 75; // Balanced for premium density and 60fps execution
+    const connectionDistance = 110; // Max distance for network line drawing
+    const repulsionRadius = 140; // The threshold area for "cursor phobia"
+
+    // Resize canvas perfectly to fit container constraints
+    const resizeCanvas = () => {
+      if (canvas && containerRef.current) {
+        canvas.width = containerRef.current.offsetWidth;
+        canvas.height = containerRef.current.offsetHeight;
+      }
+    };
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Instantiate unique particles with subtle base trajectories
+    const initParticles = () => {
+      particles = [];
+      for (let i = 0; i < particleCount; i++) {
+        const vx = (Math.random() - 0.5) * 0.4;
+        const vy = (Math.random() - 0.5) * 0.4;
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: vx,
+          vy: vy,
+          baseVx: vx,
+          baseVy: vy,
+          radius: Math.random() * 1.5 + 1,
+        });
+      }
+    };
+    initParticles();
+
+    // The Infinite Animation Render Loop
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const mouse = mouseRef.current;
+
+      // Update & Render Node Positions
+      particles.forEach((p) => {
+        // Real-time Vector Distance Computations for Repulsion Physics
+        if (mouse) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < repulsionRadius) {
+            const force = (repulsionRadius - distance) / repulsionRadius;
+            // Calculate direction angles
+            const angle = Math.atan2(dy, dx);
+            // Elastic outward thrust acceleration
+            const targetVx = p.baseVx + Math.cos(angle) * force * 1.8;
+            const targetVy = p.baseVy + Math.sin(angle) * force * 1.8;
+
+            p.vx += (targetVx - p.vx) * 0.1;
+            p.vy += (targetVy - p.vy) * 0.1;
+          } else {
+            // Smoothly ease back to signature floating speed when cursor departs
+            p.vx += (p.baseVx - p.vx) * 0.04;
+            p.vy += (p.baseVy - p.vy) * 0.04;
+          }
+        } else {
+          p.vx += (p.baseVx - p.vx) * 0.04;
+          p.vy += (p.baseVy - p.vy) * 0.04;
+        }
+
+        // Apply velocities to coordinates
+        p.x += p.vx;
+        p.y += p.vy;
+
+        // Container Edge Collisions Handling
+        if (p.x < 0 || p.x > canvas.width) p.baseVx *= -1; p.vx *= -1;
+        if (p.y < 0 || p.y > canvas.height) p.baseVy *= -1; p.vy *= -1;
+
+        // Draw Dot Core
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+        ctx.fill();
+      });
+
+      // Double-nested spatial index pairing to map connections
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const pi = particles[i];
+          const pj = particles[j];
+
+          const dx = pi.x - pj.x;
+          const dy = pi.y - pj.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < connectionDistance) {
+            // Dynamic transparency calculations based on node proximity
+            const alpha = (1 - dist / connectionDistance) * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(pi.x, pi.y);
+            ctx.lineTo(pj.x, pj.y);
+            // Luxury corporate metallic gold styling accent lines
+            ctx.strokeStyle = `rgba(212, 175, 55, ${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+      }
+
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animate();
+
+    // Clean memory contexts on layout shifts
+    return () => {
+      window.removeEventListener('resize', resizeCanvas);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  // Track cursor offsets relative to the main layout bounding box
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    mouseRef.current = {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top,
+    };
+  };
+
+  const handleMouseLeave = () => {
+    mouseRef.current = null;
+  };
+
+  // Elite structural slide+fade animation variants
+  const slideVariants = {
+    initial: { opacity: 0, scale: 1.05 },
+    animate: { 
+      opacity: 0.6, // Keeps the premium dark theme background integration
+      scale: 1, 
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } 
     },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } },
+    exit: { 
+      opacity: 0, 
+      scale: 0.98,
+      transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } 
+    }
   };
 
   return (
-    <section className="relative w-full bg-brand-black py-24 lg:py-36 overflow-hidden">
-      {/* Background Ambient Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[500px] bg-brand-gold/5 blur-[120px] rounded-full pointer-events-none" />
-
-      <div className="relative max-w-[1600px] mx-auto px-6 md:px-10">
-        <motion.div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+    <motion.div 
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      initial={{ opacity: 0, scale: 0.95 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+      className="relative h-full min-h-[500px] lg:min-h-[700px] w-full rounded-2xl overflow-hidden border border-white/5 bg-brand-black"
+    >
+      {/* --- PREMIUM ANIMATED IMAGES --- */}
+      <AnimatePresence mode="popLayout">
+        <motion.div
+          key={currentIndex}
+          variants={slideVariants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          className="absolute inset-0 w-full h-full"
         >
-          {/* --- LEFT: Corporate Typography & Copy --- */}
-          <div className="space-y-10">
-            <motion.div variants={itemVariants} className="space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-[1px] bg-brand-gold" />
-                <span className="text-brand-gold text-xs font-bold uppercase tracking-[0.3em]">
-                  Corporate Legacy
-                </span>
-              </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.1] tracking-tight">
-                Architecting the <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold to-yellow-600">
-                  Future of Pakistan
-                </span>
-              </h2>
-            </motion.div>
-
-            <motion.p variants={itemVariants} className="text-brand-silver/70 text-lg leading-relaxed max-w-xl">
-              Areeb & Areel Corporation stands at the vanguard of industrial, retail, and residential development. By merging architectural brilliance with massive operational scale, we engineer ecosystems that redefine luxury living and commercial utility.
-            </motion.p>
-
-            {/* Micro Features */}
-            <motion.div variants={itemVariants} className="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-4 border-t border-white/10">
-              {features.map((feature, idx) => {
-                const Icon = feature.icon;
-                return (
-                  <div key={idx} className="space-y-2">
-                    <Icon className="w-6 h-6 text-brand-gold" />
-                    <h4 className="text-white text-sm font-bold tracking-wider uppercase">{feature.title}</h4>
-                    <p className="text-brand-silver/50 text-xs leading-relaxed">{feature.desc}</p>
-                  </div>
-                );
-              })}
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="pt-6">
-              <button className="group flex items-center gap-4 bg-transparent border border-brand-gold/30 text-white px-8 py-4 rounded-md uppercase tracking-widest text-xs font-bold hover:bg-brand-gold hover:text-brand-black transition-all duration-300">
-                Read Full Manifesto
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-2 transition-transform duration-300" />
-              </button>
-            </motion.div>
-          </div>
-
-          {/* --- RIGHT: Abstract Corporate Visual & Stats --- */}
-          <motion.div variants={imageVariants} className="relative h-full min-h-[500px] lg:min-h-[700px] w-full rounded-2xl overflow-hidden border border-white/5">
-            {/* DEVELOPER NOTE: Replace '/about-corporate.jpg' with a high-res image of a 
-              sleek building, a corporate boardroom, or abstract architectural lines. 
-            */}
-            <Image 
-              src="/images/petrol pump.png" 
-              alt="Areeb & Areel Operations"
-              fill
-              className="object-cover opacity-60 filter grayscale hover:grayscale-0 transition-all duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/20 to-transparent" />
-
-            {/* Floating Stats Panel */}
-            <div className="absolute bottom-0 left-0 w-full p-6 md:p-10">
-              <div className="grid grid-cols-3 gap-4 p-6 bg-brand-slate/80 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl">
-                {stats.map((stat) => (
-                  <div key={stat.id} className="text-center space-y-1">
-                    <p className="text-2xl md:text-3xl font-black text-brand-gold">{stat.value}</p>
-                    <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-brand-silver font-semibold">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
+          <Image 
+            src={sliderImages[currentIndex].src} 
+            alt={sliderImages[currentIndex].alt}
+            fill
+            priority
+            className="object-cover filter grayscale hover:grayscale-0 transition-all duration-1000 ease-out"
+          />
         </motion.div>
+      </AnimatePresence>
+
+      {/* --- HIGH-PERFORMANCE NATIVE INTERACTIVE CANVAS LAYER --- */}
+      <canvas 
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full z-10 pointer-events-none"
+      />
+
+      {/* Luxury Vignette Shader Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/30 to-brand-black/10 pointer-events-none" />
+
+      {/* --- FLOATING CONTROLS & STATS PANEL --- */}
+      <div className="absolute bottom-0 left-0 w-full p-6 md:p-10 space-y-6 z-20">
+        
+        {/* Minimal Progress Micro-Indicators */}
+        <div className="flex items-center gap-3 px-2">
+          {sliderImages.map((_, idx) => (
+            <div 
+              key={idx} 
+              onClick={() => setCurrentIndex(idx)}
+              className="h-[2px] cursor-pointer bg-white/20 relative transition-all duration-300"
+              style={{ width: currentIndex === idx ? '40px' : '16px' }}
+            >
+              {currentIndex === idx && (
+                <motion.div 
+                  initial={{ width: '0%' }}
+                  animate={{ width: '100%' }}
+                  transition={{ duration: 5, ease: 'linear' }}
+                  className="absolute inset-0 bg-brand-gold"
+                />
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* Floating Glassmorphic Stats Board */}
+        <div className="p-6 bg-brand-slate/80 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl relative overflow-hidden">
+          <div className="grid grid-cols-3 gap-4">
+            {stats.map((stat) => (
+              <div key={stat.id} className="text-center space-y-1">
+                <p className="text-2xl md:text-3xl font-black text-brand-gold tracking-tight">{stat.value}</p>
+                <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-brand-silver font-semibold">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
-    </section>
+    </motion.div>
   );
 }
