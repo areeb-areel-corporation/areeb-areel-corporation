@@ -1,6 +1,8 @@
 import AboutCorporate from './ui/components/AboutCorporate';
 import Hero from './ui/components/Hero';
 import CorporateDivisions from './ui/components/CorporateDivisions';
+import SignatureDevelopments from './ui/components/SignatureDevelopments';
+import ContactForm from './ui/components/ContactForm';
 
 export default function Home() {
   return (
@@ -9,6 +11,8 @@ export default function Home() {
       <Hero />  
       <CorporateDivisions />
       <AboutCorporate />
+      <SignatureDevelopments />
+      <ContactFormgit  />
       
     </main>
   );
