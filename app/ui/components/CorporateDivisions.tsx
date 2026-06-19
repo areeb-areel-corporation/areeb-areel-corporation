@@ -26,7 +26,7 @@ const divisions = [
 
 export default function CorporateDivisions() {
   return (
-    <section className="relative w-full bg-brand-black text-white pt-10 pb-32 overflow-visible">
+    <section id="corporate-divisions" className="relative w-full bg-brand-black text-white pt-10 pb-32 overflow-visible">
       
       {/* --- FORCED LIGHTING FX: Hardcoded Hex Opacities for Guaranteed Rendering --- */}
       {/* Top light bleeding down */}

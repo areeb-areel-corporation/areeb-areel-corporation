@@ -44,20 +44,38 @@ export default function Hero() {
               CORPORATION
             </span>
           </h1>
-          <p className="text-brand-silver/80 text-sm md:text-lg max-w-2xl mx-auto tracking-widest uppercase font-medium">
-            Infrastructure • Energy Networks • Retail Marts
-          </p>
+          <p className="text-brand-silver/80 text-sm md:text-lg max-w-5xl mx-auto tracking-widest uppercase font-medium">
+   Housing Society • Infrastructure • Energy Networks • Retail Marts
+</p>
         </div>
 
         {/* Call to Actions */}
-        <div className="flex flex-col sm:flex-row gap-4 pt-4">
-          <button onClick={() => showComingSoon()} className="bg-brand-gold text-brand-black font-bold px-8 py-4 rounded-md tracking-wider uppercase hover:bg-yellow-500 transition shadow-lg shadow-brand-gold/20 text-sm">
-            Explore Sectors
-          </button>
-          <button className="border border-white/20 bg-white/5 text-white font-bold px-8 py-4 rounded-md tracking-wider uppercase hover:bg-white/10 transition text-sm backdrop-blur-sm">
-            Corporate Profile
-          </button>
-        </div>
+       <div className="flex flex-col sm:flex-row gap-4 pt-4">
+  {/* Primary Action: Scroll to Divisions */}
+  <button 
+    onClick={() => {
+      const target = document.getElementById('corporate-divisions');
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    }} 
+    className="cursor-pointer group text-brand-black font-bold px-8 py-4 rounded-md tracking-wider uppercase bg-[#D4AF37] transition-allshadow-lg shadow-[#D4AF37]/20 text-sm flex items-center justify-center gap-2"
+  >
+    Explore Sectors
+  </button>
+
+ <button 
+  onClick={() => {
+    const target = document.getElementById('contact');
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
+  }} 
+  className="cursor-pointer relative overflow-hidden group border border-white/20 bg-white/5 font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-sm backdrop-blur-sm flex items-center justify-center"
+>
+  <div className="absolute inset-0 bg-[#D4AF37] -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
+  
+  <span className="relative z-10 text-white group-hover:text-brand-black transition-colors duration-500">
+    Initiate Dialogue
+  </span>
+</button>
+</div>
 
       </div>
 
