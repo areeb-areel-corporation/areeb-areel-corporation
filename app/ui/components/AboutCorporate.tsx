@@ -134,7 +134,7 @@ export default function AboutSlider() {
         const pulseAlpha = Math.sin(p.phase) * 0.5 + 0.5; 
         const haloRadius = p.radius * 3 + (pulseAlpha * 2.5);
 
-        ctx.beginPath();
+        ctx.beginPath();  
         ctx.arc(p.x, p.y, haloRadius, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(212, 175, 55, ${0.05 + pulseAlpha * 0.15})`; 
         ctx.fill();

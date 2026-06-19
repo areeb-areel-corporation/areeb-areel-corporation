@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Fuel, ShoppingBag, Coffee, ShieldCheck, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Fuel, ShoppingBag, ShieldCheck, MapPin, Clock } from 'lucide-react';
+import PetrolStation from '../ui/components/PetrolStation';
 
 export default function PetrolStationPage() {
   // Animation presets for clean, staggered reveals
@@ -63,6 +64,7 @@ export default function PetrolStationPage() {
         </motion.div>
       </section>
 
+      <PetrolStation/>
       {/* --- QUICK DETAILS BAR --- */}
       <section className="relative z-30 -mt-16 max-w-[1400px] mx-auto px-6">
         <motion.div 
