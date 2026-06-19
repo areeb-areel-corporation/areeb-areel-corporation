@@ -23,7 +23,6 @@ const stats = [
   { id: 3, value: '40+', label: 'Energy Hubs Live' },
 ];
 
-// Added 'phase' to handle asynchronous pulsing for the energy halos
 interface Particle {
   x: number;
   y: number;
@@ -58,7 +57,10 @@ export default function AboutSlider() {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const particleCount = 200; // Adjusted for the thicker visual weight of the halos
+    
+    // --- UPDATED LOGIC: 60 for mobile (width < 768px), 200 for larger screens ---
+    const particleCount = window.innerWidth < 768 ? 60 : 300; 
+    
     const connectionDistance = 120; 
     const repulsionRadius = 180; 
 
@@ -86,7 +88,7 @@ export default function AboutSlider() {
           baseVx: vx,
           baseVy: vy,
           radius: Math.random() * 1.5 + 1.0, 
-          phase: Math.random() * Math.PI * 2, // Random starting point for the pulse
+          phase: Math.random() * Math.PI * 2, 
         });
       }
     };
@@ -97,7 +99,6 @@ export default function AboutSlider() {
       const mouse = mouseRef.current;
 
       particles.forEach((p) => {
-        // High-Speed Repulsion Physics
         if (mouse) {
           const dx = p.x - mouse.x;
           const dy = p.y - mouse.y;
@@ -124,31 +125,26 @@ export default function AboutSlider() {
         p.x += p.vx;
         p.y += p.vy;
 
-        // Container Edge Collisions
         if (p.x < 0) { p.x = 0; p.baseVx *= -1; p.vx *= -1; }
         if (p.x > canvas.width) { p.x = canvas.width; p.baseVx *= -1; p.vx *= -1; }
         if (p.y < 0) { p.y = 0; p.baseVy *= -1; p.vy *= -1; }
         if (p.y > canvas.height) { p.y = canvas.height; p.baseVy *= -1; p.vy *= -1; }
 
-        // --- VISUAL UPGRADE: The Pulsing Energy Hub ---
-        p.phase += 0.05; // Advance the pulse animation
-        const pulseAlpha = Math.sin(p.phase) * 0.5 + 0.5; // Oscillates between 0 and 1
+        p.phase += 0.05; 
+        const pulseAlpha = Math.sin(p.phase) * 0.5 + 0.5; 
         const haloRadius = p.radius * 3 + (pulseAlpha * 2.5);
 
-        // 1. Draw the glowing gold outer halo
         ctx.beginPath();
         ctx.arc(p.x, p.y, haloRadius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(212, 175, 55, ${0.05 + pulseAlpha * 0.15})`; // Soft transparent gold
+        ctx.fillStyle = `rgba(212, 175, 55, ${0.05 + pulseAlpha * 0.15})`; 
         ctx.fill();
 
-        // 2. Draw the solid bright core
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)'; // Bright white core
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.9)'; 
         ctx.fill();
       });
 
-      // --- VISUAL UPGRADE: Dynamic Network Threads ---
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const pi = particles[i];
@@ -163,7 +159,7 @@ export default function AboutSlider() {
             ctx.beginPath();
             ctx.moveTo(pi.x, pi.y);
             ctx.lineTo(pj.x, pj.y);
-            ctx.strokeStyle = `rgba(212, 175, 55, ${alpha})`; // Gold connecting threads
+            ctx.strokeStyle = `rgba(212, 175, 55, ${alpha})`; 
             ctx.lineWidth = 1.5; 
             ctx.stroke();
           }
@@ -248,8 +244,6 @@ export default function AboutSlider() {
       <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-brand-black/20 z-10 pointer-events-none" />
 
       <div className="absolute bottom-0 left-0 w-full p-6 md:p-10 space-y-6 z-30 pointer-events-none">
-        {/* Pointer events set to none on the wrapper so the canvas underneath can read the mouse perfectly */}
-        
         <div className="flex items-center gap-3 px-2 pointer-events-auto">
           {sliderImages.map((_, idx) => (
             <div 
