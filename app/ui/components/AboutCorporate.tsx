@@ -199,12 +199,12 @@ export default function AboutSlider() {
     animate: { 
       opacity: 0.55, 
       scale: 1, 
-      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] } 
+      transition: { duration: 1.2, ease: [0.16, 1, 0.3, 1] as number[] } 
     },
     exit: { 
       opacity: 0, 
       scale: 0.98,
-      transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } 
+      transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] as number[] } 
     }
   };
 
@@ -223,7 +223,7 @@ export default function AboutSlider() {
         <AnimatePresence mode="popLayout">
           <motion.div
             key={currentIndex}
-            variants={slideVariants}
+            variants={slideVariants as any}
             initial="initial"
             animate="animate"
             exit="exit"

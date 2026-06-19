@@ -62,7 +62,7 @@ export default function CorporateInsights() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as number[] } },
   };
 
   return (
@@ -100,7 +100,7 @@ export default function CorporateInsights() {
 
         {/* --- BLOG GRID --- */}
         <motion.div 
-          variants={containerVariants}
+          variants={containerVariants as any}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
@@ -109,7 +109,7 @@ export default function CorporateInsights() {
           {blogs.map((blog) => (
             <motion.div 
               key={blog.id} 
-              variants={itemVariants}
+              variants={itemVariants as any}
               onClick={triggerComingSoon}
               className="group cursor-pointer flex flex-col"
             >

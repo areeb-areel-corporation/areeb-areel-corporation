@@ -45,7 +45,7 @@ export default function CorporateFooter() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as number[] } },
   };
 
   return (
@@ -117,7 +117,7 @@ export default function CorporateFooter() {
           className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-8 mb-24"
         >
           {footerLinks.map((column, idx) => (
-            <motion.div key={idx} variants={itemVariants} className="flex flex-col">
+            <motion.div key={idx} variants={itemVariants as any} className="flex flex-col">
               <h4 className="text-white text-sm font-bold uppercase tracking-[0.2em] mb-8">
                 {column.title}
               </h4>

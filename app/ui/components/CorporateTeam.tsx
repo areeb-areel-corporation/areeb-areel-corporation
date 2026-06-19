@@ -64,7 +64,7 @@ export default function CorporateTeam() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 40 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as number[] } },
   };
 
   return (
@@ -95,7 +95,7 @@ export default function CorporateTeam() {
       {/* --- LEADERSHIP GRID --- */}
       <div className="max-w-[1600px] mx-auto px-6 md:px-10">
         <motion.div 
-          variants={containerVariants}
+          variants={containerVariants as any}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
@@ -104,7 +104,7 @@ export default function CorporateTeam() {
           {team.map((member) => (
             <motion.div
               key={member.id}
-              variants={itemVariants}
+              variants={itemVariants as any}
               className="relative group overflow-hidden rounded-2xl aspect-[3/4] bg-[#111] border border-white/5 cursor-pointer shadow-xl"
             >
               {/* Leader Portrait */}

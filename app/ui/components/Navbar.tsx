@@ -78,7 +78,7 @@ export default function Navbar() {
     <>
       {/* --- MAIN HEADER BAR --- */}
       <motion.header
-        style={{ backgroundColor, backdropBlur, height: headerHeight }}
+        style={{ backgroundColor, backdropFilter: backdropBlur, height: headerHeight }}
         className="fixed top-0 left-0 w-full z-50 border-b border-white/5 flex items-center transition-all duration-300 ease-in-out"
       >
         <div className="max-w-[1600px] w-full mx-auto px-6 md:px-10 flex items-center justify-between">
