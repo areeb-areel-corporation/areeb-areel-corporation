@@ -40,10 +40,10 @@ export default function PetrolStationPage() {
         <motion.div 
           initial="hidden"
           animate="show"
-          variants={staggerContainer}
+          variants={staggerContainer as any}
           className="relative z-20 text-center px-6 max-w-4xl mx-auto mt-20"
         >
-          <motion.div variants={fadeUp} className="flex items-center justify-center gap-3 mb-6">
+          <motion.div variants={fadeUp as any} className="flex items-center justify-center gap-3 mb-6">
             <div className="w-8 h-[1px] bg-[#D4AF37]" />
             <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">
               Flagship Transit Hub
@@ -51,14 +51,14 @@ export default function PetrolStationPage() {
             <div className="w-8 h-[1px] bg-[#D4AF37]" />
           </motion.div>
           
-          <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-6">
+          <motion.h1 variants={fadeUp as any} className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-6">
             AAA Standard <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
               Station & Smart Mart.
             </span>
           </motion.h1>
           
-          <motion.p variants={fadeUp} className="text-brand-silver/70 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
+          <motion.p variants={fadeUp as any} className="text-brand-silver/70 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10">
             More than a refuelling stop. A masterfully engineered transit oasis providing premium grade fuels and high-end retail convenience 24 hours a day.
           </motion.p>
         </motion.div>

@@ -81,7 +81,7 @@ export default function HousingSocietyPage() {
             className="max-w-3xl"
           >
             <motion.div
-              variants={fadeUp}
+              variants={fadeUp as any}
               className="flex items-center gap-3 mb-6"
             >
               <div className="w-12 h-[1px] bg-[#D4AF37]" />
@@ -91,7 +91,7 @@ export default function HousingSocietyPage() {
             </motion.div>
 
             <motion.h1
-              variants={fadeUp}
+              variants={fadeUp as any}
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.05] mb-6 drop-shadow-2xl"
             >
               Master-Planned <br />
@@ -101,7 +101,7 @@ export default function HousingSocietyPage() {
             </motion.h1>
 
             <motion.p
-              variants={fadeUp}
+              variants={fadeUp as any}
               className="text-brand-silver/90 text-lg md:text-xl leading-relaxed max-w-2xl font-medium drop-shadow-md"
             >
               Redefining luxury urban living. We engineer expansive,
