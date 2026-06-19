@@ -28,7 +28,7 @@ export default function ContactForm() {
   };
 
   return (
-    <section className="relative w-full bg-brand-black py-32 px-6">
+    <section id="contact-form" className="relative w-full bg-brand-black py-32 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           

@@ -1,6 +1,9 @@
+'use client';
 import Image from 'next/image';
+import { useComingSoon } from '../context/ComingSoonContext';
 
 export default function Hero() {
+  const { showComingSoon } = useComingSoon();
   return (
     <section className="relative w-full h-screen overflow-hidden bg-brand-black flex items-center justify-center">
       
@@ -48,7 +51,7 @@ export default function Hero() {
 
         {/* Call to Actions */}
         <div className="flex flex-col sm:flex-row gap-4 pt-4">
-          <button className="bg-brand-gold text-brand-black font-bold px-8 py-4 rounded-md tracking-wider uppercase hover:bg-yellow-500 transition shadow-lg shadow-brand-gold/20 text-sm">
+          <button onClick={() => showComingSoon()} className="bg-brand-gold text-brand-black font-bold px-8 py-4 rounded-md tracking-wider uppercase hover:bg-yellow-500 transition shadow-lg shadow-brand-gold/20 text-sm">
             Explore Sectors
           </button>
           <button className="border border-white/20 bg-white/5 text-white font-bold px-8 py-4 rounded-md tracking-wider uppercase hover:bg-white/10 transition text-sm backdrop-blur-sm">

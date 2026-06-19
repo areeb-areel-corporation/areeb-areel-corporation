@@ -51,7 +51,7 @@ export default function CorporateInquiry() {
   };
 
   return (
-    <section className="relative w-full bg-brand-black text-white py-24 lg:py-32 overflow-hidden">
+    <section id='contact' className="relative w-full bg-brand-black text-white py-24 lg:py-32 overflow-hidden">
       {/* Background Ambience */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[200px] rounded-full pointer-events-none" />
       

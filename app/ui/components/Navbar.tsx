@@ -8,7 +8,6 @@ import {
   useScroll,
   useTransform,
   AnimatePresence,
-  Variants,
   MotionValue,
 } from "framer-motion";
 import {
@@ -26,6 +25,7 @@ import {
   FaInstagram,
   FaLinkedin,
 } from "react-icons/fa6";
+import { useComingSoon } from "../context/ComingSoonContext";
 
 interface NavLink {
   name: string;
@@ -34,10 +34,9 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { name: "Infrastructure", href: "/infrastructure", icon: Building2 },
-  { name: "Energy Networks", href: "/energy-marts", icon: Fuel },
-  { name: "Retail Marts", href: "/energy-marts#marts", icon: ShoppingCart },
-  { name: "About Corporate", href: "/about", icon: null },
+  { name: "Infrastructure", href: "/", icon: Building2 },
+  { name: "Energy Networks", href: "/", icon: Fuel },
+  { name: "Retail Marts", href: "/", icon: ShoppingCart },
 ];
 
 const socialLinks = [
@@ -50,6 +49,7 @@ const socialLinks = [
 export default function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const { scrollY } = useScroll();
+  const { showComingSoon } = useComingSoon();
 
   const backgroundColor: MotionValue<string> = useTransform(
     scrollY,
@@ -101,29 +101,35 @@ export default function Navbar() {
             </motion.div>
           </Link>
 
-         
-
           {/* Action Call Controls */}
           <div className="flex items-center gap-6">
-            <Link href="/contact" className="hidden sm:block group">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="bg-brand-gold text-brand-black font-bold px-7 py-3 rounded-md tracking-wider uppercase text-xs hover:brightness-110 transition shadow-lg shadow-brand-gold/10 flex items-center gap-2"
-              >
-                Contact Portal
-                <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-            </Link>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => {
+                const contactSection = document.getElementById("contact");
+                if (contactSection) {
+                  contactSection.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }
+              }}
+              /* Added display formatting to force layout consistency */
+              className="hidden sm:inline-flex items-center justify-center gap-2 group bg-brand-gold text-brand-black font-bold px-7 py-3 rounded-md tracking-wider uppercase text-xs hover:brightness-110 transition shadow-lg shadow-brand-gold/10"
+            >
+              {/* Wrapped raw text in a span to guarantee clean typography tracking next to the inline svg */}
+              <span className="leading-none">Contact Portal</span>
+              <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+            </motion.button>
 
             {/* Premium Hamburger Toggle */}
             <button
               onClick={() => setSidebarOpen(true)}
-              className="p-2 text-white hover:text-brand-gold transition-colors flex items-center gap-2 group"
+              className="p-2 text-white hover:text-brand-gold transition-colors inline-flex items-center justify-center gap-2 group"
               aria-label="Open Navigation Drawer"
             >
-             
-              <Menu className="hover:text-yellow-200 cursor-pointer w-7 h-7" />
+              <Menu className="hover:text-yellow-200 cursor-pointer w-7 h-7 shrink-0" />
             </button>
           </div>
         </div>
@@ -170,7 +176,7 @@ export default function Navbar() {
                       AREEB AREEL
                     </span>
                     <span className="text-[9px] text-yellow-200 uppercase tracking-wider">
-                        CORPORATION
+                      CORPORATION
                     </span>
                   </div>
                 </div>
@@ -194,6 +200,7 @@ export default function Navbar() {
                   return (
                     <motion.div
                       key={link.name}
+                      onClick={() => showComingSoon()}
                       initial={{ opacity: 0, x: 40 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{
