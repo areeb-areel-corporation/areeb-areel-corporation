@@ -2,11 +2,14 @@
 
 html {
   scroll-behavior: smooth;
+  /* Forces the browser scrollbars and default rendering engines to stay dark */
+  color-scheme: dark; 
 }
 
+/* Hardcoded dark values as the absolute global default */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0a0a0a;
+  --foreground: #ededed;
 }
 
 @theme inline {
@@ -16,19 +19,14 @@ html {
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  /* Anti-aliasing optimization to keep fine gold text looking ultra-crisp on dark screens */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-
 
 .text-stroke-gold {
   -webkit-text-stroke: 1px rgba(212, 175, 55, 0.8);
