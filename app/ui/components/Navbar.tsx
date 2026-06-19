@@ -16,7 +16,7 @@ import {
   ChevronRight,
   Fuel,
   Building2,
-  ShoppingCart,
+  Home,
   LucideIcon,
 } from "lucide-react";
 import {
@@ -25,7 +25,6 @@ import {
   FaInstagram,
   FaLinkedin,
 } from "react-icons/fa6";
-import { useComingSoon } from "../context/ComingSoonContext";
 
 interface NavLink {
   name: string;
@@ -34,9 +33,9 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { name: "Infrastructure", href: "/", icon: Building2 },
-  { name: "Energy Networks", href: "/", icon: Fuel },
-  { name: "Retail Marts", href: "/", icon: ShoppingCart },
+  { name: "Infrastructure", href: "/infrastructure", icon: Building2 },
+  { name: "Petrol Station", href: "/petrol-station", icon: Fuel },
+  { name: "Housing Society", href: "/housing-society", icon: Home },
 ];
 
 const socialLinks = [
@@ -49,7 +48,6 @@ const socialLinks = [
 export default function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const { scrollY } = useScroll();
-  const { showComingSoon } = useComingSoon();
 
   const backgroundColor: MotionValue<string> = useTransform(
     scrollY,
@@ -200,7 +198,6 @@ export default function Navbar() {
                   return (
                     <motion.div
                       key={link.name}
-                      onClick={() => showComingSoon()}
                       initial={{ opacity: 0, x: 40 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{
