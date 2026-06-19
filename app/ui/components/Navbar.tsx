@@ -25,6 +25,7 @@ import {
   FaInstagram,
   FaLinkedin,
 } from "react-icons/fa6";
+import { useRouter, usePathname } from 'next/navigation';
 
 interface NavLink {
   name: string;
@@ -46,6 +47,20 @@ const socialLinks = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const router = useRouter();
+
+  const handleContactClick = () => {
+    if (pathname === "/") {
+      const contactSection = document.getElementById("contact");
+      if (contactSection) {
+        contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      router.push("/#contact");
+    }
+  };
+
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const { scrollY } = useScroll();
 
@@ -76,7 +91,11 @@ export default function Navbar() {
     <>
       {/* --- MAIN HEADER BAR --- */}
       <motion.header
-        style={{ backgroundColor, backdropFilter: backdropBlur, height: headerHeight }}
+        style={{
+          backgroundColor,
+          backdropFilter: backdropBlur,
+          height: headerHeight,
+        }}
         className="fixed top-0 left-0 w-full z-50 border-b border-white/5 flex items-center transition-all duration-300 ease-in-out"
       >
         <div className="max-w-[1600px] w-full mx-auto px-6 md:px-10 flex items-center justify-between">
@@ -104,15 +123,7 @@ export default function Navbar() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => {
-                const contactSection = document.getElementById("contact");
-                if (contactSection) {
-                  contactSection.scrollIntoView({
-                    behavior: "smooth",
-                    block: "start",
-                  });
-                }
-              }}
+              onClick={handleContactClick}
               /* Added display formatting to force layout consistency */
               className="hidden sm:inline-flex items-center justify-center gap-2 group bg-brand-gold text-brand-black font-bold px-7 py-3 rounded-md tracking-wider uppercase text-xs hover:brightness-110 transition shadow-lg shadow-brand-gold/10"
             >

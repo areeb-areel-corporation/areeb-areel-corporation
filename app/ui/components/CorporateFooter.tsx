@@ -7,14 +7,13 @@ import Link from 'next/link';
 
 // Streamlined, high-priority links only
 const coreDivisions = [
+  { name: 'Petrol Pump Station', href: '/petrol-station' }, 
   { name: 'Housing Society', href: '/housing-society' },
   { name: 'Infrastructure & Engineering', href: '/infrastructure' },
-  { name: 'Petrol Pump Station', href: '/petrol-station' }, // Linked to your new page
 ];
 
 const corporateLinks = [
-  { name: 'Corporate Blogs', href: '#' },
-  { name: 'Headquarters Location', href: '#' },
+  { name: 'Corporate Blogs', href: '#corporate-blogs' },
 ];
 
 export default function CorporateFooter() {

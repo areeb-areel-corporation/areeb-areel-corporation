@@ -7,42 +7,42 @@ import { FaLinkedin } from 'react-icons/fa';
 const team = [
   {
     id: 1,
-    name: 'Areeb Khan',
+    name: 'Areeb Tahir',
     role: 'Chief Executive Officer | Founder',
-    src: '/team/ceo-1.png', // Save images as portrait (3:4 aspect ratio suggested)
-    linkedin: '#',
+    src: '/images/Areeb-Tahir.jpg', // Save images as portrait (3:4 aspect ratio suggested)
+    linkedin: '/https://www.linkedin.com/in/areeb-tahir-866088253/',
   },
   {
     id: 2,
-    name: 'Areel Shah',
-    role: 'Managing Director | Co-Founder',
-    src: '/team/md-1.png',
-    linkedin: '#',
+    name: 'Areel Tahir',
+    role: 'CEO | Owner',
+    src: '/images/Areel-Tahir.jpg',
+    linkedin: '/https://www.linkedin.com/in/areeltahir/',
   },
   {
     id: 3,
-    name: 'Sarah Chaudhry',
+    name: 'Kashif',
     role: 'Chief Human Resources Officer',
     src: '/team/chro-1.png',
     linkedin: '#',
   },
   {
     id: 4,
-    name: 'Zain Malik',
+    name: 'Unknown',
     role: 'Head of Marketing & Strategy',
     src: '/team/marketing-1.png',
     linkedin: '#',
   },
   {
     id: 5,
-    name: 'Hamza Sheikh',
+    name: 'Unknown',
     role: 'Director, AAA Developments',
     src: '/team/realestate-head.png',
     linkedin: '#',
   },
   {
     id: 6,
-    name: 'Ayesha Omer',
+    name: 'Unknown',
     role: 'Head of Retail & Supply Chain',
     src: '/team/retail-head.png',
     linkedin: '#',

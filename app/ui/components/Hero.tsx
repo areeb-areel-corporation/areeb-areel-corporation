@@ -45,7 +45,7 @@ export default function Hero() {
             </span>
           </h1>
           <p className="text-brand-silver/80 text-sm md:text-lg max-w-5xl mx-auto tracking-widest uppercase font-medium">
-   Housing Society • Infrastructure • Energy Networks • Retail Marts
+  Building Dreams • Shaping Spaces • Fueling Future 
 </p>
         </div>
 

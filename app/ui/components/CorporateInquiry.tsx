@@ -9,7 +9,6 @@ import {
   Building2,
   Mail,
   Phone,
-  Smartphone,
 } from "lucide-react";
 
 export default function CorporateInquiry() {
@@ -59,6 +58,8 @@ export default function CorporateInquiry() {
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+
+
 
   // Staggered animation configuration
   const containerVariants = {

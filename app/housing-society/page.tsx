@@ -249,7 +249,7 @@ export default function HousingSocietyPage() {
               href="/" 
               className="w-full sm:w-auto group flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-widest text-[#D4AF37] hover:text-white transition-colors duration-300"
             >
-              Return to Corporate
+              Return to Home
               <div className="w-10 h-10 rounded-full border border-[#D4AF37]/30 flex items-center justify-center group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37]/10 transition-all duration-300">
                 <ArrowRight className="w-4 h-4 text-[#D4AF37] group-hover:text-white transition-colors" />
               </div>
