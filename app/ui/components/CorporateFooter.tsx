@@ -168,10 +168,10 @@ export default function CorporateFooter() {
         whileInView={{ y: 0, opacity: 0.1 }}
         viewport={{ once: true }}
         transition={{ duration: 1.5, ease: "easeOut" }}
-        className="absolute bottom-[-10%] left-0 w-full flex justify-center pointer-events-none select-none z-0 overflow-hidden"
+        className="absolute bottom-[-5%] left-0 w-full flex justify-center pointer-events-none select-none z-0 overflow-hidden"
       >
-        <span className="text-[15vw] font-black tracking-tighter text-white whitespace-nowrap leading-none">
-          AREEB & AREEL
+        <span className="text-[9vw] font-black tracking-tighter text-white whitespace-nowrap leading-none">
+          AREEB AREEL CORP.
         </span>
       </motion.div>
 
