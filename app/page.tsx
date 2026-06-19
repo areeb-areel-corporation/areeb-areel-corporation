@@ -2,7 +2,10 @@ import AboutCorporate from './ui/components/AboutCorporate';
 import Hero from './ui/components/Hero';
 import CorporateDivisions from './ui/components/CorporateDivisions';
 import SignatureDevelopments from './ui/components/SignatureDevelopments';
-import ContactForm from './ui/components/ContactForm';
+import CorporateInquiry from './ui/components/CorporateInquiry';
+import StrategicScale from './ui/components/StrategicScale';
+import CorporateTeam from './ui/components/CorporateTeam';
+import CorporateInsights from './ui/components/CorporateInsights';
 
 export default function Home() {
   return (
@@ -12,7 +15,10 @@ export default function Home() {
       <CorporateDivisions />
       <AboutCorporate />
       <SignatureDevelopments />
-      <ContactFormgit  />
+      <StrategicScale />
+      <CorporateTeam />
+      <CorporateInsights />
+      <CorporateInquiry  />
       
     </main>
   );
