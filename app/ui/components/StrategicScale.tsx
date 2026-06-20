@@ -3,8 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 
-// --- ANIMATED COUNTER COMPONENT ---
-// This handles the smooth math interpolation from 0 to the target number
+
 function AnimatedCounter({ from, to, duration = 2, suffix = '' }: { from: number, to: number, duration?: number, suffix?: string }) {
   const [count, setCount] = useState(from);
   const ref = useRef<HTMLSpanElement>(null);
@@ -50,7 +49,7 @@ const stats = [
 ];
 
 export default function StrategicScale() {
-  const marqueeText = "STRATEGIC OPERATIONS • LAHORE TO DUBAI • AAA STANDARD INFRASTRUCTURE • GLOBAL REACH • UNMATCHED SCALE • ";
+  const marqueeText = "BUILDING DREAMS • SHAPING SPACES • FEULING FUTURE  • CONSTRUCTION • ";
   
   return (
     <section className="relative w-full bg-[#0a0a0a] text-white py-24 lg:py-32 overflow-hidden border-y border-white/5">
