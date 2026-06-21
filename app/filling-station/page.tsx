@@ -56,7 +56,7 @@ export default function FillingStationPage() {
           variants={staggerContainer}
           className="relative z-20 text-center px-6 max-w-4xl mx-auto mt-20"
         >
-          <motion.div variants={slideInLeft} className="flex items-center justify-center gap-3 mb-6">
+          <motion.div variants={slideInLeft as any} className="flex items-center justify-center gap-3 mb-6">
             <div className="w-8 h-[1px] bg-[#D4AF37]" />
             <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">
               AAA Petroleum
@@ -64,14 +64,14 @@ export default function FillingStationPage() {
             <div className="w-8 h-[1px] bg-[#D4AF37]" />
           </motion.div>
           
-          <motion.h1 variants={slideInLeft} className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-6">
+          <motion.h1 variants={slideInLeft as any} className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-6">
             Areeb Areel <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
               Filling Station.
             </span>
           </motion.h1>
           
-          <motion.p variants={slideInLeft} className="text-brand-silver/90 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 font-medium">
+          <motion.p variants={slideInLeft as any} className="text-brand-silver/90 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto mb-10 font-medium">
             Your trusted stop for 100% pure fuel, accurate measurements, and complete travel convenience. Open 24/7 for you and your vehicle.
           </motion.p>
         </motion.div>
@@ -129,7 +129,7 @@ export default function FillingStationPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInLeft}
+            variants={slideInLeft as any}
             className="w-full lg:w-1/2 relative aspect-[4/3] rounded-2xl overflow-hidden group"
           >
             <div className="absolute inset-0 bg-[#D4AF37] mix-blend-overlay opacity-0 group-hover:opacity-20 transition-opacity duration-700 z-10" />
@@ -146,7 +146,7 @@ export default function FillingStationPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInRight}
+            variants={slideInRight as any}
             className="w-full lg:w-1/2 space-y-6"
           >
             <div className="w-14 h-14 rounded-xl bg-[#111] border border-[#D4AF37]/30 flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.1)]">
@@ -177,7 +177,7 @@ export default function FillingStationPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInLeft}
+            variants={slideInLeft as any}
             className="w-full lg:w-1/2 space-y-6"
           >
             <div className="w-14 h-14 rounded-xl bg-[#111] border border-[#D4AF37]/30 flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.1)]">
@@ -209,7 +209,7 @@ export default function FillingStationPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInRight}
+            variants={slideInRight as any}
             className="w-full lg:w-1/2 relative aspect-[4/3] rounded-2xl overflow-hidden group"
           >
             <div className="absolute inset-0 bg-[#D4AF37] mix-blend-overlay opacity-0 group-hover:opacity-20 transition-opacity duration-700 z-10" />
@@ -237,7 +237,7 @@ export default function FillingStationPage() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true }}
-              variants={slideInLeft}
+              variants={slideInLeft as any}
               className="w-full lg:w-5/12 space-y-8"
             >
               <div>

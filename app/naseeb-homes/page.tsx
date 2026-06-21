@@ -77,7 +77,7 @@ export default function NaseebHomesPage() {
             className="max-w-3xl"
           >
             <motion.div
-              variants={slideInLeft}
+              variants={slideInLeft as any}
               className="flex items-center gap-3 mb-6"
             >
               <div className="w-12 h-[1px] bg-[#D4AF37]" />
@@ -87,7 +87,7 @@ export default function NaseebHomesPage() {
             </motion.div>
 
             <motion.h1
-              variants={slideInLeft}
+              variants={slideInLeft as any}
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.05] mb-6 drop-shadow-2xl"
             >
               Naseeb Homes. <br />
@@ -97,7 +97,7 @@ export default function NaseebHomesPage() {
             </motion.h1>
 
             <motion.p
-              variants={slideInLeft}
+              variants={slideInLeft as any}
               className="text-brand-silver/90 text-lg md:text-xl leading-relaxed max-w-2xl font-medium drop-shadow-md"
             >
               Experience modern architecture in a secure, gated community. Premium 3.5 and 5 Marla homes available with accessible 12-month installment plans.
@@ -134,7 +134,7 @@ export default function NaseebHomesPage() {
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              variants={slideInLeft}
+              variants={slideInLeft as any}
               className="bg-[#111111]/80 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] group hover:border-[#D4AF37]/50 transition-colors duration-500"
             >
               <div className="w-12 h-12 rounded-full bg-[#D4AF37]/10 flex items-center justify-center border border-[#D4AF37]/30 mb-6 group-hover:bg-[#D4AF37] transition-colors duration-500">
@@ -163,7 +163,7 @@ export default function NaseebHomesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInLeft}
+            variants={slideInLeft as any}
             className="w-full lg:w-1/2 relative z-10"
           >
             <div className="w-14 h-14 rounded-xl bg-[#0a0a0a] border border-[#D4AF37]/30 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.15)] mb-8">
@@ -190,7 +190,7 @@ export default function NaseebHomesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInRight}
+            variants={slideInRight as any}
             className="w-full lg:w-1/2 flex justify-center lg:justify-end relative z-10"
           >
             {/* Reel Frame (9:16 Aspect Ratio) */}
@@ -223,7 +223,7 @@ export default function NaseebHomesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInLeft}
+            variants={slideInLeft as any}
             className="w-full lg:w-1/2 space-y-8"
           >
             <div className="w-14 h-14 rounded-xl bg-[#111] border border-[#D4AF37]/30 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.15)]">
@@ -262,7 +262,7 @@ export default function NaseebHomesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInRight}
+            variants={slideInRight as any}
             className="w-full lg:w-1/2 relative"
           >
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-[#D4AF37]/40 shadow-[0_0_50px_rgba(212,175,55,0.1)] group bg-[#111]">
@@ -290,7 +290,7 @@ export default function NaseebHomesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInLeft}
+            variants={slideInLeft as any}
             className="w-full lg:w-1/2 relative"
           >
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/20 shadow-2xl group bg-[#111]">
@@ -309,7 +309,7 @@ export default function NaseebHomesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInRight}
+            variants={slideInRight as any}
             className="w-full lg:w-1/2 space-y-8"
           >
             <div className="w-14 h-14 rounded-xl bg-[#111] border border-[#D4AF37]/30 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.15)]">
