@@ -9,6 +9,7 @@ import {
   ArrowRight,
   Building2,
   Wallet,
+  PlayCircle,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -76,7 +77,7 @@ export default function NaseebHomesPage() {
             className="max-w-3xl"
           >
             <motion.div
-              variants={slideInLeft as any}
+              variants={slideInLeft}
               className="flex items-center gap-3 mb-6"
             >
               <div className="w-12 h-[1px] bg-[#D4AF37]" />
@@ -86,7 +87,7 @@ export default function NaseebHomesPage() {
             </motion.div>
 
             <motion.h1
-              variants={slideInLeft as any}
+              variants={slideInLeft}
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.05] mb-6 drop-shadow-2xl"
             >
               Naseeb Homes. <br />
@@ -96,7 +97,7 @@ export default function NaseebHomesPage() {
             </motion.h1>
 
             <motion.p
-              variants={slideInLeft as any}
+              variants={slideInLeft}
               className="text-brand-silver/90 text-lg md:text-xl leading-relaxed max-w-2xl font-medium drop-shadow-md"
             >
               Experience modern architecture in a secure, gated community. Premium 3.5 and 5 Marla homes available with accessible 12-month installment plans.
@@ -133,7 +134,7 @@ export default function NaseebHomesPage() {
           ].map((item, idx) => (
             <motion.div
               key={idx}
-              variants={slideInLeft as any}
+              variants={slideInLeft}
               className="bg-[#111111]/80 backdrop-blur-xl border border-white/10 p-8 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.5)] group hover:border-[#D4AF37]/50 transition-colors duration-500"
             >
               <div className="w-12 h-12 rounded-full bg-[#D4AF37]/10 flex items-center justify-center border border-[#D4AF37]/30 mb-6 group-hover:bg-[#D4AF37] transition-colors duration-500">
@@ -150,8 +151,71 @@ export default function NaseebHomesPage() {
         </motion.div>
       </section>
 
+      {/* --- REEL / VIDEO SHOWCASE SECTION --- */}
+      <section className="py-24 lg:py-32 max-w-[1600px] mx-auto px-6 md:px-10 overflow-hidden">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24 bg-[#111111]/40 border border-white/5 rounded-[2rem] p-8 lg:p-16 relative shadow-2xl">
+          
+          {/* Background Ambient Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-2xl h-full bg-[#D4AF37]/5 blur-[120px] rounded-full pointer-events-none z-0" />
+
+          {/* Left Text Content */}
+          <motion.div 
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={slideInLeft}
+            className="w-full lg:w-1/2 relative z-10"
+          >
+            <div className="w-14 h-14 rounded-xl bg-[#0a0a0a] border border-[#D4AF37]/30 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.15)] mb-8">
+              <PlayCircle className="w-7 h-7 text-[#D4AF37]" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6 leading-tight">
+              Experience The <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-brand-silver/50">
+                Naseeb Lifestyle.
+              </span>
+            </h2>
+            <p className="text-brand-silver/70 text-lg leading-relaxed mb-8">
+              Take an exclusive digital tour of our flagship models. See the intricate architectural details, modern interior finishes, and the vibrant community waiting for you.
+            </p>
+            
+            <div className="flex items-center gap-4 text-sm font-bold tracking-widest uppercase text-[#D4AF37]">
+              <span className="w-8 h-[2px] bg-[#D4AF37]" />
+              Watch The Reel
+            </div>
+          </motion.div>
+
+          {/* Right Video Reel Player */}
+          <motion.div 
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={slideInRight}
+            className="w-full lg:w-1/2 flex justify-center lg:justify-end relative z-10"
+          >
+            {/* Reel Frame (9:16 Aspect Ratio) */}
+            <div className="relative w-full max-w-[320px] sm:max-w-[360px] aspect-[9/16] rounded-[2.5rem] overflow-hidden border-[6px] border-[#1a1a1a] shadow-[0_0_50px_rgba(212,175,55,0.2)] bg-black">
+              {/* Note: autoPlay without muted is used, but browsers may enforce manual play if sound is enabled */}
+              <video 
+                src="/videos/your-reel-video.mp4" /* ADD YOUR VIDEO PATH HERE */
+                autoPlay 
+                controls 
+                loop 
+                playsInline
+                className="w-full h-full object-cover"
+              >
+                Your browser does not support the video tag.
+              </video>
+              
+              {/* Optional: Glossy screen reflection overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 pointer-events-none" />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* --- THE SHOWCASE: RESIDENTIAL OPTIONS --- */}
-      <section className="py-24 lg:py-40 max-w-[1600px] mx-auto px-6 md:px-10 overflow-hidden">
+      <section className="pb-24 pt-10 lg:pb-40 max-w-[1600px] mx-auto px-6 md:px-10 overflow-hidden">
         
         {/* Project 1: The Homes */}
         <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24 mb-32 lg:mb-48">
@@ -159,7 +223,7 @@ export default function NaseebHomesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInLeft as any}
+            variants={slideInLeft}
             className="w-full lg:w-1/2 space-y-8"
           >
             <div className="w-14 h-14 rounded-xl bg-[#111] border border-[#D4AF37]/30 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.15)]">
@@ -198,7 +262,7 @@ export default function NaseebHomesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInRight as any}
+            variants={slideInRight}
             className="w-full lg:w-1/2 relative"
           >
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-[#D4AF37]/40 shadow-[0_0_50px_rgba(212,175,55,0.1)] group bg-[#111]">
@@ -226,7 +290,7 @@ export default function NaseebHomesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInLeft as any}
+            variants={slideInLeft}
             className="w-full lg:w-1/2 relative"
           >
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/20 shadow-2xl group bg-[#111]">
@@ -245,7 +309,7 @@ export default function NaseebHomesPage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInRight as any}
+            variants={slideInRight}
             className="w-full lg:w-1/2 space-y-8"
           >
             <div className="w-14 h-14 rounded-xl bg-[#111] border border-[#D4AF37]/30 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.15)]">

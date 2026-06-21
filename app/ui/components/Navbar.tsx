@@ -34,7 +34,7 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
-  { name: "Petrol Station", href: "/petrol-station", icon: Fuel },
+  { name: "Filling Station", href: "/filling-station", icon: Fuel },
   { name: "Naseeb Homes", href: "/naseeb-homes", icon: Home },
   { name: "Architecture", href: "/architechture", icon: Building2 },
 ];
