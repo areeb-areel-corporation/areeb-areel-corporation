@@ -4,6 +4,7 @@ import Navbar from "./ui/components/Navbar";
 import CorporateFooter from "./ui/components/CorporateFooter";
 import { ComingSoonProvider } from "./ui/context/ComingSoonContext";
 import CustomCursor from "./ui/components/CustomCursor";
+import ScrollToTopOnRouteChange from "./ui/components/ScrollToTopOnRouteChange";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,6 +24,8 @@ export default function RootLayout({
      className={`${inter.className} bg-[#0a0a0a] text-white`}
     >
       <body className="min-h-full flex flex-col">
+        <ScrollToTopOnRouteChange />
+
         <CustomCursor />
         <ComingSoonProvider>
           <Navbar/>
