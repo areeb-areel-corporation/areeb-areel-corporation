@@ -32,3 +32,11 @@ body {
   -webkit-text-stroke: 1px rgba(212, 175, 55, 0.8);
   color: transparent;
 }
+
+
+
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}

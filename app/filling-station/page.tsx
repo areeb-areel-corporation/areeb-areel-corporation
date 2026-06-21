@@ -57,11 +57,16 @@ export default function FillingStationPage() {
           className="relative z-20 text-center px-6 max-w-4xl mx-auto mt-20"
         >
           <motion.div variants={slideInLeft as any} className="flex items-center justify-center gap-3 mb-6">
-            <div className="w-8 h-[1px] bg-[#D4AF37]" />
-            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">
-              AAA Petroleum
-            </span>
-            <div className="w-8 h-[1px] bg-[#D4AF37]" />
+            {/* Crisp Logo Overlay from public folder */}
+                   <div className="w-32 h-32 md:w-40 md:h-40 relative animate-fade-in">
+                     <Image 
+                       src="/images/AREEB AREEL LOGO-01.png" 
+                       alt="Areeb & Areel Badge"
+                       fill
+                       priority
+                       className="object-contain filter drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]"
+                     />
+                   </div>
           </motion.div>
           
           <motion.h1 variants={slideInLeft as any} className="text-5xl md:text-7xl font-black tracking-tighter leading-[1.1] mb-6">
