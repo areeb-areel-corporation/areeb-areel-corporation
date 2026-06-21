@@ -158,7 +158,7 @@ export default function FillingStationPage() {
               <Fuel className="w-7 h-7 text-[#D4AF37]" />
             </div>
             <h2 className="text-4xl md:text-5xl font-black tracking-tight">
-              Guaranteed Quality & <br/> Accurate Fueling.
+              Guaranteed Quality & <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Accurate Fueling.</span>
             </h2>
             <p className="text-brand-silver/70 text-lg leading-relaxed">
               We believe in honesty and quality. When you fill up at Areeb Areel Filling Station, we guarantee 100% accurate measurements and pure, uncontaminated fuel to keep your engine running smoothly.
@@ -188,8 +188,8 @@ export default function FillingStationPage() {
             <div className="w-14 h-14 rounded-xl bg-[#111] border border-[#D4AF37]/30 flex items-center justify-center shadow-[0_0_20px_rgba(212,175,55,0.1)]">
               <Wrench className="w-7 h-7 text-[#D4AF37]" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight">
-              Everything You Need <br/> In One Stop.
+            <h2 className="text-4xl md:text-5xl font-black  tracking-tight">
+              Everything You Need <br/> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">In One Stop.</span>
             </h2>
             <p className="text-brand-silver/70 text-lg leading-relaxed">
               Take a break, pray, grab a snack, or get your vehicle serviced. We have built a complete travel stop so you and your family can refresh safely while your car gets the care it needs.

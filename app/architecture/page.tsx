@@ -203,7 +203,7 @@ export default function ArchitecturePage() {
               <p className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em] mb-4">Architecture Services</p>
               <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6 leading-tight">
                 Architecture that blends <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-brand-silver/50">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
                   Beauty & Function.
                 </span>
               </h2>

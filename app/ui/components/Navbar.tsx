@@ -106,7 +106,7 @@ export default function Navbar() {
           >
             <motion.div
               style={{ scale: logoScale }}
-              className="relative w-20 h-20 md:w-14 md:h-14"
+              className="relative w-20 h-20 md:w-18 md:h-18"
             >
               <Image
                 src="/images/AREEB AREEL LOGO BADGE.png"
@@ -172,7 +172,7 @@ export default function Navbar() {
               {/* Sidebar Header Panel */}
               <div className="flex items-center justify-between border-b border-white/5 pb-6">
                 <div className="flex items-center gap-3">
-                  <div className="relative w-10 h-10">
+                  <div className="relative w-15 h-15">
                     <Image
                       src="/images/AREEB AREEL LOGO BADGE.png"
                       alt="Areeb & Areel"
@@ -219,17 +219,17 @@ export default function Navbar() {
                       <Link
                         href={link.href}
                         onClick={() => setSidebarOpen(false)}
-                        className="flex items-center justify-between py-4 border-b border-white/[0.03] group transition-colors duration-300"
+                        className="  flex items-center justify-between py-4 border-b border-white/[0.03] group transition-colors duration-300"
                       >
                         <div className="flex items-center gap-4">
                           {Icon && (
-                            <Icon className="w-5 h-5 text-brand-gold opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" />
+                            <Icon className="group-hover:text-yellow-200 w-5 h-5 text-brand-gold opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" />
                           )}
-                          <span className="text-xl font-bold uppercase tracking-widest text-brand-silver group-hover:text-white transition-colors">
+                          <span className="group-hover:text-yellow-200  text-xl font-bold uppercase tracking-widest text-brand-silver group-hover:text-white transition-colors">
                             {link.name}
                           </span>
                         </div>
-                        <ChevronRight className="w-5 h-5 text-neutral-600 group-hover:text-brand-gold group-hover:translate-x-1 transition-all" />
+                        <ChevronRight className="group-hover:text-yellow-200 w-5 h-5 text-neutral-600 group-hover:translate-x-1 transition-all" />
                       </Link>
                     </motion.div>
                   );
@@ -239,8 +239,8 @@ export default function Navbar() {
               {/* Sidebar Footer & Socials Section */}
               <div className="border-t border-white/5 pt-8 space-y-6">
                 <div className="space-y-1">
-                  <p className="text-xs font-semibold uppercase tracking-wider text-white">
-                    Headquarters
+                  <p className="text-xs font-semibold uppercase tracking-wider text-yellow-200">
+                    Headquarter
                   </p>
                   <p className="text-xs text-brand-silver/60 tracking-wide leading-relaxed">
                     Areeb & Areel Tower, Corporate Block,
@@ -265,7 +265,7 @@ export default function Navbar() {
                         aria-label={social.label}
                       >
                         {/* Render it safely here as a standard JSX tag */}
-                        <SocialIcon className="w-5 h-5" />
+                        <SocialIcon className="hover:text-yellow-200 w-5 h-5" />
                       </a>
                     );
                   })}

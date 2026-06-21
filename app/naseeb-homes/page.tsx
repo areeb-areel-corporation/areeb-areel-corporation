@@ -231,7 +231,7 @@ export default function NaseebHomesPage() {
             </div>
             <div>
               <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4">
-                Premium 3.5 & 5 <br /> Marla Estates.
+                Premium 3.5 & 5 <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Marla Estates.</span>
               </h2>
               <p className="text-brand-silver/70 text-lg leading-relaxed">
                 Designed for modern families. Choose between our beautifully crafted 2 and 3-bedroom layouts. Every home in Naseeb Homes features contemporary facades, spacious interiors, and is built to the highest structural standards.
@@ -317,7 +317,7 @@ export default function NaseebHomesPage() {
             </div>
             <div>
               <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4">
-                Accessible & <br /> Secure Living.
+                Accessible & <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Secure Living.</span>
               </h2>
               <p className="text-brand-silver/70 text-lg leading-relaxed">
                 Naseeb Homes is situated in a prime location, providing your family with the ultimate peace of mind. We believe luxury should be accessible, which is why we offer highly transparent, resident-friendly financial structuring.
@@ -413,7 +413,7 @@ export default function NaseebHomesPage() {
               href="/"
               className="w-full sm:w-auto group flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-widest text-[#D4AF37] hover:text-white transition-colors duration-300"
             >
-              Return to Corporate
+              Return to Home
               <div className="w-10 h-10 rounded-full border border-[#D4AF37]/30 flex items-center justify-center group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37]/10 transition-all duration-300">
                 <ArrowRight className="w-4 h-4 text-[#D4AF37] group-hover:text-white transition-colors" />
               </div>
