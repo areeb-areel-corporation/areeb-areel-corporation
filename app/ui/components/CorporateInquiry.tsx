@@ -27,6 +27,7 @@ export default function CorporateInquiry() {
     setStatus("loading");
 
     try {
+      // Keep your API route setup
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -41,7 +42,6 @@ export default function CorporateInquiry() {
           division: "General Corporate",
           message: "",
         });
-        // Reset success state after 5 seconds
         setTimeout(() => setStatus("idle"), 5000);
       } else {
         setStatus("error");
@@ -59,19 +59,22 @@ export default function CorporateInquiry() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // --- CUSTOM ANIMATIONS ---
+  const slideInLeft = {
+    hidden: { opacity: 0, x: -60 },
+    show: { opacity: 1, x: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } },
+  };
 
-
-  // Staggered animation configuration
-  const containerVariants = {
+  const formContainerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 },
+      transition: { staggerChildren: 0.15, delayChildren: 0.3 },
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const inputVariants = {
+    hidden: { opacity: 0, y: 20 },
     show: {
       opacity: 1,
       y: 0,
@@ -82,90 +85,90 @@ export default function CorporateInquiry() {
   return (
     <section
       id="contact"
-      className="relative w-full bg-brand-black text-white py-24 lg:py-32 overflow-hidden"
+      className="relative w-full bg-[#0a0a0a] text-white py-24 lg:py-32 overflow-hidden"
     >
       {/* Background Ambience */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[200px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[200px] rounded-full pointer-events-none z-0" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-[#D4AF37]/5 blur-[150px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-10 relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+          
           {/* --- LEFT SIDE: Contact Information --- */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={slideInLeft}
             className="w-full lg:w-5/12 space-y-10 pt-4"
           >
             <div>
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-12 h-[1px] bg-[#D4AF37]" />
                 <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">
-                  Secure Channel
+                  Corporate Enquiries
                 </span>
               </div>
               <h2 className="text-5xl md:text-6xl font-black leading-[1.05] tracking-tighter mb-6">
-                Initiate <br />
+                Connect &nbsp;
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
-                  Dialogue.
+                   With Us.
                 </span>
               </h2>
-              <p className="text-brand-silver/70 text-lg leading-relaxed max-w-md">
-                Whether you are seeking strategic partnerships, premium real
-                estate acquisitions, or franchise opportunities within our
-                energy network, our executive team is ready to assist you.
+              <p className="text-zinc-400 text-lg leading-relaxed max-w-md">
+                Whether you are inquiring about a property in Naseeb Homes, looking to partner with our filling stations, or seeking corporate consulting in Dubai, our executive team is ready to assist you.
               </p>
             </div>
 
             <div className="space-y-6 md:space-y-8 max-w-md">
-              {/* 1. Global Headquarters Node */}
+              {/* 1. Global Headquarters */}
               <div className="flex items-start gap-5 group p-3 -m-3 rounded-xl hover:bg-white/[0.02] transition-all duration-300">
-                <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/5 border border-[#D4AF37]/20 flex items-center justify-center shrink-0 group-hover:bg-[#D4AF37]/20 group-hover:border-[#D4AF37] transition-all duration-500 shadow-[0_0_20px_rgba(212,175,55,0)] group-hover:shadow-[0_0_30px_rgba(212,175,55,0.15)]">
+                <div className="w-12 h-12 rounded-xl bg-[#111] border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-[#D4AF37]/50 group-hover:bg-[#D4AF37]/10 transition-all duration-500 shadow-xl">
                   <Building2 className="w-5 h-5 text-[#D4AF37] group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-brand-silver/40 text-[10px] font-bold uppercase tracking-[0.2em]">
-                    Global Headquarters
+                  <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em]">
+                    Corporate Headquarters
                   </h4>
-                  <p className="text-brand-silver/80 group-hover:text-white text-sm md:text-base transition-colors duration-300 leading-relaxed">
-                    Areeb & Areel Tower, Corporate District
+                  <p className="text-zinc-300 group-hover:text-white text-sm md:text-base transition-colors duration-300 leading-relaxed">
+                    Areeb & Areel Corporation
                     <br />
                     Lahore, Punjab, Pakistan
                   </p>
                 </div>
               </div>
 
-              {/* 2. Corporate Email Node */}
+              {/* 2. Corporate Email */}
               <a
-                href="mailto:executive@areebareel.com"
+                href="mailto:contact@areebareel.com"
                 className="flex items-start gap-5 group p-3 -m-3 rounded-xl hover:bg-white/[0.02] transition-all duration-300 w-fit"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/5 border border-[#D4AF37]/20 flex items-center justify-center shrink-0 group-hover:bg-[#D4AF37]/20 group-hover:border-[#D4AF37] transition-all duration-500 shadow-[0_0_20px_rgba(212,175,55,0)] group-hover:shadow-[0_0_30px_rgba(212,175,55,0.15)]">
+                <div className="w-12 h-12 rounded-xl bg-[#111] border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-[#D4AF37]/50 group-hover:bg-[#D4AF37]/10 transition-all duration-500 shadow-xl">
                   <Mail className="w-5 h-5 text-[#D4AF37] group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-brand-silver/40 text-[10px] font-bold uppercase tracking-[0.2em]">
-                    Secure Desk Email
+                  <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em]">
+                    Direct Email
                   </h4>
-                  <p className="text-brand-silver/80 group-hover:text-[#D4AF37] text-sm md:text-base transition-colors duration-300 font-medium">
-                    executive@areebareel.com
+                  <p className="text-zinc-300 group-hover:text-[#D4AF37] text-sm md:text-base transition-colors duration-300 font-medium">
+                    contact@areebareel.com
                   </p>
                 </div>
               </a>
 
-              {/* 3. Corporate Switchboard (Landline Telephone) */}
+              {/* 3. Corporate Switchboard */}
               <a
                 href="tel:+9242111222333"
                 className="flex items-start gap-5 group p-3 -m-3 rounded-xl hover:bg-white/[0.02] transition-all duration-300 w-fit"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#D4AF37]/5 border border-[#D4AF37]/20 flex items-center justify-center shrink-0 group-hover:bg-[#D4AF37]/20 group-hover:border-[#D4AF37] transition-all duration-500 shadow-[0_0_20px_rgba(212,175,55,0)] group-hover:shadow-[0_0_30px_rgba(212,175,55,0.15)]">
+                <div className="w-12 h-12 rounded-xl bg-[#111] border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-[#D4AF37]/50 group-hover:bg-[#D4AF37]/10 transition-all duration-500 shadow-xl">
                   <Phone className="w-5 h-5 text-[#D4AF37] group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-brand-silver/40 text-[10px] font-bold uppercase tracking-[0.2em]">
-                    Make a Call
+                  <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em]">
+                    Corporate Line
                   </h4>
-                  <p className="text-brand-silver/80 group-hover:text-white text-sm md:text-base transition-colors duration-300 font-medium font-mono">
+                  <p className="text-zinc-300 group-hover:text-white text-sm md:text-base transition-colors duration-300 font-medium font-mono">
                     +92 (42) 111-222-333
                   </p>
                 </div>
@@ -174,21 +177,20 @@ export default function CorporateInquiry() {
           </motion.div>
 
           {/* --- RIGHT SIDE: The Animated Form --- */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="w-full lg:w-7/12"
-          >
-            <div className="bg-[#111111]/80 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.5)]">
-              <form onSubmit={handleSubmit} className="space-y-8">
+          <div className="w-full lg:w-7/12">
+            <div className="bg-[#111111]/90 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+              <motion.form 
+                onSubmit={handleSubmit} 
+                className="space-y-8"
+                variants={formContainerVariants}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, margin: "-100px" }}
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  
                   {/* Name Input */}
-                  <motion.div
-                    variants={itemVariants as any}
-                    className="relative group"
-                  >
+                  <motion.div variants={inputVariants} className="relative group">
                     <input
                       type="text"
                       name="name"
@@ -196,22 +198,19 @@ export default function CorporateInquiry() {
                       required
                       value={formData.name}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-colors peer placeholder-transparent"
+                      className="w-full bg-transparent border-b border-zinc-700 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-colors peer placeholder-transparent"
                       placeholder="Full Name"
                     />
                     <label
                       htmlFor="name"
-                      className="absolute left-0 top-4 text-brand-silver/50 text-sm transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-[#D4AF37] peer-valid:-top-3 peer-valid:text-xs peer-valid:text-brand-silver/80"
+                      className="absolute left-0 top-4 text-zinc-500 text-sm transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-[#D4AF37] peer-valid:-top-3 peer-valid:text-xs peer-valid:text-zinc-400"
                     >
                       Full Name
                     </label>
                   </motion.div>
 
                   {/* Email Input */}
-                  <motion.div
-                    variants={itemVariants as any}
-                    className="relative group"
-                  >
+                  <motion.div variants={inputVariants} className="relative group">
                     <input
                       type="email"
                       name="email"
@@ -219,64 +218,39 @@ export default function CorporateInquiry() {
                       required
                       value={formData.email}
                       onChange={handleInputChange}
-                      className="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-colors peer placeholder-transparent"
-                      placeholder="Corporate Email"
+                      className="w-full bg-transparent border-b border-zinc-700 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-colors peer placeholder-transparent"
+                      placeholder="Email Address"
                     />
                     <label
                       htmlFor="email"
-                      className="absolute left-0 top-4 text-brand-silver/50 text-sm transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-[#D4AF37] peer-valid:-top-3 peer-valid:text-xs peer-valid:text-brand-silver/80"
+                      className="absolute left-0 top-4 text-zinc-500 text-sm transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-[#D4AF37] peer-valid:-top-3 peer-valid:text-xs peer-valid:text-zinc-400"
                     >
-                      Corporate Email
+                      Email Address
                     </label>
                   </motion.div>
                 </div>
 
                 {/* Division Select */}
-                <motion.div
-                  variants={itemVariants as any}
-                  className="relative group"
-                >
+                <motion.div variants={inputVariants} className="relative group">
                   <select
                     name="division"
                     value={formData.division}
                     onChange={handleInputChange}
-                    className="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-colors appearance-none cursor-pointer"
+                    className="w-full bg-transparent border-b border-zinc-700 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-colors appearance-none cursor-pointer"
                   >
-                    <option
-                      value="General Corporate"
-                      className="bg-[#111111] text-white"
-                    >
-                      General Corporate Inquiry
-                    </option>
-                    <option
-                      value="AAA Developments"
-                      className="bg-[#111111] text-white"
-                    >
-                      AAA Developments (Real Estate)
-                    </option>
-                    <option
-                      value="Total Parco Hubs"
-                      className="bg-[#111111] text-white"
-                    >
-                      Energy Hubs & Petrol Pumps
-                    </option>
-                    <option
-                      value="Express Smart Mart"
-                      className="bg-[#111111] text-white"
-                    >
-                      Retail & Smart Marts
-                    </option>
+                    <option value="General Corporate" className="bg-[#111] text-white">General Inquiry</option>
+                    <option value="Naseeb Homes" className="bg-[#111] text-white">Naseeb Homes (Real Estate)</option>
+                    <option value="Filling Station" className="bg-[#111] text-white">Areeb Areel Filling Station</option>
+                    <option value="Architecture" className="bg-[#111] text-white">Architecture & Construction</option>
+                    <option value="Dubai Consulting" className="bg-[#111] text-white">Dubai Corporate Consulting</option>
                   </select>
-                  <label className="absolute left-0 -top-3 text-brand-silver/80 text-xs">
+                  <label className="absolute left-0 -top-3 text-zinc-500 text-xs">
                     Target Division
                   </label>
                 </motion.div>
 
                 {/* Message Textarea */}
-                <motion.div
-                  variants={itemVariants as any}
-                  className="relative group"
-                >
+                <motion.div variants={inputVariants} className="relative group">
                   <textarea
                     name="message"
                     id="message"
@@ -284,57 +258,44 @@ export default function CorporateInquiry() {
                     rows={4}
                     value={formData.message}
                     onChange={handleInputChange}
-                    className="w-full bg-transparent border-b border-white/20 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-colors peer placeholder-transparent resize-none"
+                    className="w-full bg-transparent border-b border-zinc-700 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-colors peer placeholder-transparent resize-none"
                     placeholder="Your Message"
                   />
                   <label
                     htmlFor="message"
-                    className="absolute left-0 top-4 text-brand-silver/50 text-sm transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-[#D4AF37] peer-valid:-top-3 peer-valid:text-xs peer-valid:text-brand-silver/80"
+                    className="absolute left-0 top-4 text-zinc-500 text-sm transition-all peer-focus:-top-3 peer-focus:text-xs peer-focus:text-[#D4AF37] peer-valid:-top-3 peer-valid:text-xs peer-valid:text-zinc-400"
                   >
-                    Detailed Proposal or Message
+                    How can we help you?
                   </label>
                 </motion.div>
 
                 {/* Submit Button & Feedback */}
-                <motion.div
-                  variants={itemVariants as any}
-                  className="pt-4 flex items-center justify-between"
-                >
+                <motion.div variants={inputVariants} className="pt-4 flex items-center justify-between">
                   <button
                     type="submit"
                     disabled={status === "loading" || status === "success"}
-                    className="relative group overflow-hidden bg-[#D4AF37] text-black px-8 py-4 font-bold uppercase tracking-widest text-sm flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed transition-transform active:scale-95"
+                    className="relative group overflow-hidden bg-[#D4AF37] text-black px-10 py-4 rounded-lg font-bold uppercase tracking-widest text-sm flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed transition-transform active:scale-95 shadow-[0_0_30px_rgba(212,175,55,0.2)] hover:shadow-[0_0_40px_rgba(212,175,55,0.4)]"
                   >
                     <span className="relative z-10 flex items-center gap-2">
-                      {status === "loading"
-                        ? "Transmitting..."
-                        : status === "success"
-                          ? "Received"
-                          : "Submit Inquiry"}
-                      {status === "loading" && (
-                        <Loader2 className="w-4 h-4 animate-spin" />
-                      )}
-                      {status === "success" && (
-                        <CheckCircle className="w-4 h-4" />
-                      )}
-                      {status === "idle" && (
-                        <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                      )}
+                      {status === "loading" ? "Sending..." : status === "success" ? "Message Sent" : "Submit Inquiry"}
+                      {status === "loading" && <Loader2 className="w-4 h-4 animate-spin" />}
+                      {status === "success" && <CheckCircle className="w-4 h-4" />}
+                      {status === "idle" && <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
                     </span>
-                    {/* Hover Sweep Animation */}
-                    <div className="absolute inset-0 bg-white/20 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out z-0" />
+                    <div className="absolute inset-0 bg-white/30 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
                   </button>
 
                   {/* Error Message */}
                   {status === "error" && (
                     <p className="text-red-400 text-sm font-medium">
-                      Transmission failed. Please try again.
+                      Failed to send. Please try again.
                     </p>
                   )}
                 </motion.div>
-              </form>
+              </motion.form>
             </div>
-          </motion.div>
+          </div>
+
         </div>
       </div>
     </section>

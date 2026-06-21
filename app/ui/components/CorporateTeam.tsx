@@ -75,7 +75,7 @@ export default function CorporateTeam() {
               </span>
             </div>
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight">
-              A A Corporate <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Team</span>
+              Corporate <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Team</span>
             </h2>
           </div>
           <p className="text-brand-silver/60 text-base md:text-lg max-w-sm lg:text-right leading-relaxed font-medium">
