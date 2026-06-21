@@ -34,9 +34,3 @@ body {
 }
 
 
-
-@media (pointer: fine) {
-  * {
-    cursor: none !important;
-  }
-}
