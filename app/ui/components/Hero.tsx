@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import { motion, type Variants } from 'framer-motion';
+import type { ReactElement } from 'react';
 
-export default function Hero(): JSX.Element {
+export default function Hero(): ReactElement {
   const containerVariants: Variants = {
     hidden: {},
     show: {
@@ -44,9 +45,7 @@ export default function Hero(): JSX.Element {
 
   const scrollToSection = (id: string): void => {
     const target = document.getElementById(id);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    if (target) target.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
