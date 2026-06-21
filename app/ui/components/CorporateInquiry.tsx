@@ -99,7 +99,7 @@ export default function CorporateInquiry() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInLeft}
+            variants={slideInLeft as any}
             className="w-full lg:w-5/12 space-y-10 pt-4"
           >
             <div>
@@ -182,7 +182,7 @@ export default function CorporateInquiry() {
               <motion.form 
                 onSubmit={handleSubmit} 
                 className="space-y-8"
-                variants={formContainerVariants}
+                variants={formContainerVariants as any}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
@@ -190,7 +190,7 @@ export default function CorporateInquiry() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   
                   {/* Name Input */}
-                  <motion.div variants={inputVariants} className="relative group">
+                  <motion.div variants={inputVariants as any} className="relative group">
                     <input
                       type="text"
                       name="name"
@@ -210,7 +210,7 @@ export default function CorporateInquiry() {
                   </motion.div>
 
                   {/* Email Input */}
-                  <motion.div variants={inputVariants} className="relative group">
+                  <motion.div variants={inputVariants as any} className="relative group">
                     <input
                       type="email"
                       name="email"
@@ -231,7 +231,7 @@ export default function CorporateInquiry() {
                 </div>
 
                 {/* Division Select */}
-                <motion.div variants={inputVariants} className="relative group">
+                <motion.div variants={inputVariants as any} className="relative group">
                   <select
                     name="division"
                     value={formData.division}
@@ -250,7 +250,7 @@ export default function CorporateInquiry() {
                 </motion.div>
 
                 {/* Message Textarea */}
-                <motion.div variants={inputVariants} className="relative group">
+                <motion.div variants={inputVariants as any} className="relative group">
                   <textarea
                     name="message"
                     id="message"
@@ -270,7 +270,7 @@ export default function CorporateInquiry() {
                 </motion.div>
 
                 {/* Submit Button & Feedback */}
-                <motion.div variants={inputVariants} className="pt-4 flex items-center justify-between">
+                <motion.div variants={inputVariants as any} className="pt-4 flex items-center justify-between">
                   <button
                     type="submit"
                     disabled={status === "loading" || status === "success"}

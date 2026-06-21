@@ -106,7 +106,7 @@ export default function CorporateFooter() {
               </h4>
               <ul className="space-y-6">
                 {coreDivisions.map((link, idx) => (
-                  <motion.li key={idx} variants={itemVariants}>
+                  <motion.li key={idx} variants={itemVariants as any}>
                     <Link 
                       href={link.href} 
                       className="group flex items-center text-zinc-300 hover:text-[#D4AF37] transition-colors duration-300 text-lg md:text-xl font-bold tracking-wide w-fit"
@@ -132,7 +132,7 @@ export default function CorporateFooter() {
               </h4>
               <ul className="space-y-6">
                 {corporateLinks.map((link, idx) => (
-                  <motion.li key={idx} variants={itemVariants}>
+                  <motion.li key={idx} variants={itemVariants as any}>
                     <Link 
                       href={link.href} 
                       className="group flex items-center text-zinc-300 hover:text-[#D4AF37] transition-colors duration-300 text-lg md:text-xl font-bold tracking-wide w-fit"
