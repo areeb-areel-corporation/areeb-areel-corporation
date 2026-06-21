@@ -95,29 +95,29 @@ export default function ArchitecturePage() {
           <motion.div
             initial="hidden"
             animate="show"
-            variants={staggerContainer}
+            variants={staggerContainer as any}
             className="max-w-4xl"
           >
-            <motion.div variants={slideInLeft} className="flex items-center gap-3 mb-6">
+            <motion.div variants={slideInLeft as any} className="flex items-center gap-3 mb-6">
               <div className="w-12 h-[1px] bg-[#D4AF37]" />
               <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em] font-mono">
                 Areeb & Areel Corp
               </span>
             </motion.div>
 
-            <motion.h1 variants={slideInLeft} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.05] mb-6 drop-shadow-2xl">
+            <motion.h1 variants={slideInLeft as any} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-[1.05] mb-6 drop-shadow-2xl">
               One Company. <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
                 Multiple Solutions.
               </span>
             </motion.h1>
 
-            <motion.p variants={slideInLeft} className="text-brand-silver/80 text-lg md:text-2xl font-medium leading-relaxed max-w-2xl mb-8">
+            <motion.p variants={slideInLeft as any} className="text-brand-silver/80 text-lg md:text-2xl font-medium leading-relaxed max-w-2xl mb-8">
               Design. Develop. Deliver. <br className="hidden md:block"/>
               Turning your ideas into buildable reality.
             </motion.p>
             
-            <motion.div variants={slideInLeft} className="flex items-center gap-4 text-[#D4AF37] text-sm md:text-base font-bold uppercase tracking-widest">
+            <motion.div variants={slideInLeft as any} className="flex items-center gap-4 text-[#D4AF37] text-sm md:text-base font-bold uppercase tracking-widest">
               <span>[ Architecture ]</span>
               <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
               <span>[ Interior ]</span>
@@ -137,7 +137,7 @@ export default function ArchitecturePage() {
               initial="hidden"
               whileInView="show"
               viewport={{ once: true, margin: "-50px" }}
-              variants={idx % 2 === 0 ? slideInLeft : slideInRight} 
+              variants={idx % 2 === 0 ? slideInLeft as any : slideInRight as any} 
               className="bg-[#111111]/90 backdrop-blur-xl border border-white/10 p-8 md:p-10 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] group hover:border-[#D4AF37]/50 transition-all duration-500 relative overflow-hidden"
             >
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#D4AF37]/5 blur-3xl rounded-full group-hover:bg-[#D4AF37]/20 transition-colors duration-500" />
@@ -164,7 +164,7 @@ export default function ArchitecturePage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            variants={slideInLeft}
+            variants={slideInLeft as any}
             className="w-full lg:w-1/2 relative"
           >
             <div className="relative aspect-square md:aspect-[4/3] rounded-[2rem] overflow-hidden bg-[#050505] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] group p-2">
@@ -196,7 +196,7 @@ export default function ArchitecturePage() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            variants={slideInRight}
+            variants={slideInRight as any}
             className="w-full lg:w-1/2 space-y-8"
           >
             <div>
