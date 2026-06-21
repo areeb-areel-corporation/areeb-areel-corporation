@@ -169,9 +169,9 @@ export default function NaseebHomesPage() {
             <div className="w-14 h-14 rounded-xl bg-[#0a0a0a] border border-[#D4AF37]/30 flex items-center justify-center shadow-[0_0_30px_rgba(212,175,55,0.15)] mb-8">
               <PlayCircle className="w-7 h-7 text-[#D4AF37]" />
             </div>
-            <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl  text-[#D4AF37] font-black tracking-tight mb-6 leading-tight">
               Experience The <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-brand-silver/50">
+              <span className="text-transparent  bg-clip-text bg-gradient-to-r from-white to-brand-silver/50">
                 Naseeb Lifestyle.
               </span>
             </h2>

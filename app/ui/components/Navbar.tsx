@@ -36,7 +36,7 @@ interface NavLink {
 const navLinks: NavLink[] = [
   { name: "Filling Station", href: "/filling-station", icon: Fuel },
   { name: "Naseeb Homes", href: "/naseeb-homes", icon: Home },
-  { name: "Architecture", href: "/architechture", icon: Building2 },
+  { name: "Architecture", href: "/architecture", icon: Building2 },
 ];
 
 const socialLinks = [
@@ -128,8 +128,8 @@ export default function Navbar() {
               className="hidden sm:inline-flex items-center justify-center gap-2 group bg-brand-gold text-brand-black font-bold px-7 py-3 rounded-md tracking-wider uppercase text-xs hover:brightness-110 transition shadow-lg shadow-brand-gold/10"
             >
               {/* Wrapped raw text in a span to guarantee clean typography tracking next to the inline svg */}
-              <span className="leading-none">Contact Portal</span>
-              <ChevronRight className="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              <span className="leading-none group-hover:text-[#D4AF37]">Contact Portal</span>
+              <ChevronRight className="group-hover:text-[#D4AF37] w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
             </motion.button>
 
             {/* Premium Hamburger Toggle */}
@@ -138,7 +138,7 @@ export default function Navbar() {
               className="p-2 text-white hover:text-brand-gold transition-colors inline-flex items-center justify-center gap-2 group"
               aria-label="Open Navigation Drawer"
             >
-              <Menu className="hover:text-yellow-200 cursor-pointer w-7 h-7 shrink-0" />
+              <Menu className="group-hover:text-yellow-200 cursor-pointer w-7 h-7 shrink-0" />
             </button>
           </div>
         </div>
