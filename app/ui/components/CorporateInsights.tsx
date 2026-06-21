@@ -66,7 +66,7 @@ export default function CorporateInsights() {
   };
 
   return (
-    <section className="relative w-full bg-brand-black text-white py-24 lg:py-32 overflow-hidden border-t border-white/5">
+    <section id="blogs" className="relative w-full bg-brand-black text-white py-24 lg:py-32 overflow-hidden border-t border-white/5">
       
       {/* Background Ambience */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[150px] rounded-full pointer-events-none" />
@@ -83,7 +83,7 @@ export default function CorporateInsights() {
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter">
-              Corporate <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Insights.</span>
+              Corporate <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Blogs.</span>
             </h2>
           </div>
           

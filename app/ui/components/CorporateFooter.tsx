@@ -9,14 +9,16 @@ import Link from 'next/link';
 // Streamlined, high-priority links only
 const coreDivisions = [
   { name: 'Naseeb Homes', href: '/naseeb-homes' }, 
-  { name: 'Filling Station', href: '/petrol-station' },
+  { name: 'Filling Station', href: '/filling-station' },
   { name: 'Architecture & Build', href: '/architecture' },
 ];
 
 const corporateLinks = [
   { name: 'About The Legacy', href: '/#about-corporation' },
   { name: 'Dubai Consulting', href: '/#contact' },
-  { name: 'Corporate Enquiries', href: '/#contact' },
+  { name: 'Enquiries', href: '/#contact' },
+  { name: 'Blogs', href: '/#blogs' },
+
 ];
 
 export default function CorporateFooter() {
@@ -29,7 +31,7 @@ export default function CorporateFooter() {
     offset: ["start end", "end end"] 
   });
 
-  const textY = useTransform(scrollYProgress, [0.8, 1], ["100%", "0%"]);
+  const textY = useTransform(scrollYProgress, [0.7, 1], ["100%", "0%"]);
   const textOpacity = useTransform(scrollYProgress, [0.4, 1], [0, 0.15]);
   
   const containerVariants = {
@@ -178,7 +180,7 @@ export default function CorporateFooter() {
         style={{ y: textY, opacity: textOpacity }}
         className="absolute bottom-[2%] left-0 w-full flex justify-center pointer-events-none select-none z-0 overflow-hidden"
       >
-        <span className="text-[9vw] font-black tracking-tighter text-white whitespace-nowrap leading-none drop-shadow-2xl">
+        <span className="text-[10vw] font-black tracking-tighter text-white whitespace-nowrap leading-none drop-shadow-2xl">
           AREEB AREEL CORP
         </span>
       </motion.div>
