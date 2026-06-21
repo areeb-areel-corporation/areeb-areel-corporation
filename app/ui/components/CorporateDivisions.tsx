@@ -92,7 +92,7 @@ export default function AboutCorporateSection() {
           </div>
 
           {/* --- RIGHT COLUMN: Natural Scrolling Content Area --- */}
-          <div className="w-full lg:w-6/12 space-y-[35vh] pt-[25vh] pb-[35vh]">
+          <div className="w-full lg:w-6/12 space-y-[15vh] pt-[25vh] pb-[35vh]">
             {pillars.map((pillar) => {
               const Icon = pillar.icon;
               const isActive = activePillar === pillar.id;
