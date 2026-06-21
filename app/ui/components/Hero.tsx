@@ -15,7 +15,7 @@ export default function Hero() {
         playsInline
         className="absolute top-0 left-0 w-full h-full object-cover z-0 opacity-40 select-none pointer-events-none"
       >
-        <source src="/vedios/areeb-areel.mp4" type="video/mp4" />
+        <source src="/videos/areeb-areel.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 

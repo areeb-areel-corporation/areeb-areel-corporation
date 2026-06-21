@@ -197,7 +197,7 @@ export default function NaseebHomesPage() {
             <div className="relative w-full max-w-[320px] sm:max-w-[360px] aspect-[9/16] rounded-[2.5rem] overflow-hidden border-[6px] border-[#1a1a1a] shadow-[0_0_50px_rgba(212,175,55,0.2)] bg-black">
               {/* Note: autoPlay without muted is used, but browsers may enforce manual play if sound is enabled */}
               <video 
-                src="/videos/your-reel-video.mp4" /* ADD YOUR VIDEO PATH HERE */
+                src="/videos/naseeb-homes.mp4" 
                 autoPlay 
                 controls 
                 loop 
