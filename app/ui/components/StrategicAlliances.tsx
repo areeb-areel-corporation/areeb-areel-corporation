@@ -19,8 +19,6 @@ export default function StrategicAlliances() {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  // --- THE SPOTLIGHT ENGINE ---
-  // This tracks the mouse and applies coordinates to CSS variables on each card
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -109,7 +107,7 @@ export default function StrategicAlliances() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 group"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 "
         >
           {partners.map((partner, index) => {
             const Icon = partner.icon;
@@ -120,7 +118,7 @@ export default function StrategicAlliances() {
                 variants={cardVariants}
                 // Attach ref to each card for the mouse tracking engine
                 ref={(el) => { cardsRef.current[index] = el; }}
-                className="relative overflow-hidden rounded-2xl bg-[#111] border border-white/5 transition-all duration-300 md:hover:-translate-y-1 cursor-default"
+                className="group relative overflow-hidden rounded-2xl bg-[#111] border border-white/5 hover:border-[#D4AF37] transition-all duration-300 md:hover:-translate-y-1 cursor-default"
               >
                 {/* 1. THE BORDER GLOW (Spotlight Layer)
                   This creates the golden border that follows the mouse 

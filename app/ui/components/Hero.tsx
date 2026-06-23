@@ -75,10 +75,10 @@ export default function Hero(): ReactElement {
       >
         <motion.div
           variants={centerIn}
-          className="w-32 h-32 md:w-50 md:h-50 relative"
+          className="w-22 h-22 md:w-35 md:h-35 relative"
         >
           <Image
-            src="/images/AREEB AREEL LOGO-01.png"
+            src="/images/Asset 1.png"
             alt="Areeb & Areel Badge"
             fill
             priority

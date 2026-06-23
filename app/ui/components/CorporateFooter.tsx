@@ -1,12 +1,12 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Mail, MapPin, Globe } from 'lucide-react';
-import { FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaLinkedin, FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 import Link from 'next/link';
+import Image from 'next/image';
 
-// Streamlined, high-priority links only
+// --- NAVIGATION DATA ---
 const coreDivisions = [
   { name: 'Naseeb Homes', href: '/naseeb-homes' }, 
   { name: 'Filling Station', href: '/filling-station' },
@@ -18,27 +18,46 @@ const corporateLinks = [
   { name: 'Dubai Consulting', href: '/#contact' },
   { name: 'Enquiries', href: '/#contact' },
   { name: 'Blogs', href: '/#blogs' },
+];
 
+// --- SOCIAL MEDIA DATA ---
+const socialLinks = [
+  { 
+    name: 'LinkedIn', 
+    icon: FaLinkedin, 
+    href: 'https://linkedin.com', 
+    // Official LinkedIn Blue
+    hoverClass: 'hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:text-white' 
+  },
+  { 
+    name: 'Facebook', 
+    icon: FaFacebookF, 
+    href: 'https://facebook.com', 
+    // Official Facebook Blue
+    hoverClass: 'hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white' 
+  },
+  { 
+    name: 'Instagram', 
+    icon: FaInstagram, 
+    href: 'https://instagram.com', 
+    // Official Instagram Gradient
+    hoverClass: 'hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-transparent hover:text-white' 
+  },
+  { 
+    name: 'YouTube', 
+    icon: FaYoutube, 
+    href: 'https://youtube.com', 
+    // Official YouTube Red
+    hoverClass: 'hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white' 
+  },
 ];
 
 export default function CorporateFooter() {
-  const footerRef = useRef(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: footerRef,
-    // "start end" = top of footer hits bottom of screen
-    // "end end" = bottom of footer hits bottom of screen
-    offset: ["start end", "end end"] 
-  });
-
-  const textY = useTransform(scrollYProgress, [0.7, 1], ["100%", "0%"]);
-  const textOpacity = useTransform(scrollYProgress, [0.4, 1], [0, 0.15]);
-  
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+      transition: { staggerChildren: 0.15 },
     },
   };
 
@@ -48,143 +67,163 @@ export default function CorporateFooter() {
   };
 
   return (
-    <footer ref={footerRef} className="relative w-full bg-[#0a0a0a] text-white pt-24 lg:pt-20 pb-5 overflow-hidden border-t border-white/5">
+    <footer className="relative w-full bg-[#050505] text-white pt-20 pb-6 overflow-hidden border-t border-white/5">
       
       {/* Subtle Background Glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[800px] h-[300px] bg-[#D4AF37]/5 blur-[200px] rounded-[100%] pointer-events-none z-0" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#D4AF37]/5 blur-[200px] rounded-[100%] pointer-events-none z-0" />
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-10 relative z-10">
         
-        <div className="flex flex-col lg:flex-row justify-between gap-16 mb-5 lg:mb-28">
+        {/* --- THE CARD GRID UI --- */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-16"
+        >
           
-          {/* --- LEFT: Minimalist Branding & Contact --- */}
+          {/* 1. LEFT CARD: Branding & Contact (Takes up more space) */}
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="w-full lg:w-1/3"
+            variants={itemVariants}
+            className="lg:col-span-5 flex flex-col bg-[#111111]/40 border border-white/5 p-8 md:p-10 rounded-[24px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_20px_50px_-15px_rgba(212,175,55,0.15)]"
           >
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-8 h-[1px] bg-[#D4AF37]" />
-              <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">
-                Areeb & Areel Corp.
-              </span>
+            {/* Corporate Logo Placeholder */}
+            <div className="mb-8 flex items-center gap-4">
+              <div className="relative w-14 h-14 bg-[#1a1a1a] border border-white/10 rounded-xl overflow-hidden flex items-center justify-center">
+                {/* Replace src with your actual logo path */}
+                <Image 
+                  src="/images/Asset 1.png" 
+                  alt="Areeb & Areel Logo" 
+                  width={40} 
+                  height={40} 
+                  className="object-contain"
+                />
+              </div>
+              <div>
+                <span className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.3em] block mb-1">
+                  Areeb & Areel Corp.
+                </span>
+                <h3 className="text-2xl font-black tracking-tighter leading-none text-white">
+                  Building The Benchmark.
+                </h3>
+              </div>
             </div>
-            <h3 className="text-4xl md:text-5xl font-black tracking-tighter mb-3 leading-tight">
-              Building The <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Benchmark.</span>
-            </h3>
             
-            <div className="space-y-4">
+            {/* Contact Details */}
+            <div className="space-y-5 mt-auto">
               <a href="#" className="flex items-center gap-4 group cursor-pointer w-fit">
-                <MapPin className="w-5 h-5 text-[#D4AF37] shrink-0" />
-                <span className="text-zinc-400 group-hover:text-white transition-colors">Lahore, Punjab, Pakistan</span>
+                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#D4AF37]/10 group-hover:border-[#D4AF37]/30 transition-all duration-300">
+                  <MapPin className="w-4 h-4 text-[#D4AF37]" />
+                </div>
+                <span className="text-zinc-400 group-hover:text-white transition-colors text-sm">Lahore, Punjab, Pakistan</span>
               </a>
               <a href="#" className="flex items-center gap-4 group cursor-pointer w-fit">
-                <Globe className="w-5 h-5 text-[#D4AF37] shrink-0" />
-                <span className="text-zinc-400 group-hover:text-white transition-colors">Invox Business Center, Dubai, UAE</span>
+                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#D4AF37]/10 group-hover:border-[#D4AF37]/30 transition-all duration-300">
+                  <Globe className="w-4 h-4 text-[#D4AF37]" />
+                </div>
+                <span className="text-zinc-400 group-hover:text-white transition-colors text-sm">Invox Business Center, Dubai</span>
               </a>
-              <a href="mailto:contact@areebareel.com" className="flex items-center gap-4 group cursor-pointer w-fit pt-2">
-                <Mail className="w-5 h-5 text-[#D4AF37] shrink-0" />
-                <span className="text-zinc-400 group-hover:text-[#D4AF37] transition-colors font-medium">contact@areebareel.com</span>
+              <a href="mailto:contact@areebareel.com" className="flex items-center gap-4 group cursor-pointer w-fit">
+                <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#D4AF37]/10 group-hover:border-[#D4AF37]/30 transition-all duration-300">
+                  <Mail className="w-4 h-4 text-[#D4AF37]" />
+                </div>
+                <span className="text-zinc-400 group-hover:text-[#D4AF37] transition-colors text-sm font-bold tracking-wide">contact@areebareel.com</span>
               </a>
             </div>
           </motion.div>
 
-          {/* --- RIGHT: The Giant Navigation Links --- */}
+          {/* 2. MIDDLE CARD: Core Divisions */}
           <motion.div 
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="w-full lg:w-2/3 flex flex-col sm:flex-row justify-end gap-16 lg:gap-32"
+            variants={itemVariants}
+            className="lg:col-span-4 flex flex-col bg-[#111111]/40 border border-white/5 p-8 md:p-10 rounded-[24px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_20px_50px_-15px_rgba(212,175,55,0.15)]"
           >
-            {/* Core Operations Column */}
-            <div className="flex flex-col">
-              <h4 className="text-zinc-500 text-xs font-bold uppercase tracking-[0.3em] mb-8">
-                Core Divisions
-              </h4>
-              <ul className="space-y-6">
-                {coreDivisions.map((link, idx) => (
-                  <motion.li key={idx} variants={itemVariants as any}>
-                    <Link 
-                      href={link.href} 
-                      className="group flex items-center text-zinc-300 hover:text-[#D4AF37] transition-colors duration-300 text-lg md:text-xl font-bold tracking-wide w-fit"
-                    >
-                      <span className="relative overflow-hidden">
-                        <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
-                          {link.name}
-                        </span>
-                        <span className="absolute inset-0 block translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
-                          {link.name}
-                        </span>
+            <h4 className="text-zinc-500 text-xs font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
+              <span className="w-6 h-[1px] bg-zinc-700" />
+              Core Divisions
+            </h4>
+            <ul className="space-y-6 mt-auto">
+              {coreDivisions.map((link, idx) => (
+                <li key={idx}>
+                  <Link 
+                    href={link.href} 
+                    className="group flex items-center text-zinc-300 hover:text-[#D4AF37] transition-colors duration-300 text-lg font-bold tracking-wide w-fit"
+                  >
+                    <span className="relative overflow-hidden">
+                      <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                        {link.name}
                       </span>
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Corporate Column */}
-            <div className="flex flex-col">
-              <h4 className="text-zinc-500 text-xs font-bold uppercase tracking-[0.3em] mb-8">
-                Corporate
-              </h4>
-              <ul className="space-y-6">
-                {corporateLinks.map((link, idx) => (
-                  <motion.li key={idx} variants={itemVariants as any}>
-                    <Link 
-                      href={link.href} 
-                      className="group flex items-center text-zinc-300 hover:text-[#D4AF37] transition-colors duration-300 text-lg md:text-xl font-bold tracking-wide w-fit"
-                    >
-                      <span className="relative overflow-hidden">
-                        <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
-                          {link.name}
-                        </span>
-                        <span className="absolute inset-0 block translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
-                          {link.name}
-                        </span>
+                      <span className="absolute inset-0 block translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
+                        {link.name}
                       </span>
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
-        </div>
+          {/* 3. RIGHT CARD: Corporate Links */}
+          <motion.div 
+            variants={itemVariants}
+            className="lg:col-span-3 flex flex-col bg-[#111111]/40 border border-white/5 p-8 md:p-10 rounded-[24px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_20px_50px_-15px_rgba(212,175,55,0.15)]"
+          >
+            <h4 className="text-zinc-500 text-xs font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
+              <span className="w-6 h-[1px] bg-zinc-700" />
+              Corporate
+            </h4>
+            <ul className="space-y-6 mt-auto">
+              {corporateLinks.map((link, idx) => (
+                <li key={idx}>
+                  <Link 
+                    href={link.href} 
+                    className="group flex items-center text-zinc-300 hover:text-[#D4AF37] transition-colors duration-300 text-lg font-bold tracking-wide w-fit"
+                  >
+                    <span className="relative overflow-hidden">
+                      <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                        {link.name}
+                      </span>
+                      <span className="absolute inset-0 block translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0">
+                        {link.name}
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+        </motion.div>
 
         {/* --- BOTTOM SECTION: Copyright & Socials --- */}
-        <div className="flex flex-col md:flex-row items-center justify-between pt-4 border-t border-white/10 gap-6 relative z-20">
+        <div className="flex flex-col-reverse md:flex-row items-center justify-between pt-6 border-t border-white/10 gap-6 relative z-20">
+          
           <p className="text-zinc-500 text-[10px] md:text-xs tracking-widest uppercase text-center md:text-left">
             © {new Date().getFullYear()} Areeb & Areel Corporation. All Rights Reserved.
           </p>
           
-          <div className="flex items-center gap-4">
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-black hover:bg-[#D4AF37] hover:border-[#D4AF37] transition-all duration-300">
-              <FaLinkedin className="w-4 h-4" />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-black hover:bg-[#D4AF37] hover:border-[#D4AF37] transition-all duration-300">
-              <FaTwitter className="w-4 h-4" />
-            </a>
+          {/* Dynamic Brand-Specific Social Icons */}
+          <div className="flex items-center gap-3">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
+                <a 
+                  key={social.name}
+                  href={social.href} 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.name}
+                  // The base state is dark and minimal. The hover state triggers the specific brand colors.
+                  className={`w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 bg-white/5 transition-all duration-300 ${social.hoverClass}`}
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              );
+            })}
           </div>
+
         </div>
-
       </div>
-
-      {/* --- WATERMARK (Scroll-Linked Parallax) --- */}
-      {/* We pass the dynamic textY and textOpacity variables directly to the style prop.
-        This forces the element to react instantly to the user's scrollbar.
-      */}
-      <motion.div 
-        style={{ y: textY, opacity: textOpacity }}
-        className="absolute bottom-[2%] left-0 w-full flex justify-center pointer-events-none select-none z-0 overflow-hidden"
-      >
-        <span className="text-[10vw] font-black tracking-tighter text-white whitespace-nowrap leading-none drop-shadow-2xl">
-          AREEB AREEL CORP
-        </span>
-      </motion.div>
-
     </footer>
   );
 }
