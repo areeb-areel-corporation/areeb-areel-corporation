@@ -1,42 +1,44 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
-import { ArrowUpRight, Clock, Lock, X } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import { ArrowUpRight, Clock, Lock, X } from "lucide-react";
+import Link from "next/link";
 
 const blogs = [
   {
     id: 1,
-    tag: 'Real Estate',
-    date: 'June 18, 2026',
-    title: 'Pioneering the Future of Ultra-Luxury Urban Living in Lahore',
-    excerpt: 'How AAA Developments is utilizing AI and sustainable engineering to redefine the residential skyline.',
-    src: '/images/housing-society.png', // Reusing your existing images for the showcase
+    tag: "Real Estate",
+    date: "June 18, 2026",
+    title: "Pioneering the Future of Ultra-Luxury Urban Living in Lahore",
+    excerpt:
+      "How AAA Developments is utilizing AI and sustainable engineering to redefine the residential skyline.",
+    src: "/images/housing-society.png",
   },
   {
     id: 2,
-    tag: 'Energy Infrastructure',
-    date: 'May 24, 2026',
-    title: 'The Shift to Smart Hubs: Upgrading the National Transit Network',
-    excerpt: 'Areeb & Areel Corporation announces the expansion of AAA-standard petroleum stations across key logistical routes.',
-    src: '/images/petrol pump.png',
+    tag: "Energy Infrastructure",
+    date: "May 24, 2026",
+    title: "The Shift to Smart Hubs: Upgrading the National Transit Network",
+    excerpt:
+      "Areeb & Areel Corporation announces the expansion of AAA-standard petroleum stations across key logistical routes.",
+    src: "/images/petrol pump.png",
   },
   {
     id: 3,
-    tag: 'Retail Operations',
-    date: 'April 10, 2026',
-    title: 'Integrating Premium Retail with Daily Commutes',
-    excerpt: 'The strategic vision behind the Express Smart Mart expansion and how it maximizes consumer convenience.',
-    src: '/images/mart.png',
+    tag: "Retail Operations",
+    date: "April 10, 2026",
+    title: "Integrating Premium Retail with Daily Commutes",
+    excerpt:
+      "The strategic vision behind the Express Smart Mart expansion and how it maximizes consumer convenience.",
+    src: "/images/mart.png",
   },
 ];
 
 export default function CorporateInsights() {
-  // State to manage the "Coming Soon" side notification
   const [showNotification, setShowNotification] = useState(false);
 
-  // Auto-hide the notification after 4 seconds
   useEffect(() => {
     let timeout: NodeJS.Timeout;
     if (showNotification) {
@@ -61,15 +63,21 @@ export default function CorporateInsights() {
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as number[] } },
+    hidden: { opacity: 0, y: 40 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as number[] },
+    },
   };
 
   return (
-    <section id="blogs" className="relative w-full bg-brand-black text-white py-24 lg:py-32 overflow-hidden border-t border-white/5">
-      
-      {/* Background Ambience */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[150px] rounded-full pointer-events-none" />
+    <section
+      id="blogs"
+      className="relative w-full bg-[#050505] text-white py-24 lg:py-32 overflow-hidden"
+    >
+      {/* Subtle Background Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#D4AF37]/5 blur-[200px] rounded-[100%] pointer-events-none" />
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-10 relative z-10">
         
@@ -83,11 +91,14 @@ export default function CorporateInsights() {
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter">
-              Corporate <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Blogs.</span>
+              Corporate{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
+                Blogs.
+              </span>
             </h2>
           </div>
-          
-          <button 
+
+          <button
             onClick={triggerComingSoon}
             className="group flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-[#D4AF37] hover:text-white transition-colors duration-300 w-fit"
           >
@@ -98,8 +109,8 @@ export default function CorporateInsights() {
           </button>
         </div>
 
-        {/* --- BLOG GRID --- */}
-        <motion.div 
+        {/* --- PREMIUM BLOG CARDS GRID --- */}
+        <motion.div
           variants={containerVariants as any}
           initial="hidden"
           whileInView="show"
@@ -107,55 +118,60 @@ export default function CorporateInsights() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
           {blogs.map((blog) => (
-            <motion.div 
-              key={blog.id} 
+            <motion.div
+              key={blog.id}
               variants={itemVariants as any}
+              // Link wrapper (or div if triggering the toast)
               onClick={triggerComingSoon}
-              className="group cursor-pointer flex flex-col"
+              className="group cursor-pointer flex flex-col bg-[#121212] border border-white/5 rounded-[20px] p-5 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#D4AF37] hover:shadow-[0_20px_50px_-15px_rgba(212,175,55,0.15)] relative overflow-hidden"
             >
-              {/* Image Container with Hover Zoom */}
-              <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden mb-6 bg-[#111]">
-                <Image 
-                  src={blog.src} 
+              {/* Image Container */}
+              <div className="relative w-full aspect-[16/11] rounded-xl overflow-hidden mb-6 bg-[#1a1a1a]">
+                <Image
+                  src={blog.src}
                   alt={blog.title}
                   fill
-                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-110 opacity-80 group-hover:opacity-100"
+                  priority
+                  className="object-cover filter grayscale opacity-70 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
                 />
-                <div className="absolute inset-0 bg-brand-black/20 group-hover:bg-transparent transition-colors duration-500" />
                 
                 {/* Floating Tag */}
-                <div className="absolute top-4 left-4 bg-brand-black/80 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37]">
+                <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-md transition-colors duration-500 group-hover:border-[#D4AF37]/30">
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-white transition-colors duration-500 group-hover:text-[#D4AF37]">
                     {blog.tag}
                   </span>
                 </div>
               </div>
 
               {/* Meta Data */}
-              <div className="flex items-center gap-2 text-brand-silver/50 text-xs font-medium uppercase tracking-wider mb-4">
-                <Clock className="w-3 h-3" />
+              <div className="flex items-center gap-2 text-zinc-500 text-[11px] font-bold uppercase tracking-widest mb-3 transition-colors duration-500 group-hover:text-zinc-400">
+                <Clock className="w-3.5 h-3.5" />
                 <span>{blog.date}</span>
               </div>
 
               {/* Title & Excerpt */}
-              <h3 className="text-2xl font-bold leading-snug mb-4 group-hover:text-[#D4AF37] transition-colors duration-300">
+              <h3 className="text-xl md:text-2xl font-bold leading-snug mb-3 text-white transition-colors duration-500 group-hover:text-[#D4AF37]">
                 {blog.title}
               </h3>
-              <p className="text-brand-silver/70 text-sm leading-relaxed mb-6 flex-grow">
+              <p className="text-zinc-400 text-sm leading-relaxed mb-8 flex-grow transition-colors duration-500 group-hover:text-zinc-300">
                 {blog.excerpt}
               </p>
 
-              {/* Read More Link */}
-              <div className="flex items-center gap-2 text-[#D4AF37] text-sm font-bold uppercase tracking-widest mt-auto group-hover:translate-x-2 transition-transform duration-300">
-                <span>Read Article</span>
-                <ArrowUpRight className="w-4 h-4" />
+              {/* The "Read Article" Premium Button Container */}
+              <div
+                className="mt-auto w-full flex items-center justify-between px-6 py-4 rounded-xl border border-white/5 bg-[#181818] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37]"
+              >
+                <span className="text-xs font-bold uppercase tracking-widest text-white transition-colors duration-500 group-hover:text-black">
+                  Read Article
+                </span>
+                <ArrowUpRight className="w-4 h-4 text-white transition-all duration-500 group-hover:text-black group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </div>
             </motion.div>
           ))}
         </motion.div>
       </div>
 
-      {/* --- THE "COMING SOON" SIDE TOGGLE/TOAST --- */}
+      {/* --- THE "COMING SOON" SIDE TOAST --- */}
       <AnimatePresence>
         {showNotification && (
           <motion.div
@@ -169,20 +185,22 @@ export default function CorporateInsights() {
               <Lock className="w-5 h-5 text-[#D4AF37]" />
             </div>
             <div>
-              <h4 className="text-white font-bold tracking-wide text-sm mb-1">Feature Locked</h4>
-              <p className="text-brand-silver/70 text-xs leading-relaxed">
-                The Corporate Newsroom is currently under development. This feature will be available in the next system update.
+              <h4 className="text-white font-bold tracking-wide text-sm mb-1">
+                Feature Locked
+              </h4>
+              <p className="text-zinc-400 text-xs leading-relaxed">
+                The Corporate Newsroom is currently under development. This
+                feature will be available in the next system update.
               </p>
             </div>
-            <button 
+            <button
               onClick={() => setShowNotification(false)}
-              className="absolute top-4 right-4 text-brand-silver/50 hover:text-white transition-colors"
+              className="absolute top-4 right-4 text-zinc-500 hover:text-white transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
-            
-            {/* Animated Bottom Progress Bar */}
-            <motion.div 
+
+            <motion.div
               initial={{ width: "100%" }}
               animate={{ width: "0%" }}
               transition={{ duration: 4, ease: "linear" }}
@@ -191,7 +209,6 @@ export default function CorporateInsights() {
           </motion.div>
         )}
       </AnimatePresence>
-
     </section>
   );
 }

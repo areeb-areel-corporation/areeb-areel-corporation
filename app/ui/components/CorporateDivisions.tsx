@@ -35,14 +35,19 @@ export default function AboutCorporateSection() {
   return (
     <section
       id="about-corporation"
-      className="relative w-full bg-[#0a0a0a] text-white overflow-visible"
+      // Added subtle lighter variations to the background using a radial and linear gradient blend
+      className="relative w-full bg-gradient-to-br from-[#121212] via-[#0a0a0a] to-[#050505] text-white overflow-visible"
     >
-      {/* Cinematic Lighting Atmosphere */}
+      {/* Cinematic Lighting Atmosphere & Subtle Background Variations */}
       <div className="absolute top-0 inset-x-0 h-[600px] bg-gradient-to-b from-[#D4AF37]/10 via-[#D4AF37]/0 to-transparent pointer-events-none z-0" />
       <div className="absolute bottom-0 inset-x-0 h-[600px] bg-gradient-to-t from-[#D4AF37]/5 via-[#D4AF37]/0 to-transparent pointer-events-none z-0" />
+      
+      {/* Central faint radial glow to break up the solid dark colors */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vh] bg-[#D4AF37]/5 blur-[120px] rounded-[100%] pointer-events-none z-0" />
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row justify-between items-start gap-16 lg:gap-24">
+          
           {/* --- LEFT COLUMN: True Locked Pinned Viewport Container --- */}
           <div className="w-full lg:w-5/12 lg:sticky lg:top-0 lg:h-screen flex flex-col justify-center z-20">
             <motion.div
@@ -91,7 +96,7 @@ export default function AboutCorporateSection() {
             </motion.div>
           </div>
 
-          {/* --- RIGHT COLUMN: Natural Scrolling Content Area --- */}
+          {/* --- RIGHT COLUMN: Natural Scrolling Card Area --- */}
           <div className="w-full lg:w-6/12 space-y-[15vh] pt-[25vh] pb-[35vh]">
             {pillars.map((pillar) => {
               const Icon = pillar.icon;
@@ -106,22 +111,26 @@ export default function AboutCorporateSection() {
                   viewport={{ once: false, margin: "-48% 0px -48% 0px" }}
                   onViewportEnter={() => setActivePillar(pillar.id)}
                   transition={{ duration: 0.6 }}
-                  className={`relative pl-8 md:pl-16 border-l transition-all duration-500 ease-out ${
-                    isActive ? "border-[#D4AF37]" : "border-zinc-800"
+                  
+                  // Updated to a beautiful Card Design that scales up (hovers) when active
+                  className={`relative p-8 md:p-10 rounded-2xl border transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] transform ${
+                    isActive 
+                      ? "border-[#D4AF37] bg-gradient-to-br from-[#1a1a1a] to-[#0f0f0f] scale-105 shadow-[0_20px_50px_-15px_rgba(212,175,55,0.2)] z-10" 
+                      : "border-white/5 bg-[#0d0d0d] scale-95 shadow-none z-0 opacity-50"
                   }`}
                 >
-                  {/* Pinned Numeric Axis Badge */}
+                  {/* Pinned Numeric Axis Badge overlapping the top-left card corner */}
                   <span
-                    className={`absolute top-0 -left-[14px] md:-left-[18px] text-xs font-mono font-bold px-2 py-0.5 bg-[#0a0a0a] border rounded transition-all duration-500 ease-out ${
+                    className={`absolute -top-4 -left-4 md:-top-5 md:-left-5 text-xs font-mono font-bold px-3 py-1.5 bg-[#0a0a0a] border rounded-md transition-all duration-500 ease-out ${
                       isActive
-                        ? "border-[#D4AF37] text-[#D4AF37] scale-105 shadow-[0_0_15px_rgba(212,175,55,0.2)]"
-                        : "border-zinc-800 text-zinc-500 scale-100"
+                        ? "border-[#D4AF37] text-[#D4AF37] shadow-[0_0_15px_rgba(212,175,55,0.2)]"
+                        : "border-zinc-800 text-zinc-500"
                     }`}
                   >
                     {pillar.id}
                   </span>
 
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     {/* Architectural Asset Housing Box */}
                     <div
                       className={`w-14 h-14 rounded-xl border flex items-center justify-center transition-all duration-500 ease-out shadow-xl ${

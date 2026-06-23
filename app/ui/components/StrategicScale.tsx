@@ -82,7 +82,7 @@ export default function StrategicScale() {
       </div>
 
    
-      <div className="relative w-full flex overflow-hidden whitespace-nowrap bg-[#111111] py-8 lg:py-12 border-y border-[#D4AF37]/20 -rotate-2 scale-105 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
+      <div className="relative w-full flex overflow-hidden whitespace-nowrap bg-[#111111] py-8 lg:py-12 border-y border-[#D4AF37]/20 scale-105 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
         <motion.div
           className="flex whitespace-nowrap"
           animate={{ x: ["0%", "-50%"] }} // Move from 0 to exactly half its width
