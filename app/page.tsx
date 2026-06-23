@@ -1,11 +1,11 @@
-import AboutCorporate from './ui/components/AboutCorporate';
-import Hero from './ui/components/Hero';
-import CorporateDivisions from './ui/components/CorporateDivisions';
-import SignatureDevelopments from './ui/components/SignatureDevelopments';
-import StrategicScale from './ui/components/StrategicScale';
-import CorporateTeam from './ui/components/CorporateTeam';
-import CorporateInsights from './ui/components/CorporateInsights';
-import StrategicAlliances from './ui/components/StrategicAlliances';
+import AboutCorporate from '@/ui/components/AboutCorporate';
+import Hero from '@/ui/components/Hero';
+import CorporateDivisions from '@/ui/components/CorporateDivisions';
+import SignatureDevelopments from '@/ui/components/SignatureDevelopments';
+import StrategicScale from '@/ui/components/StrategicScale';
+import CorporateTeam from '@/ui/components/CorporateTeam';
+import CorporateInsights from '@/ui/components/CorporateInsights';
+import StrategicAlliances from '@/ui/components/StrategicAlliances';
 
 export default function Home() {
   return (

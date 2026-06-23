@@ -11,7 +11,7 @@ import {
   Wrench,
   CheckCircle2
 } from 'lucide-react';
-import PetrolStation from '../ui/components/PetrolStation'; // Keeping your custom component
+import PetrolStation from '@/ui/components/PetrolStation'; // Keeping your custom component
 
 export default function FillingStationPage() {
   // --- HORIZONTAL SLIDING ANIMATIONS ---

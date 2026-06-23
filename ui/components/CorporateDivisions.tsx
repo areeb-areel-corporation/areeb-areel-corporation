@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Building2, Fuel, Globe, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const pillars = [
   {
@@ -79,8 +80,8 @@ export default function AboutCorporateSection() {
               </p>
 
               <div className="pt-6">
-                <a
-                  href="#contact"
+                <Link
+                  href="/contact"
                   className="relative overflow-hidden group inline-flex items-center gap-3 px-8 py-4 border border-[#D4AF37]/30 bg-[#111] rounded-full text-sm font-bold uppercase tracking-widest text-[#D4AF37] transition-all duration-300 hover:border-[#D4AF37]"
                 >
                   {/* The gold layer that sweeps from left to right */}
@@ -91,7 +92,7 @@ export default function AboutCorporateSection() {
                     Partner With Us
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </span>
-                </a>
+                </Link>
               </div>
             </motion.div>
           </div>

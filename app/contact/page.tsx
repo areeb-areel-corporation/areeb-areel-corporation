@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Globe2 } from 'lucide-react';
-import CorporateInquiry from '../ui/components/CorporateInquiry';
+import CorporateInquiry from '@/ui/components/CorporateInquiry';
 
 
 
