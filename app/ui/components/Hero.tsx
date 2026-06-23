@@ -1,10 +1,14 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { motion, type Variants } from 'framer-motion';
-import type { ReactElement } from 'react';
+import Image from "next/image";
+import { motion, type Variants } from "framer-motion";
+import { useState, type ReactElement } from "react";
 
 export default function Hero(): ReactElement {
+  const [hoveredButton, setHoveredButton] = useState<"left" | "right" | null>(
+    null,
+  );
+
   const containerVariants: Variants = {
     hidden: {},
     show: {
@@ -20,7 +24,7 @@ export default function Hero(): ReactElement {
     show: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.8, ease: 'easeOut' },
+      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
 
@@ -29,7 +33,7 @@ export default function Hero(): ReactElement {
     show: {
       opacity: 1,
       x: 0,
-      transition: { duration: 0.8, ease: 'easeOut' },
+      transition: { duration: 0.8, ease: "easeOut" },
     },
   };
 
@@ -39,13 +43,13 @@ export default function Hero(): ReactElement {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: 0.7, ease: 'easeOut' },
+      transition: { duration: 0.7, ease: "easeOut" },
     },
   };
 
   const scrollToSection = (id: string): void => {
     const target = document.getElementById(id);
-    if (target) target.scrollIntoView({ behavior: 'smooth' });
+    if (target) target.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -71,7 +75,7 @@ export default function Hero(): ReactElement {
       >
         <motion.div
           variants={centerIn}
-          className="w-32 h-32 md:w-40 md:h-40 relative"
+          className="w-32 h-32 md:w-50 md:h-50 relative"
         >
           <Image
             src="/images/AREEB AREEL LOGO-01.png"
@@ -101,25 +105,58 @@ export default function Hero(): ReactElement {
           </motion.p>
         </div>
 
-        <motion.div
-          variants={centerIn}
-          className="flex flex-col sm:flex-row gap-4 pt-4"
-        >
+        <motion.div className="flex flex-col sm:flex-row gap-4 pt-4">
+          {/* --- LEFT BUTTON: Explore Sectors --- */}
           <button
             type="button"
-            onClick={() => scrollToSection('corporate-divisions')}
-            className="cursor-pointer group text-brand-black font-bold px-8 py-4 rounded-md tracking-wider uppercase bg-[#D4AF37] transition-all shadow-lg shadow-[#D4AF37]/20 text-sm flex items-center justify-center gap-2"
+            onClick={() => scrollToSection("corporate-divisions")}
+            onMouseEnter={() => setHoveredButton("left")}
+            onMouseLeave={() => setHoveredButton(null)}
+            className={`cursor-pointer relative overflow-hidden font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-sm backdrop-blur-sm flex items-center justify-center gap-2 border ${
+              hoveredButton === "right"
+                ? "border-white/20 bg-white/5 shadow-none"
+                : "border-[#D4AF37] bg-transparent shadow-lg shadow-[#D4AF37]/10"
+            }`}
           >
-            Explore Sectors
+            {/* Shutter layer: Default is visible (translate-x-0), moves away if right button is hovered */}
+            <div
+              className={`absolute inset-0 bg-[#D4AF37] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
+                hoveredButton === "right"
+                  ? "-translate-x-full"
+                  : "translate-x-0"
+              }`}
+            />
+
+            <span
+              className={`relative z-10 transition-colors duration-500 ${
+                hoveredButton === "right" ? "text-white" : "text-brand-black"
+              }`}
+            >
+              Explore Sectors
+            </span>
           </button>
 
+          {/* --- RIGHT BUTTON: Initiate Dialogue --- */}
           <button
             type="button"
-            onClick={() => scrollToSection('contact')}
+            onClick={() => scrollToSection("/contact")}
+            onMouseEnter={() => setHoveredButton("right")}
+            onMouseLeave={() => setHoveredButton(null)}
             className="cursor-pointer relative overflow-hidden group border border-white/20 bg-white/5 font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-sm backdrop-blur-sm flex items-center justify-center"
           >
-            <div className="absolute inset-0 bg-[#D4AF37] -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
-            <span className="relative z-10 text-white group-hover:text-brand-black transition-colors duration-500">
+            <div
+              className={`absolute inset-0 bg-[#D4AF37] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
+                hoveredButton === "right"
+                  ? "translate-x-0"
+                  : "-translate-x-full"
+              }`}
+            />
+
+            <span
+              className={`relative z-10 transition-colors duration-500 ${
+                hoveredButton === "right" ? "text-brand-black" : "text-white"
+              }`}
+            >
               Initiate Dialogue
             </span>
           </button>

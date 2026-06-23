@@ -37,6 +37,7 @@ const navLinks: NavLink[] = [
   { name: "Filling Station", href: "/filling-station", icon: Fuel },
   { name: "Naseeb Homes", href: "/naseeb-homes", icon: Home },
   { name: "Architecture", href: "/architecture", icon: Building2 },
+  {name : "Santosa Square" , href: "/santosa-square", icon: Building2},
 ];
 
 const socialLinks = [
@@ -120,18 +121,15 @@ export default function Navbar() {
 
           {/* Action Call Controls */}
           <div className="flex items-center gap-6">
-            <motion.button
+           <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={handleContactClick}
-              /* Added display formatting to force layout consistency */
-              className="hidden sm:inline-flex items-center justify-center gap-2 group bg-brand-gold text-brand-black font-bold px-7 py-3 rounded-md tracking-wider uppercase text-xs hover:brightness-110 transition shadow-lg shadow-brand-gold/10"
+              className="hidden sm:inline-flex items-center justify-center gap-2 group bg-[#D4AF37] text-black font-bold px-7 py-3 rounded-md tracking-wider uppercase text-xs hover:brightness-110 transition shadow-[0_0_20px_rgba(212,175,55,0.15)]"
             >
-              {/* Wrapped raw text in a span to guarantee clean typography tracking next to the inline svg */}
-              <span className="leading-none group-hover:text-[#D4AF37]">Contact Portal</span>
-              <ChevronRight className="group-hover:text-[#D4AF37] w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
+              <span className="leading-none text-white">Contact Portal</span>
+              <ChevronRight className="text-white w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
             </motion.button>
-
             {/* Premium Hamburger Toggle */}
             <button
               onClick={() => setSidebarOpen(true)}
