@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import { useState, type ReactElement } from "react";
+import Link from "next/link";
 
 export default function Hero(): ReactElement {
   const [hoveredButton, setHoveredButton] = useState<"left" | "right" | null>(
@@ -107,8 +108,8 @@ export default function Hero(): ReactElement {
 
         <motion.div className="flex flex-col sm:flex-row gap-4 pt-4">
           {/* --- LEFT BUTTON: Explore Sectors --- */}
-          <button
-            type="button"
+          <Link
+            href="#about-corporation"
             onClick={() => scrollToSection("corporate-divisions")}
             onMouseEnter={() => setHoveredButton("left")}
             onMouseLeave={() => setHoveredButton(null)}
@@ -134,11 +135,11 @@ export default function Hero(): ReactElement {
             >
               Explore Sectors
             </span>
-          </button>
+          </Link>
 
           {/* --- RIGHT BUTTON: Initiate Dialogue --- */}
-          <button
-            type="button"
+          <Link
+            href="/contact"
             onClick={() => scrollToSection("/contact")}
             onMouseEnter={() => setHoveredButton("right")}
             onMouseLeave={() => setHoveredButton(null)}
@@ -159,7 +160,7 @@ export default function Hero(): ReactElement {
             >
               Initiate Dialogue
             </span>
-          </button>
+          </Link>
         </motion.div>
       </motion.div>
 

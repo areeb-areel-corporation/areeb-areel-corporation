@@ -80,22 +80,20 @@ export default function StrategicAlliances() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="flex flex-col items-center text-center mb-16 lg:mb-24"
+          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-20 lg:mb-28"
         >
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-[1px] bg-[#D4AF37]" />
-            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">
-              Global Network
-            </span>
-            <div className="w-12 h-[1px] bg-[#D4AF37]" />
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-[1px] bg-[#D4AF37]" />
+              <span className="text-[#D4AF37] text-xs font-mono font-bold uppercase tracking-[0.3em]">
+                Global Network
+              </span>
+            </div>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight">
+              Strategic <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Alliances.</span>
+            </h2>
           </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-white mb-6">
-            Strategic{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
-              Alliances.
-            </span>
-          </h2>
-          <p className="text-zinc-400 text-base md:text-lg max-w-2xl leading-relaxed">
+          <p className="text-zinc-400 text-base md:text-lg lg:text-right max-w-sm leading-relaxed font-medium">
             Partnered with industry-leading pioneers across construction, energy, and digital infrastructure to engineer the future of global enterprise.
           </p>
         </motion.div>

@@ -21,11 +21,10 @@ import {
 } from "lucide-react";
 import {
   FaFacebook,
-  FaXTwitter,
   FaInstagram,
   FaLinkedin,
+  FaYoutube,
 } from "react-icons/fa6";
-import { useRouter, usePathname } from 'next/navigation';
 
 interface NavLink {
   name: string;
@@ -41,26 +40,36 @@ const navLinks: NavLink[] = [
 ];
 
 const socialLinks = [
-  { icon: FaLinkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { icon: FaInstagram, href: "https://instagram.com", label: "Instagram" },
-  { icon: FaFacebook, href: "https://facebook.com", label: "Facebook" },
-  { icon: FaXTwitter, href: "https://x.com", label: "X" },
+  { 
+    name: 'LinkedIn', 
+    icon: FaLinkedin, 
+    href: 'https://linkedin.com', 
+    hoverClass: 'hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:text-white' 
+  },
+  { 
+    name: 'Facebook', 
+    icon: FaFacebook, 
+    href: 'https://facebook.com', 
+    hoverClass: 'hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white' 
+  },
+  { 
+    name: 'Instagram', 
+    icon: FaInstagram, 
+    href: 'https://instagram.com', 
+    hoverClass: 'hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-transparent hover:text-white' 
+  },
+  { 
+    name: 'YouTube', 
+    icon: FaYoutube, 
+    href: 'https://youtube.com', 
+    hoverClass: 'hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white' 
+  },
 ];
 
-export default function Navbar() {
-  const pathname = usePathname();
-  const router = useRouter();
 
-  const handleContactClick = () => {
-    if (pathname === "/") {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    } else {
-      router.push("/#contact");
-    }
-  };
+export default function Navbar() {
+  const MotionLink = motion.create(Link);
+
 
   const [sidebarOpen, setSidebarOpen] = useState<boolean>(false);
   const { scrollY } = useScroll();
@@ -121,15 +130,15 @@ export default function Navbar() {
 
           {/* Action Call Controls */}
           <div className="flex items-center gap-6">
-           <motion.button
+           <MotionLink
+              href="/contact"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={handleContactClick}
               className="hidden sm:inline-flex items-center justify-center gap-2 group bg-[#D4AF37] text-black font-bold px-7 py-3 rounded-md tracking-wider uppercase text-xs hover:brightness-110 transition shadow-[0_0_20px_rgba(212,175,55,0.15)]"
             >
               <span className="leading-none text-white">Contact Portal</span>
               <ChevronRight className="text-white w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform" />
-            </motion.button>
+            </MotionLink>
             {/* Premium Hamburger Toggle */}
             <button
               onClick={() => setSidebarOpen(true)}
@@ -255,12 +264,11 @@ export default function Navbar() {
 
                     return (
                       <a
-                        key={social.label}
+                        key={social.name}
                         href={social.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-brand-silver/80 hover:text-brand-gold hover:border-brand-gold/30 hover:bg-brand-slate transition-all duration-300"
-                        aria-label={social.label}
+                        className={`w-10 h-10 rounded-lg bg-white/5 border border-white/5 flex items-center justify-center text-brand-silver/80 ${social.hoverClass} transition-all duration-300`}
                       >
                         {/* Render it safely here as a standard JSX tag */}
                         <SocialIcon className="hover:text-yellow-200 w-5 h-5" />

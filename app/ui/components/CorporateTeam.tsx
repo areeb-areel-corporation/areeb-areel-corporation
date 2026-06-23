@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { useRef } from 'react';
 import { FaLinkedin } from 'react-icons/fa';
 import { Ruler, Quote } from 'lucide-react';
-import Link from 'next/link';
 
 const teamData = {
   ceos: [
@@ -78,7 +77,7 @@ export default function CorporateTeam() {
               Corporate <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Team</span>
             </h2>
           </div>
-          <p className="text-brand-silver/60 text-base md:text-lg max-w-sm lg:text-right leading-relaxed font-medium">
+          <p className="text-zinc-400 text-base md:text-lg lg:text-right max-w-sm leading-relaxed font-medium">
             Architects of regional infrastructure and energy transit, driving progression through decisive executive strategy.
           </p>
         </div>
