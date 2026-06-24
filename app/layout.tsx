@@ -22,8 +22,8 @@ export const metadata: Metadata = {
   ],
   // THIS REPLACES THE DEFAULT VERCEL LOGO
   icons: {
-    icon: "./images/logo.png",
-    apple: "./images/logo.png",
+    icon: "/images/logo.png",
+    apple: "/images/logo.png",
   },
   openGraph: {
     title: "Areeb & Areel Corporation",
@@ -50,10 +50,12 @@ export default function RootLayout({
   // Extracted JSON-LD for cleaner JSX
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "RealEstateAgent",
-    name: "Areeb & Areel Corp",
-    image: "https://www.areebareel.pk/images/AREEB AREEL LOGO BADGE.png",
+    "@type": "Organization",
+    name: "Areeb & Areel Corporation",
+    alternateName: "Areeb Areel Corp",
     url: "https://www.areebareel.pk",
+    logo: "https://www.areebareel.pk/images/AREEB AREEL LOGO BADGE.png",
+    image: "https://www.areebareel.pk/images/AREEB AREEL LOGO BADGE.png",
     telephone: "+923003003003",
     address: {
       "@type": "PostalAddress",
@@ -61,6 +63,22 @@ export default function RootLayout({
       addressLocality: "Lahore",
       postalCode: "54000",
       addressCountry: "PK",
+    },
+    sameAs: [
+      "https://www.linkedin.com/company/areeb-areel-corporation/",
+      "https://www.facebook.com/areebareelcorp/",
+      "https://www.instagram.com/areebareelfillingstation",
+      "https://www.youtube.com/@AreebAreelFillingStation",
+    ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Corporate Divisions",
+      itemListElement: [
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Ultra-Luxury Real Estate Development", areaServed: "Lahore, Pakistan" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Architecture, Interior Design & Turnkey Construction", areaServed: "Lahore, Pakistan" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Energy Transit Infrastructure & Filling Stations", areaServed: "Lahore, Pakistan" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Corporate & Executive Consulting", areaServed: "Lahore, Pakistan; Dubai, UAE" } },
+      ],
     },
   };
 
