@@ -12,26 +12,9 @@ import {
   PlayCircle,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
 
 export default function NaseebHomesPage() {
-  const pathname = usePathname();
-  const router = useRouter();
-
-  // The universal contact routing function
-  const handleContactClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-
-    if (pathname === "/") {
-      const contactSection = document.getElementById("contact");
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    } else {
-      router.push("/#contact");
-    }
-  };
-
+ 
   // --- HORIZONTAL SLIDING ANIMATIONS ---
   const slideInLeft = {
     hidden: { opacity: 0, x: -80 },
@@ -399,8 +382,8 @@ export default function NaseebHomesPage() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
-            <button
-              onClick={handleContactClick}
+            <Link
+              href="/contact"
               className="w-full sm:w-auto relative overflow-hidden group bg-[#D4AF37] text-black font-bold px-10 py-5 rounded-lg tracking-widest uppercase transition-all duration-500 text-sm flex items-center justify-center gap-3 active:scale-95 shadow-[0_0_40px_rgba(212,175,55,0.3)]"
             >
               <div className="absolute inset-0 bg-white/30 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
@@ -408,7 +391,7 @@ export default function NaseebHomesPage() {
                 Inquire Now
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
-            </button>
+            </Link>
             <Link
               href="/"
               className="w-full sm:w-auto group flex items-center justify-center gap-3 text-xs font-bold uppercase tracking-widest text-[#D4AF37] hover:text-white transition-colors duration-300"

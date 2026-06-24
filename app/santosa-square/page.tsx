@@ -1,23 +1,24 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, Variants } from 'framer-motion';
+import Link from 'next/link';
 import { 
   Building2, 
   Car, 
   UserCheck, 
-  MoonStar, // For Prayer Area
-  ArrowUpDown, // For Hydraulic Lifts
-  Coffee, // For Rooftop Food Court
-  Cctv, // For Security
-  Droplets, // For Washrooms
+  MoonStar, 
+  ArrowUpDown, 
+  Coffee, 
+  Cctv, 
+  Droplets, 
   PhoneCall,
   MapPin,
   Globe
 } from 'lucide-react';
 
-// --- AMENITIES DATA (Extracted from your promotional designs) ---
+// --- AMENITIES DATA ---
 const amenities = [
   { icon: Building2, title: 'Secure Business Zone', desc: 'A dedicated, professional environment built for corporate growth.' },
   { icon: Car, title: 'Spacious Parking', desc: 'Ample, hassle-free parking space for business owners and clients.' },
@@ -30,24 +31,55 @@ const amenities = [
 ];
 
 // --- GALLERY IMAGES ---
-// NOTE: Rename your uploaded files to these names and put them in the /public/images/ folder
-const galleryImages = [
-  '/images/sentosa-1.jpg', // The day view
-  '/images/sentosa-2.jpg', // The blueprint view
-  '/images/sentosa-3.jpg', // The evening view
-  '/images/sentosa-4.jpg', // The door opening view
+const galleryImages: string[] = [
+  '/images/sentosa-1.jpg',
+  '/images/sentosa-2.jpg', 
+  '/images/sentosa-3.jpg', 
+  '/images/sentosa-4.jpg',
+  '/images/sentosa-5.jpg', // Assuming you have 5 images as requested previously
 ];
 
 export default function SentosaSquarePage() {
-  const [activeImage, setActiveImage] = useState(0);
+  // State for sliders
+  const [heroIndex, setHeroIndex] = useState<number>(0);
+  const [activeGalleryImage, setActiveGalleryImage] = useState<number>(0);
+  
+  // State for the synchronized shutter buttons
+  const [hoveredButton, setHoveredButton] = useState<'left' | 'right' | null>(null);
 
-  // --- ANIMATION VARIANTS ---
-  const slideInUp = {
+  // Auto-Slider Logic (Hero & Gallery)
+  useEffect(() => {
+    // Hero Slider Timer
+    const heroTimer = setInterval(() => {
+      setHeroIndex((prev) => (prev + 1) % galleryImages.length);
+    }, 4000);
+
+    // Gallery Slider Timer
+    const galleryTimer = setInterval(() => {
+      setActiveGalleryImage((prev) => (prev + 1) % galleryImages.length);
+    }, 3500);
+
+    return () => {
+      clearInterval(heroTimer);
+      clearInterval(galleryTimer);
+    };
+  }, []);
+
+  // Smooth scroll helper for hash links
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id.replace('#', ''));
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // --- STRICT TYPESCRIPT ANIMATION VARIANTS ---
+  const slideInUp: Variants = {
     hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
   };
 
-  const staggerContainer = {
+  const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.15 } }
   };
@@ -55,49 +87,120 @@ export default function SentosaSquarePage() {
   return (
     <main className="min-h-screen bg-[#050505] text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden pb-20">
       
-      {/* --- 1. CINEMATIC HERO SECTION --- */}
+      {/* --- 1. CINEMATIC AUTO-SLIDER HERO SECTION --- */}
       <section className="relative w-full h-[90vh] min-h-[700px] flex items-center justify-center border-b border-white/5">
         
-        {/* Background Layer */}
-        <div className="absolute inset-0 z-0">
-          <Image 
-            src="/images/sentosa-5.jpg" // Main hero image
-            alt="Sentosa Square Facade"
-            fill
-            priority
-            className="object-cover filter brightness-[0.4] contrast-125 hover:scale-105 transition-transform duration-[2000ms] ease-out"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-transparent z-10" />
+        {/* Darkened Auto-Sliding Background Layer */}
+        <div className="absolute inset-0 z-0 bg-[#050505] overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={heroIndex}
+              initial={{ opacity: 0, scale: 1.05 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 1.5 }}
+              className="absolute inset-0"
+            >
+              <Image 
+                src={galleryImages[heroIndex]} 
+                alt="Sentosa Square Facade"
+                fill
+                priority
+                className="object-cover filter brightness-[0.35] contrast-125 opacity-80"
+              />
+            </motion.div>
+          </AnimatePresence>
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/70 to-[#050505]/30 z-10" />
         </div>
 
         <div className="relative z-20 text-center px-6 max-w-5xl mx-auto mt-20">
+          
+          {/* Logo & Subtitle */}
           <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="flex flex-col items-center justify-center gap-4 mb-8">
+            <div className="w-16 h-16 md:w-20 md:h-20 relative mb-2">
+              <Image 
+                src="/images/Asset 1.png" 
+                alt="Areeb Areel Corp Logo" 
+                fill 
+                priority
+                className="object-contain filter drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]" 
+              />
+            </div>
             <div className="w-16 h-[1px] bg-[#D4AF37]" />
             <span className="text-[#D4AF37] text-xs md:text-sm font-bold uppercase tracking-[0.4em]">
               A Project of Areeb Areel Corp.
             </span>
           </motion.div>
           
-          <motion.h1 initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter leading-none mb-6 text-white drop-shadow-2xl">
+          {/* Refined Main Title */}
+          <motion.h1 initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none mb-6 text-white drop-shadow-2xl">
             SENTOSA <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F1E5AC] to-[#D4AF37]">
               SQUARE.
             </span>
           </motion.h1>
           
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4 }} className="text-zinc-300 text-lg md:text-2xl leading-relaxed max-w-3xl mx-auto mb-10 font-light tracking-wide">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4 }} className="text-zinc-300 text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10 font-light tracking-wide">
             The Gateway to Tomorrow's Business Success. <br className="hidden md:block" />
             <span className="font-bold text-white">Built for Business. Designed for Growth.</span>
           </motion.p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.6 }} className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <a href="#contact" className="px-8 py-4 bg-[#D4AF37] text-black font-bold uppercase tracking-widest text-sm rounded-md hover:bg-white transition-colors duration-300 shadow-[0_0_30px_rgba(212,175,55,0.3)]">
-              Book Your Shop Now
-            </a>
-            <a href="#amenities" className="px-8 py-4 bg-transparent border border-white/20 text-white font-bold uppercase tracking-widest text-sm rounded-md hover:border-[#D4AF37] hover:text-[#D4AF37] transition-colors duration-300">
-              Explore Amenities
-            </a>
+          {/* EXACT REQUESTED SYNCED SHUTTER BUTTONS */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.6 }} className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+            
+            {/* --- LEFT BUTTON: Explore Amenities --- */}
+            <Link
+              href="#amenities"
+              onClick={() => scrollToSection("amenities")}
+              onMouseEnter={() => setHoveredButton("left")}
+              onMouseLeave={() => setHoveredButton(null)}
+              className={`cursor-pointer relative overflow-hidden font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-sm backdrop-blur-sm flex items-center justify-center gap-2 border ${
+                hoveredButton === "right"
+                  ? "border-white/20 bg-white/5 shadow-none"
+                  : "border-[#D4AF37] bg-transparent shadow-lg shadow-[#D4AF37]/10"
+              }`}
+            >
+              <div
+                className={`absolute inset-0 bg-[#D4AF37] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
+                  hoveredButton === "right"
+                    ? "-translate-x-full"
+                    : "translate-x-0"
+                }`}
+              />
+              <span
+                className={`relative z-10 transition-colors duration-500 ${
+                  hoveredButton === "right" ? "text-white" : "text-black"
+                }`}
+              >
+                Explore Amenities
+              </span>
+            </Link>
+
+            {/* --- RIGHT BUTTON: Book Your Space --- */}
+            <Link
+              href="#contact"
+              onClick={() => scrollToSection("contact")}
+              onMouseEnter={() => setHoveredButton("right")}
+              onMouseLeave={() => setHoveredButton(null)}
+              className="cursor-pointer relative overflow-hidden group border border-white/20 bg-white/5 font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-sm backdrop-blur-sm flex items-center justify-center"
+            >
+              <div
+                className={`absolute inset-0 bg-[#D4AF37] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
+                  hoveredButton === "right"
+                    ? "translate-x-0"
+                    : "-translate-x-full"
+                }`}
+              />
+              <span
+                className={`relative z-10 transition-colors duration-500 ${
+                  hoveredButton === "right" ? "text-black" : "text-white"
+                }`}
+              >
+                Book Your Space
+              </span>
+            </Link>
           </motion.div>
+
         </div>
       </section>
 
@@ -122,21 +225,35 @@ export default function SentosaSquarePage() {
             </p>
           </motion.div>
 
-          {/* Interactive Blueprint/Image Toggle */}
+          {/* HEIGHT-REDUCED AUTO-SLIDER */}
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={slideInUp} className="w-full lg:w-1/2">
-            <div className="relative aspect-[4/5] md:aspect-square lg:aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 bg-[#111] group">
+            {/* Reduced height by using aspect-[4/3] and a max-height limit on larger screens */}
+            <div className="relative w-full aspect-[4/3] xl:h-[500px] xl:aspect-auto rounded-2xl overflow-hidden border border-white/10 bg-[#111] shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
               <AnimatePresence mode="wait">
-                <motion.div key={activeImage} initial={{ opacity: 0, scale: 1.05 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.8 }} className="absolute inset-0">
-                  <Image src={galleryImages[activeImage]} alt="Sentosa Square Concept" fill className="object-cover" />
+                <motion.div 
+                  key={activeGalleryImage} 
+                  initial={{ opacity: 0, scale: 1.05 }} 
+                  animate={{ opacity: 1, scale: 1 }} 
+                  exit={{ opacity: 0 }} 
+                  transition={{ duration: 0.8 }} 
+                  className="absolute inset-0"
+                >
+                  <Image 
+                    src={galleryImages[activeGalleryImage]} 
+                    alt="Sentosa Square Concept" 
+                    fill 
+                    className="object-cover" 
+                  />
                 </motion.div>
               </AnimatePresence>
               
-              {/* Image Controls */}
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
                 {galleryImages.map((_, idx) => (
                   <button 
-                    key={idx} onClick={() => setActiveImage(idx)}
-                    className={`w-12 h-1.5 rounded-full transition-all duration-500 ${activeImage === idx ? 'bg-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.8)]' : 'bg-white/20 hover:bg-white/50'}`}
+                    key={idx} 
+                    onClick={() => setActiveGalleryImage(idx)}
+                    className={`w-10 h-1.5 rounded-full transition-all duration-500 ${activeGalleryImage === idx ? 'bg-[#D4AF37] shadow-[0_0_10px_rgba(212,175,55,0.8)]' : 'bg-white/20 hover:bg-white/50'}`}
+                    aria-label={`Go to slide ${idx + 1}`}
                   />
                 ))}
               </div>
@@ -191,7 +308,6 @@ export default function SentosaSquarePage() {
           initial="hidden" whileInView="show" viewport={{ once: true }} variants={slideInUp}
           className="relative rounded-[30px] overflow-hidden border border-[#D4AF37]/30 bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] shadow-[0_30px_60px_-15px_rgba(212,175,55,0.2)]"
         >
-          {/* Decorative Background Elements */}
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37]/10 blur-[100px] rounded-full pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-white/5 blur-[100px] rounded-full pointer-events-none" />
           
@@ -204,10 +320,7 @@ export default function SentosaSquarePage() {
               Prime commercial real estate moves fast. Contact our sales executives today to book your shop or corporate office at Sentosa Square before availability runs out.
             </p>
 
-            {/* Contact Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
-              
-              {/* Phone Contacts */}
               <div className="bg-[#050505]/80 backdrop-blur-md border border-white/10 rounded-2xl p-6 group hover:border-[#D4AF37] transition-all duration-300">
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <PhoneCall className="w-5 h-5 text-[#D4AF37]" />
@@ -219,7 +332,6 @@ export default function SentosaSquarePage() {
                 </div>
               </div>
 
-              {/* Physical Location */}
               <div className="bg-[#050505]/80 backdrop-blur-md border border-white/10 rounded-2xl p-6 group hover:border-[#D4AF37] transition-all duration-300 flex flex-col justify-center">
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <MapPin className="w-5 h-5 text-[#D4AF37]" />
@@ -231,10 +343,8 @@ export default function SentosaSquarePage() {
                   Lahore, Pakistan
                 </p>
               </div>
-
             </div>
 
-            {/* Website Link */}
             <div className="mt-12 pt-8 border-t border-white/10 w-full max-w-3xl flex flex-col md:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
                 <Image src="/images/Asset 1.png" alt="Areeb Areel Corp Logo" width={30} height={30} className="object-contain opacity-50" />

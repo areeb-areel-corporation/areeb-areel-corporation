@@ -8,9 +8,9 @@ import {
   HardHat,
   ArrowRight,
   CheckCircle2,
-  Layers
+  Layers,
 } from "lucide-react";
-import { useRouter, usePathname } from 'next/navigation';
+import Link from "next/link";
 
 const coreServices = [
   {
@@ -41,21 +41,7 @@ const technicalDetails = [
 ];
 
 export default function ArchitecturePage() {
-  const pathname = usePathname();
-  const router = useRouter();
-
-  // The universal contact routing function
-  const handleContactClick = (e: React.MouseEvent) => {
-    e.preventDefault(); 
-    if (pathname === '/') {
-      const contactSection = document.getElementById('contact'); 
-      if (contactSection) {
-        contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    } else {
-      router.push('/#contact'); 
-    }
-  };
+ 
 
   // --- CUSTOM ANIMATIONS ---
   const slideInLeft = {
@@ -256,8 +242,8 @@ export default function ArchitecturePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button
-              onClick={handleContactClick}
+            <Link
+              href="/contact"
               className="w-full sm:w-auto relative overflow-hidden group bg-[#D4AF37] text-black font-bold px-10 py-5 rounded-lg tracking-widest uppercase transition-all duration-500 text-sm flex items-center justify-center gap-3 active:scale-95 shadow-[0_0_40px_rgba(212,175,55,0.3)] hover:shadow-[0_0_60px_rgba(212,175,55,0.5)]"
             >
               <div className="absolute inset-0 bg-white/30 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
@@ -265,7 +251,7 @@ export default function ArchitecturePage() {
                 Initiate Project
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </span>
-            </button>
+            </Link>
           </div>
         </div>
       </motion.section>
