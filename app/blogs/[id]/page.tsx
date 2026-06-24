@@ -6,17 +6,15 @@ import { motion, useScroll, useSpring } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ChevronLeft, Clock, Calendar, Share2} from 'lucide-react';
-import { blogDatabase } from '../page'; // Importing the mock DB from the listing page
+import { blogDatabase } from '@/data/data';
 
 export default function BlogReaderPage() {
   const params = useParams();
   const router = useRouter();
   const id = params.id as string;
 
-  // Find the exact blog using the ID from the URL
   const article = blogDatabase.find((b) => b.id === id);
 
-  // Top reading progress bar physics
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
 

@@ -17,9 +17,9 @@ const coreDivisions = [
 
 const corporateLinks = [
   { name: 'About The Legacy', href: '/#about-corporation' },
-  { name: 'Dubai Consulting', href: '/#contact' },
-  { name: 'Enquiries', href: '/#contact' },
-  { name: 'Blogs', href: '/#blogs' },
+  { name: 'Dubai Consulting', href: '/contact' },
+  { name: 'Enquiries', href: '/contact' },
+  { name: 'Blogs', href: '/blogs' },
 ];
 
 // --- SOCIAL MEDIA DATA ---
