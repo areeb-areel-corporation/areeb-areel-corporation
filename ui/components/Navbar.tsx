@@ -18,6 +18,7 @@ import {
   Building2,
   Home,
   LucideIcon,
+  FileSpreadsheet,
 } from "lucide-react";
 import {
   FaFacebook,
@@ -37,6 +38,8 @@ const navLinks: NavLink[] = [
   { name: "Naseeb Homes", href: "/naseeb-homes", icon: Home },
   { name: "Architecture", href: "/architecture", icon: Building2 },
   {name : "Santosa Square" , href: "/santosa-square", icon: Building2},
+  {name : "Blogs" , href: "/blogs", icon: FileSpreadsheet},
+
 ];
 
 const socialLinks = [

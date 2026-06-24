@@ -87,11 +87,12 @@ export default function SentosaSquarePage() {
   return (
     <main className="min-h-screen bg-[#050505] text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden pb-20">
       
-      {/* --- 1. CINEMATIC AUTO-SLIDER HERO SECTION (MATCHING FILLING STATION) --- */}
-      <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      {/* --- 1. CINEMATIC AUTO-SLIDER HERO SECTION --- */}
+      {/* FIX: Changed fixed height to a flexible min-h-screen and added dynamic padding (py-24) */}
+      <section className="relative w-full min-h-[80vh] lg:min-h-[700px] flex items-center justify-center overflow-hidden py-24 md:py-32">
         
-        {/* Dynamic Auto-Slider Background */}
-        <div className="absolute inset-0 z-0 bg-[#050505]">
+        {/* Darkened Auto-Sliding Background Layer */}
+        <div className="absolute inset-0 z-0 bg-[#050505] overflow-hidden">
           <AnimatePresence mode="wait">
             <motion.div
               key={heroIndex}
@@ -116,7 +117,8 @@ export default function SentosaSquarePage() {
           <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-[#050505]/40 to-[#050505] z-10" />
         </div>
 
-        <div className="relative z-20 text-center px-6 max-w-4xl mx-auto mt-20">
+        {/* FIX: Removed mt-20. We now let the parent's 'items-center' handle perfect vertical centering without shoving it downward. */}
+        <div className="relative z-20 text-center px-6 max-w-4xl mx-auto w-full flex flex-col items-center justify-center">
           
           {/* Logo & Subtitle */}
           <motion.div 
@@ -134,16 +136,16 @@ export default function SentosaSquarePage() {
                 className="object-contain filter drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]" 
               />
             </div>
-            <div className="flex items-center gap-3">
-              <div className="w-16 h-[1px] bg-[#D4AF37]" />
-              <span className="text-[#D4AF37] text-xs md:text-sm font-bold uppercase tracking-[0.4em]">
+            <div className="flex items-center gap-3 w-full justify-center">
+              <div className="w-10 sm:w-16 h-[1px] bg-[#D4AF37]" />
+              <span className="text-[#D4AF37] text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-[0.2em] sm:tracking-[0.4em] text-center">
                 A Project of Areeb Areel Corp.
               </span>
-              <div className="w-16 h-[1px] bg-[#D4AF37] hidden md:block" />
+              <div className="w-10 sm:w-16 h-[1px] bg-[#D4AF37] hidden sm:block" />
             </div>
           </motion.div>
           
-          {/* Reduced Text Size for Hero Typography */}
+          {/* Main Title */}
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
@@ -160,14 +162,14 @@ export default function SentosaSquarePage() {
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8, delay: 0.2 }} 
-            className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-medium"
+            className="text-zinc-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-medium px-4"
           >
             The Gateway to Tomorrow's Business Success. <br className="hidden md:block" />
             <span className="font-bold text-white">Built for Business. Designed for Growth.</span>
           </motion.p>
 
-          {/* EXACT REQUESTED SYNCED SHUTTER BUTTONS */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+          {/* SYNCED SHUTTER BUTTONS */}
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
             
             {/* --- LEFT BUTTON: Explore Amenities --- */}
             <Link
@@ -175,7 +177,7 @@ export default function SentosaSquarePage() {
               onClick={() => scrollToSection("amenities")}
               onMouseEnter={() => setHoveredButton("left")}
               onMouseLeave={() => setHoveredButton(null)}
-              className={`cursor-pointer relative overflow-hidden font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-sm backdrop-blur-sm flex items-center justify-center gap-2 border ${
+              className={`cursor-pointer w-full sm:w-auto relative overflow-hidden font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-xs sm:text-sm backdrop-blur-sm flex items-center justify-center gap-2 border ${
                 hoveredButton === "right"
                   ? "border-white/20 bg-white/5 shadow-none"
                   : "border-[#D4AF37] bg-transparent shadow-lg shadow-[#D4AF37]/10"
@@ -189,7 +191,7 @@ export default function SentosaSquarePage() {
                 }`}
               />
               <span
-                className={`relative z-10 transition-colors duration-500 ${
+                className={`relative z-10 transition-colors duration-500 whitespace-nowrap ${
                   hoveredButton === "right" ? "text-white" : "text-black"
                 }`}
               >
@@ -203,7 +205,7 @@ export default function SentosaSquarePage() {
               onClick={() => scrollToSection("contact")}
               onMouseEnter={() => setHoveredButton("right")}
               onMouseLeave={() => setHoveredButton(null)}
-              className="cursor-pointer relative overflow-hidden group border border-white/20 bg-white/5 font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-sm backdrop-blur-sm flex items-center justify-center"
+              className="cursor-pointer w-full sm:w-auto relative overflow-hidden group border border-white/20 bg-white/5 font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-xs sm:text-sm backdrop-blur-sm flex items-center justify-center"
             >
               <div
                 className={`absolute inset-0 bg-[#D4AF37] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
@@ -213,7 +215,7 @@ export default function SentosaSquarePage() {
                 }`}
               />
               <span
-                className={`relative z-10 transition-colors duration-500 ${
+                className={`relative z-10 transition-colors duration-500 whitespace-nowrap ${
                   hoveredButton === "right" ? "text-black" : "text-white"
                 }`}
               >
