@@ -88,7 +88,7 @@ export default function CorporateFooter() {
           
           {/* 1. LEFT CARD: Branding, Contact & Socials */}
           <motion.div 
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="lg:col-span-5 flex flex-col bg-[#111111]/40 border border-white/5 p-8 md:p-10 rounded-[24px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_20px_50px_-15px_rgba(212,175,55,0.15)]"
           >
             {/* Corporate Logo Placeholder */}
@@ -154,7 +154,7 @@ export default function CorporateFooter() {
 
           {/* 2. MIDDLE CARD: Core Divisions */}
           <motion.div 
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="lg:col-span-4 flex flex-col bg-[#111111]/40 border border-white/5 p-8 md:p-10 rounded-[24px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_20px_50px_-15px_rgba(212,175,55,0.15)]"
           >
             <h4 className="text-zinc-500 text-xs font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
@@ -184,7 +184,7 @@ export default function CorporateFooter() {
 
           {/* 3. RIGHT CARD: Corporate Links */}
           <motion.div 
-            variants={itemVariants}
+            variants={itemVariants as any}
             className="lg:col-span-3 flex flex-col bg-[#111111]/40 border border-white/5 p-8 md:p-10 rounded-[24px] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_20px_50px_-15px_rgba(212,175,55,0.15)]"
           >
             <h4 className="text-zinc-500 text-xs font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-3">

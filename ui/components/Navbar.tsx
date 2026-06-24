@@ -55,7 +55,7 @@ const socialLinks = [
   { 
     name: 'Instagram', 
     icon: FaInstagram, 
-    href: 'https://instagram.com', 
+    href: 'https://www.instagram.com/areebareelfillingstation', 
     hoverClass: 'hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-transparent hover:text-white' 
   },
   { 

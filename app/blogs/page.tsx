@@ -70,7 +70,7 @@ export default function BlogsPage() {
         {/* --- GRID ARTICLES --- */}
         <motion.div variants={containerVariants} initial="hidden" animate="show" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {remainingBlogs.map((blog) => (
-            <motion.div key={blog.id} variants={itemVariants}>
+            <motion.div key={blog.id} variants={itemVariants as any}>
               <Link href={`/blogs/${blog.id}`} className="group flex flex-col h-full bg-[#111111]/40 border border-white/5 rounded-[24px] p-5 transition-all duration-500 hover:-translate-y-2 hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_20px_50px_-15px_rgba(212,175,55,0.15)] overflow-hidden">
                 
                 <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-[#1a1a1a]">

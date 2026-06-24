@@ -76,7 +76,7 @@ export default function StrategicAlliances() {
         
         {/* --- HEADER --- */}
         <motion.div 
-          variants={headerVariants}
+          variants={headerVariants as any}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
@@ -113,7 +113,7 @@ export default function StrategicAlliances() {
             return (
               <motion.div
                 key={partner.id}
-                variants={cardVariants}
+                variants={cardVariants as any}
                 // Attach ref to each card for the mouse tracking engine
                 ref={(el) => { cardsRef.current[index] = el; }}
                 className="group relative overflow-hidden rounded-2xl bg-[#111] border border-white/5 hover:border-[#D4AF37] transition-all duration-300 md:hover:-translate-y-1 cursor-default"
