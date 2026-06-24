@@ -36,7 +36,7 @@ const galleryImages: string[] = [
   '/images/sentosa-2.jpg', 
   '/images/sentosa-3.jpg', 
   '/images/sentosa-4.jpg',
-  '/images/sentosa-5.jpg', // Assuming you have 5 images as requested previously
+  '/images/sentosa-5.jpg', 
 ];
 
 export default function SentosaSquarePage() {
@@ -87,11 +87,11 @@ export default function SentosaSquarePage() {
   return (
     <main className="min-h-screen bg-[#050505] text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden pb-20">
       
-      {/* --- 1. CINEMATIC AUTO-SLIDER HERO SECTION --- */}
-      <section className="relative w-full h-[90vh] min-h-[700px] flex items-center justify-center border-b border-white/5">
+      {/* --- 1. CINEMATIC AUTO-SLIDER HERO SECTION (MATCHING FILLING STATION) --- */}
+      <section className="relative w-full h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
         
-        {/* Darkened Auto-Sliding Background Layer */}
-        <div className="absolute inset-0 z-0 bg-[#050505] overflow-hidden">
+        {/* Dynamic Auto-Slider Background */}
+        <div className="absolute inset-0 z-0 bg-[#050505]">
           <AnimatePresence mode="wait">
             <motion.div
               key={heroIndex}
@@ -106,47 +106,68 @@ export default function SentosaSquarePage() {
                 alt="Sentosa Square Facade"
                 fill
                 priority
-                className="object-cover filter brightness-[0.35] contrast-125 opacity-80"
+                className="object-cover opacity-50 grayscale transition-all duration-[2000ms]"
+                onError={(e) => {
+                  e.currentTarget.src = "/images/sentosa-1.jpg";
+                }}
               />
             </motion.div>
           </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/70 to-[#050505]/30 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-[#050505]/40 to-[#050505] z-10" />
         </div>
 
-        <div className="relative z-20 text-center px-6 max-w-5xl mx-auto mt-20">
+        <div className="relative z-20 text-center px-6 max-w-4xl mx-auto mt-20">
           
           {/* Logo & Subtitle */}
-          <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="flex flex-col items-center justify-center gap-4 mb-8">
-            <div className="w-16 h-16 md:w-20 md:h-20 relative mb-2">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8 }} 
+            className="flex flex-col items-center justify-center gap-4 mb-6"
+          >
+            <div className="w-[88px] h-[88px] md:w-[140px] md:h-[140px] relative mb-2">
               <Image 
                 src="/images/Asset 1.png" 
                 alt="Areeb Areel Corp Logo" 
                 fill 
                 priority
-                className="object-contain filter drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]" 
+                className="object-contain filter drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]" 
               />
             </div>
-            <div className="w-16 h-[1px] bg-[#D4AF37]" />
-            <span className="text-[#D4AF37] text-xs md:text-sm font-bold uppercase tracking-[0.4em]">
-              A Project of Areeb Areel Corp.
-            </span>
+            <div className="flex items-center gap-3">
+              <div className="w-16 h-[1px] bg-[#D4AF37]" />
+              <span className="text-[#D4AF37] text-xs md:text-sm font-bold uppercase tracking-[0.4em]">
+                A Project of Areeb Areel Corp.
+              </span>
+              <div className="w-16 h-[1px] bg-[#D4AF37] hidden md:block" />
+            </div>
           </motion.div>
           
-          {/* Refined Main Title */}
-          <motion.h1 initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }} className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter leading-none mb-6 text-white drop-shadow-2xl">
+          {/* Reduced Text Size for Hero Typography */}
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, delay: 0.1 }} 
+            className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-6 text-white"
+          >
             SENTOSA <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] via-[#F1E5AC] to-[#D4AF37]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
               SQUARE.
             </span>
           </motion.h1>
           
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.4 }} className="text-zinc-300 text-base md:text-xl leading-relaxed max-w-3xl mx-auto mb-10 font-light tracking-wide">
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }} 
+            animate={{ opacity: 1, y: 0 }} 
+            transition={{ duration: 0.8, delay: 0.2 }} 
+            className="text-zinc-300 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-medium"
+          >
             The Gateway to Tomorrow's Business Success. <br className="hidden md:block" />
             <span className="font-bold text-white">Built for Business. Designed for Growth.</span>
           </motion.p>
 
           {/* EXACT REQUESTED SYNCED SHUTTER BUTTONS */}
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.6 }} className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
             
             {/* --- LEFT BUTTON: Explore Amenities --- */}
             <Link
@@ -225,9 +246,7 @@ export default function SentosaSquarePage() {
             </p>
           </motion.div>
 
-          {/* HEIGHT-REDUCED AUTO-SLIDER */}
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, margin: "-100px" }} variants={slideInUp} className="w-full lg:w-1/2">
-            {/* Reduced height by using aspect-[4/3] and a max-height limit on larger screens */}
             <div className="relative w-full aspect-[4/3] xl:h-[500px] xl:aspect-auto rounded-2xl overflow-hidden border border-white/10 bg-[#111] shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
               <AnimatePresence mode="wait">
                 <motion.div 
