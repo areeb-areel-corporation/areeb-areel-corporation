@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
   Send,
   CheckCircle,
@@ -18,6 +18,7 @@ export default function CorporateInquiry() {
     division: "General Corporate",
     message: "",
   });
+  
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
@@ -27,7 +28,6 @@ export default function CorporateInquiry() {
     setStatus("loading");
 
     try {
-      // Keep your API route setup
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -59,13 +59,13 @@ export default function CorporateInquiry() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // --- CUSTOM ANIMATIONS ---
-  const slideInLeft = {
+  // --- STRICT TYPESCRIPT ANIMATION VARIANTS ---
+  const slideInLeft: Variants = {
     hidden: { opacity: 0, x: -60 },
     show: { opacity: 1, x: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } },
   };
 
-  const formContainerVariants = {
+  const formContainerVariants: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
@@ -73,7 +73,7 @@ export default function CorporateInquiry() {
     },
   };
 
-  const inputVariants = {
+  const inputVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: {
       opacity: 1,
@@ -99,7 +99,7 @@ export default function CorporateInquiry() {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            variants={slideInLeft as any}
+            variants={slideInLeft}
             className="w-full lg:w-5/12 space-y-10 pt-4"
           >
             <div>
@@ -112,7 +112,7 @@ export default function CorporateInquiry() {
               <h2 className="text-5xl md:text-6xl font-black leading-[1.05] tracking-tighter mb-6">
                 Connect &nbsp;
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
-                   With Us.
+                  With Us.
                 </span>
               </h2>
               <p className="text-zinc-400 text-lg leading-relaxed max-w-md">
@@ -120,14 +120,14 @@ export default function CorporateInquiry() {
               </p>
             </div>
 
-            <div className="space-y-6 md:space-y-8 max-w-md">
+            <div className="space-y-4 max-w-md">
               {/* 1. Global Headquarters */}
-              <div className="flex items-start gap-5 group p-3 -m-3 rounded-xl hover:bg-white/[0.02] transition-all duration-300">
+              <div className="flex items-start gap-5 group p-4 rounded-xl border border-transparent hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_10px_30px_rgba(212,175,55,0.05)] transition-all duration-500">
                 <div className="w-12 h-12 rounded-xl bg-[#111] border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-[#D4AF37]/50 group-hover:bg-[#D4AF37]/10 transition-all duration-500 shadow-xl">
                   <Building2 className="w-5 h-5 text-[#D4AF37] group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em]">
+                  <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em] transition-colors duration-500 group-hover:text-[#D4AF37]">
                     Corporate Headquarters
                   </h4>
                   <p className="text-zinc-300 group-hover:text-white text-sm md:text-base transition-colors duration-300 leading-relaxed">
@@ -141,16 +141,16 @@ export default function CorporateInquiry() {
               {/* 2. Corporate Email */}
               <a
                 href="mailto:contact@areebareel.com"
-                className="flex items-start gap-5 group p-3 -m-3 rounded-xl hover:bg-white/[0.02] transition-all duration-300 w-fit"
+                className="flex items-start gap-5 group p-4 rounded-xl border border-transparent hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_10px_30px_rgba(212,175,55,0.05)] transition-all duration-500"
               >
                 <div className="w-12 h-12 rounded-xl bg-[#111] border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-[#D4AF37]/50 group-hover:bg-[#D4AF37]/10 transition-all duration-500 shadow-xl">
                   <Mail className="w-5 h-5 text-[#D4AF37] group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em]">
+                  <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em] transition-colors duration-500 group-hover:text-[#D4AF37]">
                     Direct Email
                   </h4>
-                  <p className="text-zinc-300 group-hover:text-[#D4AF37] text-sm md:text-base transition-colors duration-300 font-medium">
+                  <p className="text-zinc-300 group-hover:text-white text-sm md:text-base transition-colors duration-300 font-medium">
                     contact@areebareel.com
                   </p>
                 </div>
@@ -159,13 +159,13 @@ export default function CorporateInquiry() {
               {/* 3. Corporate Switchboard */}
               <a
                 href="tel:+9242111222333"
-                className="flex items-start gap-5 group p-3 -m-3 rounded-xl hover:bg-white/[0.02] transition-all duration-300 w-fit"
+                className="flex items-start gap-5 group p-4 rounded-xl border border-transparent hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_10px_30px_rgba(212,175,55,0.05)] transition-all duration-500"
               >
                 <div className="w-12 h-12 rounded-xl bg-[#111] border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-[#D4AF37]/50 group-hover:bg-[#D4AF37]/10 transition-all duration-500 shadow-xl">
                   <Phone className="w-5 h-5 text-[#D4AF37] group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div className="space-y-1">
-                  <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em]">
+                  <h4 className="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.2em] transition-colors duration-500 group-hover:text-[#D4AF37]">
                     Corporate Line
                   </h4>
                   <p className="text-zinc-300 group-hover:text-white text-sm md:text-base transition-colors duration-300 font-medium font-mono">
@@ -178,11 +178,11 @@ export default function CorporateInquiry() {
 
           {/* --- RIGHT SIDE: The Animated Form --- */}
           <div className="w-full lg:w-7/12">
-            <div className="bg-[#111111]/90 backdrop-blur-xl border border-white/5 p-8 md:p-12 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <div className="bg-[#111111]/90 backdrop-blur-xl border hover:border-[#D4AF37] transition-all duration-500 border-white/5 p-8 md:p-12 rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
               <motion.form 
                 onSubmit={handleSubmit} 
                 className="space-y-8"
-                variants={formContainerVariants as any}
+                variants={formContainerVariants}
                 initial="hidden"
                 whileInView="show"
                 viewport={{ once: true, margin: "-100px" }}
@@ -190,7 +190,7 @@ export default function CorporateInquiry() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   
                   {/* Name Input */}
-                  <motion.div variants={inputVariants as any} className="relative group">
+                  <motion.div variants={inputVariants} className="relative group">
                     <input
                       type="text"
                       name="name"
@@ -210,7 +210,7 @@ export default function CorporateInquiry() {
                   </motion.div>
 
                   {/* Email Input */}
-                  <motion.div variants={inputVariants as any} className="relative group">
+                  <motion.div variants={inputVariants} className="relative group">
                     <input
                       type="email"
                       name="email"
@@ -231,7 +231,7 @@ export default function CorporateInquiry() {
                 </div>
 
                 {/* Division Select */}
-                <motion.div variants={inputVariants as any} className="relative group">
+                <motion.div variants={inputVariants} className="relative group">
                   <select
                     name="division"
                     value={formData.division}
@@ -250,7 +250,7 @@ export default function CorporateInquiry() {
                 </motion.div>
 
                 {/* Message Textarea */}
-                <motion.div variants={inputVariants as any} className="relative group">
+                <motion.div variants={inputVariants} className="relative group">
                   <textarea
                     name="message"
                     id="message"
@@ -269,20 +269,23 @@ export default function CorporateInquiry() {
                   </label>
                 </motion.div>
 
-                {/* Submit Button & Feedback */}
-                <motion.div variants={inputVariants as any} className="pt-4 flex items-center justify-between">
+                {/* Submit Button & Feedback - Shutter Effect Added */}
+                <motion.div variants={inputVariants} className="pt-4 flex items-center justify-between">
                   <button
                     type="submit"
                     disabled={status === "loading" || status === "success"}
-                    className="relative group overflow-hidden bg-[#D4AF37] text-black px-10 py-4 rounded-lg font-bold uppercase tracking-widest text-sm flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed transition-transform active:scale-95 shadow-[0_0_30px_rgba(212,175,55,0.2)] hover:shadow-[0_0_40px_rgba(212,175,55,0.4)]"
+                    className="relative cursor-pointer overflow-hidden group border border-[#D4AF37] bg-transparent text-white px-10 py-4 rounded-md font-bold uppercase tracking-widest text-sm flex items-center gap-3 disabled:opacity-70 disabled:cursor-not-allowed transition-all active:scale-95 shadow-[0_0_20px_rgba(212,175,55,0.15)]"
                   >
-                    <span className="relative z-10 flex items-center gap-2">
+                    {/* The Golden Shutter */}
+                    <div className="absolute inset-0 bg-[#D4AF37] -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
+                    
+                    {/* Text & Icons (Transitions to black on hover) */}
+                    <span className="relative z-10 flex items-center gap-2 group-hover:text-black transition-colors duration-500">
                       {status === "loading" ? "Sending..." : status === "success" ? "Message Sent" : "Submit Inquiry"}
                       {status === "loading" && <Loader2 className="w-4 h-4 animate-spin" />}
                       {status === "success" && <CheckCircle className="w-4 h-4" />}
                       {status === "idle" && <Send className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />}
                     </span>
-                    <div className="absolute inset-0 bg-white/30 -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0" />
                   </button>
 
                   {/* Error Message */}

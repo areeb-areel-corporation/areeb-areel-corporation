@@ -53,7 +53,7 @@ export default function CorporateInsights() {
           </div>
 
          <Link
-                  href="/contact"
+                  href="/blogs"
                   className="relative overflow-hidden group inline-flex items-center gap-3 px-8 py-4 border border-[#D4AF37]/30 bg-[#111] rounded-full text-sm font-bold uppercase tracking-widest text-[#D4AF37] transition-all duration-300 hover:border-[#D4AF37]"
                 >
                   {/* The gold layer that sweeps from left to right */}
