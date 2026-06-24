@@ -155,7 +155,7 @@ export default function FillingStationPage() {
   return (
     <main className="min-h-screen bg-[#050505] text-white selection:bg-[#D4AF37] selection:text-black overflow-clip pb-20">
       {/* --- FLOATING RIGHT NAVIGATION (Elevator Menu) --- */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 hidden xl:flex flex-col gap-4">
+      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-4">
         {navLinks.map((link) => {
           const Icon = link.icon;
           return (
