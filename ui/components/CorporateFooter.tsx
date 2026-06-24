@@ -5,6 +5,7 @@ import { Mail, MapPin,  ArrowUp } from 'lucide-react';
 import { FaLinkedin, FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
+import { socialLinks } from '@/data/data';
 
 // --- NAVIGATION DATA ---
 const coreDivisions = [
@@ -22,33 +23,6 @@ const corporateLinks = [
   { name: 'Blogs', href: '/blogs' },
 ];
 
-// --- SOCIAL MEDIA DATA ---
-const socialLinks = [
-  { 
-    name: 'LinkedIn', 
-    icon: FaLinkedin, 
-    href: 'https://linkedin.com', 
-    hoverClass: 'hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:text-white' 
-  },
-  { 
-    name: 'Facebook', 
-    icon: FaFacebookF, 
-    href: 'https://facebook.com', 
-    hoverClass: 'hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white' 
-  },
-  { 
-    name: 'Instagram', 
-    icon: FaInstagram, 
-    href: 'https://instagram.com', 
-    hoverClass: 'hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-transparent hover:text-white' 
-  },
-  { 
-    name: 'YouTube', 
-    icon: FaYoutube, 
-    href: 'https://youtube.com', 
-    hoverClass: 'hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white' 
-  },
-];
 
 export default function CorporateFooter() {
   const containerVariants = {

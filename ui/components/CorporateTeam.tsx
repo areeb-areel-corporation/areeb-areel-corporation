@@ -5,33 +5,8 @@ import Image from 'next/image';
 import { useRef } from 'react';
 import { FaLinkedin } from 'react-icons/fa';
 import { Ruler, Quote } from 'lucide-react';
+import { teamData } from '@/data/data';
 
-const teamData = {
-  ceos: [
-    {
-      id: 1,
-      name: 'Areeb Tahir',
-      role: 'Chief Executive Officer | Founder',
-      src: '/images/Areeb-Tahir.jpg', 
-      linkedin: 'https://www.linkedin.com/in/areeb-tahir-866088253/',
-      message: "Engineering the impossible into regional reality. We blueprint future benchmarks, today."
-    },
-    {
-      id: 2,
-      name: 'Areel Tahir',
-      role: 'CEO | Owner',
-      src: '/images/Areel-Tahir.jpg',
-      linkedin: 'https://www.linkedin.com/in/areeltahir/',
-      message: "Progression is executed, not imagined. We scale limits to build lasting national assets."
-    },
-  ],
-  executives: [
-    { id: 3, name: 'Kashif', role: 'Chief Human Resources Officer', linkedin: '#' },
-    { id: 4, name: 'Unknown', role: 'Head of Marketing & Strategy', linkedin: '#' },
-    { id: 5, name: 'Unknown', role: 'Director, AAA Developments', linkedin: '#' },
-    { id: 6, name: 'Unknown', role: 'Head of Retail & Supply Chain', linkedin: '#' },
-  ]
-};
 
 export default function CorporateTeam() {
   const containerRef = useRef<HTMLElement>(null);
@@ -82,9 +57,6 @@ export default function CorporateTeam() {
           </p>
         </div>
 
-        {/* =========================================================================
-            TIER 1: THE FOUNDERS & CEO's (Refined Bio-Card Design)
-            ========================================================================= */}
         <motion.div 
           variants={fadeUpContainer}
           initial="hidden"
@@ -148,9 +120,7 @@ export default function CorporateTeam() {
           ))}
         </motion.div>
 
-        {/* =========================================================================
-            TIER 2: THE EXECUTIVE TEAM (Ultra-Minimalist List)
-            ========================================================================= */}
+   
         <motion.div
           variants={fadeUpContainer}
           initial="hidden"

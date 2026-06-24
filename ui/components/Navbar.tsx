@@ -20,12 +20,7 @@ import {
   LucideIcon,
   FileSpreadsheet,
 } from "lucide-react";
-import {
-  FaFacebook,
-  FaInstagram,
-  FaLinkedin,
-  FaYoutube,
-} from "react-icons/fa6";
+import { socialLinks } from "@/data/data";
 
 interface NavLink {
   name: string;
@@ -42,32 +37,6 @@ const navLinks: NavLink[] = [
 
 ];
 
-const socialLinks = [
-  { 
-    name: 'LinkedIn', 
-    icon: FaLinkedin, 
-    href: 'https://www.linkedin.com/company/areeb-areel-corporation/posts/?feedView=all', 
-    hoverClass: 'hover:bg-[#0A66C2] hover:border-[#0A66C2] hover:text-white' 
-  },
-  { 
-    name: 'Facebook', 
-    icon: FaFacebook, 
-    href: 'https://www.facebook.com/areebareelcorp/', 
-    hoverClass: 'hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white' 
-  },
-  { 
-    name: 'Instagram', 
-    icon: FaInstagram, 
-    href: 'https://www.instagram.com/areebareelfillingstation', 
-    hoverClass: 'hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#e6683c] hover:to-[#bc1888] hover:border-transparent hover:text-white' 
-  },
-  { 
-    name: 'YouTube', 
-    icon: FaYoutube, 
-    href: 'https://www.youtube.com/@AreebAreelFillingStation', 
-    hoverClass: 'hover:bg-[#FF0000] hover:border-[#FF0000] hover:text-white' 
-  },
-];
 
 
 export default function Navbar() {
@@ -258,7 +227,7 @@ export default function Navbar() {
                     Lahore, Punjab, Pakistan
                   </p>
                 </div>
-
+                
                 {/* Styled Vector Social Grid */}
                 <div className="flex items-center gap-4">
                   {socialLinks.map((social) => {
