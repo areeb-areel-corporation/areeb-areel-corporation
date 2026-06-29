@@ -1,4 +1,3 @@
-// ✅ SERVER COMPONENT — SEO wrapper for Filling Station / Energy Division page
 import type { Metadata } from 'next';
 import FillingStationContent from './FillingStationContent';
 

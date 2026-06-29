@@ -1,4 +1,3 @@
-// ✅ SERVER COMPONENT — SEO wrapper for Sentosa Square page
 import type { Metadata } from 'next';
 import SantosaContent from './SantosaContent';
 

@@ -1,4 +1,3 @@
-// ✅ SERVER COMPONENT — SEO wrapper for Architecture & Design page
 import type { Metadata } from 'next';
 import ArchitectureContent from './ArchitectureContent';
 

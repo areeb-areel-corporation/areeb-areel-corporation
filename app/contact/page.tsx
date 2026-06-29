@@ -1,4 +1,3 @@
-// ✅ SERVER COMPONENT — SEO wrapper for Contact page
 import type { Metadata } from 'next';
 import ContactContent from './ContactContent';
 
