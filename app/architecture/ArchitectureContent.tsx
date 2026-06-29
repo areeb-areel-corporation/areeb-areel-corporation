@@ -43,7 +43,6 @@ const technicalDetails = [
 export default function ArchitecturePage() {
  
 
-  // --- CUSTOM ANIMATIONS ---
   const slideInLeft = {
     hidden: { opacity: 0, x: -80 },
     show: { opacity: 1, x: 0, transition: { duration: 1, ease: [0.16, 1, 0.3, 1] } },
