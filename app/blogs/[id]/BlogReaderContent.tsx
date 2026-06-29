@@ -37,7 +37,6 @@ export default function BlogReaderContent() {
         style={{ scaleX }} 
       />
 
-      {/* 2. CINEMATIC HERO BANNER */}
       <div className="relative w-full h-[60vh] lg:h-[70vh] flex items-center justify-center border-b border-white/10">
         <Image 
           src={article.src} 
