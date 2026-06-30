@@ -12,6 +12,7 @@ import {
   PlayCircle,
 } from "lucide-react";
 import Link from "next/link";
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa6";
 
 export default function NaseebHomesPage() {
  
@@ -338,7 +339,7 @@ export default function NaseebHomesPage() {
       </section>
 
       {/* --- MASTER PLAN EXPLORATION CTA --- */}
-      <section className="relative py-32 bg-[#111111] border-t border-white/5 overflow-hidden">
+   <section className="relative py-32 bg-[#111111] border-t border-white/5 overflow-hidden">
         <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#D4AF37]/5 blur-[200px] rounded-full pointer-events-none" />
 
         <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
@@ -357,7 +358,7 @@ export default function NaseebHomesPage() {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl font-black mb-6 tracking-tighter"
+            className="text-4xl md:text-6xl font-black mb-6 tracking-tighter text-white"
           >
             Secure Your <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
@@ -370,7 +371,7 @@ export default function NaseebHomesPage() {
             whileInView={{ y: 0, opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-brand-silver/60 mb-12 max-w-2xl mx-auto text-lg leading-relaxed"
+            className="text-zinc-400 mb-12 max-w-2xl mx-auto text-lg leading-relaxed"
           >
             Don't miss the opportunity to join our exclusive community. Connect with our advisory team today to reserve your 3.5 or 5 Marla home with just a 10% booking.
           </motion.p>
@@ -402,6 +403,66 @@ export default function NaseebHomesPage() {
               </div>
             </Link>
           </motion.div>
+
+          {/* --- SOCIAL MEDIA LINKS WITH BRAND COLORS --- */}
+          <motion.div
+            initial={{ y: 30, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-16 pt-10 border-t border-white/5 flex flex-col items-center"
+          >
+            <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-6">
+              Connect With Us
+            </p>
+            <div className="flex items-center justify-center gap-4 sm:gap-6">
+              {[
+                { 
+                  icon: FaFacebook, 
+                  href: "#", 
+                  name: "Facebook",
+                  hoverBg: "hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10 hover:shadow-[0_10px_20px_-10px_rgba(24,119,242,0.4)]",
+                  hoverText: "group-hover:text-[#1877F2]" 
+                },
+                { 
+                  icon: FaInstagram, 
+                  href: "#", 
+                  name: "Instagram",
+                  hoverBg: "hover:border-[#E1306C]/50 hover:bg-[#E1306C]/10 hover:shadow-[0_10px_20px_-10px_rgba(225,48,108,0.4)]",
+                  hoverText: "group-hover:text-[#E1306C]"
+                },
+                { 
+                  icon: FaLinkedin, 
+                  href: "#", 
+                  name: "LinkedIn",
+                  hoverBg: "hover:border-[#0A66C2]/50 hover:bg-[#0A66C2]/10 hover:shadow-[0_10px_20px_-10px_rgba(10,102,194,0.4)]",
+                  hoverText: "group-hover:text-[#0A66C2]"
+                },
+                { 
+                  icon: FaYoutube, 
+                  href: "#", 
+                  name: "YouTube",
+                  hoverBg: "hover:border-[#FF0000]/50 hover:bg-[#FF0000]/10 hover:shadow-[0_10px_20px_-10px_rgba(255,0,0,0.4)]",
+                  hoverText: "group-hover:text-[#FF0000]"
+                },
+              ].map((social, idx) => {
+                const Icon = social.icon;
+                return (
+                  <a
+                    key={idx}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.name}
+                    className={`group relative w-12 h-12 rounded-full bg-[#0a0a0a] border border-white/10 flex items-center justify-center transition-all duration-300 ease-out hover:-translate-y-1 ${social.hoverBg}`}
+                  >
+                    <Icon className={`w-5 h-5 text-zinc-500 transition-colors duration-300 ${social.hoverText}`} />
+                  </a>
+                );
+              })}
+            </div>
+          </motion.div>
+
         </div>
       </section>
     </main>

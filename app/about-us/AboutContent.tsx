@@ -3,16 +3,12 @@
 import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import { 
-  ArrowRight,
+import {
   Building2,
   Fuel,
   Briefcase
 } from 'lucide-react';
-import SignatureDevelopments from '@/ui/components/SignatureDevelopments';
-import StrategicScale from '@/ui/components/StrategicScale';
-import AboutCorporateSection from '@/ui/components/CorporateDivisions';
+
 
 // --- DATA: CORPORATE DIVISIONS ---
 const divisions = [
@@ -140,14 +136,11 @@ export default function AboutUsPage() {
           </motion.h1>
 
           <motion.p initial="hidden" animate="show" variants={fadeUp} className="text-zinc-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium text-center px-4">
-            Areeb & Areel Corporation is a dynamic conglomerate driving innovation across real estate development, energy transit, and strategic corporate consulting. We don't just participate in industries; we redefine their standards.
+            Areeb & Areel Corporation is a dynamic conglomerate driving innovation across real estate development, energy transit, and strategic corporate consulting. We don’t just participate in industries; we redefine their standards.
           </motion.p>
         </div>
       </section>
-     <SignatureDevelopments/>
-     <AboutCorporateSection/>   
-     <StrategicScale/>
-
+   
       {/* --- 3. OUR DIVISIONS (SPOTLIGHT CARDS) --- */}
       <section className="py-24 lg:py-32 relative">
         <div className="max-w-[1600px] mx-auto px-6 md:px-10">
@@ -196,25 +189,6 @@ export default function AboutUsPage() {
             })}
           </motion.div>
         </div>
-      </section>
-
-
-
-      {/* --- 5. CTA / CONNECT LAYER --- */}
-      <section className="py-24 lg:py-32 px-6">
-        <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={fadeUp} className="max-w-4xl mx-auto text-center bg-gradient-to-br from-[#111] to-[#0a0a0a] border border-white/10 p-10 md:p-20 rounded-[30px] relative overflow-hidden group hover:border-[#D4AF37]/30 transition-colors duration-500">
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#D4AF37]/10 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
-          
-          <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-4 relative z-10">Partner With Excellence.</h2>
-          <p className="text-zinc-400 text-sm md:text-base mb-10 max-w-xl mx-auto relative z-10">
-            Ready to secure a space at Sentosa Square or require corporate consultancy? Connect with our executive team today.
-          </p>
-          
-          <Link href="/contact" className="relative z-10 inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#D4AF37] text-black font-bold uppercase tracking-widest text-xs sm:text-sm rounded-md hover:bg-white transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.2)] hover:shadow-[0_0_40px_rgba(212,175,55,0.4)]">
-            Initiate Dialogue
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </motion.div>
       </section>
 
     </main>

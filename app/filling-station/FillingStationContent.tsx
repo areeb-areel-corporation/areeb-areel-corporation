@@ -12,6 +12,7 @@ import {
   TrendingDown,
   Navigation,
 } from "lucide-react";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa6";
 
 // --- DATA ARRAYS ---
 // 5 Images for the Hero Slider
@@ -516,8 +517,7 @@ export default function FillingStationPage() {
         </section>
       </div>
 
-      {/* --- 5. LOCATION MAP (Standard White Road Map) --- */}
-      <section
+     <section
         id="location"
         className="relative w-full py-24 lg:py-32 bg-[#050505] border-t border-white/5 mt-32"
       >
@@ -575,6 +575,64 @@ export default function FillingStationPage() {
                     </p>
                   </div>
                 </div>
+
+              <motion.div
+                         initial={{ y: 30, opacity: 0 }}
+                         whileInView={{ y: 0, opacity: 1 }}
+                         viewport={{ once: true }}
+                         transition={{ duration: 0.6, delay: 0.4 }}
+                         className="mt-16 pt-10 border-t border-white/5 flex flex-col items-center"
+                       >
+                         <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-6">
+                           Connect With Us
+                         </p>
+                         <div className="flex items-center justify-center gap-4 sm:gap-6">
+                           {[
+                             { 
+                               icon: FaFacebook, 
+                               href: "#", 
+                               name: "Facebook",
+                               hoverBg: "hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10 hover:shadow-[0_10px_20px_-10px_rgba(24,119,242,0.4)]",
+                               hoverText: "group-hover:text-[#1877F2]" 
+                             },
+                             { 
+                               icon: FaInstagram, 
+                               href: "#", 
+                               name: "Instagram",
+                               hoverBg: "hover:border-[#E1306C]/50 hover:bg-[#E1306C]/10 hover:shadow-[0_10px_20px_-10px_rgba(225,48,108,0.4)]",
+                               hoverText: "group-hover:text-[#E1306C]"
+                             },
+                             { 
+                               icon: FaLinkedin, 
+                               href: "#", 
+                               name: "LinkedIn",
+                               hoverBg: "hover:border-[#0A66C2]/50 hover:bg-[#0A66C2]/10 hover:shadow-[0_10px_20px_-10px_rgba(10,102,194,0.4)]",
+                               hoverText: "group-hover:text-[#0A66C2]"
+                             },
+                             { 
+                               icon: FaYoutube, 
+                               href: "#", 
+                               name: "YouTube",
+                               hoverBg: "hover:border-[#FF0000]/50 hover:bg-[#FF0000]/10 hover:shadow-[0_10px_20px_-10px_rgba(255,0,0,0.4)]",
+                               hoverText: "group-hover:text-[#FF0000]"
+                             },
+                           ].map((social, idx) => {
+                             const Icon = social.icon;
+                             return (
+                               <a
+                                 key={idx}
+                                 href={social.href}
+                                 target="_blank"
+                                 rel="noopener noreferrer"
+                                 aria-label={social.name}
+                                 className={`group relative w-12 h-12 rounded-full bg-[#0a0a0a] border border-white/10 flex items-center justify-center transition-all duration-300 ease-out hover:-translate-y-1 ${social.hoverBg}`}
+                               >
+                                 <Icon className={`w-5 h-5 text-zinc-500 transition-colors duration-300 ${social.hoverText}`} />
+                               </a>
+                             );
+                           })}
+                         </div>
+                       </motion.div>
               </div>
             </motion.div>
 
@@ -602,16 +660,7 @@ export default function FillingStationPage() {
           </div>
         </div>
       </section>
+     
     </main>
   );
 }
-
-{/* <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6806.007795684005!2d74.22843443816046!3d31.46907894789628!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3919021a4b07b85d%3A0xd5513d51e1de1ac2!2sTotal%20-%20Areeb%20Areel%20Filling%20Station!5e0!3m2!1sen!2s!4v1782285725400!5m2!1sen!2s"
-  width="600"
-  height="450"
-  style="border:0;"
-  allowfullscreen=""
-  loading="lazy"
-  referrerpolicy="strict-origin-when-cross-origin"
-></iframe>; */}
