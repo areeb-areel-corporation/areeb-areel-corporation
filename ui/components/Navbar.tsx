@@ -29,11 +29,13 @@ interface NavLink {
 }
 
 const navLinks: NavLink[] = [
+  {name : "About Us" , href: "/about-us", icon: FileSpreadsheet},
+  { name: "Areeb Areel Crop", href: "/areeb-areel-corporation", icon: Building2 },
   { name: "Filling Station", href: "/filling-station", icon: Fuel },
   { name: "Naseeb Homes", href: "/naseeb-homes", icon: Home },
-  { name: "Architecture", href: "/architecture", icon: Building2 },
   {name : "Santosa Square" , href: "/santosa-square", icon: Building2},
   {name : "Blogs" , href: "/blogs", icon: FileSpreadsheet},
+
 
 ];
 
@@ -198,13 +200,13 @@ export default function Navbar() {
                       <Link
                         href={link.href}
                         onClick={() => setSidebarOpen(false)}
-                        className="  flex items-center justify-between py-4 border-b border-white/[0.03] group transition-colors duration-300"
+                        className="  flex items-center justify-between py-2 border-b border-white/[0.03] group transition-colors duration-300"
                       >
                         <div className="flex items-center gap-4">
                           {Icon && (
                             <Icon className="group-hover:text-yellow-200 w-5 h-5 text-brand-gold opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all" />
                           )}
-                          <span className="group-hover:text-yellow-200  text-xl font-bold uppercase tracking-widest text-brand-silver group-hover:text-white transition-colors">
+                          <span className="group-hover:text-yellow-200  text-md font-bold uppercase tracking-widest text-brand-silver group-hover:text-white transition-colors">
                             {link.name}
                           </span>
                         </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Globe, Building2, Shield, Zap, Cpu, Landmark, Briefcase, Hexagon } from 'lucide-react';
 
 const partners = [
@@ -40,17 +40,17 @@ export default function StrategicAlliances() {
     return () => container.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  const headerVariants = {
+  const headerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
   };
 
-  const gridVariants = {
+  const gridVariants: Variants = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
 
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
     show: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
   };
@@ -76,7 +76,7 @@ export default function StrategicAlliances() {
         
         {/* --- HEADER --- */}
         <motion.div 
-          variants={headerVariants as any}
+          variants={headerVariants}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
@@ -113,50 +113,49 @@ export default function StrategicAlliances() {
             return (
               <motion.div
                 key={partner.id}
-                variants={cardVariants as any}
-                // Attach ref to each card for the mouse tracking engine
+                variants={cardVariants}
                 ref={(el) => { cardsRef.current[index] = el; }}
-                className="group relative overflow-hidden rounded-2xl bg-[#111] border border-white/5 hover:border-[#D4AF37] transition-all duration-300 md:hover:-translate-y-1 cursor-default"
+                // FIX: Removed native CSS hover border, used p-[1px] and bg-white/5 as the default border
+                className="group relative rounded-2xl bg-white/5 p-[1px] transition-transform duration-300 md:hover:-translate-y-1 cursor-default"
               >
                 {/* 1. THE BORDER GLOW (Spotlight Layer)
-                  This creates the golden border that follows the mouse 
+                  This creates the golden border that strictly follows the mouse 
                 */}
                 <div 
-                  className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition duration-300 group-hover:opacity-100"
+                  className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-2xl"
                   style={{
-                    background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.4), transparent 40%)`
+                    background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)`
                   }}
                 />
 
-                {/* 2. THE INNER CONTENT GLOW
-                  This creates the subtle golden wash inside the card under the mouse
-                */}
-                <div 
-                  className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 z-0"
-                  style={{
-                    background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.08), transparent 40%)`
-                  }}
-                />
-
-                {/* 3. THE ACTUAL CONTENT 
-                  The margin (m-[1px]) allows the border glow to shine through the edges
-                */}
-                <div className="relative h-full bg-[#111] m-[1px] rounded-[15px] p-6 md:p-8 flex flex-col items-center justify-center text-center z-10 transition-colors duration-500 hover:bg-transparent">
+                {/* 3. THE ACTUAL CONTENT (Masks the center, leaving only the 1px spotlight border) */}
+                <div className="relative h-full w-full bg-[#111] rounded-[15px] p-6 md:p-8 flex flex-col items-center justify-center text-center z-10 overflow-hidden">
                   
-                  {/* Partner Icon */}
-                  <div className="w-16 h-16 rounded-full bg-[#0a0a0a] border border-white/5 flex items-center justify-center mb-6 shadow-xl transition-all duration-500 group-hover:border-[#D4AF37]/30 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]">
-                    <Icon className="w-8 h-8 text-zinc-500 transition-colors duration-500 group-hover:text-[#D4AF37]" />
+                  {/* 2. THE INNER CONTENT GLOW (Subtle golden wash inside the card) */}
+                  <div 
+                    className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 z-0"
+                    style={{
+                      background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.08), transparent 40%)`
+                    }}
+                  />
+
+                  {/* Content Wrappers (Ensures content stays above the inner glow) */}
+                  <div className="relative z-10 flex flex-col items-center">
+                    {/* Partner Icon */}
+                    <div className="w-16 h-16 rounded-full bg-[#0a0a0a] border border-white/5 flex items-center justify-center mb-6 shadow-xl transition-all duration-500 group-hover:border-[#D4AF37]/30 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]">
+                      <Icon className="w-8 h-8 text-zinc-500 transition-colors duration-500 group-hover:text-[#D4AF37]" />
+                    </div>
+
+                    {/* Partner Details */}
+                    <h3 className="text-white font-bold text-lg tracking-wide mb-2 transition-colors duration-500 group-hover:text-[#D4AF37]">
+                      {partner.name}
+                    </h3>
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 transition-colors duration-500 group-hover:text-zinc-400">
+                      {partner.category}
+                    </span>
                   </div>
 
-                  {/* Partner Details */}
-                  <h3 className="text-white font-bold text-lg tracking-wide mb-2 transition-colors duration-500 group-hover:text-[#D4AF37]">
-                    {partner.name}
-                  </h3>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-zinc-600 transition-colors duration-500 group-hover:text-zinc-400">
-                    {partner.category}
-                  </span>
                 </div>
-
               </motion.div>
             );
           })}
