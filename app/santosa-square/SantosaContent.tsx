@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
 import Link from 'next/link';
@@ -40,6 +40,27 @@ const galleryImages: string[] = [
 ];
 
 export default function SentosaSquarePage() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      cardsRef.current.forEach((card) => {
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
   // State for sliders
   const [heroIndex, setHeroIndex] = useState<number>(0);
   const [activeGalleryImage, setActiveGalleryImage] = useState<number>(0);
@@ -297,24 +318,54 @@ export default function SentosaSquarePage() {
             </p>
           </motion.div>
 
-          <motion.div variants={staggerContainer} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-50px" }} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+         {/* Add ref={containerRef} to the parent grid div if it doesn't have it! */}
+          <motion.div 
+            ref={containerRef} 
+            variants={staggerContainer} 
+            initial="hidden" 
+            whileInView="show" 
+            viewport={{ once: true, margin: "-50px" }} 
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
             {amenities.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <motion.div 
                   key={idx} 
                   variants={slideInUp}
-                  className="group relative bg-[#111111]/60 border border-white/5 rounded-2xl p-8 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 hover:bg-[#151515] hover:border-[#D4AF37] hover:shadow-[0_20px_50px_-15px_rgba(212,175,55,0.15)] flex flex-col"
+                  // Attach the ref so the mouse tracker can find this specific card
+                  ref={(el) => { cardsRef.current[idx] = el; }}
+                  className="group relative rounded-2xl bg-white/5 p-[1px] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 cursor-default"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 transition-all duration-500 group-hover:border-[#D4AF37]/50 group-hover:bg-[#D4AF37]/10 group-hover:scale-110">
-                    <Icon className="w-7 h-7 text-zinc-400 transition-colors duration-500 group-hover:text-[#D4AF37]" />
+                  {/* 1. THE BORDER GLOW (Spotlight Layer) */}
+                  <div 
+                    className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-2xl"
+                    style={{ background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
+                  />
+
+                  {/* 2. THE ACTUAL CONTENT MASK (Leaves 1px gap for the border to shine through) */}
+                  <div className="relative h-full w-full bg-[#111111]/90 rounded-[15px] p-8 flex flex-col z-10 overflow-hidden">
+                    
+                    {/* Inner subtle glow washing over the card background */}
+                    <div 
+                      className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 z-0"
+                      style={{ background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.05), transparent 40%)` }}
+                    />
+
+                    {/* Content wrapper keeping elements above the inner glow */}
+                    <div className="relative z-10">
+                      <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 transition-all duration-500 group-hover:border-[#D4AF37]/50 group-hover:bg-[#D4AF37]/10 group-hover:scale-110 shadow-lg group-hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]">
+                        <Icon className="w-7 h-7 text-zinc-400 transition-colors duration-500 group-hover:text-[#D4AF37]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-white mb-3 transition-colors duration-500 group-hover:text-[#D4AF37]">
+                        {item.title}
+                      </h3>
+                      <p className="text-zinc-500 text-sm leading-relaxed transition-colors duration-500 group-hover:text-zinc-300">
+                        {item.desc}
+                      </p>
+                    </div>
+
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-3 transition-colors duration-500 group-hover:text-[#D4AF37]">
-                    {item.title}
-                  </h3>
-                  <p className="text-zinc-500 text-sm leading-relaxed transition-colors duration-500 group-hover:text-zinc-300">
-                    {item.desc}
-                  </p>
                 </motion.div>
               );
             })}
