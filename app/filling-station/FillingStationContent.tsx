@@ -12,7 +12,7 @@ import {
   TrendingDown,
   Navigation,
 } from "lucide-react";
-import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter, FaYoutube } from "react-icons/fa6";
+import { FaFacebook, FaInstagram, FaLinkedin, FaYoutube } from "react-icons/fa6";
 
 // --- DATA ARRAYS ---
 // 5 Images for the Hero Slider
@@ -36,23 +36,18 @@ const sectionData = {
   mart: [
     "/images/mart.jpg",
     "/images/mart1.jpeg",
-    "/images/mart.png",
-    "/images/mart1.jpeg",
-    "/images/mart.jpg",
+    "/images/mart2.jpeg",
+   
   ],
   subway: [
-    "/images/subway.png",
-    "/images/subway-2.png",
-    "/images/subway-3.png",
-    "/images/subway-4.png",
-    "/images/subway-5.png",
+    "/images/subway.jpeg",
+    "/images/subway-2.jpeg",
   ],
   tyre: [
-    "/images/tyre-shop.png",
-    "/images/tyre-2.png",
-    "/images/tyre-3.png",
-    "/images/tyre-4.png",
-    "/images/tyre-5.png",
+    "/images/tyre-shop.jpg",
+    "/images/tyre-shop-1.jpeg",
+    "/images/tyre-shop-2.jpeg",
+    "/images/tyre-shop-3.jpeg",
   ],
 };
 
@@ -242,7 +237,7 @@ export default function FillingStationPage() {
             className="text-brand-silver/90 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-medium"
           >
             Your trusted travel hub. 100% pure fuel, express retail, fresh
-            dining, and premium vehicle service—all in one secure 24/7 location.
+            dining, and premium vehicle service all in one secure 24/7 location.
           </motion.p>
         </div>
       </section>
