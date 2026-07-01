@@ -1,15 +1,35 @@
 'use client';
 
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import Image from 'next/image';
-import { useRef } from 'react';
 import { FaLinkedin } from 'react-icons/fa';
 import { Ruler, Quote } from 'lucide-react';
 import { teamData } from '@/data/data';
 
-
 export default function CorporateTeam() {
-  const containerRef = useRef<HTMLElement>(null);
+  const containerRef = useRef<HTMLTextAreaElement | any>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Mouse tracking engine utilizing the existing containerRef
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      cardsRef.current.forEach((card) => {
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   // Background glow parallax
   const { scrollYProgress } = useScroll({
@@ -18,12 +38,12 @@ export default function CorporateTeam() {
   });
   const glowY = useTransform(scrollYProgress, [0, 1], [-100, 150]);
 
-  const fadeUpContainer = {
+  const fadeUpContainer: Variants = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.15, delayChildren: 0.3 } }
   };
 
-  const fadeUpItem = {
+  const fadeUpItem: Variants = {
     hidden: { opacity: 0, y: 30 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
   };
@@ -57,6 +77,7 @@ export default function CorporateTeam() {
           </p>
         </div>
 
+        {/* --- LEADERSHIP / CEO CARDS --- */}
         <motion.div 
           variants={fadeUpContainer}
           initial="hidden"
@@ -64,63 +85,81 @@ export default function CorporateTeam() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-24 lg:mb-32"
         >
-          {teamData.ceos.map((ceo) => (
+          {teamData.ceos.map((ceo, idx) => (
             <motion.div
               key={ceo.id}
-              variants={fadeUpItem as any}
-              className="bg-[#111111]/80 backdrop-blur-xl border border-white/5 p-8 lg:p-10 rounded-[2rem] shadow-2xl flex flex-col md:flex-row items-center md:items-start gap-8 hover:border-[#D4AF37]/30 transition-colors duration-500 group"
+              variants={fadeUpItem}
+              ref={(el) => { cardsRef.current[idx] = el; }}
+              className="group relative rounded-[2rem] bg-white/5 p-[1px] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl cursor-default"
             >
-              {/* Left: Small, Round Image with floating animation */}
-              <motion.div 
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-white/10 shrink-0 shadow-[0_0_30px_rgba(0,0,0,0.5)] z-10 group-hover:border-[#D4AF37] transition-colors duration-500"
-              >
-                <Image
-                  src={ceo.src}
-                  alt={ceo.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+              {/* Layer 1: Tracking Spotlight Border Gradient */}
+              <div 
+                className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-[2rem]"
+                style={{ background: `radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
+              />
+
+              {/* Layer 2: Main Content Container (Masks layout edges to a 1px path) */}
+              <div className="relative h-full w-full bg-[#111111]/95 backdrop-blur-xl rounded-[31px] p-8 lg:p-10 flex flex-col md:flex-row items-center md:items-start gap-8 z-10 overflow-hidden">
+                
+                {/* Layer 3: Inside Card Subtle Radial Ambient Wash */}
+                <div 
+                  className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 z-0"
+                  style={{ background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.04), transparent 40%)` }}
                 />
-              </motion.div>
 
-              {/* Right: Details, Message, Social */}
-              <div className="flex-1 space-y-5 text-center md:text-left relative">
-                <div>
-                  <p className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.2em] mb-2">
-                    {ceo.role}
-                  </p>
-                  <h3 className="text-3xl lg:text-4xl font-black text-white tracking-tight">
-                    {ceo.name}
-                  </h3>
+                {/* Left: Small, Round Image with floating animation */}
+                <motion.div 
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative w-28 h-28 rounded-full overflow-hidden border-2 border-white/10 shrink-0 shadow-[0_20px_40px_rgba(0,0,0,0.6)] z-10 group-hover:border-[#D4AF37] transition-colors duration-500"
+                >
+                  <Image
+                    src={ceo.src}
+                    alt={ceo.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </motion.div>
+
+                {/* Right: Details, Message, Social */}
+                <div className="flex-1 space-y-5 text-center md:text-left relative z-10">
+                  <div>
+                    <p className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.2em] mb-2">
+                      {ceo.role}
+                    </p>
+                    <h3 className="text-3xl lg:text-4xl font-black text-white tracking-tight group-hover:text-[#D4AF37] transition-colors duration-500">
+                      {ceo.name}
+                    </h3>
+                  </div>
+
+                  <div className="relative pt-5 mt-5 border-t border-white/5 group-hover:border-[#D4AF37]/20 transition-colors duration-500">
+                    <Quote className="absolute top-4 left-0 md:-left-2 w-7 transition-transform duration-500 h-7 group-hover:text-[#D4AF37] text-[#D4AF37]/10" />
+                    <p className="text-zinc-300 text-sm lg:text-base leading-relaxed pl-8 md:pl-6 italic font-medium">
+                      "{ceo.message}"
+                    </p>
+                  </div>
+
+                  <div className="flex justify-center md:justify-end pt-3">
+                    <a 
+                      href={ceo.linkedin} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-[#D4AF37] transition-colors"
+                    >
+                      Connect on LinkedIn
+                      <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center bg-black/50 text-zinc-400 group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-300 shadow-md">
+                        <FaLinkedin className="w-4 h-4" />
+                      </div>
+                    </a>
+                  </div>
                 </div>
 
-                <div className="relative pt-5 mt-5 border-t border-white/5 group-hover:border-[#D4AF37]/20 transition-colors duration-500">
-                  <Quote className="absolute top-4 left-0 md:-left-2 w-7 transition-transform duration-500   h-7 group-hover:text-[#D4AF37] text-[#D4AF37]/10" />
-                  <p className="text-brand-silver/80 text-sm lg:text-base leading-relaxed pl-8 md:pl-6 italic font-medium">
-                    "{ceo.message}"
-                  </p>
-                </div>
-
-                <div className="flex justify-center md:justify-end pt-3">
-                  <a 
-                    href={ceo.linkedin} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-brand-silver/50 hover:text-[#D4AF37] transition-colors"
-                  >
-                    Connect on LinkedIn
-                    <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center bg-black/50 text-brand-silver/60 group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-300">
-                      <FaLinkedin className="w-4 h-4" />
-                    </div>
-                  </a>
-                </div>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
-   
+        {/* --- EXECUTIVE SECTION --- */}
         <motion.div
           variants={fadeUpContainer}
           initial="hidden"
@@ -130,20 +169,19 @@ export default function CorporateTeam() {
         >
           <div className="flex items-center gap-4 mb-16">
             <Ruler className="w-5 h-5 text-[#D4AF37]/50" />
-            <h4 className="text-brand-silver/40 text-sm font-bold uppercase tracking-[0.3em]">
+            <h4 className="text-zinc-500 text-sm font-bold uppercase tracking-[0.3em]">
               Executive Operations Directorate
             </h4>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
             {teamData.executives.map((member) => (
-              <motion.div key={member.id} variants={fadeUpItem as any} className="flex flex-col group h-32 justify-between border-l border-white/10 pl-6 cursor-pointer hover:border-[#D4AF37]/50 transition-colors duration-500">
+              <motion.div key={member.id} variants={fadeUpItem} className="flex flex-col group h-32 justify-between border-l border-white/10 pl-6 cursor-pointer hover:border-[#D4AF37]/50 transition-colors duration-500">
                 <div className="space-y-2">
-                  <p className="text-brand-silver/50 text-xs font-semibold uppercase tracking-[0.2em]">
+                  <p className="text-zinc-500 text-xs font-semibold uppercase tracking-[0.2em]">
                     {member.role}
                   </p>
                   
-                  {/* Executive Name with Rolling Text Hover effect */}
                   <h5 className="text-xl md:text-2xl font-bold tracking-tight text-white group-hover:text-[#D4AF37] transition-colors duration-300">
                     <span className="relative overflow-hidden inline-block">
                       <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">

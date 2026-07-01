@@ -1,22 +1,45 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState, useEffect, useRef } from 'react';
+import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRight, Clock, BookOpen } from 'lucide-react';
 import { blogDatabase } from '@/data/data';
 
-
 export default function BlogsPage() {
   const featuredBlog = blogDatabase[0];
   const remainingBlogs = blogDatabase.slice(1);
 
-  const containerVariants = {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Mouse tracking engine for grid items
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      cardsRef.current.forEach((card) => {
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: 0.15 } },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 30 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
   };
@@ -40,7 +63,7 @@ export default function BlogsPage() {
           </motion.h1>
         </div>
 
-        {/* --- FEATURED ARTICLE (Spans full width on large screens) --- */}
+        {/* --- FEATURED ARTICLE --- */}
         <motion.div 
           initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="mb-8"
@@ -68,28 +91,54 @@ export default function BlogsPage() {
         </motion.div>
 
         {/* --- GRID ARTICLES --- */}
-        <motion.div variants={containerVariants} initial="hidden" animate="show" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {remainingBlogs.map((blog) => (
-            <motion.div key={blog.id} variants={itemVariants as any}>
-              <Link href={`/blogs/${blog.id}`} className="group flex flex-col h-full bg-[#111111]/40 border border-white/5 rounded-[24px] p-5 transition-all duration-500 hover:-translate-y-2 hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_20px_50px_-15px_rgba(212,175,55,0.15)] overflow-hidden">
-                
-                <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-[#1a1a1a]">
+        <motion.div 
+          ref={containerRef}
+          variants={containerVariants} 
+          initial="hidden" 
+          animate="show" 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {remainingBlogs.map((blog, idx) => (
+            <motion.div 
+              key={blog.id} 
+              variants={itemVariants}
+              ref={(el) => { cardsRef.current[idx] = el; }}
+              className="group relative flex flex-col rounded-[24px] bg-white/5 p-[1px] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2"
+            >
+              {/* Layer 1: Tracking Spotlight Border */}
+              <div 
+                className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-[24px]"
+                style={{ background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
+              />
+
+              {/* Layer 2: Main Content Container */}
+              <Link 
+                href={`/blogs/${blog.id}`} 
+                className="relative flex flex-col h-full w-full bg-[#111111]/95 rounded-[23px] p-5 z-10 overflow-hidden"
+              >
+                {/* Layer 3: Subtle Interior Wash */}
+                <div 
+                  className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 z-0"
+                  style={{ background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.04), transparent 40%)` }}
+                />
+
+                <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden mb-6 bg-[#1a1a1a] z-10">
                   <Image src={blog.src} alt={blog.title} fill className="object-cover filter grayscale opacity-70 transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100" />
                   <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-md transition-colors duration-500 group-hover:border-[#D4AF37]/40">
                     <span className="text-[10px] font-bold uppercase tracking-widest text-white transition-colors duration-500 group-hover:text-[#D4AF37]">{blog.tag}</span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 text-zinc-500 text-[11px] font-bold uppercase tracking-widest mb-4 group-hover:text-zinc-400">
+                <div className="relative flex items-center gap-4 text-zinc-500 text-[11px] font-bold uppercase tracking-widest mb-4 group-hover:text-zinc-400 z-10">
                   <span className="flex items-center gap-1.5"><Clock className="w-3.5 h-3.5" />{blog.date}</span>
                   <span className="w-1 h-1 rounded-full bg-zinc-700" />
                   <span className="flex items-center gap-1.5"><BookOpen className="w-3.5 h-3.5" />{blog.readTime}</span>
                 </div>
 
-                <h3 className="text-xl font-bold leading-snug mb-3 text-white transition-colors duration-500 group-hover:text-[#D4AF37] line-clamp-2">{blog.title}</h3>
-                <p className="text-zinc-400 text-sm leading-relaxed mb-8 flex-grow line-clamp-3">{blog.excerpt}</p>
+                <h3 className="relative text-xl font-bold leading-snug mb-3 text-white transition-colors duration-500 group-hover:text-[#D4AF37] line-clamp-2 z-10">{blog.title}</h3>
+                <p className="relative text-zinc-400 text-sm leading-relaxed mb-8 flex-grow line-clamp-3 z-10">{blog.excerpt}</p>
 
-                <div className="mt-auto w-full flex items-center justify-between px-6 py-4 rounded-xl border border-white/5 bg-[#181818] transition-all duration-500 group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37]">
+                <div className="relative mt-auto w-full flex items-center justify-between px-6 py-4 rounded-xl border border-white/5 bg-[#181818] transition-all duration-500 group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] z-10">
                   <span className="text-xs font-bold uppercase tracking-widest text-white group-hover:text-black transition-colors duration-500">Read Article</span>
                   <ArrowUpRight className="w-4 h-4 text-white group-hover:text-black transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                 </div>
