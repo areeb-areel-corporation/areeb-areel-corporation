@@ -101,11 +101,7 @@ export default function CorporateTeam() {
               {/* Layer 2: Main Content Container (Masks layout edges to a 1px path) */}
               <div className="relative h-full w-full bg-[#111111]/95 backdrop-blur-xl rounded-[31px] p-8 lg:p-10 flex flex-col md:flex-row items-center md:items-start gap-8 z-10 overflow-hidden">
                 
-                {/* Layer 3: Inside Card Subtle Radial Ambient Wash */}
-                <div 
-                  className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 z-0"
-                  style={{ background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.04), transparent 40%)` }}
-                />
+              
 
                 {/* Left: Small, Round Image with floating animation */}
                 <motion.div 

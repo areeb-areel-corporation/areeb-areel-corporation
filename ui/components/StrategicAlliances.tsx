@@ -133,7 +133,7 @@ export default function StrategicAlliances() {
                   
                   {/* 2. THE INNER CONTENT GLOW (Subtle golden wash inside the card) */}
                   <div 
-                    className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 z-0"
+                    className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 z-0"
                     style={{
                       background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.08), transparent 40%)`
                     }}
