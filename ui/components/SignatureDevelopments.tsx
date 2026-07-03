@@ -29,7 +29,7 @@ const developments = [
     title: "Architecture & Construction",
     category: "Design & Build",
     src: "/images/construction.png", // Using the construction image we used on the architecture page
-    url: "/architecture",
+    url: "/areeb-areel-corporation",
     description:
       "We turn your ideas into reality. Our team handles everything from 3D designs and floor plans to complete building construction.",
   },

@@ -4,6 +4,7 @@ import Navbar from "@/ui/components/Navbar";
 import CorporateFooter from "@/ui/components/CorporateFooter";
 import CustomCursor from "@/ui/components/CustomCursor";
 import ScrollToTopOnRouteChange from "@/ui/components/ScrollToTopOnRouteChange";
+import AIChatModal from "@/ui/components/AIChatModal";
 
 export const metadata: Metadata = {
   // metadataBase is required for resolving relative image URLs in OpenGraph
@@ -96,6 +97,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <CorporateFooter />
+        <AIChatModal />
 
         {/* The script MUST be inside the body tag */}
         <script

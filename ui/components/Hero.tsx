@@ -109,7 +109,7 @@ export default function Hero(): ReactElement {
         <motion.div className="flex flex-col sm:flex-row gap-4 pt-4">
           {/* --- LEFT BUTTON: Explore Sectors --- */}
           <Link
-            href="#about-corporation"
+            href="/about-us"
             onClick={() => scrollToSection("corporate-divisions")}
             onMouseEnter={() => setHoveredButton("left")}
             onMouseLeave={() => setHoveredButton(null)}

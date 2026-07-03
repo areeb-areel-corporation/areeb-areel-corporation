@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { Mail, MapPin,  ArrowUp } from 'lucide-react';
-import { FaLinkedin, FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa';
 import Link from 'next/link';
 import Image from 'next/image';
 import { socialLinks } from '@/data/data';
@@ -17,7 +16,7 @@ const coreDivisions = [
 ];
 
 const corporateLinks = [
-  { name: 'About The Legacy', href: '/#about-corporation' },
+  { name: 'About The Legacy', href: '/about-us' },
   { name: 'Dubai Consulting', href: '/contact' },
   { name: 'Enquiries', href: '/contact' },
   { name: 'Blogs', href: '/blogs' },
