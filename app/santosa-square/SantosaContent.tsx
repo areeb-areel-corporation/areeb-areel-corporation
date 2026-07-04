@@ -15,8 +15,11 @@ import {
   Droplets, 
   PhoneCall,
   MapPin,
-  Globe
+  Globe,
+ 
 } from 'lucide-react';
+import { FaFacebook, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa';
+
 
 // --- AMENITIES DATA ---
 const amenities = [
@@ -30,7 +33,7 @@ const amenities = [
   { icon: Droplets, title: 'Public Washrooms', desc: 'Highly maintained, hygienic, and accessible restroom facilities.' },
 ];
 
-// --- GALLERY IMAGES ---
+// --- GALLERY IMAGES (For Section 2) ---
 const galleryImages: string[] = [
   '/images/sentosa-1.jpg',
   '/images/sentosa-2.jpg', 
@@ -43,6 +46,7 @@ export default function SentosaSquarePage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
+  // Mouse tracking for Amenity Card Borders
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -61,32 +65,19 @@ export default function SentosaSquarePage() {
     container.addEventListener('mousemove', handleMouseMove);
     return () => container.removeEventListener('mousemove', handleMouseMove);
   }, []);
-  // State for sliders
-  const [heroIndex, setHeroIndex] = useState<number>(0);
+
+  // State for gallery slider & buttons
   const [activeGalleryImage, setActiveGalleryImage] = useState<number>(0);
-  
-  // State for the synchronized shutter buttons
   const [hoveredButton, setHoveredButton] = useState<'left' | 'right' | null>(null);
 
-  // Auto-Slider Logic (Hero & Gallery)
+  // Gallery Auto-Slider Logic (Hero no longer needs this due to video)
   useEffect(() => {
-    // Hero Slider Timer
-    const heroTimer = setInterval(() => {
-      setHeroIndex((prev) => (prev + 1) % galleryImages.length);
-    }, 4000);
-
-    // Gallery Slider Timer
     const galleryTimer = setInterval(() => {
       setActiveGalleryImage((prev) => (prev + 1) % galleryImages.length);
     }, 3500);
-
-    return () => {
-      clearInterval(heroTimer);
-      clearInterval(galleryTimer);
-    };
+    return () => clearInterval(galleryTimer);
   }, []);
 
-  // Smooth scroll helper for hash links
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id.replace('#', ''));
     if (element) {
@@ -94,7 +85,6 @@ export default function SentosaSquarePage() {
     }
   };
 
-  // --- STRICT TYPESCRIPT ANIMATION VARIANTS ---
   const slideInUp: Variants = {
     hidden: { opacity: 0, y: 40 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
@@ -108,53 +98,42 @@ export default function SentosaSquarePage() {
   return (
     <main className="min-h-screen bg-[#050505] text-white selection:bg-[#D4AF37] selection:text-black overflow-hidden pb-20">
       
-      {/* --- 1. CINEMATIC AUTO-SLIDER HERO SECTION --- */}
-      {/* FIX: Changed fixed height to a flexible min-h-screen and added dynamic padding (py-24) */}
-      <section className="relative w-full min-h-[80vh] lg:min-h-[700px] flex items-center justify-center overflow-hidden py-24 md:py-32">
+      {/* --- 1. CINEMATIC 3D VIDEO HERO SECTION --- */}
+      <section className="relative w-full min-h-[85vh] lg:min-h-[800px] flex items-center justify-center overflow-hidden py-24 md:py-32">
         
-        {/* Darkened Auto-Sliding Background Layer */}
+        {/* 3D Video Background */}
         <div className="absolute inset-0 z-0 bg-[#050505] overflow-hidden">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={heroIndex}
-              initial={{ opacity: 0, scale: 1.05 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1.5 }}
-              className="absolute inset-0"
-            >
-              <Image 
-                src={galleryImages[heroIndex]} 
-                alt="Sentosa Square Facade"
-                fill
-                priority
-                className="object-cover opacity-50 grayscale transition-all duration-[2000ms]"
-                onError={(e) => {
-                  e.currentTarget.src = "/images/sentosa-1.jpg";
-                }}
-              />
-            </motion.div>
-          </AnimatePresence>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/80 via-[#050505]/40 to-[#050505] z-10" />
+          <video 
+            autoPlay 
+            loop 
+            muted 
+            playsInline // Critical for iOS auto-play
+            className="absolute inset-0 w-full h-full object-cover opacity-60"
+          >
+            {/* UPDATE THIS PATH TO YOUR ACTUAL VIDEO FILE */}
+            <source src="/videos/sentosa-3d.mp4" type="video/mp4" />
+          </video>
+          
+          {/* Gradient Overlays to make text pop */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/90 via-[#050505]/40 to-[#050505] z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent z-10" />
         </div>
 
-        {/* FIX: Removed mt-20. We now let the parent's 'items-center' handle perfect vertical centering without shoving it downward. */}
-        <div className="relative z-20 text-center px-6 max-w-4xl mx-auto w-full flex flex-col items-center justify-center">
+        <div className="relative z-20 text-center px-6 max-w-4xl mx-auto w-full flex flex-col items-center justify-center mt-10">
           
-          {/* Logo & Subtitle */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8 }} 
             className="flex flex-col items-center justify-center gap-4 mb-6"
           >
-            <div className="w-[88px] h-[88px] md:w-[140px] md:h-[140px] relative mb-2">
+            <div className="w-[90px] h-[90px] md:w-[130px] md:h-[130px] relative mb-2">
               <Image 
                 src="/images/Asset 1.png" 
                 alt="Areeb Areel Corp Logo" 
                 fill 
                 priority
-                className="object-contain filter drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]" 
+                className="object-contain filter drop-shadow-[0_0_20px_rgba(212,175,55,0.4)]" 
               />
             </div>
             <div className="flex items-center gap-3 w-full justify-center">
@@ -166,12 +145,11 @@ export default function SentosaSquarePage() {
             </div>
           </motion.div>
           
-          {/* Main Title */}
           <motion.h1 
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8, delay: 0.1 }} 
-            className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.1] mb-6 text-white"
+            className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1] mb-6 text-white drop-shadow-2xl"
           >
             SENTOSA <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
@@ -183,16 +161,13 @@ export default function SentosaSquarePage() {
             initial={{ opacity: 0, y: 20 }} 
             animate={{ opacity: 1, y: 0 }} 
             transition={{ duration: 0.8, delay: 0.2 }} 
-            className="text-zinc-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-medium px-4"
+            className="text-zinc-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-medium px-4 drop-shadow-md"
           >
             The Gateway to Tomorrow's Business Success. <br className="hidden md:block" />
             <span className="font-bold text-white">Built for Business. Designed for Growth.</span>
           </motion.p>
 
-          {/* SYNCED SHUTTER BUTTONS */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
-            
-            {/* --- LEFT BUTTON: Explore Amenities --- */}
             <Link
               href="#amenities"
               onClick={() => scrollToSection("amenities")}
@@ -201,14 +176,12 @@ export default function SentosaSquarePage() {
               className={`cursor-pointer w-full sm:w-auto relative overflow-hidden font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-xs sm:text-sm backdrop-blur-sm flex items-center justify-center gap-2 border ${
                 hoveredButton === "right"
                   ? "border-white/20 bg-white/5 shadow-none"
-                  : "border-[#D4AF37] bg-transparent shadow-lg shadow-[#D4AF37]/10"
+                  : "border-[#D4AF37] bg-transparent shadow-lg shadow-[#D4AF37]/20"
               }`}
             >
               <div
                 className={`absolute inset-0 bg-[#D4AF37] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
-                  hoveredButton === "right"
-                    ? "-translate-x-full"
-                    : "translate-x-0"
+                  hoveredButton === "right" ? "-translate-x-full" : "translate-x-0"
                 }`}
               />
               <span
@@ -220,19 +193,16 @@ export default function SentosaSquarePage() {
               </span>
             </Link>
 
-            {/* --- RIGHT BUTTON: Book Your Space --- */}
             <Link
               href="#contact"
               onClick={() => scrollToSection("contact")}
               onMouseEnter={() => setHoveredButton("right")}
               onMouseLeave={() => setHoveredButton(null)}
-              className="cursor-pointer w-full sm:w-auto relative overflow-hidden group border border-white/20 bg-white/5 font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-xs sm:text-sm backdrop-blur-sm flex items-center justify-center"
+              className="cursor-pointer w-full sm:w-auto relative overflow-hidden group border border-white/20 bg-white/10 font-bold px-8 py-4 rounded-md tracking-wider uppercase transition-all duration-500 text-xs sm:text-sm backdrop-blur-md flex items-center justify-center"
             >
               <div
                 className={`absolute inset-0 bg-[#D4AF37] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] z-0 ${
-                  hoveredButton === "right"
-                    ? "translate-x-0"
-                    : "-translate-x-full"
+                  hoveredButton === "right" ? "translate-x-0" : "-translate-x-full"
                 }`}
               />
               <span
@@ -248,7 +218,7 @@ export default function SentosaSquarePage() {
         </div>
       </section>
 
-      {/* --- 2. VISION & ARCHITECTURE --- */}
+      {/* --- 2. VISION & ARCHITECTURE (Kept Gallery Slider Here) --- */}
       <section className="py-24 lg:py-32 max-w-[1600px] mx-auto px-6 md:px-10 relative">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[150px] rounded-full pointer-events-none z-0" />
         
@@ -318,7 +288,6 @@ export default function SentosaSquarePage() {
             </p>
           </motion.div>
 
-         {/* Add ref={containerRef} to the parent grid div if it doesn't have it! */}
           <motion.div 
             ref={containerRef} 
             variants={staggerContainer} 
@@ -333,26 +302,18 @@ export default function SentosaSquarePage() {
                 <motion.div 
                   key={idx} 
                   variants={slideInUp}
-                  // Attach the ref so the mouse tracker can find this specific card
                   ref={(el) => { cardsRef.current[idx] = el; }}
                   className="group relative rounded-2xl bg-white/5 p-[1px] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-2 cursor-default"
                 >
-                  {/* 1. THE BORDER GLOW (Spotlight Layer) */}
+                  {/* 1. THE BORDER GLOW (Spotlight Layer - Runs underneath) */}
                   <div 
                     className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-2xl"
                     style={{ background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
                   />
 
-                  {/* 2. THE ACTUAL CONTENT MASK (Leaves 1px gap for the border to shine through) */}
-                  <div className="relative h-full w-full bg-[#111111]/90 rounded-[15px] p-8 flex flex-col z-10 overflow-hidden">
+                  {/* 2. SOLID CONTENT MASK (Blocks the inner glow, only reveals the 1px border) */}
+                  <div className="relative h-full w-full bg-[#111111] rounded-[15px] p-8 flex flex-col z-10 overflow-hidden">
                     
-                    {/* Inner subtle glow washing over the card background */}
-                    <div 
-                      className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 z-0"
-                      style={{ background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.05), transparent 40%)` }}
-                    />
-
-                    {/* Content wrapper keeping elements above the inner glow */}
                     <div className="relative z-10">
                       <div className="w-14 h-14 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 transition-all duration-500 group-hover:border-[#D4AF37]/50 group-hover:bg-[#D4AF37]/10 group-hover:scale-110 shadow-lg group-hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]">
                         <Icon className="w-7 h-7 text-zinc-400 transition-colors duration-500 group-hover:text-[#D4AF37]" />
@@ -417,14 +378,33 @@ export default function SentosaSquarePage() {
               </div>
             </div>
 
-            <div className="mt-12 pt-8 border-t border-white/10 w-full max-w-3xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="mt-12 pt-8 border-t border-white/10 w-full max-w-3xl flex flex-col md:flex-row items-center justify-between gap-6">
+              
               <div className="flex items-center gap-3">
                 <Image src="/images/Asset 1.png" alt="Areeb Areel Corp Logo" width={30} height={30} className="object-contain opacity-50" />
                 <span className="text-zinc-500 text-xs font-bold uppercase tracking-widest">A Project of Areeb Areel Corp.</span>
               </div>
-              <a href="https://www.sentosasquare.pk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white hover:text-[#D4AF37] transition-colors font-bold tracking-wider">
+
+              {/* BRANDED SOCIAL MEDIA LINKS */}
+              <div className="flex items-center gap-3">
+                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] transition-all duration-300" aria-label="Facebook">
+                  <FaFacebook className="w-4 h-4" />
+                </a>
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:border-transparent transition-all duration-300" aria-label="Instagram">
+                  <FaInstagram className="w-4 h-4" />
+                </a>
+                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-[#FF0000] hover:border-[#FF0000] transition-all duration-300" aria-label="YouTube">
+                  <FaYoutube className="w-4 h-4" />
+                </a>
+                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all duration-300" aria-label="LinkedIn">
+                  <FaLinkedinIn className="w-4 h-4" />
+                </a>
+              </div>
+
+              <a href="https://www.sentosasquare.pk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white hover:text-[#D4AF37] transition-colors font-bold tracking-wider text-sm md:text-base">
                 <Globe className="w-5 h-5" /> www.sentosasquare.pk
               </a>
+
             </div>
 
           </div>

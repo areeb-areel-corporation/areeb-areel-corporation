@@ -8,7 +8,7 @@ import { Ruler, Quote } from 'lucide-react';
 import { teamData } from '@/data/data';
 
 export default function CorporateTeam() {
-  const containerRef = useRef<HTMLTextAreaElement | any>(null);
+  const containerRef = useRef<HTMLElement | any>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   // Mouse tracking engine utilizing the existing containerRef
@@ -90,19 +90,17 @@ export default function CorporateTeam() {
               key={ceo.id}
               variants={fadeUpItem}
               ref={(el) => { cardsRef.current[idx] = el; }}
-              className="group relative rounded-[2rem] bg-white/5 p-[1px] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] shadow-2xl cursor-default"
+              className="group relative rounded-[2rem] bg-white/5 p-[1px] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-default shadow-2xl"
             >
-              {/* Layer 1: Tracking Spotlight Border Gradient */}
+              {/* Layer 1: Tracking Spotlight Border Gradient (Sits under the main content) */}
               <div 
                 className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-[2rem]"
-                style={{ background: `radial-gradient(500px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
+                style={{ background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
               />
 
-              {/* Layer 2: Main Content Container (Masks layout edges to a 1px path) */}
-              <div className="relative h-full w-full bg-[#111111]/95 backdrop-blur-xl rounded-[31px] p-8 lg:p-10 flex flex-col md:flex-row items-center md:items-start gap-8 z-10 overflow-hidden">
+              {/* Layer 2: Main Content Container (SOLID #111111 background blocks the inner glow, leaving only the 1px border visible) */}
+              <div className="relative h-full w-full bg-[#111111] rounded-[31px] p-8 lg:p-10 flex flex-col md:flex-row items-center md:items-start gap-8 z-10 overflow-hidden">
                 
-              
-
                 {/* Left: Small, Round Image with floating animation */}
                 <motion.div 
                   animate={{ y: [0, -10, 0] }}
@@ -140,10 +138,10 @@ export default function CorporateTeam() {
                       href={ceo.linkedin} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="group inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-[#D4AF37] transition-colors"
+                      className="group/btn inline-flex items-center gap-3 text-xs font-bold uppercase tracking-widest text-zinc-500 hover:text-[#D4AF37] transition-colors"
                     >
                       Connect on LinkedIn
-                      <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center bg-black/50 text-zinc-400 group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-300 shadow-md">
+                      <div className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center bg-black/50 text-white group-hover/btn:border-[#D4AF37] group-hover:bg-[#D4AF37] group-hover:text-black transition-all duration-300 shadow-md">
                         <FaLinkedin className="w-4 h-4" />
                       </div>
                     </a>
