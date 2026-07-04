@@ -19,6 +19,7 @@ export default function StrategicAlliances() {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
+  // Mouse tracking for the premium border spotlight
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -30,7 +31,6 @@ export default function StrategicAlliances() {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        // Pass the mouse position into CSS variables for the gradient mask
         card.style.setProperty('--mouse-x', `${x}px`);
         card.style.setProperty('--mouse-y', `${y}px`);
       });
@@ -40,6 +40,7 @@ export default function StrategicAlliances() {
     return () => container.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
+  // --- SECTION ANIMATIONS ---
   const headerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
@@ -53,6 +54,54 @@ export default function StrategicAlliances() {
   const cardVariants: Variants = {
     hidden: { opacity: 0, scale: 0.95 },
     show: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+    hover: { y: -5, transition: { duration: 0.3, ease: "easeOut" } }
+  };
+
+  // --- THE COMBINED COMBAT ANIMATIONS ---
+
+  // 1. The Levitation Wrapper (Moves the whole icon group up and down continuously)
+  const wrapperVariants: Variants = {
+    hidden: { y: 0 },
+    show: { y: 0 },
+    hover: {
+      y: [0, -8, 0],
+      transition: { duration: 2, repeat: Infinity, ease: "easeInOut" }
+    }
+  };
+
+  // 2. The Expanding Radar Ring (Pulses continuously outward)
+  const rippleVariants: Variants = {
+    hidden: { scale: 0.8, opacity: 0 },
+    show: { scale: 0.8, opacity: 0 },
+    hover: {
+      scale: [1, 2.2],
+      opacity: [0.6, 0],
+      transition: { duration: 1.5, repeat: Infinity, ease: "easeOut" }
+    }
+  };
+
+  // 3. The Main Icon Background (Glows gold and slightly scales up)
+  const iconBgVariants: Variants = {
+    hidden: { scale: 1, borderColor: "rgba(255,255,255,0.05)", boxShadow: "0px 0px 0px rgba(212,175,55,0)" },
+    show: { scale: 1, borderColor: "rgba(255,255,255,0.05)", boxShadow: "0px 0px 0px rgba(212,175,55,0)" },
+    hover: { 
+      scale: 1.1, 
+      borderColor: "rgba(212,175,55,0.5)", 
+      boxShadow: "0px 0px 25px rgba(212,175,55,0.3)",
+      transition: { duration: 0.4 }
+    }
+  };
+
+  // 4. The Icon Itself (Snaps 360 degrees and turns gold)
+  const iconVariants: Variants = {
+    hidden: { rotate: 0, scale: 1, color: "#71717a" }, // text-zinc-500
+    show: { rotate: 0, scale: 1, color: "#71717a" },
+    hover: { 
+      rotate: [0, -25, 360], 
+      scale: [1, 0.8, 1.15], 
+      color: "#D4AF37",
+      transition: { duration: 0.7, ease: "easeInOut" }
+    }
   };
 
   return (
@@ -69,7 +118,6 @@ export default function StrategicAlliances() {
         }}
       />
       
-      {/* Subtle Central Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vh] bg-[#D4AF37]/5 blur-[150px] rounded-full pointer-events-none z-0" />
 
       <div className="max-w-[1600px] mx-auto px-6 md:px-10 relative z-10">
@@ -114,37 +162,45 @@ export default function StrategicAlliances() {
               <motion.div
                 key={partner.id}
                 variants={cardVariants}
+                whileHover="hover" // Broadcasts hover to ALL child elements inside this card
                 ref={(el) => { cardsRef.current[index] = el; }}
-                // FIX: Removed native CSS hover border, used p-[1px] and bg-white/5 as the default border
-                className="group relative rounded-2xl bg-white/5 p-[1px] transition-transform duration-300 md:hover:-translate-y-1 cursor-default"
+                className="group relative rounded-2xl bg-white/5 p-[1px] cursor-default"
               >
-                {/* 1. THE BORDER GLOW (Spotlight Layer)
-                  This creates the golden border that strictly follows the mouse 
-                */}
+                {/* 1. THE BORDER GLOW (Spotlight Layer that tracks the mouse) */}
                 <div 
                   className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-2xl"
-                  style={{
-                    background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)`
-                  }}
+                  style={{ background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
                 />
 
-                {/* 3. THE ACTUAL CONTENT (Masks the center, leaving only the 1px spotlight border) */}
+                {/* 2. THE CONTENT LAYER (Solid background masks the center, leaving only the 1px spotlight border) */}
                 <div className="relative h-full w-full bg-[#111] rounded-[15px] p-6 md:p-8 flex flex-col items-center justify-center text-center z-10 overflow-hidden">
                   
-                  {/* 2. THE INNER CONTENT GLOW (Subtle golden wash inside the card) */}
-                  <div 
-                    className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 z-0"
-                    style={{
-                      background: `radial-gradient(300px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 0.08), transparent 40%)`
-                    }}
-                  />
-
-                  {/* Content Wrappers (Ensures content stays above the inner glow) */}
                   <div className="relative z-10 flex flex-col items-center">
-                    {/* Partner Icon */}
-                    <div className="w-16 h-16 rounded-full bg-[#0a0a0a] border border-white/5 flex items-center justify-center mb-6 shadow-xl transition-all duration-500 group-hover:border-[#D4AF37]/30 group-hover:shadow-[0_0_20px_rgba(212,175,55,0.15)]">
-                      <Icon className="w-8 h-8 text-zinc-500 transition-colors duration-500 group-hover:text-[#D4AF37]" />
-                    </div>
+                    
+                    {/* --- COMBINED ANIMATION WRAPPER --- */}
+                    <motion.div 
+                      variants={wrapperVariants} // Controls the up and down levitation
+                      className="relative w-16 h-16 flex items-center justify-center mb-6"
+                    >
+                      
+                      {/* Radar Ping */}
+                      <motion.div 
+                        variants={rippleVariants} 
+                        className="absolute inset-0 rounded-full border-2 border-[#D4AF37] z-0"
+                      />
+
+                      {/* Main Background Circle */}
+                      <motion.div 
+                        variants={iconBgVariants} 
+                        className="absolute inset-0 rounded-full bg-[#0a0a0a] border border-white/5 z-10"
+                      />
+
+                      {/* The 360 Spin Icon */}
+                      <motion.div variants={iconVariants} className="relative z-20">
+                        <Icon className="w-7 h-7" />
+                      </motion.div>
+
+                    </motion.div>
 
                     {/* Partner Details */}
                     <h3 className="text-white font-bold text-lg tracking-wide mb-2 transition-colors duration-500 group-hover:text-[#D4AF37]">
