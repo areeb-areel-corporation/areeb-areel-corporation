@@ -413,7 +413,6 @@ export default function SentosaSquarePage() {
           <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#111] shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
             
             <video 
-              ref={featureVideoRef}
               autoPlay 
               muted 
               playsInline
