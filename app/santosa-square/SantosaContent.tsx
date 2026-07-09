@@ -42,9 +42,19 @@ const galleryImages: string[] = [
   '/images/sentosa-5.jpg', 
 ];
 
+// --- VIDEO CLIP CONFIG ---
+// Only the first CLIP_END_SECONDS of the source video should ever play.
+// When playback reaches this point, we jump back to 0 and keep playing —
+// so it behaves like a seamless short loop instead of the full-length video.
+const CLIP_END_SECONDS = 22;
+
 export default function SentosaSquarePage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Refs for BOTH video instances (hero background + lower showcase section)
+  const heroVideoRef = useRef<HTMLVideoElement>(null);
+  const featureVideoRef = useRef<HTMLVideoElement>(null);
 
   // Mouse tracking for Amenity Card Borders
   useEffect(() => {
@@ -64,6 +74,42 @@ export default function SentosaSquarePage() {
 
     container.addEventListener('mousemove', handleMouseMove);
     return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // --- ENFORCE 22-SECOND CLIP LOOP ON ALL VIDEO INSTANCES ---
+  useEffect(() => {
+    const videos = [heroVideoRef.current, featureVideoRef.current].filter(
+      (v): v is HTMLVideoElement => v !== null
+    );
+
+    const cleanupFns: (() => void)[] = [];
+
+    videos.forEach((video) => {
+      const handleTimeUpdate = () => {
+        if (video.currentTime >= CLIP_END_SECONDS) {
+          video.currentTime = 0;
+          // play() can return a promise that rejects if interrupted; swallow it safely
+          video.play().catch(() => {});
+        }
+      };
+
+      // Safety net: if metadata loads and somehow starts past our window, reset it
+      const handleLoadedMetadata = () => {
+        if (video.currentTime >= CLIP_END_SECONDS) {
+          video.currentTime = 0;
+        }
+      };
+
+      video.addEventListener('timeupdate', handleTimeUpdate);
+      video.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+      cleanupFns.push(() => {
+        video.removeEventListener('timeupdate', handleTimeUpdate);
+        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      });
+    });
+
+    return () => cleanupFns.forEach((fn) => fn());
   }, []);
 
   // State for gallery slider & buttons
@@ -104,8 +150,8 @@ export default function SentosaSquarePage() {
         {/* 3D Video Background */}
         <div className="absolute inset-0 z-0 bg-[#050505] overflow-hidden">
           <video 
+            ref={heroVideoRef}
             autoPlay 
-            loop 
             muted 
             playsInline // Critical for iOS auto-play
             className="absolute inset-0 w-full h-full object-cover opacity-60"
@@ -335,7 +381,60 @@ export default function SentosaSquarePage() {
         </div>
       </section>
 
-      {/* --- 4. BOOKING & CONTACT BANNER --- */}
+      {/* --- 4. VIDEO SHOWCASE SECTION (Same clip, shown further down the page) --- */}
+      <section className="py-24 lg:py-32 max-w-[1600px] mx-auto px-6 md:px-10 relative">
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[150px] rounded-full pointer-events-none z-0" />
+
+        <motion.div 
+          initial="hidden" 
+          whileInView="show" 
+          viewport={{ once: true, margin: "-100px" }} 
+          variants={slideInUp}
+          className="text-center mb-16 lg:mb-20 relative z-10"
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-12 h-[1px] bg-[#D4AF37]" />
+            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">Experience It Live</span>
+            <div className="w-12 h-[1px] bg-[#D4AF37]" />
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1]">
+            Sentosa Square, <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">In Motion.</span>
+          </h2>
+        </motion.div>
+
+        <motion.div 
+          initial="hidden" 
+          whileInView="show" 
+          viewport={{ once: true, margin: "-100px" }} 
+          variants={slideInUp}
+          className="relative z-10 max-w-5xl mx-auto"
+        >
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#111] shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
+            
+            <video 
+              ref={featureVideoRef}
+              autoPlay 
+              muted 
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
+            >
+              <source src="/videos/sentosa-3d.mp4" type="video/mp4" />
+            </video>
+
+            {/* Subtle overlay for consistency with the rest of the dark theme */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/70 via-transparent to-transparent pointer-events-none" />
+
+            {/* Corner accent tag, matches gold brand accent used elsewhere */}
+            <div className="absolute top-6 left-6 flex items-center gap-2 px-4 py-2 rounded-full bg-[#050505]/70 backdrop-blur-md border border-[#D4AF37]/30">
+              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37]">Live Preview</span>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* --- 5. BOOKING & CONTACT BANNER --- */}
       <section id="contact" className="pt-24 lg:pt-32 max-w-[1200px] mx-auto px-6">
         <motion.div 
           initial="hidden" whileInView="show" viewport={{ once: true }} variants={slideInUp}
