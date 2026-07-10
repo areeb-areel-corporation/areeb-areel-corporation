@@ -35,11 +35,11 @@ const amenities = [
 
 // --- GALLERY IMAGES (For Section 2) ---
 const galleryImages: string[] = [
-  '/images/sentosa-1.jpg',
-  '/images/sentosa-2.jpg', 
-  '/images/sentosa-3.jpg', 
-  '/images/sentosa-4.jpg',
-  '/images/sentosa-5.jpg', 
+  '/images/sentosa-1.jpeg',
+  '/images/sentosa-2.jpeg', 
+  '/images/sentosa-3.jpeg', 
+  '/images/sentosa-4.jpeg',
+  '/images/sentosa-5.jpeg', 
 ];
 
 // --- VIDEO CLIP CONFIG ---
