@@ -1,24 +1,22 @@
-// ✅ SERVER COMPONENT — SEO wrapper for Naseeb Homes page
 import type { Metadata } from 'next';
 import NaseebHomesContent from './NaseebHomesContent';
 
 export const metadata: Metadata = {
-  title: 'Naseeb Homes — Affordable Housing Society Lahore',
+  title: 'Naseeb Homes Lahore | 3.5 & 5 Marla Family Homes',
   description:
-    'Naseeb Homes by Areeb & Areel Corporation — an affordable, community-centered residential housing society in Lahore, Pakistan. Secure investment, modern infrastructure, and a quality lifestyle.',
+    'Explore contemporary 3.5 and 5 Marla homes at Naseeb Homes, designed for practical family living with modern layouts and structured payment options.',
   keywords: [
     'Naseeb Homes',
     'Naseeb Homes Lahore',
-    'Affordable housing Lahore',
-    'Residential society Pakistan',
-    'Housing scheme Lahore',
+    '3.5 Marla homes Lahore',
+    '5 Marla homes Lahore',
+    'Family homes Lahore',
     'Areeb Areel housing',
-    'New housing society Lahore 2026',
   ],
   openGraph: {
-    title: 'Naseeb Homes — Affordable Housing Society | Areeb & Areel Corp',
+    title: 'Naseeb Homes Lahore | 3.5 & 5 Marla Family Homes',
     description:
-      'Naseeb Homes — affordable, community-centered residential housing in Lahore by Areeb & Areel Corporation.',
+      'Explore contemporary 3.5 and 5 Marla homes at Naseeb Homes, designed for practical family living with modern layouts and structured payment options.',
     url: 'https://www.areebareel.pk/naseeb-homes',
     type: 'website',
     images: [
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
         url: 'https://www.areebareel.pk/images/housing-society.png',
         width: 1200,
         height: 630,
-        alt: 'Naseeb Homes Housing Society Lahore',
+        alt: 'Naseeb Homes Lahore',
       },
     ],
   },

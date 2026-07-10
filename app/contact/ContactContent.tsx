@@ -64,7 +64,7 @@ export default function ContactPage() {
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="text-zinc-400 text-base md:text-lg max-w-2xl font-medium leading-relaxed"
         >
-          Whether you are exploring global consulting infrastructure, large-scale real estate development, or high-tier energy networks, our executive team is ready to connect.
+          Whether you are exploring a home, commercial property, architectural project, operating partnership or Pakistan-UAE business opportunity, our team is ready to understand your objectives.
         </motion.p>
       </div>
 

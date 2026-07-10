@@ -54,7 +54,7 @@ const sectionData = {
 const navLinks = [
   { id: "station", name: "Filling Station", icon: Fuel },
   { id: "mart", name: "Express Mart", icon: ShoppingBag },
-  { id: "subway", name: "Subway & Food", icon: Coffee },
+  { id: "subway", name: "Food & Refreshments", icon: Coffee },
   { id: "tyres", name: "Tyre & Service", icon: Wrench },
   { id: "location", name: "Location", icon: Navigation },
 ];
@@ -236,8 +236,7 @@ export default function FillingStationPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-brand-silver/90 text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-medium"
           >
-            Your trusted travel hub. 100% pure fuel, express retail, fresh
-            dining, and premium vehicle service all in one secure 24/7 location.
+            A convenient travel destination combining fuel, retail, food, prayer facilities and essential vehicle support in one customer-focused location. Designed for local commuters, families and professional drivers, the station helps customers refuel, refresh and continue their journey with greater convenience.
           </motion.p>
         </div>
       </section>
@@ -271,41 +270,39 @@ export default function FillingStationPage() {
                 </span>
               </div>
               <h2 className="text-4xl md:text-5xl font-black tracking-tight">
-                Pure Fuel & <br />
+                Fuel Service & <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
                   Precision.
                 </span>
               </h2>
               <p className="text-zinc-400 text-lg leading-relaxed">
-                We guarantee 100% accurate measurements and uncontaminated fuel.
-                Our high-flow pumps ensure you are back on the road safely and
-                quickly.
+                Our fuel operations are focused on calibrated dispensing, responsible handling, efficient service and a cleaner customer experience. Fuel quality and quantity claims should be supported by operational controls, inspection records and applicable regulatory standards.
               </p>
 
               {/* Live Price Board Card */}
               <div className="mt-8 bg-[#111111]/80 border border-white/5 p-6 rounded-2xl group hover:border-[#D4AF37] hover:bg-[#111111] transition-all duration-500 hover:shadow-[0_15px_40px_rgba(212,175,55,0.1)]">
                 <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/5 group-hover:border-[#D4AF37]/30 transition-colors">
                   <h3 className="text-sm font-bold uppercase tracking-widest text-zinc-300 group-hover:text-white transition-colors">
-                    Live Fuel Rates
+                    Current Fuel Rates
                   </h3>
                   <span className="text-[10px] uppercase tracking-widest text-[#D4AF37] bg-[#D4AF37]/10 px-3 py-1.5 rounded-md">
-                    {currentDate}
+                    Last Updated: [Date and Time]
                   </span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-[#0a0a0a] border border-white/5 rounded-xl p-4 group-hover:border-[#D4AF37]/40 transition-colors">
                     <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-1 group-hover:text-[#D4AF37] transition-colors">
-                      Premier (Super)
+                      Premier / Petrol
                     </p>
                     <p className="text-2xl font-black text-white group-hover:text-[#D4AF37] transition-colors">
-                      Rs. 258.16{" "}
+                      Rs. [Insert Current Rate]{" "}
                       <span className="text-xs font-normal text-zinc-500">
                         / Ltr
                       </span>
                     </p>
                     <div className="flex items-center gap-1 text-green-500 mt-2 text-[10px] font-bold uppercase">
-                      <TrendingDown className="w-3 h-3" /> Updated
+                      <TrendingDown className="w-3 h-3" /> Last Updated: [Date and Time]
                     </div>
                   </div>
                   <div className="bg-[#0a0a0a] border border-white/5 rounded-xl p-4 group-hover:border-[#D4AF37]/40 transition-colors">
@@ -313,13 +310,13 @@ export default function FillingStationPage() {
                       High Speed Diesel
                     </p>
                     <p className="text-2xl font-black text-white group-hover:text-[#D4AF37] transition-colors">
-                      Rs. 267.89{" "}
+                      Rs. [Insert Current Rate]{" "}
                       <span className="text-xs font-normal text-zinc-500">
                         / Ltr
                       </span>
                     </p>
                     <div className="flex items-center gap-1 text-green-500 mt-2 text-[10px] font-bold uppercase">
-                      <TrendingDown className="w-3 h-3" /> Updated
+                      <TrendingDown className="w-3 h-3" /> Last Updated: [Date and Time]
                     </div>
                   </div>
                 </div>
@@ -351,16 +348,14 @@ export default function FillingStationPage() {
                 </span>
               </h2>
               <p className="text-zinc-400 text-lg leading-relaxed">
-                Stocked with premium snacks, cold beverages, and daily travel
-                essentials. Our fully air-conditioned mart is open 24/7 to
-                refresh you during long journeys.
+                Access snacks, cold beverages and everyday travel essentials without making an additional stop. The air-conditioned mart is designed to serve customers throughout station operating hours with quick, convenient retail service.
               </p>
 
               <ul className="space-y-4 pt-6">
                 {[
-                  "Premium Imported Snacks & Beverages",
-                  "Clean & Secure Washroom Facilities",
-                  "Adjacent Secure Prayer Area (Mosque)",
+                  "Snacks, beverages and travel essentials",
+                  "Maintained customer washroom facilities",
+                  "Convenient access to the prayer area",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -416,22 +411,20 @@ export default function FillingStationPage() {
                 </span>
               </div>
               <h2 className="text-4xl md:text-5xl font-black tracking-tight">
-                Subway & <br />
+                Food & <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
-                  Food Court.
+                  Refreshments.
                 </span>
               </h2>
               <p className="text-zinc-400 text-lg leading-relaxed">
-                Enjoy a freshly made, healthy meal on the go. Our integrated
-                Subway franchise ensures international hygiene standards and
-                fresh ingredients at all hours.
+                Pause for a quick meal, fresh beverage or takeaway option before continuing your journey. Display the name and branding of Subway or another food partner only after confirming a current authorised franchise or operating agreement.
               </p>
 
               <ul className="space-y-4 pt-6">
                 {[
-                  "Freshly Baked Breads & Ingredients",
-                  "Spacious Seating Area",
-                  "Fast Drive-Thru / Takeaway Service",
+                  "Freshly prepared food and beverages",
+                  "Comfortable customer seating",
+                  "Takeaway and quick-service options",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -473,16 +466,14 @@ export default function FillingStationPage() {
                 </span>
               </h2>
               <p className="text-zinc-400 text-lg leading-relaxed">
-                From immediate puncture repairs to full synthetic oil changes,
-                our on-site expert mechanics ensure your vehicle is safe for the
-                highway.
+                Access essential support for common vehicle needs while travelling. Service availability may vary, so customers should confirm individual facilities directly at the station.
               </p>
 
               <ul className="space-y-4 pt-6">
                 {[
-                  "Digital Air Pressure & Tyre Alignment",
-                  "Express Oil Change Facility",
-                  "Certified Auto Mechanics On Duty",
+                  "Tyre-pressure checks and puncture repair",
+                  "Oil-change and basic maintenance support",
+                  "Vehicle inspection by available service staff",
                 ].map((item, i) => (
                   <li
                     key={i}
@@ -539,9 +530,7 @@ export default function FillingStationPage() {
                   </span>
                 </h2>
                 <p className="text-zinc-400 text-lg leading-relaxed">
-                  Conveniently located to serve local commuters and long-haul
-                  transport. Stop by anytime for guaranteed pure fuel and a
-                  well-deserved rest.
+                  Conveniently positioned to serve local commuters and long-distance travellers. Stop for fuel, refreshments, prayer facilities, washrooms and essential vehicle support.
                 </p>
               </div>
 
@@ -551,9 +540,9 @@ export default function FillingStationPage() {
                     Location
                   </p>
                   <p className="font-bold text-white text-sm tracking-wide">
-                    Lahore, Punjab
+                    [Insert Complete Verified Station Address]
                     <br />
-                    Pakistan
+                    Lahore, Punjab, Pakistan
                   </p>
                 </div>
                 <div>
@@ -566,7 +555,7 @@ export default function FillingStationPage() {
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                     </span>
                     <p className="font-bold text-white text-sm tracking-wide">
-                      Open Now / 24 Hrs
+                    [Insert Verified Operating Hours]
                     </p>
                   </div>
                 </div>

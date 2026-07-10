@@ -9,16 +9,13 @@ export const metadata: Metadata = {
   title: 'About Areeb & Areel Corporation | Our Businesses and Vision',
   description:
     'Learn about Areeb & Areel Corporation, its real estate, architecture, construction, energy and advisory divisions, and its approach to responsible growth.',
-  /*
-    'Discover Areeb & Areel Corporation’s legacy in ultra-luxury real estate, energy transit, architecture, and strategic consulting across Lahore and Dubai.',
-  */
   keywords: [
     'Areeb Areel Corporation',
-    'Luxury real estate Lahore',
-    'Energy transit Pakistan',
-    'Corporate consulting Pakistan',
-    'Sentosa Square Lahore',
-    'Naseeb Homes Lahore',
+    'Real estate development Lahore',
+    'Architecture Lahore',
+    'Construction services Lahore',
+    'Energy services Pakistan',
+    'Pakistan UAE business advisory',
   ],
   alternates: {
     canonical: 'https://www.areebareel.pk/about-us',
@@ -79,4 +76,4 @@ const page = () => {
   );
 };
 
-export default page
+export default page;

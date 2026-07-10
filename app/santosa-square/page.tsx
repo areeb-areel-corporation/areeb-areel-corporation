@@ -2,23 +2,21 @@ import type { Metadata } from 'next';
 import SantosaContent from './SantosaContent';
 
 export const metadata: Metadata = {
-  title: 'Sentosa Square — Ultra-Luxury Commercial Hub Lahore',
+  title: 'Sentosa Square Lahore | Commercial Shops & Offices',
   description:
-    'Sentosa Square by Areeb & Areel Corporation — Lahore\'s most premium commercial development featuring hydraulic capsule lifts, rooftop food court, 24/7 security, and world-class business spaces.',
+    'Explore shops and corporate offices at Sentosa Square, a commercial development on Multan Road near Thokar Niaz Baig, Lahore.',
   keywords: [
     'Sentosa Square Lahore',
-    'Sentosa Square commercial plaza',
-    'Luxury commercial real estate Lahore',
-    'Commercial plaza Lahore',
-    'Office space Lahore',
-    'Areeb Areel Sentosa Square',
-    'Premium commercial property Pakistan',
-    'Business hub Lahore 2026',
+    'Commercial shops Lahore',
+    'Corporate offices Lahore',
+    'Commercial development Lahore',
+    'Multan Road commercial property',
+    'Thokar Niaz Baig commercial property',
   ],
   openGraph: {
-    title: 'Sentosa Square — Ultra-Luxury Commercial Hub | Areeb & Areel Corp',
+    title: 'Sentosa Square Lahore | Commercial Shops & Offices',
     description:
-      'Sentosa Square — Lahore\'s most premium commercial development with capsule lifts, rooftop dining, and 24/7 security by Areeb & Areel Corp.',
+      'Explore shops and corporate offices at Sentosa Square, a commercial development on Multan Road near Thokar Niaz Baig, Lahore.',
     url: 'https://www.areebareel.pk/santosa-square',
     type: 'website',
     images: [
@@ -26,7 +24,7 @@ export const metadata: Metadata = {
         url: 'https://www.areebareel.pk/images/sentosa-1.jpg',
         width: 1200,
         height: 630,
-        alt: 'Sentosa Square Luxury Commercial Plaza Lahore',
+        alt: 'Sentosa Square Lahore commercial shops and offices',
       },
     ],
   },

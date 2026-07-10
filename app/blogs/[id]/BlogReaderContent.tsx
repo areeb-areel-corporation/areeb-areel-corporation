@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams, useRouter } from 'next/navigation';
-import {FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { FaTwitter, FaLinkedin } from 'react-icons/fa';
 import { motion, useScroll, useSpring } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';

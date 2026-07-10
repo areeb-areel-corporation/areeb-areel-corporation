@@ -59,7 +59,6 @@ const statsByVariant = {
 export default function StrategicScale({ variant = "glance" }: { variant?: "glance" | "verified" }) {
   const stats = statsByVariant[variant];
   const brandMarqueeText = "BUILDING DREAMS • SHAPING SPACES • FUELING THE FUTURE • DESIGNING WITH PURPOSE • ";
-  const marqueeText = "BUILDING DREAMS • SHAPING SPACES • FEULING FUTURE  • CONSTRUCTION • ";
   
   return (
     <section className="relative w-full bg-[#0a0a0a] text-white py-24 lg:py-32 overflow-hidden border-y border-white/5">
@@ -116,3 +115,4 @@ export default function StrategicScale({ variant = "glance" }: { variant?: "glan
     </section>
   );
 }
+

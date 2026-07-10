@@ -66,7 +66,7 @@ export default function NaseebHomesPage() {
             >
               <div className="w-12 h-[1px] bg-[#D4AF37]" />
               <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">
-                Areeb & Areel Corp Presents
+                A Project by Areeb Areel Corp.
               </span>
             </motion.div>
 
@@ -84,7 +84,7 @@ export default function NaseebHomesPage() {
               variants={slideInLeft as any}
               className="text-brand-silver/90 text-lg md:text-xl leading-relaxed max-w-2xl font-medium drop-shadow-md"
             >
-              Experience modern architecture in a secure, gated community. Premium 3.5 and 5 Marla homes available with accessible 12-month installment plans.
+              Experience a residential environment created around the needs of modern families. Naseeb Homes offers thoughtfully planned 3.5 and 5 Marla residences combining contemporary architecture, comfortable layouts and a stronger sense of community.
             </motion.p>
           </motion.div>
         </div>
@@ -102,18 +102,18 @@ export default function NaseebHomesPage() {
           {[
             {
               icon: Shield,
-              title: "24/7 Security",
-              desc: "Fully gated community with active surveillance and personnel.",
+              title: "Family-Focused Environment",
+              desc: "Planning shaped around privacy, comfort, everyday routines and community life.",
             },
             {
               icon: Home,
-              title: "Modern Architecture",
-              desc: "Contemporary 2 & 3 bedroom layouts with premium finishes.",
+              title: "Contemporary Architecture",
+              desc: "Modern exterior elevations and practical two- and three-bedroom layout options.",
             },
             {
               icon: Wallet,
-              title: "Flexible Financing",
-              desc: "12-month installment plans starting with just 10% booking.",
+              title: "Structured Payment Options",
+              desc: "Ownership options designed to make the buying journey clearer through verified project documentation.",
             },
           ].map((item, idx) => (
             <motion.div
@@ -160,7 +160,7 @@ export default function NaseebHomesPage() {
               </span>
             </h2>
             <p className="text-brand-silver/70 text-lg leading-relaxed mb-8">
-              Take an exclusive digital tour of our flagship models. See the intricate architectural details, modern interior finishes, and the vibrant community waiting for you.
+              Take a digital tour of the architecture, layouts and residential vision behind Naseeb Homes. Explore how efficient space planning, modern exterior design and family-oriented interiors come together to create a comfortable everyday environment.
             </p>
             
             <div className="flex items-center gap-4 text-sm font-bold tracking-widest uppercase text-[#D4AF37]">
@@ -215,10 +215,10 @@ export default function NaseebHomesPage() {
             </div>
             <div>
               <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-4">
-                Premium 3.5 & 5 <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Marla Estates.</span>
+                Premium 3.5 & 5 <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Marla Homes.</span>
               </h2>
               <p className="text-brand-silver/70 text-lg leading-relaxed">
-                Designed for modern families. Choose between our beautifully crafted 2 and 3-bedroom layouts. Every home in Naseeb Homes features contemporary facades, spacious interiors, and is built to the highest structural standards.
+                Designed for families who value both appearance and everyday functionality. Choose from thoughtfully organised two- and three-bedroom layouts with practical living spaces, contemporary facades and room arrangements created around family requirements.
               </p>
             </div>
 
@@ -236,7 +236,7 @@ export default function NaseebHomesPage() {
                   Layouts
                 </span>
                 <span className="text-white font-semibold">
-                  2 & 3 Bedroom Designs
+                  Two- and Three-Bedroom Designs
                 </span>
               </div>
             </div>
@@ -261,7 +261,7 @@ export default function NaseebHomesPage() {
               {/* Glass Tag */}
               <div className="absolute top-6 right-6 bg-[#0a0a0a]/80 backdrop-blur-md border border-white/10 px-4 py-2 rounded-full">
                 <span className="text-xs font-bold uppercase tracking-widest text-[#D4AF37]">
-                  Booking Open Now
+                  Booking Status: Contact the Authorised Sales Team
                 </span>
               </div>
             </div>
@@ -304,33 +304,33 @@ export default function NaseebHomesPage() {
                 Accessible & <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Secure Living.</span>
               </h2>
               <p className="text-brand-silver/70 text-lg leading-relaxed">
-                Naseeb Homes is situated in a prime location, providing your family with the ultimate peace of mind. We believe luxury should be accessible, which is why we offer highly transparent, resident-friendly financial structuring.
+                Naseeb Homes is envisioned as a residential community where families can enjoy comfort, privacy and a more organised living environment. Structured ownership options are designed to make the buying journey clearer. All prices, percentages, payment schedules, construction specifications and possession terms must be confirmed through the latest signed documentation.
               </p>
             </div>
 
             <div className="grid grid-cols-2 gap-6 pt-6 border-t border-white/10">
               <div>
                 <span className="text-brand-silver/40 text-xs font-bold uppercase tracking-widest block mb-1">
-                  Initial Booking
+                  Latest Pricing
                 </span>
                 <span className="text-white font-semibold text-lg text-[#D4AF37]">
-                  10% Down
+                  Confirm with Sales Team
                 </span>
               </div>
               <div>
                 <span className="text-brand-silver/40 text-xs font-bold uppercase tracking-widest block mb-1">
-                  Installment Plan
+                  Payment Schedule
                 </span>
                 <span className="text-white font-semibold">
-                  1% Monthly (12 Months)
+                  Confirm from Signed Documents
                 </span>
               </div>
               <div className="col-span-2">
                 <span className="text-brand-silver/40 text-xs font-bold uppercase tracking-widest block mb-1">
-                  Possession
+                  Possession Terms
                 </span>
                 <span className="text-white font-semibold">
-                  Handover at 5%
+                  Confirm from Latest Documentation
                 </span>
               </div>
             </div>
@@ -362,7 +362,7 @@ export default function NaseebHomesPage() {
           >
             Secure Your <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
-              Dream Home.
+              Future Home.
             </span>
           </motion.h3>
           
@@ -373,7 +373,7 @@ export default function NaseebHomesPage() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-zinc-400 mb-12 max-w-2xl mx-auto text-lg leading-relaxed"
           >
-            Don't miss the opportunity to join our exclusive community. Connect with our advisory team today to reserve your 3.5 or 5 Marla home with just a 10% booking.
+            Explore available 3.5 and 5 Marla options and receive the latest floor plans, specifications, pricing and payment information from the authorised project team.
           </motion.p>
 
           <motion.div 

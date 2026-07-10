@@ -16,28 +16,31 @@ const coreServices = [
   {
     icon: Compass,
     title: "Architecture & Design",
-    desc: "Turning ideas into buildable reality. We provide comprehensive architectural drawings, precise site & floor plans, and hyper-realistic 3D visualizations.",
+    desc: "From early concepts to detailed technical information, we plan spaces around your site, requirements, budget and long-term use. Our services include floor plans, elevations, sections, architectural drawings and realistic 3D visualization.",
   },
   {
     icon: Sofa,
-    title: "Premium Interior Design",
-    desc: "Crafting vision into iconic spaces. We engineer interiors that seamlessly blend beauty, function, and inspiration tailored to your lifestyle.",
+    title: "Interior Design",
+    desc: "We create interior environments that balance appearance with comfort, movement, storage, lighting and everyday functionality. Solutions are tailored for residences, offices, shops and commercial spaces.",
   },
   {
     icon: HardHat,
     title: "Turnkey Construction",
+    desc: "Our construction service connects approved design, procurement coordination, site execution, finishing and project handover through one structured process.",
+    /*
     desc: "Beyond building—we create legacies. From initial project management and execution to post-delivery maintenance, we handle the complete lifecycle.",
+    */
   },
 ];
 
 const technicalDetails = [
-  "Architectural Drawings & 3D Images",
+  "Architectural Drawings & 3D Visualization",
   "Architectural Site & Floor Plans",
   "Building & Wall Sections",
   "Door & Window Details",
-  "Roof Plans & Window Schedules",
-  "MEP and Structural Drawings",
-  "Material, Fabrication Drawings & Specs"
+  "Roof Plans & Opening Schedules",
+  "MEP & Structural Coordination",
+  "Material & Fabrication Specifications"
 ];
 
 export default function ArchitecturePage() {
@@ -86,7 +89,7 @@ export default function ArchitecturePage() {
             <motion.div variants={slideInLeft as any} className="flex items-center gap-3 mb-6">
               <div className="w-12 h-[1px] bg-[#D4AF37]" />
               <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em] font-mono">
-                Areeb & Areel Corp
+                Areeb & Areel Corporation
               </span>
             </motion.div>
 
@@ -99,15 +102,15 @@ export default function ArchitecturePage() {
 
             <motion.p variants={slideInLeft as any} className="text-brand-silver/80 text-lg md:text-2xl font-medium leading-relaxed max-w-2xl mb-8">
               Design. Develop. Deliver. <br className="hidden md:block"/>
-              Turning your ideas into buildable reality.
+              Turning ideas into practical, distinctive and buildable spaces.
             </motion.p>
             
             <motion.div variants={slideInLeft as any} className="flex items-center gap-4 text-[#D4AF37] text-sm md:text-base font-bold uppercase tracking-widest">
-              <span>[ Architecture ]</span>
+              <span>Architecture</span>
               <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
-              <span>[ Interior ]</span>
+              <span>Interior Design</span>
               <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
-              <span>[ Real Estate ]</span>
+              <span>Construction</span>
             </motion.div>
           </motion.div>
         </div>
@@ -168,7 +171,7 @@ export default function ArchitecturePage() {
                     <Layers className="w-5 h-5 text-[#D4AF37]" />
                   </div>
                   <div>
-                    <p className="text-white font-bold text-sm">Full-Stack Design</p>
+                    <p className="text-white font-bold text-sm">Full-Service Design</p>
                     <p className="text-brand-silver/50 text-xs">Concept to Execution</p>
                   </div>
                 </div>
@@ -193,7 +196,7 @@ export default function ArchitecturePage() {
                 </span>
               </h2>
               <p className="text-brand-silver/70 text-lg leading-relaxed">
-                From initial concept sketches to detailed mechanical fabrication specifications, our engineering pipeline ensures flawless project delivery.
+                Successful architecture should do more than create a visual impression. It should respond to the site, support the people using it and provide clear information for accurate construction. Our team develops coordinated architectural and technical packages for residential, commercial and mixed-use projects.
               </p>
             </div>
 
@@ -236,8 +239,7 @@ export default function ArchitecturePage() {
             Ready to build your vision?
           </h3>
           <p className="text-brand-silver/60 mb-10 max-w-xl mx-auto text-lg">
-            Consult with our master architects and chief designers to blueprint
-            your next mega-structure or bespoke interior space.
+            Tell us about your site, project type, design requirements and expected budget. Our team will help define the next practical step-from initial planning to full project execution.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

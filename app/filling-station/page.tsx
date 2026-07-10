@@ -2,25 +2,21 @@ import type { Metadata } from 'next';
 import FillingStationContent from './FillingStationContent';
 
 export const metadata: Metadata = {
-  title: 'AAA Energy Transit — Filling Station & Smart Mart Lahore',
+  title: 'Areeb Areel Filling Station | Fuel, Mart, Food & Auto Care',
   description:
-    'Areeb & Areel Corporation\'s AAA Energy Transit Division — premium CNG/petrol filling stations, Express Smart Mart convenience stores, and professional tyre & auto services on Multan Road, Lahore.',
+    'Visit Areeb Areel Filling Station for fuel services, an express mart, food, prayer facilities, washrooms and essential vehicle care.',
   keywords: [
+    'Areeb Areel Filling Station',
     'Filling station Lahore',
-    'Petrol pump Lahore Multan Road',
-    'CNG station Lahore',
-    'AAA filling station',
-    'Areeb Areel filling station',
-    'Smart Mart Lahore',
-    'Tyre shop Lahore',
-    'Auto service Lahore',
-    'Energy transit Pakistan',
-    'Fuel station Thokar Niaz Baig',
+    'Fuel station Lahore',
+    'Express mart Lahore',
+    'Auto care Lahore',
+    'Fuel food mart Lahore',
   ],
   openGraph: {
-    title: 'AAA Energy Transit — Filling Station | Areeb & Areel Corp',
+    title: 'Areeb Areel Filling Station | Fuel, Mart, Food & Auto Care',
     description:
-      'Premium filling station, Smart Mart, and auto services on Multan Road Lahore by Areeb & Areel Corporation.',
+      'Visit Areeb Areel Filling Station for fuel services, an express mart, food, prayer facilities, washrooms and essential vehicle care.',
     url: 'https://www.areebareel.pk/filling-station',
     type: 'website',
     images: [
@@ -28,7 +24,7 @@ export const metadata: Metadata = {
         url: 'https://www.areebareel.pk/images/filling-station.jpg',
         width: 1200,
         height: 630,
-        alt: 'AAA Filling Station Lahore',
+        alt: 'Areeb Areel Filling Station Lahore',
       },
     ],
   },

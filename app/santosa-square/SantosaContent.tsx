@@ -23,14 +23,14 @@ import { FaFacebook, FaInstagram, FaLinkedinIn, FaYoutube } from 'react-icons/fa
 
 // --- AMENITIES DATA ---
 const amenities = [
-  { icon: Building2, title: 'Secure Business Zone', desc: 'A dedicated, professional environment built for corporate growth.' },
-  { icon: Car, title: 'Spacious Parking', desc: 'Ample, hassle-free parking space for business owners and clients.' },
-  { icon: UserCheck, title: 'Dynamic Reception', desc: 'A grand, welcoming reception area that leaves a lasting first impression.' },
+  { icon: Building2, title: 'Professional Business Environment', desc: 'A dedicated commercial setting designed for retail, office and service-based operations.' },
+  { icon: Car, title: 'Planned Parking', desc: 'Accessible parking provisions for business owners, employees, customers and visitors.' },
+  { icon: UserCheck, title: 'Welcoming Reception', desc: 'A professionally designed arrival area that helps businesses create a stronger first impression.' },
   { icon: MoonStar, title: 'Prayer Area', desc: 'A peaceful, designated space for daily prayers and reflection.' },
-  { icon: ArrowUpDown, title: 'Hydraulic Capsule Lifts', desc: 'State-of-the-art vertical transit offering panoramic views.' },
-  { icon: Coffee, title: 'Rooftop Food Court', desc: 'Premium dining and cafes right at the top of your workspace.' },
-  { icon: Cctv, title: '24/7 Security & Surveillance', desc: 'Round-the-clock monitoring to ensure absolute safety for your assets.' },
-  { icon: Droplets, title: 'Public Washrooms', desc: 'Highly maintained, hygienic, and accessible restroom facilities.' },
+  { icon: ArrowUpDown, title: 'Modern Elevator Access', desc: 'Convenient vertical movement between commercial floors. Use hydraulic capsule lifts only when confirmed in final technical specifications.' },
+  { icon: Coffee, title: 'Rooftop Food & Leisure Area', desc: 'A planned rooftop environment for food, refreshments and customer interaction, subject to final project specifications.' },
+  { icon: Cctv, title: 'Security & Surveillance', desc: 'Monitoring and access provisions intended to support safer commercial operations.' },
+  { icon: Droplets, title: 'Maintained Public Facilities', desc: 'Accessible shared washrooms planned for regular maintenance and customer convenience.' },
 ];
 
 // --- GALLERY IMAGES (For Section 2) ---
@@ -185,7 +185,7 @@ export default function SentosaSquarePage() {
             <div className="flex items-center gap-3 w-full justify-center">
               <div className="w-10 sm:w-16 h-[1px] bg-[#D4AF37]" />
               <span className="text-[#D4AF37] text-[10px] sm:text-xs md:text-sm font-bold uppercase tracking-[0.2em] sm:tracking-[0.4em] text-center">
-                A Project of Areeb Areel Corp.
+                A Project by Areeb Areel Corp.
               </span>
               <div className="w-10 sm:w-16 h-[1px] bg-[#D4AF37] hidden sm:block" />
             </div>
@@ -209,8 +209,8 @@ export default function SentosaSquarePage() {
             transition={{ duration: 0.8, delay: 0.2 }} 
             className="text-zinc-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto mb-10 font-medium px-4 drop-shadow-md"
           >
-            The Gateway to Tomorrow's Business Success. <br className="hidden md:block" />
-            <span className="font-bold text-white">Built for Business. Designed for Growth.</span>
+            A Strategic Address for Business Growth. <br className="hidden md:block" />
+            <span className="font-bold text-white">Built for Business. Designed for Opportunity.</span>
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
@@ -278,10 +278,10 @@ export default function SentosaSquarePage() {
               Build Your Business <br/> Where <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Growth Begins.</span>
             </h2>
             <p className="text-zinc-400 text-lg leading-relaxed">
-              Sentosa Square is not just a commercial building; it is a meticulously engineered ecosystem designed to elevate your brand. Strategically located at the heart of Lahore’s commercial transit routes, we offer unparalleled visibility and foot traffic for retail shops and corporate offices.
+              Sentosa Square is a contemporary commercial development created for retailers, service providers, professionals and growing businesses.
             </p>
             <p className="text-zinc-400 text-lg leading-relaxed">
-              Experience a blend of modern aesthetics, structural brilliance, and executive-tier facilities that set the standard for modern commerce in Pakistan.
+              Located on Multan Road near Thokar Niaz Baig, Lahore, the project combines commercial visibility, practical access and professionally planned facilities. Whether you are opening a customer-facing shop or establishing an office, Sentosa Square offers an address designed to support your business presence.
             </p>
           </motion.div>
 
@@ -326,11 +326,11 @@ export default function SentosaSquarePage() {
           
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true }} variants={slideInUp} className="text-center mb-16 lg:mb-24">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-6">
-              Elevated Amenities for <br className="hidden md:block"/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Elevated Businesses.</span>
+              Amenities for <br className="hidden md:block"/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Better Business Experiences.</span>
             </h2>
             <p className="text-zinc-400 text-lg max-w-2xl mx-auto">
-              Every square foot of Sentosa Square is optimized for your operational success and your clients' ultimate comfort.
+              Every shared facility is planned to improve access, convenience and the daily experience of business owners, employees and visitors.
             </p>
           </motion.div>
 
@@ -448,14 +448,14 @@ export default function SentosaSquarePage() {
               Ready to Secure Your Space?
             </h2>
             <p className="text-zinc-400 text-lg mb-12 max-w-2xl">
-              Prime commercial real estate moves fast. Contact our sales executives today to book your shop or corporate office at Sentosa Square before availability runs out.
+              Contact the authorised sales team for current shop and office availability, unit dimensions, floor plans, pricing and payment information. All commercial terms should be confirmed through the latest signed and dated project documentation.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
               <div className="bg-[#050505]/80 backdrop-blur-md border border-white/10 rounded-2xl p-6 group hover:border-[#D4AF37] transition-all duration-300">
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <PhoneCall className="w-5 h-5 text-[#D4AF37]" />
-                  <span className="text-sm font-bold uppercase tracking-widest text-[#D4AF37]">Book Your Shop Now</span>
+                  <span className="text-sm font-bold uppercase tracking-widest text-[#D4AF37]">Book Your Shop or Office</span>
                 </div>
                 <div className="space-y-2">
                   <a href="tel:03003003003" className="block text-2xl md:text-3xl font-black text-white hover:text-[#D4AF37] transition-colors">0300 3003003</a>
@@ -469,8 +469,8 @@ export default function SentosaSquarePage() {
                   <span className="text-sm font-bold uppercase tracking-widest text-[#D4AF37]">Project Address</span>
                 </div>
                 <p className="text-base font-medium text-white group-hover:text-[#D4AF37] transition-colors leading-relaxed">
-                  13-KM Multan Rd, N-5 Amarkot,<br />
-                  54000, Thokar Niaz Baig,<br />
+                  13-KM Multan Road, N-5 Amarkot<br />
+                  Near Thokar Niaz Baig<br />
                   Lahore, Pakistan
                 </p>
               </div>
@@ -512,3 +512,4 @@ export default function SentosaSquarePage() {
     </main>
   );
 }
+

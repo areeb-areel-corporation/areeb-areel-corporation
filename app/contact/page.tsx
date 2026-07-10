@@ -2,20 +2,20 @@ import type { Metadata } from 'next';
 import ContactContent from './ContactContent';
 
 export const metadata: Metadata = {
-  title: 'Contact Us',
+  title: 'Contact Areeb & Areel Corporation',
   description:
-    'Get in touch with Areeb & Areel Corporation. Our executive team in Lahore is ready to connect for luxury real estate, architecture, energy infrastructure, and global consulting inquiries.',
+    'Contact Areeb & Areel Corporation for real estate, architecture, construction, energy services and Pakistan-UAE business advisory enquiries.',
   keywords: [
     'Contact Areeb Areel Corp',
     'Areeb Areel Lahore office',
     'Real estate inquiry Lahore',
-    'Corporate consulting Pakistan',
-    'Luxury property inquiry Pakistan',
+    'Architecture services Lahore',
+    'Pakistan UAE business advisory',
   ],
   openGraph: {
     title: 'Contact Areeb & Areel Corporation',
     description:
-      'Connect with our executive team in Lahore for real estate, architecture, energy, and consulting inquiries.',
+      'Contact Areeb & Areel Corporation for real estate, architecture, construction, energy services and Pakistan-UAE business advisory enquiries.',
     url: 'https://www.areebareel.pk/contact',
     type: 'website',
     images: [

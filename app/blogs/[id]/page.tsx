@@ -1,7 +1,4 @@
-// ✅ SERVER COMPONENT — No "use client" here
-// generateMetadata runs on the SERVER for each blog ID.
-// Google gets a unique title + description for EVERY blog article.
-// BlogReaderContent.tsx handles all the hooks and animations.
+
 
 import type { Metadata } from 'next';
 import { blogDatabase } from '@/data/data';
