@@ -539,7 +539,7 @@ export default function FillingStationPage() {
                   <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-2">
                     Location
                   </p>
-                  <p className="font-bold text-white text-sm tracking-wide">
+                  <p className="font-bold text-white hover:text-[#D4AF37] text-sm tracking-wide">
                     Multan Road, Thokar Niaz Baig, 
                     
                     Lahore, Punjab, Pakistan
@@ -554,7 +554,7 @@ export default function FillingStationPage() {
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                     </span>
-                    <p className="font-bold text-white text-sm tracking-wide">
+                    <p className="font-bold text-white hover:text-[#D4AF37] text-sm tracking-wide">
                     24/7 Operational
                     </p>
                   </div>
