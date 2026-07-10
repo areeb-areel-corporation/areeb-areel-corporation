@@ -26,22 +26,22 @@ export const teamData = {
       role: 'Chief Executive Officer | Founder',
       src: '/images/Areeb-Tahir.jpg', 
       linkedin: 'https://www.linkedin.com/in/areeb-tahir-866088253/',
-      message: "Engineering the impossible into regional reality. We blueprint future benchmarks, today."
+      message: "Strong businesses are built by understanding real needs and turning that understanding into responsible action."
     },
     {
       id: 2,
       name: 'Areel Tahir',
-      role: 'CEO | Owner',
+      role: 'Chief Executive Officer | Owner',
       src: '/images/Areel-Tahir.jpg',
       linkedin: 'https://www.linkedin.com/in/areeltahir/',
-      message: "Progression is executed, not imagined. We scale limits to build lasting national assets."
+      message: "Progress becomes meaningful when ambition is supported by discipline, trust and lasting value."
     },
   ],
   executives: [
-    { id: 3, name: 'Kashif', role: 'Chief Human Resources Officer', linkedin: '#' },
-    { id: 4, name: 'Unknown', role: 'Head of Marketing & Strategy', linkedin: '#' },
-    { id: 5, name: 'Unknown', role: 'Director, AAA Developments', linkedin: '#' },
-    { id: 6, name: 'Unknown', role: 'Head of Retail & Supply Chain', linkedin: '#' },
+    { id: 3, name: '[Insert Verified Name]', role: 'People & Operations | Chief People and Operations Officer', linkedin: '#' },
+    { id: 4, name: '[Insert Verified Name]', role: 'Brand & Strategy | Head of Brand and Marketing Strategy', linkedin: '#' },
+    { id: 5, name: '[Insert Verified Name]', role: 'Real Estate Development | Director of Real Estate Development', linkedin: '#' },
+    { id: 6, name: '[Insert Verified Name]', role: 'Retail & Supply Chain | Head of Retail and Supply Chain', linkedin: '#' },
   ]
 };
 
@@ -90,8 +90,8 @@ export const blogDatabase = [
     tag: "Real Estate",
     date: "June 18, 2026",
     readTime: "5 Min Read",
-    title: "Pioneering the Future of Ultra-Luxury Urban Living in Lahore",
-    excerpt: "How AAA Developments is utilizing AI and sustainable engineering to redefine the residential skyline.",
+    title: "Designing Better Urban Living for Lahore's Growing Families",
+    excerpt: "Why successful residential development begins with practical planning, community needs and long-term usability.",
     src: "/images/housing-society.png",
   },
   {
@@ -99,8 +99,8 @@ export const blogDatabase = [
     tag: "Energy Infrastructure",
     date: "May 24, 2026",
     readTime: "4 Min Read",
-    title: "The Shift to Smart Hubs: Upgrading the National Transit Network",
-    excerpt: "Areeb & Areel Corporation announces the expansion of AAA-standard petroleum stations across key logistical routes.",
+    title: "From Fuel Station to Integrated Travel Hub",
+    excerpt: "How fuel, retail, food, prayer and vehicle-care services can improve the everyday travel experience.",
     src: "/images/petrol pump.png",
   },
   {
@@ -108,8 +108,8 @@ export const blogDatabase = [
     tag: "Retail Operations",
     date: "April 10, 2026",
     readTime: "6 Min Read",
-    title: "Integrating Premium Retail with Daily Commutes",
-    excerpt: "The strategic vision behind the Express Smart Mart expansion and how it maximizes consumer convenience.",
+    title: "Why Convenience Retail Belongs Along the Daily Commute",
+    excerpt: "A closer look at how accessible retail services create value for travellers and local communities.",
     src: "/images/mart.png",
   },
   {

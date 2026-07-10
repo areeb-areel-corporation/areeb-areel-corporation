@@ -103,25 +103,25 @@ export default function BlogReaderContent() {
 
           <p className="text-xl md:text-2xl text-white font-medium leading-relaxed mb-10">
             <span className="float-left text-7xl font-black text-[#D4AF37] leading-[0.8] mr-4 mt-2">H</span>
-            {article.excerpt} This marks a significant milestone in our commitment to reshaping the infrastructural landscape of the region, combining world-class engineering with sustainable practices.
+            {article.excerpt} This reflects our commitment to practical planning, responsible execution and long-term value for families, travellers, businesses and communities.
           </p>
 
           <p className="mb-6">
-            At Areeb & Areel Corporation, our philosophy has always been rooted in precision and longevity. The recent shifts in global macroeconomic trends require a structural pivot towards self-sustaining commercial hubs. By integrating AI-driven logistics into our physical properties, we are actively closing the gap between traditional real estate and modern technology.
+            At Areeb & Areel Corporation, our approach begins with understanding genuine needs. Whether we are planning residential spaces, operating travel facilities, supporting retail services or coordinating advisory work, the objective is to create solutions that remain useful beyond the first impression.
           </p>
 
           {/* Premium Blockquote styling */}
           <blockquote className="my-12 py-6 pl-8 border-l-4 border-[#D4AF37] bg-gradient-to-r from-[#D4AF37]/10 to-transparent italic text-xl text-white font-medium">
-            &quot;True luxury is not just in the materials we use, but in the seamless efficiency of the systems that power them.&quot;
+            &quot;Responsible progress begins with clarity, discipline and work that creates lasting value.&quot;
             <footer className="text-sm text-[#D4AF37] font-bold uppercase tracking-widest mt-4 not-italic">— Board of Directors</footer>
           </blockquote>
 
           <h3 className="text-3xl font-bold text-white mt-12 mb-6">The Next Phase of Development</h3>
           <p className="mb-6">
-            Looking ahead to Q3 2026, the corporation plans to aggressively expand our smart-transit operations. The success of the initial rollout proves that consumers are ready for a fully integrated, premium experience at every touchpoint of their daily routines.
+            Looking ahead, the corporation continues to strengthen its connected divisions across real estate, architecture, construction, energy services, retail operations and business advisory.
           </p>
           <p>
-            We remain dedicated to our core principles of transparency, structural integrity, and uncompromising quality. The architecture we build today is designed to serve as the benchmark for tomorrow.
+            We remain dedicated to clear communication, structural integrity, responsible operations and practical quality. The benchmark we build is measured by usefulness, trust and the value created for people who rely on our work.
           </p>
 
         </motion.article>

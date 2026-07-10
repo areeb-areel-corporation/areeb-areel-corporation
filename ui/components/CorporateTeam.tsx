@@ -69,11 +69,11 @@ export default function CorporateTeam() {
               </span>
             </div>
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight">
-              Corporate <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Team</span>
+              Corporate <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Leadership.</span>
             </h2>
           </div>
           <p className="text-zinc-400 text-base md:text-lg lg:text-right max-w-sm leading-relaxed font-medium">
-            Architects of regional infrastructure and energy transit, driving progression through decisive executive strategy.
+            A leadership structure focused on responsible growth, practical innovation and consistent execution across every division.
           </p>
         </div>
 

@@ -116,7 +116,7 @@ export default function CorporateInquiry() {
                 </span>
               </h2>
               <p className="text-zinc-400 text-lg leading-relaxed max-w-md">
-                Whether you are inquiring about a property in Naseeb Homes, looking to partner with our filling stations, or seeking corporate consulting in Dubai, our executive team is ready to assist you.
+                Whether you are exploring a home, commercial property, architectural project, operating partnership or Pakistan-UAE business opportunity, our team is ready to understand your objectives.
               </p>
             </div>
 
@@ -242,7 +242,7 @@ export default function CorporateInquiry() {
                     <option value="Naseeb Homes" className="bg-[#111] text-white">Naseeb Homes (Real Estate)</option>
                     <option value="Filling Station" className="bg-[#111] text-white">Areeb Areel Filling Station</option>
                     <option value="Architecture" className="bg-[#111] text-white">Architecture & Construction</option>
-                    <option value="Dubai Consulting" className="bg-[#111] text-white">Dubai Corporate Consulting</option>
+                    <option value="Pakistan-UAE Advisory" className="bg-[#111] text-white">Pakistan-UAE Business Advisory</option>
                   </select>
                   <label className="absolute left-0 -top-3 text-zinc-500 text-xs">
                     Target Division

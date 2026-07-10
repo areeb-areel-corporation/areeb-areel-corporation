@@ -8,7 +8,7 @@ import BlogsContent from './BlogsContent';
 export const metadata: Metadata = {
   title: 'Corporate Newsroom',
   description:
-    'Official publications, market insights, and corporate announcements from Areeb & Areel Corporation — Lahore\'s premier luxury real estate, energy, and consulting group.',
+    'Official publications, market insights, and corporate updates from Areeb & Areel Corporation across real estate, architecture, construction, energy services and business advisory.',
   keywords: [
     'Areeb Areel Blog',
     'Real Estate News Pakistan',
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Corporate Newsroom | Areeb & Areel Corp',
     description:
-      'Market insights, real estate updates, and corporate announcements from Areeb & Areel Corporation.',
+      'Market insights, real estate updates, and corporate updates from Areeb & Areel Corporation.',
     url: 'https://www.areebareel.pk/blogs',
     type: 'website',
   },

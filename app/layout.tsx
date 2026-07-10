@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   // metadataBase is required for resolving relative image URLs in OpenGraph
   metadataBase: new URL("https://www.areebareel.pk"), 
   title: {
-    default: "Areeb & Areel Corp | Building The Benchmark",
+    default: "Areeb & Areel Corporation | Real Estate, Architecture & Energy",
     template: "%s | Areeb & Areel Corp",
   },
   description:
-    "Areeb & Areel Corporation: Pioneers in ultra-luxury real estate, energy transit, and corporate consulting in Lahore and Dubai.",
+    "Areeb & Areel Corporation is a Lahore-based business group working across real estate development, architecture, construction, energy services and Pakistan-UAE business advisory.",
   keywords: [
     "Areeb Areel Corp",
     "Sentosa Square Lahore",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Areeb & Areel Corporation",
-    description: "Pioneers in ultra-luxury real estate and energy transit.",
+    description: "A Lahore-based business group working across real estate development, architecture, construction, energy services and Pakistan-UAE business advisory.",
     url: "https://www.areebareel.pk",
     siteName: "Areeb & Areel Corp",
     images: [
@@ -81,10 +81,10 @@ export default function RootLayout({
       "@type": "OfferCatalog",
       name: "Corporate Divisions",
       itemListElement: [
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Ultra-Luxury Real Estate Development", areaServed: "Lahore, Pakistan" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Real Estate Development", areaServed: "Lahore, Pakistan" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Architecture, Interior Design & Turnkey Construction", areaServed: "Lahore, Pakistan" } },
         { "@type": "Offer", itemOffered: { "@type": "Service", name: "Energy Transit Infrastructure & Filling Stations", areaServed: "Lahore, Pakistan" } },
-        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Corporate & Executive Consulting", areaServed: "Lahore, Pakistan; Dubai, UAE" } },
+        { "@type": "Offer", itemOffered: { "@type": "Service", name: "Pakistan-UAE Business Advisory", areaServed: "Lahore, Pakistan; Dubai, UAE" } },
       ],
     },
   };

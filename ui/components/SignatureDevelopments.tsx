@@ -9,20 +9,20 @@ const developments = [
   {
     id: "01",
     title: "Naseeb Homes",
-    category: "Premium Real Estate",
+    category: "Residential Real Estate",
     src: "/images/housing-society.png",
     url: "/naseeb-homes",
     description:
-      "A beautiful, secure gated community offering 3.5 and 5 Marla homes with easy 12-month installment plans for your family.",
+      "Thoughtfully planned 3.5 and 5 Marla homes created for modern family life. Naseeb Homes brings together contemporary architecture, practical layouts and structured ownership options within a community-focused residential environment.",
   },
   {
     id: "02",
     title: "Areeb Areel Filling Station",
-    category: "Energy & Transit",
+    category: "Energy & Mobility",
     src: "/images/petrol pump.png",
     url: "/filling-station",
     description:
-      "Our 24/7 petrol station offering 100% pure fuel, accurate measurements, a mosque, tuck shop, and car service facilities.",
+      "A convenient travel destination combining fuel services, an express mart, food and refreshments, prayer facilities and essential vehicle support.",
   },
   {
     id: "03",
@@ -31,7 +31,7 @@ const developments = [
     src: "/images/construction.png", // Using the construction image we used on the architecture page
     url: "/areeb-areel-corporation",
     description:
-      "We turn your ideas into reality. Our team handles everything from 3D designs and floor plans to complete building construction.",
+      "Complete architectural, interior-design and construction support for residential and commercial projects. From the first floor plan to final execution, our team helps turn ideas into practical, buildable spaces.",
   },
 ];
 

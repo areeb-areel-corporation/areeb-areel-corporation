@@ -19,7 +19,7 @@ import { cn } from "@/lib/utils";
 const SUGGESTIONS = [
   "Tell me about Sentosa Square",
   "Naseeb Homes payment plans",
-  "Corporate consulting services",
+  "Pakistan-UAE advisory services",
   "Where are your filling stations?"
 ];
 
@@ -54,7 +54,10 @@ export default function AIChatModal() {
         parts: [
           {
             type: "text",
+            text: "Welcome to Areeb & Areel Corporation. I am your customer support representative. I can guide you through Sentosa Square, Naseeb Homes, our filling station network, architecture and construction, and Pakistan-UAE business advisory. How may I assist you today?",
+            /*
             text: "Welcome to Areeb & Areel Corporation. I’m your customer support representative. I can guide you through Sentosa Square, Naseeb Homes, our filling station network, and corporate consulting. How may I assist you today?",
+            */
           },
         ],
       },
@@ -170,7 +173,7 @@ export default function AIChatModal() {
                         />
                       </div>
                       <p className="text-xs sm:text-[13px] font-medium text-zinc-400 max-w-sm mx-auto leading-relaxed">
-                        Inquire about Sentosa Square, our corporate divisions, or request a callback from our sales executives.
+                        Inquire about our developments, corporate divisions, or request a callback from our team.
                       </p>
                     </div>
                   </div>

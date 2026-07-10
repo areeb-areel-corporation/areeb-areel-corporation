@@ -19,9 +19,9 @@ const sliderImages: SliderImage[] = [
 ];
 
 const stats = [
-  { id: 1, value: '15+', label: 'Years of Excellence' },
-  { id: 2, value: '250+', label: 'Acres Developed' },
-  { id: 3, value: '40+', label: 'Energy Hubs Live' },
+  { id: 1, value: '[XX]+', label: 'Years of Combined Experience' },
+  { id: 2, value: '[XX]+', label: 'Projects or Acres Developed' },
+  { id: 3, value: '[XX]+', label: 'Clients or Service Touchpoints' },
 ];
 
 // --- GRID NODE LOGIC ---

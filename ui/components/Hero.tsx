@@ -92,9 +92,9 @@ export default function Hero(): ReactElement {
             variants={leftIn}
             className="text-4xl md:text-7xl font-black uppercase tracking-wider text-white"
           >
-            AREEB & AREEL <br />
+            AREEB & AREEL CORPORATION <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-gold">
-              CORPORATION
+              Building the Benchmark.
             </span>
           </motion.h1>
 
@@ -102,7 +102,14 @@ export default function Hero(): ReactElement {
             variants={rightIn}
             className="text-brand-silver/80 text-sm md:text-lg max-w-5xl mx-auto tracking-widest uppercase font-medium"
           >
+            Building Dreams • Shaping Spaces • Fueling the Future
+            <br />
+            <span className="normal-case tracking-normal text-brand-silver/70">
+              A diversified business group creating residential communities, commercial destinations, architectural solutions and customer-focused services.
+            </span>
+            {/*
             Building Dreams • Shaping Spaces • Fueling Future
+            */}
           </motion.p>
         </div>
 

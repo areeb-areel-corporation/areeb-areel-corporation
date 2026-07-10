@@ -41,14 +41,24 @@ function AnimatedCounter({ from, to, duration = 2, suffix = '' }: { from: number
   );
 }
 
-const stats = [
-  { id: 1, value: 15, suffix: '+', label: 'Years of Excellence' },
-  { id: 2, value: 250, suffix: '+', label: 'Acres Developed' },
-  { id: 3, value: 40, suffix: '+', label: 'Energy Hubs Live' },
-  { id: 4, value: 5, suffix: 'B+', prefix: 'AED ', label: 'International Reach' }, // Dubai touch
-];
+const statsByVariant = {
+  glance: [
+    { id: 1, value: '04', label: 'Core Business Areas' },
+    { id: 2, value: '02', label: 'Flagship Developments' },
+    { id: 3, value: '01', label: 'Integrated Design-and-Build Division' },
+    { id: 4, value: '02', label: 'Connected Markets: Pakistan & UAE' },
+  ],
+  verified: [
+    { id: 1, value: '[XX]+', label: 'Years of Combined Experience' },
+    { id: 2, value: '[XX]+', label: 'Projects or Development Footprint' },
+    { id: 3, value: '[XX]+', label: 'Clients or Customer Touchpoints' },
+    { id: 4, value: '[Insert Verified Figure]', label: 'Regional or International Reach' },
+  ],
+};
 
-export default function StrategicScale() {
+export default function StrategicScale({ variant = "glance" }: { variant?: "glance" | "verified" }) {
+  const stats = statsByVariant[variant];
+  const brandMarqueeText = "BUILDING DREAMS • SHAPING SPACES • FUELING THE FUTURE • DESIGNING WITH PURPOSE • ";
   const marqueeText = "BUILDING DREAMS • SHAPING SPACES • FEULING FUTURE  • CONSTRUCTION • ";
   
   return (
@@ -70,8 +80,7 @@ export default function StrategicScale() {
               className="flex flex-col items-center lg:items-start text-center lg:text-left relative before:absolute before:left-0 before:top-0 before:h-full before:w-[1px] before:bg-gradient-to-b before:from-[#D4AF37]/50 before:to-transparent lg:pl-8"
             >
               <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#D4AF37] tracking-tighter mb-2 flex items-center">
-                {stat.prefix && <span className="text-2xl lg:text-3xl mr-1 opacity-80">{stat.prefix}</span>}
-                <AnimatedCounter from={0} to={stat.value} duration={2.5} suffix={stat.suffix} />
+                {stat.value}
               </h3>
               <p className="text-brand-silver/60 text-sm md:text-base font-semibold uppercase tracking-[0.2em]">
                 {stat.label}
@@ -98,7 +107,7 @@ export default function StrategicScale() {
               key={i} 
               className="text-6xl md:text-8xl lg:text-9xl font-black mx-4 tracking-tighter text-transparent text-stroke-gold opacity-80 hover:opacity-100 transition-opacity duration-500 cursor-default"
             >
-              {marqueeText}
+              {brandMarqueeText}
             </span>
           ))}
         </motion.div>

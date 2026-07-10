@@ -12,9 +12,9 @@ import {
 
 // --- DATA: CORPORATE DIVISIONS ---
 const divisions = [
-  { id: "div-01", name: "Real Estate Development", desc: "Pioneering ultra-luxury commercial and residential spaces like Sentosa Square and Naseeb Homes.", icon: Building2 },
-  { id: "div-02", name: "Energy Transit", desc: "Operating high-efficiency, 24/7 Areeb Areel Filling Stations ensuring pure fuel and premium service.", icon: Fuel },
-  { id: "div-03", name: "Corporate Consulting", desc: "Providing elite strategic advisory and business scaling solutions across Lahore and Dubai.", icon: Briefcase },
+  { id: "div-01", name: "Real Estate Development", desc: "Residential and commercial developments planned around family life, business activity and long-term usability. Our current portfolio includes Naseeb Homes and Sentosa Square.", icon: Building2 },
+  { id: "div-02", name: "Energy & Mobility", desc: "Fuel, retail, food, prayer and vehicle-support facilities designed to make everyday journeys more convenient.", icon: Fuel },
+  { id: "div-03", name: "Corporate Advisory", desc: "Initial market-entry planning and professional coordination for entrepreneurs and businesses exploring opportunities between Pakistan and the UAE.", icon: Briefcase },
 ];
 // --- HERO BACKGROUND IMAGES ---
 const heroBackgrounds = [
@@ -136,7 +136,10 @@ export default function AboutUsPage() {
           </motion.h1>
 
           <motion.p initial="hidden" animate="show" variants={fadeUp} className="text-zinc-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium text-center px-4">
+            Areeb & Areel Corporation is a diversified business group creating practical value across real estate development, architecture, construction, energy services and corporate advisory. We do not aim to enter industries simply to participate. We aim to understand what customers and communities need, then develop solutions that are relevant, responsible and built to last.
+            {/*
             Areeb & Areel Corporation is a dynamic conglomerate driving innovation across real estate development, energy transit, and strategic corporate consulting. We don’t just participate in industries; we redefine their standards.
+            */}
           </motion.p>
         </div>
       </section>
@@ -149,7 +152,7 @@ export default function AboutUsPage() {
               Our Corporate <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Pillars</span>
             </h2>
             <p className="text-zinc-400 text-sm sm:text-base max-w-2xl mx-auto">
-              Diversified excellence across the sectors that power modern infrastructure.
+              Diversified expertise across the sectors that shape modern communities and commercial growth.
             </p>
           </motion.div>
 

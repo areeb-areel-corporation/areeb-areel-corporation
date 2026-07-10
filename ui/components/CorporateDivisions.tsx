@@ -5,33 +5,73 @@ import { motion } from "framer-motion";
 import { Building2, Fuel, Globe, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-const pillars = [
-  {
-    id: "01",
-    title: "Real Estate & Architecture",
-    icon: Building2,
-    description:
-      "Shaping regional landscapes through high-end construction and master-planned communities. From the accessible luxury of Naseeb Homes to premier high-rise living spaces, we design modern structures built to stand for generations.",
+const sectionContent = {
+  home: {
+    body: [
+      "Areeb & Areel Corporation brings together businesses that influence how people live, work, travel and invest.",
+      "Across real estate development, architecture, construction, energy services and business advisory, our focus remains consistent: understand genuine needs, plan with clarity and execute responsibly.",
+      "We do not measure progress by scale alone. We measure it by the value our work creates for families, businesses, partners and communities.",
+    ],
+    pillars: [
+      {
+        id: "01",
+        title: "Real Estate & Architecture",
+        icon: Building2,
+        description:
+          "We develop residential and commercial spaces shaped by real market needs. From family-focused communities such as Naseeb Homes to commercial destinations such as Sentosa Square, our projects combine functional planning, contemporary design and long-term usability.",
+      },
+      {
+        id: "02",
+        title: "Energy & Transit Services",
+        icon: Fuel,
+        description:
+          "We support everyday journeys through customer-focused fuel, retail, food, prayer and vehicle-care facilities. Our objective is to make each stop cleaner, more convenient and better equipped for commuters, families and professional drivers.",
+      },
+      {
+        id: "03",
+        title: "International Business Advisory",
+        icon: Globe,
+        description:
+          "We support entrepreneurs and companies exploring commercial opportunities between Pakistan and the UAE. Our role is to help clients understand their options, organise requirements and coordinate with qualified specialists where legal, tax, licensing, immigration or banking expertise is necessary.",
+      },
+    ],
   },
-  {
-    id: "02",
-    title: "Energy & Transit Networks",
-    icon: Fuel,
-    description:
-      "Powering critical logistics and daily transport operations with absolute precision. Our flagship Areeb Areel filling stations operate around the clock, guaranteeing 100% accurate measurements, pure fuel grades, and complete family facilities.",
+  about: {
+    body: [
+      "Areeb & Areel Corporation was created around a clear idea: different industries can work together to create stronger outcomes.",
+      "Real estate provides places to live and work. Architecture transforms requirements into intelligent spaces. Construction turns plans into reality. Energy services support movement and daily life. Business advisory helps ideas reach new markets.",
+      "Together, these divisions form a connected ecosystem shaped by clear communication, practical thinking and responsible execution.",
+    ],
+    pillars: [
+      {
+        id: "01",
+        title: "Real Estate & Architecture",
+        icon: Building2,
+        description:
+          "We develop and design spaces that respond to the requirements of families, businesses and investors. Our work balances architectural identity with functionality, affordability, market relevance and long-term use.",
+      },
+      {
+        id: "02",
+        title: "Energy & Transit Services",
+        icon: Fuel,
+        description:
+          "We create service environments that support local commuters, families and long-distance travellers. Our approach combines essential fuel operations with retail, food, prayer and vehicle-care facilities.",
+      },
+      {
+        id: "03",
+        title: "International Business Advisory",
+        icon: Globe,
+        description:
+          "We help entrepreneurs better understand the early decisions involved in entering the UAE market. Specialist legal, tax, immigration, banking and licensing matters are coordinated through appropriately qualified professionals.",
+      },
+    ],
   },
-  {
-    id: "03",
-    title: "International Business Consulting",
-    icon: Globe,
-    description:
-      "Bridging local enterprise with global markets. Operating from our executive corporate spaces in Dubai, UAE, we deliver seamless company incorporation, mainland setup, golden visa structures, and elite financial consulting.",
-  },
-];
+};
 
-export default function AboutCorporateSection() {
+export default function AboutCorporateSection({ variant = "home" }: { variant?: "home" | "about" }) {
   // Track which pillar is currently resting in the viewport center
   const [activePillar, setActivePillar] = useState("01");
+  const content = sectionContent[variant];
 
   return (
     <section
@@ -73,10 +113,11 @@ export default function AboutCorporateSection() {
               </h2>
 
               <p className="text-zinc-400 text-lg leading-relaxed max-w-lg">
-                Areeb & Areel Corporation operates as a highly coordinated
-                ecosystem. Across real estate development, energy logistics, and
-                cross-border commercial consulting, our structural foundation is
-                built on absolute transparency and operational trust.
+                {content.body.map((paragraph) => (
+                  <span key={paragraph} className="block mb-4 last:mb-0">
+                    {paragraph}
+                  </span>
+                ))}
               </p>
 
               <div className="pt-6">
@@ -99,7 +140,7 @@ export default function AboutCorporateSection() {
 
           {/* --- RIGHT COLUMN: Natural Scrolling Card Area --- */}
           <div className="w-full lg:w-6/12 space-y-[15vh] pt-[25vh] pb-[35vh]">
-            {pillars.map((pillar) => {
+            {content.pillars.map((pillar) => {
               const Icon = pillar.icon;
               const isActive = activePillar === pillar.id;
 

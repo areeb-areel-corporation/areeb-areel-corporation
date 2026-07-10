@@ -2,17 +2,17 @@
 
 import { useRef, useEffect } from 'react';
 import { motion, Variants } from 'framer-motion';
-import { Globe, Building2, Shield, Zap, Cpu, Landmark, Briefcase, Hexagon } from 'lucide-react';
+import { Globe, Building2, Shield, Zap, Landmark, Briefcase, Hexagon } from 'lucide-react';
 
 const partners = [
-  { id: "01", name: "Atlas Heavy Industries", category: "Construction", icon: Building2 },
-  { id: "02", name: "Nexus Global Transit", category: "Logistics", icon: Globe },
-  { id: "03", name: "Aegis Security Tech", category: "Cyber Systems", icon: Shield },
-  { id: "04", name: "Volt Energy Networks", category: "Power & Fuel", icon: Zap },
-  { id: "05", name: "Quantum Computing", category: "AI Analytics", icon: Cpu },
-  { id: "06", name: "Meridian Financial", category: "Capital Banking", icon: Landmark },
-  { id: "07", name: "Crown Real Estate", category: "Property Management", icon: Briefcase },
-  { id: "08", name: "Equinox Materials", category: "Sustainable Resources", icon: Hexagon },
+  { id: "01", name: "Residential Development", category: "Family-oriented communities and homes designed around comfort, usability and long-term value.", icon: Building2 },
+  { id: "02", name: "Commercial Real Estate", category: "Business spaces created to support visibility, accessibility and professional growth.", icon: Landmark },
+  { id: "03", name: "Architecture", category: "Site planning, floor plans, elevations, technical drawings and architectural visualization.", icon: Shield },
+  { id: "04", name: "Interior Design", category: "Functional interior environments shaped around the way people live, work and interact.", icon: Hexagon },
+  { id: "05", name: "Construction", category: "Coordinated project execution from approved drawings and specifications to finishing and handover.", icon: Building2 },
+  { id: "06", name: "Energy Services", category: "Fuel and travel facilities focused on convenience, responsible operations and customer experience.", icon: Zap },
+  { id: "07", name: "Retail Operations", category: "Express retail, food and everyday services integrated into high-traffic customer locations.", icon: Briefcase },
+  { id: "08", name: "Corporate Advisory", category: "Initial planning and professional coordination for businesses exploring Pakistan-UAE opportunities.", icon: Globe },
 ];
 
 export default function StrategicAlliances() {
@@ -89,15 +89,15 @@ export default function StrategicAlliances() {
             <div className="flex items-center gap-3 mb-4">
               <div className="w-12 h-[1px] bg-[#D4AF37]" />
               <span className="text-[#D4AF37] text-xs font-mono font-bold uppercase tracking-[0.3em]">
-                Global Network
+                Our Operating Ecosystem
               </span>
             </div>
             <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight">
-              Strategic <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Alliances.</span>
+              Connected <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Capabilities.</span>
             </h2>
           </div>
           <p className="text-zinc-400 text-base md:text-lg lg:text-right max-w-sm leading-relaxed font-medium">
-            Partnered with industry-leading pioneers across construction, energy, and digital infrastructure to engineer the future of global enterprise.
+            Our divisions bring together the expertise required to plan, develop, build and operate customer-focused projects.
           </p>
         </motion.div>
 

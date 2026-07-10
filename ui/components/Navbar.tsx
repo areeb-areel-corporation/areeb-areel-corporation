@@ -32,7 +32,7 @@ interface NavLink {
 
 const navLinks: NavLink[] = [
   {name : "About Us" , href: "/about-us", icon: Info},
-  { name: "Areeb Areel Crop", href: "/areeb-areel-corporation", icon: Building2 },
+  { name: "Architecture & Construction", href: "/areeb-areel-corporation", icon: Building2 },
   { name: "Filling Station", href: "/filling-station", icon: Fuel },
   { name: "Naseeb Homes", href: "/naseeb-homes", icon: Home },
   {name : "Santosa Square" , href: "/santosa-square", icon: Building2},

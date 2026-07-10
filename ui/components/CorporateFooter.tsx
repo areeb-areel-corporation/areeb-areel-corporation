@@ -10,14 +10,14 @@ import { socialLinks } from '@/data/data';
 const coreDivisions = [
   { name: 'Naseeb Homes', href: '/naseeb-homes' }, 
   { name: 'Filling Station', href: '/filling-station' },
-  { name: 'Architecture & Build', href: '/architecture' },
+  { name: 'Architecture & Construction', href: '/architecture' },
   { name: 'Santosa Square', href: '/santosa-square' },
 
 ];
 
 const corporateLinks = [
   { name: 'About The Legacy', href: '/about-us' },
-  { name: 'Dubai Consulting', href: '/contact' },
+  { name: 'Business Advisory', href: '/contact' },
   { name: 'Enquiries', href: '/contact' },
   { name: 'Blogs', href: '/blogs' },
 ];

@@ -20,10 +20,10 @@ export default function CTA() {
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#D4AF37]/10 blur-[100px] rounded-full pointer-events-none transition-opacity duration-500 group-hover:opacity-100 opacity-50" />
 
         <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-4 relative z-10">
-          Partner With Excellence.
+          Partner With Purpose.
         </h2>
         <p className="text-zinc-400 text-sm md:text-base mb-10 max-w-xl mx-auto relative z-10">
-          Ready to secure a space at Sentosa Square or require corporate consultancy? Connect with our executive team today.
+          Whether you are exploring a home, commercial property, architectural project, operating partnership or business opportunity, our team is ready to understand your objectives.
         </p>
 
         <Link

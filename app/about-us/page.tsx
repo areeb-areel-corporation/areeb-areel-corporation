@@ -6,9 +6,12 @@ import StrategicScale from '@/ui/components/StrategicScale';
 import CTA from './CTA';
 
 export const metadata: Metadata = {
-  title: 'About Areeb & Areel Corporation | Luxury Real Estate, Energy & Consulting',
+  title: 'About Areeb & Areel Corporation | Our Businesses and Vision',
   description:
+    'Learn about Areeb & Areel Corporation, its real estate, architecture, construction, energy and advisory divisions, and its approach to responsible growth.',
+  /*
     'Discover Areeb & Areel Corporation’s legacy in ultra-luxury real estate, energy transit, architecture, and strategic consulting across Lahore and Dubai.',
+  */
   keywords: [
     'Areeb Areel Corporation',
     'Luxury real estate Lahore',
@@ -27,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'About Areeb & Areel Corporation',
     description:
-      'Areeb & Areel Corporation builds benchmark-setting developments, energy infrastructure, and strategic advisory services in Pakistan and the UAE.',
+      'Learn about Areeb & Areel Corporation, its real estate, architecture, construction, energy and advisory divisions, and its approach to responsible growth.',
     url: 'https://www.areebareel.pk/about-us',
     type: 'website',
     images: [
@@ -47,7 +50,7 @@ const page = () => {
     name: 'About Areeb & Areel Corporation',
     url: 'https://www.areebareel.pk/about-us',
     description:
-      'Areeb & Areel Corporation is a diversified conglomerate focused on ultra-luxury real estate, energy transit, and strategic corporate consulting.',
+      'Areeb & Areel Corporation is a diversified business group creating practical value across real estate development, architecture, construction, energy services and corporate advisory.',
     mainEntity: {
       '@type': 'Organization',
       name: 'Areeb & Areel Corporation',
@@ -64,8 +67,8 @@ const page = () => {
     <>
       <AboutContent />
       <SignatureDevelopments />
-      <AboutCorporateSection />
-      <StrategicScale />
+      <AboutCorporateSection variant="about" />
+      <StrategicScale variant="verified" />
 
       <script
         type="application/ld+json"
