@@ -26,13 +26,13 @@ const developments = [
   },
   {
     id: "03",
-    title: "Architecture & Construction",
-    category: "Design & Build",
-    src: "/images/construction.png", // Using the construction image we used on the architecture page
-    url: "/areeb-areel-corporation",
+    title: "Sentosa Square",
+    category: "Residential Real Estate",
+    src: "/images/sentosa-1.jpeg",
+    url: "/sentosa-square",
     description:
-      "Complete architectural, interior-design and construction support for residential and commercial projects. From the first floor plan to final execution, our team helps turn ideas into practical, buildable spaces.",
-  },
+      "Sentosa Square is a contemporary commercial development created for retailers, service providers, professionals and growing businesses.",
+  }
 ];
 
 export default function SignatureDevelopments() {

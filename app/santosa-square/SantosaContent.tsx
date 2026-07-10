@@ -76,40 +76,31 @@ export default function SentosaSquarePage() {
     return () => container.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // --- ENFORCE 22-SECOND CLIP LOOP ON ALL VIDEO INSTANCES ---
+  // --- ENFORCE 22-SECOND CLIP LOOP ONLY FOR THE HERO BACKGROUND VIDEO ---
   useEffect(() => {
-    const videos = [heroVideoRef.current, featureVideoRef.current].filter(
-      (v): v is HTMLVideoElement => v !== null
-    );
+    const heroVideo = heroVideoRef.current;
+    if (!heroVideo) return;
 
-    const cleanupFns: (() => void)[] = [];
+    const handleTimeUpdate = () => {
+      if (heroVideo.currentTime >= CLIP_END_SECONDS) {
+        heroVideo.currentTime = 0;
+        heroVideo.play().catch(() => {});
+      }
+    };
 
-    videos.forEach((video) => {
-      const handleTimeUpdate = () => {
-        if (video.currentTime >= CLIP_END_SECONDS) {
-          video.currentTime = 0;
-          // play() can return a promise that rejects if interrupted; swallow it safely
-          video.play().catch(() => {});
-        }
-      };
+    const handleLoadedMetadata = () => {
+      if (heroVideo.currentTime >= CLIP_END_SECONDS) {
+        heroVideo.currentTime = 0;
+      }
+    };
 
-      // Safety net: if metadata loads and somehow starts past our window, reset it
-      const handleLoadedMetadata = () => {
-        if (video.currentTime >= CLIP_END_SECONDS) {
-          video.currentTime = 0;
-        }
-      };
+    heroVideo.addEventListener('timeupdate', handleTimeUpdate);
+    heroVideo.addEventListener('loadedmetadata', handleLoadedMetadata);
 
-      video.addEventListener('timeupdate', handleTimeUpdate);
-      video.addEventListener('loadedmetadata', handleLoadedMetadata);
-
-      cleanupFns.push(() => {
-        video.removeEventListener('timeupdate', handleTimeUpdate);
-        video.removeEventListener('loadedmetadata', handleLoadedMetadata);
-      });
-    });
-
-    return () => cleanupFns.forEach((fn) => fn());
+    return () => {
+      heroVideo.removeEventListener('timeupdate', handleTimeUpdate);
+      heroVideo.removeEventListener('loadedmetadata', handleLoadedMetadata);
+    };
   }, []);
 
   // State for gallery slider & buttons
@@ -413,9 +404,11 @@ export default function SentosaSquarePage() {
           <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#111] shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
             
             <video 
+              ref={featureVideoRef}
               autoPlay 
               muted 
               playsInline
+              loop
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
             >
               <source src="/videos/sentosa-3d.mp4" type="video/mp4" />
