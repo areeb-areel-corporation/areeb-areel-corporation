@@ -36,42 +36,13 @@ const sectionContent = {
       },
     ],
   },
-  about: {
-    body: [
-      "Areeb & Areel Corporation was created around a clear idea: different industries can work together to create stronger outcomes.",
-      "Real estate provides places to live and work. Architecture transforms requirements into intelligent spaces. Construction turns plans into reality. Energy services support movement and daily life. Business advisory helps ideas reach new markets.",
-      "Together, these divisions form a connected ecosystem shaped by clear communication, practical thinking and responsible execution.",
-    ],
-    pillars: [
-      {
-        id: "01",
-        title: "Real Estate & Architecture",
-        icon: Building2,
-        description:
-          "We develop and design spaces that respond to the requirements of families, businesses and investors. Our work balances architectural identity with functionality, affordability, market relevance and long-term use.",
-      },
-      {
-        id: "02",
-        title: "Energy & Transit Services",
-        icon: Fuel,
-        description:
-          "We create service environments that support local commuters, families and long-distance travellers. Our approach combines essential fuel operations with retail, food, prayer and vehicle-care facilities.",
-      },
-      {
-        id: "03",
-        title: "International Business Advisory",
-        icon: Globe,
-        description:
-          "We help entrepreneurs better understand the early decisions involved in entering the UAE market. Specialist legal, tax, immigration, banking and licensing matters are coordinated through appropriately qualified professionals.",
-      },
-    ],
-  },
+ 
 };
 
-export default function AboutCorporateSection({ variant = "home" }: { variant?: "home" | "about" }) {
+export default function AboutCorporateSection() {
   // Track which pillar is currently resting in the viewport center
   const [activePillar, setActivePillar] = useState("01");
-  const content = sectionContent[variant];
+  const content = sectionContent.home;
 
   return (
     <section
@@ -105,14 +76,14 @@ export default function AboutCorporateSection({ variant = "home" }: { variant?: 
                 </span>
               </div>
 
-              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tighter mb-8">
+              <h2 className="text-5xl md:text-6xl lg:text-6xl font-black leading-[1.05] tracking-tighter mb-8">
                 Shaping Value. <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
                   Driving Progress.
                 </span>
               </h2>
 
-              <p className="text-zinc-400 text-lg leading-relaxed max-w-lg">
+              <p className="text-zinc-400 text-md leading-relaxed max-w-lg">
                 {content.body.map((paragraph) => (
                   <span key={paragraph} className="block mb-4 last:mb-0">
                     {paragraph}

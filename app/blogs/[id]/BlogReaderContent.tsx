@@ -32,7 +32,7 @@ export default function BlogReaderContent() {
     return (
       <main className="min-h-screen bg-[#050505] flex flex-col items-center justify-center text-white px-6 text-center">
         <p className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em] mb-4">
-          Newsroom
+          Blogs
         </p>
         <h1 className="text-4xl md:text-6xl font-black mb-6">Article Not Found</h1>
         <button
@@ -40,7 +40,7 @@ export default function BlogReaderContent() {
           className="inline-flex items-center gap-3 text-[#D4AF37] font-bold uppercase tracking-widest text-sm"
         >
           <ChevronLeft className="w-4 h-4" />
-          Return to Newsroom
+          Return to Blogs
         </button>
       </main>
     );
@@ -78,7 +78,7 @@ export default function BlogReaderContent() {
               className="inline-flex items-center gap-3 text-zinc-400 hover:text-[#D4AF37] transition-colors text-xs font-bold uppercase tracking-[0.25em] mb-8"
             >
               <ChevronLeft className="w-4 h-4" />
-              Back to Newsroom
+              Back to Blogs
             </Link>
 
             <div className="flex flex-wrap items-center gap-3 mb-6">
@@ -95,7 +95,7 @@ export default function BlogReaderContent() {
               </span>
             </div>
 
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[1.02] mb-8">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl text-[#D4AF37] font-black tracking-tighter leading-[1.02] mb-8">
               {article.title}
             </h1>
             <p className="text-lg md:text-2xl text-zinc-300 leading-relaxed max-w-3xl">
@@ -190,7 +190,7 @@ export default function BlogReaderContent() {
                         <span className="shrink-0 w-12 h-12 rounded-full border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-[#D4AF37] flex items-center justify-center font-mono text-sm font-bold">
                           {String(index + 1).padStart(2, '0')}
                         </span>
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-tight text-white">
+                        <h2 className="text-3xl md:text-4xl font-black tracking-tight leading-tight text-[#D4AF37]">
                           {section.heading}
                         </h2>
                       </div>
@@ -232,7 +232,7 @@ export default function BlogReaderContent() {
                   href="/blogs"
                   className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#D4AF37]/30 bg-[#D4AF37] px-6 py-4 text-sm font-bold uppercase tracking-widest text-black transition-transform duration-300 hover:-translate-y-1"
                 >
-                  View Newsroom
+                  View Blogs
                   <ArrowUpRight className="w-4 h-4" />
                 </Link>
               </div>

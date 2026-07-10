@@ -98,7 +98,7 @@ export const blogDatabase = [
     readTime: "5 Min Read",
     title: "Designing Better Urban Living for Lahore's Growing Families",
     excerpt: "Why successful residential development begins with practical planning, community needs and long-term usability.",
-    src: "/images/housing-society.png",
+    src: "/images/sentosa-2.jpeg",
     sections: [
       {
         heading: "Residential Development Begins with Understanding People",
@@ -247,7 +247,7 @@ export const blogDatabase = [
     readTime: "8 Min Read",
     title: "Preparing for UAE Market Entry: What Pakistani Businesses Should Consider",
     excerpt: "Key considerations for Pakistani entrepreneurs exploring UAE licensing, setup routes, documentation and professional advisory support.",
-    src: "/images/construction.png",
+    src: "/images/dubai-pic.jpg",
     sections: [
       {
         heading: "Start with the Business Activity",
