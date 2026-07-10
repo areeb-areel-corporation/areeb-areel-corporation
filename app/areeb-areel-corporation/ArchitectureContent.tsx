@@ -40,7 +40,8 @@ const technicalDetails = [
   "Door & Window Details",
   "Roof Plans & Opening Schedules",
   "MEP & Structural Coordination",
-  "Material & Fabrication Specifications"
+  "Material & Fabrication Specifications",
+  "Real Estate"
 ];
 
 export default function ArchitecturePage() {
@@ -110,7 +111,7 @@ export default function ArchitecturePage() {
               <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
               <span>Interior Design</span>
               <span className="w-1.5 h-1.5 rounded-full bg-white/30" />
-              <span>Construction</span>
+              <span>Real Estate</span>
             </motion.div>
           </motion.div>
         </div>

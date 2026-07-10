@@ -10,7 +10,6 @@ const sectionContent = {
     body: [
       "Areeb & Areel Corporation brings together businesses that influence how people live, work, travel and invest.",
       "Across real estate development, architecture, construction, energy services and business advisory, our focus remains consistent: understand genuine needs, plan with clarity and execute responsibly.",
-      "We do not measure progress by scale alone. We measure it by the value our work creates for families, businesses, partners and communities.",
     ],
     pillars: [
       {
@@ -36,36 +35,7 @@ const sectionContent = {
       },
     ],
   },
-  about: {
-    body: [
-      "Areeb & Areel Corporation was created around a clear idea: different industries can work together to create stronger outcomes.",
-      "Real estate provides places to live and work. Architecture transforms requirements into intelligent spaces. Construction turns plans into reality. Energy services support movement and daily life. Business advisory helps ideas reach new markets.",
-      "Together, these divisions form a connected ecosystem shaped by clear communication, practical thinking and responsible execution.",
-    ],
-    pillars: [
-      {
-        id: "01",
-        title: "Real Estate & Architecture",
-        icon: Building2,
-        description:
-          "We develop and design spaces that respond to the requirements of families, businesses and investors. Our work balances architectural identity with functionality, affordability, market relevance and long-term use.",
-      },
-      {
-        id: "02",
-        title: "Energy & Transit Services",
-        icon: Fuel,
-        description:
-          "We create service environments that support local commuters, families and long-distance travellers. Our approach combines essential fuel operations with retail, food, prayer and vehicle-care facilities.",
-      },
-      {
-        id: "03",
-        title: "International Business Advisory",
-        icon: Globe,
-        description:
-          "We help entrepreneurs better understand the early decisions involved in entering the UAE market. Specialist legal, tax, immigration, banking and licensing matters are coordinated through appropriately qualified professionals.",
-      },
-    ],
-  },
+ 
 };
 
 export default function AboutCorporateSection({ variant = "home" }: { variant?: "home" | "about" }) {

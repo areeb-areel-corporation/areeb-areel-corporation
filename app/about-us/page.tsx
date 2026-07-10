@@ -64,8 +64,8 @@ const page = () => {
     <>
       <AboutContent />
       <SignatureDevelopments />
-      <AboutCorporateSection variant="about" />
-      <StrategicScale variant="verified" />
+      <AboutCorporateSection />
+      <StrategicScale />
 
       <script
         type="application/ld+json"

@@ -286,7 +286,7 @@ export default function FillingStationPage() {
                     Current Fuel Rates
                   </h3>
                   <span className="text-[10px] uppercase tracking-widest text-[#D4AF37] bg-[#D4AF37]/10 px-3 py-1.5 rounded-md">
-                    Last Updated: [Date and Time]
+                    Last Updated: {currentDate || "Loading..."  }
                   </span>
                 </div>
 
@@ -296,13 +296,13 @@ export default function FillingStationPage() {
                       Premier / Petrol
                     </p>
                     <p className="text-2xl font-black text-white group-hover:text-[#D4AF37] transition-colors">
-                      Rs. [Insert Current Rate]{" "}
+                      Rs. 297.53
                       <span className="text-xs font-normal text-zinc-500">
                         / Ltr
                       </span>
                     </p>
                     <div className="flex items-center gap-1 text-green-500 mt-2 text-[10px] font-bold uppercase">
-                      <TrendingDown className="w-3 h-3" /> Last Updated: [Date and Time]
+                      <TrendingDown className="w-3 h-3" /> Last Updated: {currentDate || "Loading..."}
                     </div>
                   </div>
                   <div className="bg-[#0a0a0a] border border-white/5 rounded-xl p-4 group-hover:border-[#D4AF37]/40 transition-colors">
@@ -310,13 +310,13 @@ export default function FillingStationPage() {
                       High Speed Diesel
                     </p>
                     <p className="text-2xl font-black text-white group-hover:text-[#D4AF37] transition-colors">
-                      Rs. [Insert Current Rate]{" "}
+                      Rs.  309.50
                       <span className="text-xs font-normal text-zinc-500">
                         / Ltr
                       </span>
                     </p>
                     <div className="flex items-center gap-1 text-green-500 mt-2 text-[10px] font-bold uppercase">
-                      <TrendingDown className="w-3 h-3" /> Last Updated: [Date and Time]
+                      <TrendingDown className="w-3 h-3" /> Last Updated: {currentDate || "Loading..."}
                     </div>
                   </div>
                 </div>
@@ -540,8 +540,8 @@ export default function FillingStationPage() {
                     Location
                   </p>
                   <p className="font-bold text-white text-sm tracking-wide">
-                    [Insert Complete Verified Station Address]
-                    <br />
+                    Multan Road, Thokar Niaz Baig, 
+                    
                     Lahore, Punjab, Pakistan
                   </p>
                 </div>
@@ -555,68 +555,71 @@ export default function FillingStationPage() {
                       <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
                     </span>
                     <p className="font-bold text-white text-sm tracking-wide">
-                    [Insert Verified Operating Hours]
+                    24/7 Operational
                     </p>
                   </div>
                 </div>
+                  <div className="space-y-6">
+                    <motion.div
+                      initial={{ y: 30, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                      className="border-t border-white/5 pt-6 flex flex-col items-start"
+                    >
+                      <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-4">
+                        Connect With Us
+                      </p>
+                      <div className="flex items-center gap-4 sm:gap-6">
+                        {[
+                          { 
+                            icon: FaFacebook, 
+                            href: "#", 
+                            name: "Facebook",
+                            hoverBg: "hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10 hover:shadow-[0_10px_20px_-10px_rgba(24,119,242,0.4)]",
+                            hoverText: "group-hover:text-[#1877F2]" 
+                          },
+                          { 
+                            icon: FaInstagram, 
+                            href: "#", 
+                            name: "Instagram",
+                            hoverBg: "hover:border-[#E1306C]/50 hover:bg-[#E1306C]/10 hover:shadow-[0_10px_20px_-10px_rgba(225,48,108,0.4)]",
+                            hoverText: "group-hover:text-[#E1306C]"
+                          },
+                          { 
+                            icon: FaLinkedin, 
+                            href: "#", 
+                            name: "LinkedIn",
+                            hoverBg: "hover:border-[#0A66C2]/50 hover:bg-[#0A66C2]/10 hover:shadow-[0_10px_20px_-10px_rgba(10,102,194,0.4)]",
+                            hoverText: "group-hover:text-[#0A66C2]"
+                          },
+                          { 
+                            icon: FaYoutube, 
+                            href: "#", 
+                            name: "YouTube",
+                            hoverBg: "hover:border-[#FF0000]/50 hover:bg-[#FF0000]/10 hover:shadow-[0_10px_20px_-10px_rgba(255,0,0,0.4)]",
+                            hoverText: "group-hover:text-[#FF0000]"
+                          },
+                        ].map((social, idx) => {
+                          const Icon = social.icon;
+                          return (
+                            <a
+                              key={idx}
+                              href={social.href}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={social.name}
+                              className={`group relative w-12 h-12 rounded-full bg-[#0a0a0a] border border-white/10 flex items-center justify-center transition-all duration-300 ease-out hover:-translate-y-1 ${social.hoverBg}`}
+                            >
+                              <Icon className={`w-5 h-5 text-zinc-500 transition-colors duration-300 ${social.hoverText}`} />
+                            </a>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  </div>
 
-              <motion.div
-                         initial={{ y: 30, opacity: 0 }}
-                         whileInView={{ y: 0, opacity: 1 }}
-                         viewport={{ once: true }}
-                         transition={{ duration: 0.6, delay: 0.4 }}
-                         className="mt-16 pt-10 border-t border-white/5 flex flex-col items-center"
-                       >
-                         <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-6">
-                           Connect With Us
-                         </p>
-                         <div className="flex items-center justify-center gap-4 sm:gap-6">
-                           {[
-                             { 
-                               icon: FaFacebook, 
-                               href: "#", 
-                               name: "Facebook",
-                               hoverBg: "hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10 hover:shadow-[0_10px_20px_-10px_rgba(24,119,242,0.4)]",
-                               hoverText: "group-hover:text-[#1877F2]" 
-                             },
-                             { 
-                               icon: FaInstagram, 
-                               href: "#", 
-                               name: "Instagram",
-                               hoverBg: "hover:border-[#E1306C]/50 hover:bg-[#E1306C]/10 hover:shadow-[0_10px_20px_-10px_rgba(225,48,108,0.4)]",
-                               hoverText: "group-hover:text-[#E1306C]"
-                             },
-                             { 
-                               icon: FaLinkedin, 
-                               href: "#", 
-                               name: "LinkedIn",
-                               hoverBg: "hover:border-[#0A66C2]/50 hover:bg-[#0A66C2]/10 hover:shadow-[0_10px_20px_-10px_rgba(10,102,194,0.4)]",
-                               hoverText: "group-hover:text-[#0A66C2]"
-                             },
-                             { 
-                               icon: FaYoutube, 
-                               href: "#", 
-                               name: "YouTube",
-                               hoverBg: "hover:border-[#FF0000]/50 hover:bg-[#FF0000]/10 hover:shadow-[0_10px_20px_-10px_rgba(255,0,0,0.4)]",
-                               hoverText: "group-hover:text-[#FF0000]"
-                             },
-                           ].map((social, idx) => {
-                             const Icon = social.icon;
-                             return (
-                               <a
-                                 key={idx}
-                                 href={social.href}
-                                 target="_blank"
-                                 rel="noopener noreferrer"
-                                 aria-label={social.name}
-                                 className={`group relative w-12 h-12 rounded-full bg-[#0a0a0a] border border-white/10 flex items-center justify-center transition-all duration-300 ease-out hover:-translate-y-1 ${social.hoverBg}`}
-                               >
-                                 <Icon className={`w-5 h-5 text-zinc-500 transition-colors duration-300 ${social.hoverText}`} />
-                               </a>
-                             );
-                           })}
-                         </div>
-                       </motion.div>
+ 
               </div>
             </motion.div>
 

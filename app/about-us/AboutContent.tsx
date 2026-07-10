@@ -93,10 +93,7 @@ export default function AboutUsPage() {
               />
             </motion.div>
           </AnimatePresence>
-          {/* Deep Vignette Mask */}
-          {/* <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#050505_80%)] z-10" /> */}
-          {/* <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/90 via-[#050505]/40 to-[#050505] z-10" /> */}
-        </div>
+                </div>
 
         {/* Central Content */}
         <div className="relative z-20 max-w-4xl mx-auto flex flex-col items-center justify-center w-full">
@@ -137,9 +134,7 @@ export default function AboutUsPage() {
 
           <motion.p initial="hidden" animate="show" variants={fadeUp} className="text-zinc-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium text-center px-4">
             Areeb & Areel Corporation is a diversified business group creating practical value across real estate development, architecture, construction, energy services and corporate advisory. We do not aim to enter industries simply to participate. We aim to understand what customers and communities need, then develop solutions that are relevant, responsible and built to last.
-            {/*
-            Areeb & Areel Corporation is a dynamic conglomerate driving innovation across real estate development, energy transit, and strategic corporate consulting. We don’t just participate in industries; we redefine their standards.
-            */}
+
           </motion.p>
         </div>
       </section>
