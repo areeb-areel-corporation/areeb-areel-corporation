@@ -70,7 +70,7 @@ export default function ArchitecturePage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0 bg-[#050505]">
           <Image
-            src="/images/construction.png" 
+            src="/images/architecture-hero.webp"
             alt="Architecture and Design"
             fill
             priority
@@ -159,7 +159,7 @@ export default function ArchitecturePage() {
             <div className="relative aspect-square md:aspect-[4/3] rounded-[2rem] overflow-hidden bg-[#050505] border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.5)] group p-2">
               <div className="relative w-full h-full rounded-3xl overflow-hidden bg-[#111]">
                 <Image
-                  src="/images/housing-society.png" 
+                  src="/images/architecture-design-process.webp"
                   alt="Architecture Services"
                   fill
                   className="object-cover transition-transform duration-1000 group-hover:scale-105"
