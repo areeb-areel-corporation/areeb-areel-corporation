@@ -38,10 +38,10 @@ export const teamData = {
     },
   ],
   executives: [
-    { id: 3, name: '[Insert Verified Name]', role: 'People & Operations | Chief People and Operations Officer', linkedin: '#' },
-    { id: 4, name: '[Insert Verified Name]', role: 'Brand & Strategy | Head of Brand and Marketing Strategy', linkedin: '#' },
-    { id: 5, name: '[Insert Verified Name]', role: 'Real Estate Development | Director of Real Estate Development', linkedin: '#' },
-    { id: 6, name: '[Insert Verified Name]', role: 'Retail & Supply Chain | Head of Retail and Supply Chain', linkedin: '#' },
+    { id: 3, name: '[Insert Verified Name]', role: 'Chief People and Operations Officer', linkedin: '#' },
+    { id: 4, name: '[Insert Verified Name]', role: 'Head of Brand and Marketing Strategy', linkedin: '#' },
+    { id: 5, name: '[Insert Verified Name]', role: 'Director of Real Estate Development', linkedin: '#' },
+    { id: 6, name: '[Insert Verified Name]', role: 'Head of Retail and Supply Chain', linkedin: '#' },
   ]
 };
 

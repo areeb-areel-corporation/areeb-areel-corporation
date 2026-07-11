@@ -10,7 +10,7 @@ const developments = [
     id: "01",
     title: "Naseeb Homes",
     category: "Residential Real Estate",
-    src: "/images/housing-society.png",
+    src: "/images/naseeb-homes.jpg",
     url: "/naseeb-homes",
     description:
       "Thoughtfully planned 3.5 and 5 Marla homes created for modern family life. Naseeb Homes brings together contemporary architecture, practical layouts and structured ownership options within a community-focused residential environment.",

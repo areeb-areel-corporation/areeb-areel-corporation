@@ -68,7 +68,7 @@ export default function CorporateTeam() {
                 Sys-Core: Leadership
               </span>
             </div>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter leading-tight">
               Corporate <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">Leadership.</span>
             </h2>
           </div>
