@@ -43,7 +43,7 @@ export default function NaseebHomesPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/housing-society.png" // Replace with a Naseeb Homes hero image
+            src="/images/naseeb-homes.jpg" // Replace with a Naseeb Homes hero image
             alt="Naseeb Homes Community"
             fill
             priority
@@ -251,7 +251,7 @@ export default function NaseebHomesPage() {
           >
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-[#D4AF37]/40 shadow-[0_0_50px_rgba(212,175,55,0.1)] group bg-[#111]">
               <Image
-                src="/images/housing-society.png" // Replace with Naseeb Homes exterior image
+                src="/images/naseeb-homes.jpg" // Replace with Naseeb Homes exterior image
                 alt="Naseeb Homes Exterior"
                 fill
                 className="object-cover transition-transform duration-[1500ms] group-hover:scale-105"
@@ -279,7 +279,7 @@ export default function NaseebHomesPage() {
           >
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-white/20 shadow-2xl group bg-[#111]">
               <Image
-                src="/images/construction.png" // Replace with interior or community image
+                src="/images/naseeb-homes-2.jpg" // Replace with interior or community image
                 alt="Naseeb Homes Community"
                 fill
                 className="object-cover transition-transform duration-[1500ms] group-hover:scale-105 filter saturate-[0.85]"

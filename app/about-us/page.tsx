@@ -65,9 +65,9 @@ const page = () => {
     <>
       <AboutContent />
       <SignatureDevelopments />
+      <ClientTestimonials />
       <AboutCorporateSection />
       <StrategicScale />
-      <ClientTestimonials />
 
       <script
         type="application/ld+json"

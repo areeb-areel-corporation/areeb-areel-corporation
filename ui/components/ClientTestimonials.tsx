@@ -50,7 +50,7 @@ export default function ClientTestimonials() {
 
     const timer = window.setInterval(() => {
       setActiveIndex((current) => (current + 1) % testimonials.length);
-    }, 7000);
+    }, 5000);
 
     return () => window.clearInterval(timer);
   }, [isPaused, reduceMotion]);
@@ -93,18 +93,18 @@ export default function ClientTestimonials() {
             <div className="mb-4 flex items-center gap-3">
               <div className="h-px w-12 bg-[#D4AF37]" />
               <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#D4AF37]">
-                Client Perspectives
+                Client Testimonials
               </span>
             </div>
             <h2 className="max-w-3xl text-4xl font-black leading-tight tracking-normal md:text-5xl lg:text-6xl">
-              Built on clarity.{' '}
+              Clients
               <span className="bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC] bg-clip-text text-transparent">
-                Remembered for care.
+              Testimonials
               </span>
             </h2>
           </div>
           <p className="max-w-md text-sm font-medium leading-relaxed text-zinc-400 md:text-base lg:text-right">
-            Perspectives from clients exploring homes, commercial opportunities,
+            Testimonials from clients exploring homes, commercial opportunities,
             design solutions and cross-border business planning.
           </p>
         </motion.div>
@@ -146,7 +146,7 @@ export default function ClientTestimonials() {
                   </div>
 
                   <div className="mt-12 border-l-2 border-[#D4AF37] pl-5">
-                    <p className="text-sm font-bold uppercase tracking-[0.16em] text-white">
+                    <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#D4AF37] sm:text-base">
                       {activeTestimonial.attribution}
                     </p>
                     <p className="mt-1 text-xs font-medium text-zinc-500">
