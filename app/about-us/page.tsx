@@ -4,6 +4,7 @@ import SignatureDevelopments from '@/ui/components/SignatureDevelopments';
 import AboutCorporateSection from '@/ui/components/CorporateDivisions';
 import StrategicScale from '@/ui/components/StrategicScale';
 import CTA from './CTA';
+import ClientTestimonials from '@/ui/components/ClientTestimonials';
 
 export const metadata: Metadata = {
   title: 'About Areeb & Areel Corporation | Our Businesses and Vision',
@@ -66,6 +67,7 @@ const page = () => {
       <SignatureDevelopments />
       <AboutCorporateSection />
       <StrategicScale />
+      <ClientTestimonials />
 
       <script
         type="application/ld+json"

@@ -6,6 +6,7 @@ import StrategicScale from '@/ui/components/StrategicScale';
 import CorporateTeam from '@/ui/components/CorporateTeam';
 import CorporateInsights from '@/ui/components/CorporateInsights';
 import StrategicAlliances from '@/ui/components/StrategicAlliances';
+import ClientTestimonials from '@/ui/components/ClientTestimonials';
 
 export default function Home() {
   return (
@@ -17,9 +18,10 @@ export default function Home() {
       <SignatureDevelopments />
       <StrategicScale />
       <StrategicAlliances />
+      <ClientTestimonials />
       <CorporateTeam />
       <CorporateInsights />
       
     </main>
   );
-}   
+}

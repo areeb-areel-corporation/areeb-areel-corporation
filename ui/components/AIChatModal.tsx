@@ -18,9 +18,8 @@ import { cn } from "@/lib/utils";
 
 const SUGGESTIONS = [
   "Tell me about Sentosa Square",
-  "Naseeb Homes payment plans",
-  "Pakistan-UAE advisory services",
-  "Where are your filling stations?"
+  "Naseeb Homes layouts and options",
+  "What services are at the filling station?"
 ];
 
 export default function AIChatModal() {
@@ -54,10 +53,7 @@ export default function AIChatModal() {
         parts: [
           {
             type: "text",
-            text: "Welcome to Areeb & Areel Corporation. I am your customer support representative. I can guide you through Sentosa Square, Naseeb Homes, our filling station network, architecture and construction, and Pakistan-UAE business advisory. How may I assist you today?",
-            /*
-            text: "Welcome to Areeb & Areel Corporation. I’m your customer support representative. I can guide you through Sentosa Square, Naseeb Homes, our filling station network, and corporate consulting. How may I assist you today?",
-            */
+            text: "Welcome to Areeb & Areel Corporation. I can help with Sentosa Square, Naseeb Homes, filling-station services, architecture and construction, or Pakistan-UAE business advisory. Tell me what you are exploring, and I will guide you to the right details or help you request a callback.",
           },
         ],
       },
@@ -179,7 +175,7 @@ export default function AIChatModal() {
                   </div>
                 )}
 
-                {messages.map((msg, i) => (
+                {messages.map((msg) => (
                   <motion.div 
                     key={msg.id}
                     initial={{ opacity: 0, y: 10 }}
@@ -204,7 +200,7 @@ export default function AIChatModal() {
 
                     {/* Message Bubble */}
                     <div className={cn(
-                      "px-3.5 py-2.5 text-[13px] sm:text-[14px] font-medium leading-[1.6] max-w-[85%] sm:max-w-[75%]",
+                      "whitespace-pre-line px-3.5 py-2.5 text-[13px] sm:text-[14px] font-medium leading-[1.6] max-w-[85%] sm:max-w-[75%]",
                       msg.role === "user" 
                         ? "bg-gradient-to-br from-[#D4AF37]/20 to-[#D4AF37]/5 border border-[#D4AF37]/30 text-[#fcedc0] rounded-[18px] rounded-tr-sm shadow-sm" 
                         : "bg-[#111111]/90 border border-white/10 text-zinc-200 rounded-[18px] rounded-tl-sm shadow-sm"

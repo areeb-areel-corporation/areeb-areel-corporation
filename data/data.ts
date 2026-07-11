@@ -197,7 +197,7 @@ export const blogDatabase = [
     readTime: "6 Min Read",
     title: "Why Convenience Retail Belongs Along the Daily Commute",
     excerpt: "A closer look at how accessible retail services create value for travellers and local communities.",
-    src: "/images/mart.png",
+    src: "/images/mart.jpg",
     sections: [
       {
         heading: "Retail Is Most Valuable When It Is Accessible",
