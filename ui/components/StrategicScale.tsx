@@ -41,23 +41,8 @@ function AnimatedCounter({ from, to, duration = 2, suffix = '' }: { from: number
   );
 }
 
-const statsByVariant = {
-  glance: [
-    { id: 1, value: '04', label: 'Core Business Areas' },
-    { id: 2, value: '02', label: 'Flagship Developments' },
-    { id: 3, value: '01', label: 'Integrated Design-and-Build Division' },
-    { id: 4, value: '02', label: 'Connected Markets: Pakistan & UAE' },
-  ],
-  verified: [
-    { id: 1, value: '[XX]+', label: 'Years of Combined Experience' },
-    { id: 2, value: '[XX]+', label: 'Projects or Development Footprint' },
-    { id: 3, value: '[XX]+', label: 'Clients or Customer Touchpoints' },
-    { id: 4, value: '[Insert Verified Figure]', label: 'Regional or International Reach' },
-  ],
-};
 
 export default function StrategicScale({ variant = "glance" }: { variant?: "glance" | "verified" }) {
-  const stats = statsByVariant[variant];
   const brandMarqueeText = "BUILDING DREAMS • SHAPING SPACES • FUELING THE FUTURE • DESIGNING WITH PURPOSE • ";
   
   return (
@@ -65,30 +50,6 @@ export default function StrategicScale({ variant = "glance" }: { variant?: "glan
       
       {/* Background Lighting */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#D4AF37]/5 blur-[150px] rounded-[100%] pointer-events-none" />
-
-      {/* --- STATS GRID --- */}
-      <div className="max-w-[1600px] mx-auto px-6 md:px-10 relative z-10 mb-20 lg:mb-32">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-6">
-          {stats.map((stat, index) => (
-            <motion.div 
-              key={stat.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8, delay: index * 0.1, ease: "easeOut" }}
-              className="flex flex-col items-center lg:items-start text-center lg:text-left relative before:absolute before:left-0 before:top-0 before:h-full before:w-[1px] before:bg-gradient-to-b before:from-[#D4AF37]/50 before:to-transparent lg:pl-8"
-            >
-              <h3 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#D4AF37] tracking-tighter mb-2 flex items-center">
-                {stat.value}
-              </h3>
-              <p className="text-brand-silver/60 text-sm md:text-base font-semibold uppercase tracking-[0.2em]">
-                {stat.label}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
    
       <div className="relative w-full flex overflow-hidden whitespace-nowrap bg-[#111111] py-8 lg:py-12 border-y border-[#D4AF37]/20 scale-105 shadow-[0_0_50px_rgba(0,0,0,0.5)]">
         <motion.div

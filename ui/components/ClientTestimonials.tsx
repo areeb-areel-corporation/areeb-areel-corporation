@@ -1,8 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
-import { ArrowLeft, ArrowRight, Quote } from 'lucide-react';
+import { useRef, useEffect } from 'react';
+import { motion, Variants, useAnimation } from 'framer-motion';
+import { Quote } from 'lucide-react';
 
 const testimonials = [
   {
@@ -40,190 +40,207 @@ const testimonials = [
 ];
 
 export default function ClientTestimonials() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const reduceMotion = useReducedMotion();
-  const activeTestimonial = testimonials[activeIndex];
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const controls = useAnimation();
 
+  // Mouse tracking for the premium golden border spotlight on hover
   useEffect(() => {
-    if (isPaused || reduceMotion) return;
+    const container = containerRef.current;
+    if (!container) return;
 
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % testimonials.length);
-    }, 5000);
+    const handleMouseMove = (e: MouseEvent) => {
+      cardsRef.current.forEach((card) => {
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
 
-    return () => window.clearInterval(timer);
-  }, [isPaused, reduceMotion]);
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+      });
+    };
 
-  const showPrevious = () => {
-    setActiveIndex((current) =>
-      current === 0 ? testimonials.length - 1 : current - 1,
-    );
+    container.addEventListener('mousemove', handleMouseMove);
+    return () => container.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Optional: Auto-scroll effect (paused on hover)
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+
+    let animationFrameId: number;
+    let isPaused = false;
+    let scrollPos = 0;
+    const speed = 0.5;
+
+    const scroll = () => {
+      if (!isPaused && scrollContainer) {
+        scrollPos += speed;
+        // Reset scroll when reaching the end of original content (simplified continuous scroll logic)
+        if (scrollPos >= scrollContainer.scrollWidth / 2) {
+            scrollPos = 0;
+        }
+        scrollContainer.scrollLeft = scrollPos;
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    // Uncomment the line below to enable continuous auto-scrolling
+    // animationFrameId = requestAnimationFrame(scroll);
+
+    const handleMouseEnter = () => { isPaused = true; };
+    const handleMouseLeave = () => { isPaused = false; };
+
+    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
+    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      if (scrollContainer) {
+        scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
+        scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, []);
+
+  const headerVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
   };
 
-  const showNext = () => {
-    setActiveIndex((current) => (current + 1) % testimonials.length);
+  const staggerVariants: Variants = {
+    hidden: { opacity: 0 },
+    show: { opacity: 1, transition: { staggerChildren: 0.15 } },
+  };
+
+  const cardVariants: Variants = {
+    hidden: { opacity: 0, x: 50 },
+    show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
+    hover: { y: -5, transition: { duration: 0.3, ease: 'easeOut' } }
   };
 
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden border-y border-white/5 bg-[#080808] py-24 text-white lg:py-32"
+      className="relative overflow-hidden border-y border-white/5 bg-[#050505] py-20 text-white lg:py-24"
+      ref={containerRef}
     >
+      {/* Background Architectural Grid Lines */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.035]"
+        className="pointer-events-none absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
             'linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)',
-          backgroundSize: '48px 48px',
-          maskImage: 'linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)',
+          backgroundSize: '40px 40px',
         }}
       />
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-64 w-2/3 -translate-x-1/2 -translate-y-1/2 bg-[#D4AF37]/5 blur-[140px]" />
+      
+      {/* Central Golden Glow */}
+      <div className="absolute left-1/2 top-1/2 h-[60vh] w-[60vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#D4AF37]/5 blur-[150px] pointer-events-none z-0" />
 
-      <div className="relative z-10 mx-auto max-w-[1600px] px-6 md:px-10">
+      <div className="relative z-10 mx-auto max-w-[1600px]">
+        
+        {/* Header Section */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          variants={headerVariants}
+          initial="hidden"
+          whileInView="show"
           viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-14 flex flex-col gap-6 lg:mb-20 lg:flex-row lg:items-end lg:justify-between"
+          className="mx-auto mb-12 flex flex-col gap-4 px-6 md:px-10 lg:mb-16 lg:flex-row lg:items-end lg:justify-between"
         >
           <div>
-            <div className="mb-4 flex items-center gap-3">
-              <div className="h-px w-12 bg-[#D4AF37]" />
-              <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#D4AF37]">
-                Client Testimonials
+            <div className="mb-3 flex items-center gap-3">
+              <div className="h-px w-10 bg-[#D4AF37]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#D4AF37]">
+                Client Experience
               </span>
             </div>
-            <h2 className="max-w-3xl text-4xl font-black leading-tight tracking-normal md:text-5xl lg:text-6xl">
-              Clients
-              <span className="bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC] bg-clip-text text-transparent">
-              Testimonials
-              </span>
+            <h2 className="text-4xl font-black leading-tight tracking-tight md:text-5xl lg:text-6xl">
+              Clients <span className="bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC] bg-clip-text text-transparent">Feedback.</span>
             </h2>
           </div>
-          <p className="max-w-md text-sm font-medium leading-relaxed text-zinc-400 md:text-base lg:text-right">
-            Testimonials from clients exploring homes, commercial opportunities,
-            design solutions and cross-border business planning.
+          <p className="max-w-md text-sm font-medium leading-relaxed text-zinc-400 lg:text-right">
+            Insights from clients exploring homes, commercial opportunities,
+            design solutions, and cross-border business planning.
           </p>
         </motion.div>
 
+        {/* Horizontal Scrolling Cards Container */}
         <motion.div
-          initial={{ opacity: 0, y: 36 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-          className="overflow-hidden rounded-lg border border-white/10 bg-[#101010] shadow-[0_28px_80px_rgba(0,0,0,0.35)]"
+          variants={staggerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: '-50px' }}
+          className="relative w-full"
         >
-          <div className="grid min-h-[460px] lg:grid-cols-[minmax(0,1.55fr)_minmax(310px,0.65fr)]">
-            <div className="relative flex min-h-[410px] flex-col justify-between overflow-hidden p-7 sm:p-10 lg:min-h-0 lg:p-14 xl:p-16">
-              <Quote className="absolute right-6 top-6 h-28 w-28 text-[#D4AF37]/[0.06] sm:h-40 sm:w-40" />
+          {/* Using a flex container with overflow-x-auto allows horizontal scrolling.
+            hide-scrollbar hides the ugly default scrollbar on most browsers.
+          */}
+          <div 
+            ref={scrollContainerRef}
+            className="flex w-full gap-6 overflow-x-auto px-6 pb-12 pt-4 md:px-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+            style={{ scrollSnapType: 'x mandatory' }}
+          >
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                variants={cardVariants}
+                whileHover="hover"
+                ref={(el) => { cardsRef.current[index] = el; }}
+                style={{ scrollSnapAlign: 'start' }}
+                // Fixed width ensures cards don't shrink when scrolling
+                className="group relative w-[320px] shrink-0 rounded-[20px] bg-white/5 p-[1px] cursor-default sm:w-[400px] lg:w-[450px]"
+              >
+                {/* 1. CARD BORDER GLOW (Spotlight Layer that tracks the mouse over the card) */}
+                <div 
+                  className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-[20px]"
+                  style={{ background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
+                />
 
-              <AnimatePresence mode="wait">
-                <motion.article
-                  key={activeTestimonial.id}
-                  initial={reduceMotion ? { opacity: 0 } : { opacity: 0, y: 22 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={reduceMotion ? { opacity: 0 } : { opacity: 0, y: -18 }}
-                  transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                  aria-live="polite"
-                  className="relative z-10 flex h-full flex-col justify-between"
-                >
+                {/* 2. MAIN CONTENT LAYER (Solid background #111 masks the card's center) */}
+                <div className="relative flex h-full min-h-[380px] w-full flex-col justify-between overflow-hidden rounded-[19px] bg-[#111] p-8 z-10 sm:min-h-[420px] sm:p-10">
+                  
+                  {/* Faded Quote Icon in background */}
+                  <Quote className="absolute right-6 top-6 h-24 w-24 text-[#D4AF37]/[0.05] transition-colors duration-500 group-hover:text-[#D4AF37]/[0.1]" />
+
                   <div>
-                    <div className="mb-9 flex items-center gap-4 text-[10px] font-bold uppercase tracking-[0.24em] text-zinc-500 sm:text-xs">
+                    {/* Sector & ID Header */}
+                    <div className="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
                       <span className="font-mono text-[#D4AF37]">
-                        {activeTestimonial.id}
+                        {testimonial.id}
                       </span>
-                      <span className="h-px w-8 bg-white/15" />
-                      <span>{activeTestimonial.sector}</span>
+                      <span className="h-px w-6 bg-white/15 transition-colors duration-500 group-hover:bg-[#D4AF37]/50" />
+                      <span>{testimonial.sector}</span>
                     </div>
-                    <blockquote className="max-w-4xl text-2xl font-semibold leading-[1.45] text-zinc-100 sm:text-3xl lg:text-4xl lg:leading-[1.35]">
-                      &ldquo;{activeTestimonial.quote}&rdquo;
+                    
+                    {/* Quote Text - Font weight reduced to font-medium/normal instead of bold/semibold */}
+                    <blockquote className="relative z-10 text-base font-medium leading-[1.7] text-zinc-300 transition-colors duration-500 group-hover:text-white sm:text-lg">
+                      &ldquo;{testimonial.quote}&rdquo;
                     </blockquote>
                   </div>
 
-                  <div className="mt-12 border-l-2 border-[#D4AF37] pl-5">
-                    <p className="text-sm font-bold uppercase tracking-[0.16em] text-[#D4AF37] sm:text-base">
-                      {activeTestimonial.attribution}
+                  {/* Client Attribution Footer */}
+                  <div className="mt-10 border-l-2 border-[#D4AF37]/40 pl-5 transition-colors duration-500 group-hover:border-[#D4AF37]">
+                    <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#D4AF37]">
+                      {testimonial.attribution}
                     </p>
-                    <p className="mt-1 text-xs font-medium text-zinc-500">
-                      {activeTestimonial.context}
+                    <p className="mt-1.5 text-[11px] font-medium text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
+                      {testimonial.context}
                     </p>
                   </div>
-                </motion.article>
-              </AnimatePresence>
-            </div>
 
-            <div className="flex flex-col border-t border-white/10 bg-[#0c0c0c] lg:border-l lg:border-t-0">
-              <div className="flex-1">
-                {testimonials.map((testimonial, index) => {
-                  const isActive = index === activeIndex;
-
-                  return (
-                    <button
-                      key={testimonial.id}
-                      type="button"
-                      onClick={() => setActiveIndex(index)}
-                      aria-label={`Show ${testimonial.sector} testimonial`}
-                      aria-pressed={isActive}
-                      className="group relative flex w-full items-center gap-5 border-b border-white/[0.07] px-6 py-5 text-left transition-colors hover:bg-white/[0.025] sm:px-8 lg:py-6"
-                    >
-                      <span
-                        className={`font-mono text-xs transition-colors ${
-                          isActive ? 'text-[#D4AF37]' : 'text-zinc-600'
-                        }`}
-                      >
-                        {testimonial.id}
-                      </span>
-                      <span
-                        className={`text-xs font-bold uppercase tracking-[0.16em] transition-colors sm:text-sm ${
-                          isActive ? 'text-white' : 'text-zinc-500 group-hover:text-zinc-300'
-                        }`}
-                      >
-                        {testimonial.sector}
-                      </span>
-                      <span
-                        className={`absolute bottom-0 left-0 h-px bg-[#D4AF37] transition-all duration-500 ${
-                          isActive ? 'w-full' : 'w-0'
-                        }`}
-                      />
-                    </button>
-                  );
-                })}
-              </div>
-
-              <div className="flex items-center justify-between px-6 py-5 sm:px-8">
-                <span className="font-mono text-xs text-zinc-600">
-                  {String(activeIndex + 1).padStart(2, '0')} /{' '}
-                  {String(testimonials.length).padStart(2, '0')}
-                </span>
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    onClick={showPrevious}
-                    title="Previous testimonial"
-                    aria-label="Previous testimonial"
-                    className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-zinc-400 transition-colors hover:border-[#D4AF37]/50 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37]"
-                  >
-                    <ArrowLeft className="h-4 w-4" />
-                  </button>
-                  <button
-                    type="button"
-                    onClick={showNext}
-                    title="Next testimonial"
-                    aria-label="Next testimonial"
-                    className="flex h-10 w-10 items-center justify-center rounded-full bg-[#D4AF37] text-black transition-colors hover:bg-[#F1E5AC]"
-                  >
-                    <ArrowRight className="h-4 w-4" />
-                  </button>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            ))}
           </div>
+
+          {/* Fade edges to suggest more content (Optional, looks premium on desktop) */}
+          <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-24 bg-gradient-to-l from-[#050505] to-transparent md:w-32 lg:w-48" />
         </motion.div>
+
       </div>
     </section>
   );
