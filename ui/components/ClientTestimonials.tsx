@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
-import { motion, Variants, useAnimation } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Quote } from 'lucide-react';
 
 const testimonials = [
@@ -42,8 +42,6 @@ const testimonials = [
 export default function ClientTestimonials() {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const controls = useAnimation();
 
   // Mouse tracking for the premium golden border spotlight on hover
   useEffect(() => {
@@ -66,60 +64,9 @@ export default function ClientTestimonials() {
     return () => container.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Optional: Auto-scroll effect (paused on hover)
-  useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-    if (!scrollContainer) return;
-
-    let animationFrameId: number;
-    let isPaused = false;
-    let scrollPos = 0;
-    const speed = 0.5;
-
-    const scroll = () => {
-      if (!isPaused && scrollContainer) {
-        scrollPos += speed;
-        // Reset scroll when reaching the end of original content (simplified continuous scroll logic)
-        if (scrollPos >= scrollContainer.scrollWidth / 2) {
-            scrollPos = 0;
-        }
-        scrollContainer.scrollLeft = scrollPos;
-      }
-      animationFrameId = requestAnimationFrame(scroll);
-    };
-
-    // Uncomment the line below to enable continuous auto-scrolling
-    // animationFrameId = requestAnimationFrame(scroll);
-
-    const handleMouseEnter = () => { isPaused = true; };
-    const handleMouseLeave = () => { isPaused = false; };
-
-    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
-    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      cancelAnimationFrame(animationFrameId);
-      if (scrollContainer) {
-        scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
-        scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
-      }
-    };
-  }, []);
-
   const headerVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
-  };
-
-  const staggerVariants: Variants = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.15 } },
-  };
-
-  const cardVariants: Variants = {
-    hidden: { opacity: 0, x: 50 },
-    show: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } },
-    hover: { y: -5, transition: { duration: 0.3, ease: 'easeOut' } }
   };
 
   return (
@@ -128,6 +75,20 @@ export default function ClientTestimonials() {
       className="relative overflow-hidden border-y border-white/5 bg-[#050505] py-20 text-white lg:py-24"
       ref={containerRef}
     >
+      {/* ── Custom CSS for the Infinite Seamless Loop ── */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes scroll-left {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-scroll-left {
+          animation: scroll-left 40s linear infinite;
+        }
+        .pause-on-hover:hover {
+          animation-play-state: paused;
+        }
+      `}} />
+
       {/* Background Architectural Grid Lines */}
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.03]"
@@ -168,78 +129,98 @@ export default function ClientTestimonials() {
           </p>
         </motion.div>
 
-        {/* Horizontal Scrolling Cards Container */}
-        <motion.div
-          variants={staggerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: '-50px' }}
-          className="relative w-full"
-        >
-          {/* Using a flex container with overflow-x-auto allows horizontal scrolling.
-            hide-scrollbar hides the ugly default scrollbar on most browsers.
-          */}
-          <div 
-            ref={scrollContainerRef}
-            className="flex w-full gap-6 overflow-x-auto px-6 pb-12 pt-4 md:px-10 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
-            style={{ scrollSnapType: 'x mandatory' }}
-          >
-            {testimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                variants={cardVariants}
-                whileHover="hover"
-                ref={(el) => { cardsRef.current[index] = el; }}
-                style={{ scrollSnapAlign: 'start' }}
-                // Fixed width ensures cards don't shrink when scrolling
-                className="group relative w-[320px] shrink-0 rounded-[20px] bg-white/5 p-[1px] cursor-default sm:w-[400px] lg:w-[450px]"
-              >
-                {/* 1. CARD BORDER GLOW (Spotlight Layer that tracks the mouse over the card) */}
-                <div 
-                  className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-[20px]"
-                  style={{ background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
-                />
+        {/* ── Endless Scrolling Marquee Container ── */}
+        <div className="relative w-full overflow-hidden pb-12 pt-4">
+          
+          {/* The scrolling track (Pauses when the user hovers) */}
+          <div className="flex w-max animate-scroll-left pause-on-hover hover:cursor-grab active:cursor-grabbing">
+            
+            {/* Set 1 of Cards */}
+            <div className="flex gap-6 pr-6 pl-6 md:pl-10">
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={`set1-${testimonial.id}`}
+                  ref={(el) => { cardsRef.current[index] = el; }}
+                  className="group relative w-[320px] shrink-0 rounded-[20px] bg-white/5 p-[1px] sm:w-[400px] lg:w-[450px] transition-transform duration-300 hover:-translate-y-2"
+                >
+                  {/* Spotlight Hover Glow */}
+                  <div 
+                    className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-[20px]"
+                    style={{ background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
+                  />
 
-                {/* 2. MAIN CONTENT LAYER (Solid background #111 masks the card's center) */}
-                <div className="relative flex h-full min-h-[380px] w-full flex-col justify-between overflow-hidden rounded-[19px] bg-[#111] p-8 z-10 sm:min-h-[420px] sm:p-10">
-                  
-                  {/* Faded Quote Icon in background */}
-                  <Quote className="absolute right-6 top-6 h-24 w-24 text-[#D4AF37]/[0.05] transition-colors duration-500 group-hover:text-[#D4AF37]/[0.1]" />
-
-                  <div>
-                    {/* Sector & ID Header */}
-                    <div className="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
-                      <span className="font-mono text-[#D4AF37]">
-                        {testimonial.id}
-                      </span>
-                      <span className="h-px w-6 bg-white/15 transition-colors duration-500 group-hover:bg-[#D4AF37]/50" />
-                      <span>{testimonial.sector}</span>
+                  {/* Main Content Layer */}
+                  <div className="relative flex h-full min-h-[380px] w-full flex-col justify-between overflow-hidden rounded-[19px] bg-[#111] p-8 z-10 sm:min-h-[420px] sm:p-10">
+                    <Quote className="absolute right-6 top-6 h-24 w-24 text-[#D4AF37]/[0.05] transition-colors duration-500 group-hover:text-[#D4AF37]/[0.1]" />
+                    <div>
+                      <div className="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
+                        <span className="font-mono text-[#D4AF37]">{testimonial.id}</span>
+                        <span className="h-px w-6 bg-white/15 transition-colors duration-500 group-hover:bg-[#D4AF37]/50" />
+                        <span>{testimonial.sector}</span>
+                      </div>
+                      <blockquote className="relative z-10 text-base font-medium leading-[1.7] text-zinc-300 transition-colors duration-500 group-hover:text-white sm:text-lg">
+                        &ldquo;{testimonial.quote}&rdquo;
+                      </blockquote>
                     </div>
-                    
-                    {/* Quote Text - Font weight reduced to font-medium/normal instead of bold/semibold */}
-                    <blockquote className="relative z-10 text-base font-medium leading-[1.7] text-zinc-300 transition-colors duration-500 group-hover:text-white sm:text-lg">
-                      &ldquo;{testimonial.quote}&rdquo;
-                    </blockquote>
+                    <div className="mt-10 border-l-2 border-[#D4AF37]/40 pl-5 transition-colors duration-500 group-hover:border-[#D4AF37]">
+                      <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#D4AF37]">
+                        {testimonial.attribution}
+                      </p>
+                      <p className="mt-1.5 text-[11px] font-medium text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
+                        {testimonial.context}
+                      </p>
+                    </div>
                   </div>
-
-                  {/* Client Attribution Footer */}
-                  <div className="mt-10 border-l-2 border-[#D4AF37]/40 pl-5 transition-colors duration-500 group-hover:border-[#D4AF37]">
-                    <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#D4AF37]">
-                      {testimonial.attribution}
-                    </p>
-                    <p className="mt-1.5 text-[11px] font-medium text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
-                      {testimonial.context}
-                    </p>
-                  </div>
-
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+
+            {/* Set 2 of Cards (Exact duplicate to create the endless illusion) */}
+            <div className="flex gap-6 pr-6">
+              {testimonials.map((testimonial, index) => (
+                <div
+                  key={`set2-${testimonial.id}`}
+                  ref={(el) => { cardsRef.current[index + testimonials.length] = el; }}
+                  className="group relative w-[320px] shrink-0 rounded-[20px] bg-white/5 p-[1px] sm:w-[400px] lg:w-[450px] transition-transform duration-300 hover:-translate-y-2"
+                >
+                  {/* Spotlight Hover Glow */}
+                  <div 
+                    className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-[20px]"
+                    style={{ background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
+                  />
+
+                  {/* Main Content Layer */}
+                  <div className="relative flex h-full min-h-[380px] w-full flex-col justify-between overflow-hidden rounded-[19px] bg-[#111] p-8 z-10 sm:min-h-[420px] sm:p-10">
+                    <Quote className="absolute right-6 top-6 h-24 w-24 text-[#D4AF37]/[0.05] transition-colors duration-500 group-hover:text-[#D4AF37]/[0.1]" />
+                    <div>
+                      <div className="mb-8 flex items-center gap-3 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
+                        <span className="font-mono text-[#D4AF37]">{testimonial.id}</span>
+                        <span className="h-px w-6 bg-white/15 transition-colors duration-500 group-hover:bg-[#D4AF37]/50" />
+                        <span>{testimonial.sector}</span>
+                      </div>
+                      <blockquote className="relative z-10 text-base font-medium leading-[1.7] text-zinc-300 transition-colors duration-500 group-hover:text-white sm:text-lg">
+                        &ldquo;{testimonial.quote}&rdquo;
+                      </blockquote>
+                    </div>
+                    <div className="mt-10 border-l-2 border-[#D4AF37]/40 pl-5 transition-colors duration-500 group-hover:border-[#D4AF37]">
+                      <p className="text-xs font-bold uppercase tracking-[0.15em] text-[#D4AF37]">
+                        {testimonial.attribution}
+                      </p>
+                      <p className="mt-1.5 text-[11px] font-medium text-zinc-500 transition-colors duration-500 group-hover:text-zinc-400">
+                        {testimonial.context}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
           </div>
 
-          {/* Fade edges to suggest more content (Optional, looks premium on desktop) */}
-          <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-24 bg-gradient-to-l from-[#050505] to-transparent md:w-32 lg:w-48" />
-        </motion.div>
+          {/* Fade edges to suggest more content off-screen */}
+          <div className="pointer-events-none absolute bottom-0 left-0 top-0 w-16 bg-gradient-to-r from-[#050505] to-transparent md:w-28 z-20" />
+          <div className="pointer-events-none absolute bottom-0 right-0 top-0 w-16 bg-gradient-to-l from-[#050505] to-transparent md:w-28 z-20" />
+        </div>
 
       </div>
     </section>
