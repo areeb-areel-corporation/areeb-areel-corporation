@@ -574,28 +574,21 @@ export default function FillingStationPage() {
                         {[
                           { 
                             icon: FaFacebook, 
-                            href: "#", 
+                            href: "https://www.facebook.com/AreebAreelFillingStation/", 
                             name: "Facebook",
                             hoverBg: "hover:border-[#1877F2]/50 hover:bg-[#1877F2]/10 hover:shadow-[0_10px_20px_-10px_rgba(24,119,242,0.4)]",
                             hoverText: "group-hover:text-[#1877F2]" 
                           },
                           { 
                             icon: FaInstagram, 
-                            href: "#", 
+                            href: "https://www.instagram.com/areebareelfillingstation", 
                             name: "Instagram",
                             hoverBg: "hover:border-[#E1306C]/50 hover:bg-[#E1306C]/10 hover:shadow-[0_10px_20px_-10px_rgba(225,48,108,0.4)]",
                             hoverText: "group-hover:text-[#E1306C]"
                           },
                           { 
-                            icon: FaLinkedin, 
-                            href: "#", 
-                            name: "LinkedIn",
-                            hoverBg: "hover:border-[#0A66C2]/50 hover:bg-[#0A66C2]/10 hover:shadow-[0_10px_20px_-10px_rgba(10,102,194,0.4)]",
-                            hoverText: "group-hover:text-[#0A66C2]"
-                          },
-                          { 
                             icon: FaYoutube, 
-                            href: "#", 
+                            href: "https://www.youtube.com/@areebareelfillingstation", 
                             name: "YouTube",
                             hoverBg: "hover:border-[#FF0000]/50 hover:bg-[#FF0000]/10 hover:shadow-[0_10px_20px_-10px_rgba(255,0,0,0.4)]",
                             hoverText: "group-hover:text-[#FF0000]"

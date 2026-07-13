@@ -255,7 +255,59 @@ export default function SentosaSquarePage() {
         </div>
       </section>
 
-      {/* --- 2. VISION & ARCHITECTURE (Kept Gallery Slider Here) --- */}
+      {/* --- 2. VIDEO SHOWCASE SECTION (Placed right after the hero) --- */}
+      <section className="py-24 lg:py-32 max-w-[1600px] mx-auto px-6 md:px-10 relative">
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[150px] rounded-full pointer-events-none z-0" />
+
+        <motion.div 
+          initial="hidden" 
+          whileInView="show" 
+          viewport={{ once: true, margin: "-100px" }} 
+          variants={slideInUp}
+          className="text-center mb-16 lg:mb-20 relative z-10"
+        >
+          <div className="flex items-center justify-center gap-3 mb-4">
+            <div className="w-12 h-[1px] bg-[#D4AF37]" />
+            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">Experience It Live</span>
+            <div className="w-12 h-[1px] bg-[#D4AF37]" />
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1]">
+            Sentosa Square, <br/>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">In Motion.</span>
+          </h2>
+        </motion.div>
+
+        <motion.div 
+          initial="hidden" 
+          whileInView="show" 
+          viewport={{ once: true, margin: "-100px" }} 
+          variants={slideInUp}
+          className="relative z-10 max-w-5xl mx-auto"
+        >
+          <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#111] shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
+            
+            <video 
+              ref={featureVideoRef}
+              autoPlay 
+              muted 
+              playsInline
+              loop
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
+            >
+              <source src="/videos/sentosa-3d.mp4" type="video/mp4" />
+            </video>
+
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/70 via-transparent to-transparent pointer-events-none" />
+
+            <div className="absolute top-6 left-6 flex items-center gap-2 px-4 py-2 rounded-full bg-[#050505]/70 backdrop-blur-md border border-[#D4AF37]/30">
+              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37]">Live Preview</span>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* --- 3. VISION & ARCHITECTURE (Gallery moved below) --- */}
       <section className="py-24 lg:py-32 max-w-[1600px] mx-auto px-6 md:px-10 relative">
         <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[150px] rounded-full pointer-events-none z-0" />
         
@@ -311,7 +363,7 @@ export default function SentosaSquarePage() {
         </div>
       </section>
 
-      {/* --- 3. ELEVATED AMENITIES GRID --- */}
+      {/* --- 4. ELEVATED AMENITIES GRID --- */}
       <section id="amenities" className="py-24 lg:py-32 bg-[#080808] border-y border-white/5 relative">
         <div className="max-w-[1600px] mx-auto px-6 md:px-10">
           
@@ -372,60 +424,6 @@ export default function SentosaSquarePage() {
         </div>
       </section>
 
-      {/* --- 4. VIDEO SHOWCASE SECTION (Same clip, shown further down the page) --- */}
-      <section className="py-24 lg:py-32 max-w-[1600px] mx-auto px-6 md:px-10 relative">
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[500px] h-[500px] bg-[#D4AF37]/5 blur-[150px] rounded-full pointer-events-none z-0" />
-
-        <motion.div 
-          initial="hidden" 
-          whileInView="show" 
-          viewport={{ once: true, margin: "-100px" }} 
-          variants={slideInUp}
-          className="text-center mb-16 lg:mb-20 relative z-10"
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-12 h-[1px] bg-[#D4AF37]" />
-            <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em]">Experience It Live</span>
-            <div className="w-12 h-[1px] bg-[#D4AF37]" />
-          </div>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter leading-[1.1]">
-            Sentosa Square, <br/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">In Motion.</span>
-          </h2>
-        </motion.div>
-
-        <motion.div 
-          initial="hidden" 
-          whileInView="show" 
-          viewport={{ once: true, margin: "-100px" }} 
-          variants={slideInUp}
-          className="relative z-10 max-w-5xl mx-auto"
-        >
-          <div className="relative w-full aspect-video rounded-2xl overflow-hidden border border-white/10 bg-[#111] shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
-            
-            <video 
-              ref={featureVideoRef}
-              autoPlay 
-              muted 
-              playsInline
-              loop
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.02]"
-            >
-              <source src="/videos/sentosa-3d.mp4" type="video/mp4" />
-            </video>
-
-            {/* Subtle overlay for consistency with the rest of the dark theme */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050505]/70 via-transparent to-transparent pointer-events-none" />
-
-            {/* Corner accent tag, matches gold brand accent used elsewhere */}
-            <div className="absolute top-6 left-6 flex items-center gap-2 px-4 py-2 rounded-full bg-[#050505]/70 backdrop-blur-md border border-[#D4AF37]/30">
-              <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse" />
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37]">Live Preview</span>
-            </div>
-          </div>
-        </motion.div>
-      </section>
-
       {/* --- 5. BOOKING & CONTACT BANNER --- */}
       <section id="contact" className="pt-24 lg:pt-32 max-w-[1200px] mx-auto px-6">
         <motion.div 
@@ -478,17 +476,11 @@ export default function SentosaSquarePage() {
 
               {/* BRANDED SOCIAL MEDIA LINKS */}
               <div className="flex items-center gap-3">
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] transition-all duration-300" aria-label="Facebook">
+                <a href="https://www.facebook.com/sentosasquareofficial/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-[#1877F2] hover:border-[#1877F2] transition-all duration-300" aria-label="Facebook">
                   <FaFacebook className="w-4 h-4" />
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:border-transparent transition-all duration-300" aria-label="Instagram">
+                <a href="https://www.instagram.com/sentosasquare" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-gradient-to-tr hover:from-[#f09433] hover:via-[#dc2743] hover:to-[#bc1888] hover:border-transparent transition-all duration-300" aria-label="Instagram">
                   <FaInstagram className="w-4 h-4" />
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-[#FF0000] hover:border-[#FF0000] transition-all duration-300" aria-label="YouTube">
-                  <FaYoutube className="w-4 h-4" />
-                </a>
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-[#0A66C2] hover:border-[#0A66C2] transition-all duration-300" aria-label="LinkedIn">
-                  <FaLinkedinIn className="w-4 h-4" />
                 </a>
               </div>
 

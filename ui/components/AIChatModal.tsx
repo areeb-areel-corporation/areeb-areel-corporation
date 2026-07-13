@@ -91,7 +91,7 @@ export default function AIChatModal() {
         
         {/* 1. WhatsApp Button */}
         <motion.a
-          href="https://wa.me/923003003003" // Change number here if needed
+          href="https://wa.me/03294021917" // Change number here if needed
           target="_blank"
           rel="noopener noreferrer"
           initial={{ opacity: 0, scale: 0.8 }}
