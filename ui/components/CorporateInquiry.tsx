@@ -158,7 +158,7 @@ export default function CorporateInquiry() {
 
               {/* 3. Corporate Switchboard */}
               <a
-                href="tel:+9242111222333"
+                href="tel:+923294021917"
                 className="flex items-start gap-5 group p-4 rounded-xl border border-transparent hover:border-[#D4AF37] hover:bg-[#111111]/80 hover:shadow-[0_10px_30px_rgba(212,175,55,0.05)] transition-all duration-500"
               >
                 <div className="w-12 h-12 rounded-xl bg-[#111] border border-zinc-800 flex items-center justify-center shrink-0 group-hover:border-[#D4AF37]/50 group-hover:bg-[#D4AF37]/10 transition-all duration-500 shadow-xl">
@@ -169,7 +169,7 @@ export default function CorporateInquiry() {
                     Corporate Line
                   </h4>
                   <p className="text-zinc-300 group-hover:text-white text-sm md:text-base transition-colors duration-300 font-medium font-mono">
-                    +92 (42) 111-222-333
+                    +92 (329) 4021917
                   </p>
                 </div>
               </a>

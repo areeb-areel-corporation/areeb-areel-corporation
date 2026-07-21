@@ -19,7 +19,6 @@ import {
   Home,
   LucideIcon,
   FileSpreadsheet,
-  Landmark,
   Info,
 } from "lucide-react";
 import { socialLinks } from "@/data/data";
@@ -33,7 +32,7 @@ interface NavLink {
 const navLinks: NavLink[] = [
   {name : "About Us" , href: "/about-us", icon: Info},
   { name: "Areeb Areel Corporation", href: "/areeb-areel-corporation", icon: Building2 },
-  { name: "Filling Station", href: "/filling-station", icon: Fuel },
+  { name: "Petrol Pump", href: "/petrol-pump", icon: Fuel },
   { name: "Naseeb Homes", href: "/naseeb-homes", icon: Home },
   {name : "Santosa Square" , href: "/santosa-square", icon: Building2},
   {name : "Blogs" , href: "/blogs", icon: FileSpreadsheet},

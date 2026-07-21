@@ -155,7 +155,7 @@ export default function NaseebHomesPage() {
             </div>
             <h2 className="text-4xl md:text-5xl  text-[#D4AF37] font-black tracking-tight mb-6 leading-tight">
               Experience The <br />
-              <span className="text-transparent  bg-clip-text bg-gradient-to-r from-white to-brand-silver/50">
+              <span className="text-white">
                 Naseeb Lifestyle.
               </span>
             </h2>
