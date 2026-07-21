@@ -93,7 +93,7 @@ export default function Hero(): ReactElement {
             className="text-4xl md:text-7xl font-black uppercase tracking-wider text-white"
           >
             AREEB & AREEL  <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-gold via-yellow-200 to-brand-gold">
+            <span className="text-yellow-200 ">
               CORPORATION
             </span>
           </motion.h1>

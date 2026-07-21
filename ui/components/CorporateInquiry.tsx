@@ -131,9 +131,9 @@ export default function CorporateInquiry() {
                     Corporate Headquarters
                   </h4>
                   <p className="text-zinc-300 group-hover:text-white text-sm md:text-base transition-colors duration-300 leading-relaxed">
-                    Areeb & Areel Corporation
+                    Areeb  Areel Corporation
                     <br />
-                    Lahore, Punjab, Pakistan
+                    34 MB Shabbir Sharif Rd, DHA Phase 6, Lahore
                   </p>
                 </div>
               </div>

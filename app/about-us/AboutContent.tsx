@@ -119,7 +119,7 @@ export default function AboutUsPage() {
           <motion.div initial="hidden" animate="show" variants={fadeUp} className="flex items-center gap-4 w-full justify-center mb-6">
             <div className="w-8 sm:w-16 h-[1px] bg-gradient-to-r from-transparent to-[#D4AF37]" />
             <span className="text-[#D4AF37] text-[10px] sm:text-xs font-bold uppercase tracking-[0.3em] sm:tracking-[0.4em] text-center">
-              Who We Are
+              Who Are We
             </span>
             <div className="w-8 sm:w-16 h-[1px] bg-gradient-to-l from-transparent to-[#D4AF37]" />
           </motion.div>
