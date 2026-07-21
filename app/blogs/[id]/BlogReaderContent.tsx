@@ -154,7 +154,7 @@ export default function BlogReaderContent() {
                   </p>
                 </div>
                 <p className="text-sm leading-relaxed text-zinc-400">
-                  Published by Areeb & Areel Corporation for readers exploring practical
+                  Published by Areeb Areel Corporation for readers exploring practical
                   development, energy, retail and advisory decisions.
                 </p>
               </motion.div>
@@ -225,7 +225,7 @@ export default function BlogReaderContent() {
                     Continue Reading
                   </p>
                   <p className="text-zinc-400 text-sm">
-                    Explore more corporate insights from Areeb & Areel Corporation.
+                    Explore more corporate insights from Areeb Areel Corporation.
                   </p>
                 </div>
                 <Link

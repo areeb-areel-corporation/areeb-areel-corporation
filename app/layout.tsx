@@ -10,11 +10,11 @@ export const metadata: Metadata = {
   // metadataBase is required for resolving relative image URLs in OpenGraph
   metadataBase: new URL("https://www.areebareel.pk"), 
   title: {
-    default: "Areeb & Areel Corporation | Real Estate, Architecture & Energy",
-    template: "%s | Areeb & Areel Corp",
+    default: "Areeb Areel Corporation | Real Estate, Architecture & Energy",
+    template: "%s | Areeb Areel Corp",
   },
   description:
-    "Areeb & Areel Corporation is a Lahore-based business group working across real estate development, architecture, construction, energy services and Pakistan-UAE business advisory.",
+    "Areeb Areel Corporation is a Lahore-based business group working across real estate development, architecture, construction, energy services and Pakistan-UAE business advisory.",
   keywords: [
     "Areeb Areel Corp",
     "Sentosa Square Lahore",
@@ -33,10 +33,10 @@ export const metadata: Metadata = {
     shortcut: "/icon.png",
   },
   openGraph: {
-    title: "Areeb & Areel Corporation",
+    title: "Areeb Areel Corporation",
     description: "A Lahore-based business group working across real estate development, architecture, construction, energy services and Pakistan-UAE business advisory.",
     url: "https://www.areebareel.pk",
-    siteName: "Areeb & Areel Corp",
+    siteName: "Areeb Areel Corp",
     images: [
       {
         url: "./images/AREEB AREEL LOGO BADGE.png", 
@@ -58,7 +58,7 @@ export default function RootLayout({
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Areeb & Areel Corporation",
+    name: "Areeb Areel Corporation",
     alternateName: "Areeb Areel Corp",
     url: "https://www.areebareel.pk",
     logo: "https://www.areebareel.pk/images/AREEB AREEL LOGO BADGE.png",

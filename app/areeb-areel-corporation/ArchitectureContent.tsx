@@ -90,7 +90,7 @@ export default function ArchitecturePage() {
             <motion.div variants={slideInLeft as any} className="flex items-center gap-3 mb-6">
               <div className="w-12 h-[1px] bg-[#D4AF37]" />
               <span className="text-[#D4AF37] text-xs font-bold uppercase tracking-[0.3em] font-mono">
-                Areeb & Areel Corporation
+                Areeb Areel Corporation
               </span>
             </motion.div>
 

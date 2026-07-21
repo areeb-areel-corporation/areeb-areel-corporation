@@ -7,9 +7,9 @@ import CTA from './CTA';
 import ClientTestimonials from '@/ui/components/ClientTestimonials';
 
 export const metadata: Metadata = {
-  title: 'About Areeb & Areel Corporation | Our Businesses and Vision',
+  title: 'About Areeb Areel Corporation | Our Businesses and Vision',
   description:
-    'Learn about Areeb & Areel Corporation, its real estate, architecture, construction, energy and advisory divisions, and its approach to responsible growth.',
+    'Learn about Areeb Areel Corporation, its real estate, architecture, construction, energy and advisory divisions, and its approach to responsible growth.',
   keywords: [
     'Areeb Areel Corporation',
     'Real estate development Lahore',
@@ -26,9 +26,9 @@ export const metadata: Metadata = {
     follow: true,
   },
   openGraph: {
-    title: 'About Areeb & Areel Corporation',
+    title: 'About Areeb Areel Corporation',
     description:
-      'Learn about Areeb & Areel Corporation, its real estate, architecture, construction, energy and advisory divisions, and its approach to responsible growth.',
+      'Learn about Areeb Areel Corporation, its real estate, architecture, construction, energy and advisory divisions, and its approach to responsible growth.',
     url: 'https://www.areebareel.pk/about-us',
     type: 'website',
     images: [
@@ -45,13 +45,13 @@ const page = () => {
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'AboutPage',
-    name: 'About Areeb & Areel Corporation',
+    name: 'About Areeb Areel Corporation',
     url: 'https://www.areebareel.pk/about-us',
     description:
-      'Areeb & Areel Corporation is a diversified business group creating practical value across real estate development, architecture, construction, energy services and corporate advisory.',
+      'Areeb Areel Corporation is a diversified business group creating practical value across real estate development, architecture, construction, energy services and corporate advisory.',
     mainEntity: {
       '@type': 'Organization',
-      name: 'Areeb & Areel Corporation',
+      name: 'Areeb Areel Corporation',
       url: 'https://www.areebareel.pk',
       sameAs: [
         'https://www.linkedin.com/company/areeb-areel-corporation/',

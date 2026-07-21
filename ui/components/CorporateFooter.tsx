@@ -69,7 +69,7 @@ export default function CorporateFooter() {
               <div className="relative w-14 h-14 bg-[#1a1a1a] border border-white/10 rounded-xl overflow-hidden flex items-center justify-center">
                 <Image 
                   src="/images/Asset 1.png" 
-                  alt="Areeb & Areel Logo" 
+                  alt="Areeb Areel Logo" 
                   width={40} 
                   height={40} 
                   className="object-contain"
@@ -77,7 +77,7 @@ export default function CorporateFooter() {
               </div>
               <div>
                 <span className="text-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.3em] block mb-1">
-                  Areeb & Areel Corp.
+                  Areeb Areel Corp.
                 </span>
                 <h3 className="text-2xl font-black tracking-tighter leading-none text-white">
                   Building The Benchmark.
@@ -91,7 +91,7 @@ export default function CorporateFooter() {
                 <div className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-[#D4AF37]/10 group-hover:border-[#D4AF37]/30 transition-all duration-300">
                   <MapPin className="w-4 h-4 text-[#D4AF37]" />
                 </div>
-                <span className="text-zinc-400 group-hover:text-white transition-colors text-sm">Lahore, Punjab, Pakistan</span>
+                <span className="text-zinc-400 group-hover:text-white transition-colors text-sm">34 MB Shabbir Sharif Rd, DHA Phase 6, Lahore, Pakistan</span>
               </a>
              
               <a href="mailto:contact@areebareel.com" className="flex items-center gap-4 group cursor-pointer w-fit">
@@ -191,7 +191,7 @@ export default function CorporateFooter() {
         <div className="flex flex-col-reverse md:flex-row items-center justify-between pt-6 border-t border-white/10 gap-6 relative z-20">
           
           <p className="text-zinc-500 text-[10px] md:text-xs tracking-widest uppercase text-center md:text-left">
-            © {new Date().getFullYear()} Areeb & Areel Corporation. All Rights Reserved.
+            © {new Date().getFullYear()} Areeb Areel Corporation. All Rights Reserved.
           </p>
           
           {/* NEW CONTENT: Premium Utility Links & Back to Top Button */}

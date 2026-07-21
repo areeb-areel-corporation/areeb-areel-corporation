@@ -133,7 +133,7 @@ export default function AboutUsPage() {
           </motion.h1>
 
           <motion.p initial="hidden" animate="show" variants={fadeUp} className="text-zinc-300 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto font-medium text-center px-4">
-            Areeb & Areel Corporation is a diversified business group creating practical value across real estate development, architecture, construction, energy services and corporate advisory. We do not aim to enter industries simply to participate. We aim to understand what customers and communities need, then develop solutions that are relevant, responsible and built to last.
+            Areeb Areel Corporation is a diversified business group creating practical value across real estate development, architecture, construction, energy services and corporate advisory. We do not aim to enter industries simply to participate. We aim to understand what customers and communities need, then develop solutions that are relevant, responsible and built to last.
 
           </motion.p>
         </div>

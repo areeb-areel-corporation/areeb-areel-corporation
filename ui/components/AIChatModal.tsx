@@ -53,7 +53,7 @@ export default function AIChatModal() {
         parts: [
           {
             type: "text",
-            text: "Welcome to Areeb & Areel Corporation. I can help with Sentosa Square, Naseeb Homes, filling-station services, architecture and construction, or Pakistan-UAE business advisory. Tell me what you are exploring, and I will guide you to the right details or help you request a callback.",
+            text: "Welcome to Areeb Areel Corporation. I can help with Sentosa Square, Naseeb Homes, filling-station services, architecture and construction, or Pakistan-UAE business advisory. Tell me what you are exploring, and I will guide you to the right details or help you request a callback.",
           },
         ],
       },
@@ -171,7 +171,7 @@ export default function AIChatModal() {
                       Executive Hub
                     </p>
                     <h2 className="text-sm sm:text-base font-bold text-white tracking-tight flex items-center gap-1.5 leading-none">
-                      Areeb & Areel AI
+                      Areeb Areel AI
                       <Sparkles className="w-3.5 h-3.5 text-[#D4AF37] fill-[#D4AF37]/20 animate-pulse" />
                     </h2>
                   </div>

@@ -302,7 +302,7 @@ export const blogDatabase = [
         heading: "Enter with a Practical Plan",
         paragraphs: [
           "Successful market entry begins with research, realistic expectations and a clear understanding of the customer.",
-          "Areeb & Areel Corporation provides initial planning and coordination support for businesses exploring opportunities between Pakistan and the UAE. Specialist matters are referred to relevant qualified professionals.",
+          "Areeb Areel Corporation provides initial planning and coordination support for businesses exploring opportunities between Pakistan and the UAE. Specialist matters are referred to relevant qualified professionals.",
         ],
       },
     ] satisfies BlogSection[],

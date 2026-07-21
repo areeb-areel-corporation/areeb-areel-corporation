@@ -29,7 +29,7 @@ export async function generateMetadata({
     description: article.excerpt,
     keywords: [article.tag, 'Areeb Areel Corp', 'Corporate News Pakistan'],
     openGraph: {
-      title: `${article.title} | Areeb & Areel Corp`,
+      title: `${article.title} | Areeb Areel Corp`,
       description: article.excerpt,
       url: `https://www.areebareel.pk/blogs/${article.id}`,
       type: 'article',

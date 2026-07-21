@@ -80,7 +80,7 @@ export default function Hero(): ReactElement {
         >
           <Image
             src="/images/Asset 1.png"
-            alt="Areeb & Areel Badge"
+            alt="Areeb Areel Badge"
             fill
             priority
             className="object-contain filter drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]"
@@ -92,7 +92,7 @@ export default function Hero(): ReactElement {
             variants={leftIn}
             className="text-4xl md:text-7xl font-black uppercase tracking-wider text-white"
           >
-            AREEB & AREEL  <br />
+            AREEB AREEL  <br />
             <span className="text-yellow-200 ">
               CORPORATION
             </span>

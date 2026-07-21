@@ -95,7 +95,7 @@ export default function Navbar() {
             >
               <Image
                 src="/images/AREEB AREEL LOGO BADGE.png"
-                alt="Areeb & Areel Logo"
+                alt="Areeb Areel Logo"
                 fill
                 priority
                 className="object-contain filter drop-shadow-[0_0_10px_rgba(212,175,55,0.2)]"
@@ -157,7 +157,7 @@ export default function Navbar() {
                   <div className="relative w-15 h-15">
                     <Image
                       src="/images/AREEB AREEL LOGO BADGE.png"
-                      alt="Areeb & Areel"
+                      alt="Areeb Areel"
                       fill
                       className="object-contain"
                     />
@@ -225,7 +225,7 @@ export default function Navbar() {
                     Headquarter
                   </p>
                   <p className="text-xs text-brand-silver/60 tracking-wide leading-relaxed">
-                    Areeb & Areel Tower, Corporate Block,
+                    Areeb Areel Tower, Corporate Block,
                     <br />
                     Lahore, Punjab, Pakistan
                   </p>

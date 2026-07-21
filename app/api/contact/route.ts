@@ -20,7 +20,7 @@ export async function POST(request: Request) {
       },
     });
 
-    // Construct the email for Areeb & Areel Corporation
+    // Construct the email for Areeb Areel Corporation
     const mailOptions = {
       from: process.env.SMTP_EMAIL,
       to: process.env.SMTP_EMAIL, // Send it to your own corporate email
@@ -28,7 +28,7 @@ export async function POST(request: Request) {
       subject: `New Corporate Inquiry: ${division} - ${name}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; background-color: #0a0a0a; color: #ffffff; padding: 40px; border-top: 4px solid #D4AF37;">
-          <h2 style="color: #D4AF37; text-transform: uppercase; letter-spacing: 2px;">Areeb & Areel Corporation</h2>
+          <h2 style="color: #D4AF37; text-transform: uppercase; letter-spacing: 2px;">Areeb Areel Corporation</h2>
           <p style="color: #cccccc;">A new high-level inquiry has been submitted via the corporate portal.</p>
           <hr style="border-color: #333333; margin: 20px 0;" />
           <p><strong>Client Name:</strong> ${name}</p>

@@ -4,7 +4,7 @@ import ArchitectureContent from './ArchitectureContent';
 export const metadata: Metadata = {
   title: 'Architecture, Interior Design & Construction in Lahore',
   description:
-    'Explore architectural drawings, floor plans, 3D visualization, interior design and turnkey construction services from Areeb & Areel Corporation.',
+    'Explore architectural drawings, floor plans, 3D visualization, interior design and turnkey construction services from Areeb Areel Corporation.',
   keywords: [
     'Architecture Lahore',
     'Interior design Lahore',
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Architecture, Interior Design & Construction in Lahore',
     description:
-      'Explore architectural drawings, floor plans, 3D visualization, interior design and turnkey construction services from Areeb & Areel Corporation.',
+      'Explore architectural drawings, floor plans, 3D visualization, interior design and turnkey construction services from Areeb Areel Corporation.',
     url: 'https://www.areebareel.pk/architecture',
     type: 'website',
     images: [

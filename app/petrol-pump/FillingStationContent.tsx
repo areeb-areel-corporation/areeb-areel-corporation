@@ -209,7 +209,7 @@ export default function FillingStationPage() {
             <div className="w-22 h-22 md:w-35 md:h-35 relative">
               <Image
                 src="/images/Asset 1.png"
-                alt="Areeb & Areel Badge"
+                alt="Areeb Areel Badge"
                 fill
                 priority
                 className="object-contain filter drop-shadow-[0_0_20px_rgba(212,175,55,0.3)]"

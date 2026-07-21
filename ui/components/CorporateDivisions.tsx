@@ -8,7 +8,7 @@ import Link from "next/link";
 const sectionContent = {
   home: {
     body: [
-      "Areeb & Areel Corporation brings together businesses that influence how people live, work, travel and invest.",
+      "Areeb Areel Corporation brings together businesses that influence how people live, work, travel and invest.",
       "Across real estate development, architecture, construction, energy services and business advisory, our focus remains consistent: understand genuine needs, plan with clarity and execute responsibly.",
       "We do not measure progress by scale alone. We measure it by the value our work creates for families, businesses, partners and communities.",
     ],
