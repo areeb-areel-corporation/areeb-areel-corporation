@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, Variants } from 'framer-motion';
 import Image from 'next/image';
 import { FaLinkedin } from 'react-icons/fa';
@@ -92,16 +92,16 @@ export default function CorporateTeam() {
               ref={(el) => { cardsRef.current[idx] = el; }}
               className="group relative rounded-[2rem] bg-white/5 p-[1px] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-default shadow-2xl"
             >
-              {/* Layer 1: Tracking Spotlight Border Gradient (Sits under the main content) */}
+              {/* Layer 1: Tracking Spotlight Border Gradient */}
               <div 
                 className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100 rounded-[2rem]"
                 style={{ background: `radial-gradient(400px circle at var(--mouse-x) var(--mouse-y), rgba(212, 175, 55, 1), transparent 40%)` }}
               />
 
-              {/* Layer 2: Main Content Container (SOLID #111111 background blocks the inner glow, leaving only the 1px border visible) */}
+              {/* Layer 2: Main Content Container */}
               <div className="relative h-full w-full bg-[#111111] rounded-[31px] p-8 lg:p-10 flex flex-col md:flex-row items-center md:items-start gap-8 z-10 overflow-hidden">
                 
-                {/* Left: Small, Round Image with floating animation */}
+                {/* Left: Image with floating animation */}
                 <motion.div 
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -159,45 +159,70 @@ export default function CorporateTeam() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="py-16 border-t border-white/10"
+          className="py-16 border-t border-white/10 relative"
         >
-          <div className="flex items-center gap-4 mb-16">
+          {/* Keyframes for seamless infinite auto-scroll */}
+          <style>{`
+            @keyframes execMarquee {
+              0% { transform: translateX(0%); }
+              100% { transform: translateX(-50%); }
+            }
+            .animate-exec-marquee {
+              animation: execMarquee 25s linear infinite;
+            }
+            .animate-exec-marquee:hover {
+              animation-play-state: paused;
+            }
+          `}</style>
+
+          <div className="flex items-center gap-4 mb-12">
             <Ruler className="w-5 h-5 text-[#D4AF37]/50" />
             <h4 className="text-zinc-500 text-sm font-bold uppercase tracking-[0.3em]">
               Executive Operations Directorate
             </h4>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
-            {teamData.executives.map((member) => (
-              <motion.div key={member.id} variants={fadeUpItem} className="flex flex-col group h-32 justify-between border-l border-white/10 pl-6 cursor-pointer hover:border-[#D4AF37]/50 transition-colors duration-500">
-                <div className="space-y-2">
-                  <p className="text-zinc-500 text-xs font-semibold uppercase tracking-[0.2em]">
-                    {member.role}
-                  </p>
-                  
-                  <h5 className="text-xl md:text-2xl font-bold tracking-tight text-white group-hover:text-[#D4AF37] transition-colors duration-300">
-                    <span className="relative overflow-hidden inline-block">
-                      <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
-                        {member.name}
-                      </span>
-                      <span className="absolute inset-0 block translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 text-[#D4AF37]">
-                        {member.name}
-                      </span>
-                    </span>
-                  </h5>
-                </div>
-
-                <a 
-                  href={member.linkedin} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-xs text-[#D4AF37] font-mono tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:text-white"
+          {/* Marquee Container with subtle gradient masks on edges */}
+          <div className="relative w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_5%,black_95%,transparent)]">
+            <div className="flex w-max gap-8 animate-exec-marquee py-4">
+              {/* Duplicated list to create an infinite seamless loop */}
+              {[...teamData.executives, ...teamData.executives].map((member, idx) => (
+                <div 
+                  key={`${member.id}-${idx}`} 
+                  className="flex flex-col group h-36 justify-between border-l border-white/10 pl-6 pr-8 w-[280px] md:w-[320px] shrink-0 cursor-pointer hover:border-[#D4AF37]/50 transition-colors duration-500"
                 >
-                  [ CONNECT ]
-                </a>
-              </motion.div>
-            ))}
+                  <div className="space-y-2">
+                    <p className="text-zinc-500 text-xs font-semibold uppercase tracking-[0.2em]">
+                      {member.role}
+                    </p>
+                    
+                    <h5 className="text-xl md:text-2xl font-bold tracking-tight text-white group-hover:text-[#D4AF37] transition-colors duration-300">
+                      <span className="relative overflow-hidden inline-block">
+                        <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-full">
+                          {member.name}
+                        </span>
+                        <span className="absolute inset-0 block translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 text-[#D4AF37]">
+                          {member.name}
+                        </span>
+                      </span>
+                    </h5>
+                  </div>
+
+                  {/* Refined LinkedIn Badge UI */}
+                  <div className="pt-2">
+                    <a 
+                      href={member.linkedin} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-semibold text-zinc-400 group-hover:text-black group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] transition-all duration-300 shadow-sm"
+                    >
+                      <FaLinkedin className="w-3.5 h-3.5 text-[#D4AF37] group-hover:text-black transition-colors duration-300" />
+                      <span className="tracking-widest uppercase text-[10px] font-bold">LinkedIn</span>
+                    </a>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </motion.div>
 

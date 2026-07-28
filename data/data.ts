@@ -38,10 +38,11 @@ export const teamData = {
     },
   ],
   executives: [
-    { id: 3, name: '[Insert Verified Name]', role: 'Chief People and Operations Officer', linkedin: '#' },
-    { id: 4, name: '[Insert Verified Name]', role: 'Head of Brand and Marketing Strategy', linkedin: '#' },
-    { id: 5, name: '[Insert Verified Name]', role: 'Director of Real Estate Development', linkedin: '#' },
-    { id: 6, name: '[Insert Verified Name]', role: 'Head of Retail and Supply Chain', linkedin: '#' },
+    { id: 3, name: 'Syed Kashif Husssain ', role: 'Human Resource Manager', linkedin: 'https://www.linkedin.com/in/syed-kashif-hassan-chrm-chrp-from-cpd-london-6839b56b?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
+    { id: 4, name: 'Uzair Naeem', role: 'Head of Marketing', linkedin: 'https://www.linkedin.com/in/uzair-naeem-aa5575218?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
+    { id: 5, name: 'Usama Irshad ', role: 'Sr. Graphic Designer', linkedin: 'https://www.linkedin.com/in/usamairshad-gfx?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
+    { id: 6, name: 'Ahmed Shiekh', role: 'Accountant', linkedin: 'https://www.linkedin.com/in/ahmad-shiekh-6a6929323?utm_source=share_via&utm_content=profile&utm_medium=member_ios' },
+    { id: 7, name: 'Abu-Hanzlah', role: 'AI Content Creator', linkedin: 'https://www.linkedin.com/in/abuhanzlah/?isSelfProfile=true' },
   ]
 };
 

@@ -226,7 +226,7 @@ export default function FillingStationPage() {
           >
             Areeb Areel <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F1E5AC]">
-              Hub Station.
+              Fuel Station.
             </span>
           </motion.h1>
 
@@ -279,48 +279,25 @@ export default function FillingStationPage() {
                 Our fuel operations are focused on calibrated dispensing, responsible handling, efficient service and a cleaner customer experience. Fuel quality and quantity claims should be supported by operational controls, inspection records and applicable regulatory standards.
               </p>
 
-              {/* Live Price Board Card */}
-              <div className="mt-8 bg-[#111111]/80 border border-white/5 p-6 rounded-2xl group hover:border-[#D4AF37] hover:bg-[#111111] transition-all duration-500 hover:shadow-[0_15px_40px_rgba(212,175,55,0.1)]">
-                <div className="flex justify-between items-center mb-6 pb-4 border-b border-white/5 group-hover:border-[#D4AF37]/30 transition-colors">
-                  <h3 className="text-sm font-bold uppercase tracking-widest text-zinc-300 group-hover:text-white transition-colors">
-                    Current Fuel Rates
-                  </h3>
-                  <span className="text-[10px] uppercase tracking-widest text-[#D4AF37] bg-[#D4AF37]/10 px-3 py-1.5 rounded-md">
-                    Last Updated: {currentDate || "Loading..."  }
-                  </span>
-                </div>
-
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-[#0a0a0a] border border-white/5 rounded-xl p-4 group-hover:border-[#D4AF37]/40 transition-colors">
-                    <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-1 group-hover:text-[#D4AF37] transition-colors">
-                      Premier / Petrol
-                    </p>
-                    <p className="text-2xl font-black text-white group-hover:text-[#D4AF37] transition-colors">
-                      Rs. 297.53
-                      <span className="text-xs font-normal text-zinc-500">
-                        / Ltr
-                      </span>
-                    </p>
-                    <div className="flex items-center gap-1 text-green-500 mt-2 text-[10px] font-bold uppercase">
-                      <TrendingDown className="w-3 h-3" /> Last Updated: {currentDate || "Loading..."}
+             <ul className="space-y-4 pt-6">
+                {[
+                  "Premium-quality fuel for better engine performance and smoother journeys.",
+                  "Clean, safe, and customer-friendly filling station with reliable 24/7 service.",
+                  "Complete convenience under one roof with grocery store, ATM, restrooms, and food outlets.",
+                ].map((item, i) => (
+                  <li
+                    key={i}
+                    className="flex items-center gap-4 group p-4 rounded-xl border border-white/5 bg-[#111] hover:border-[#D4AF37] hover:bg-[#1a1a1a] transition-all duration-500"
+                  >
+                    <div className="w-8 h-8 rounded-full bg-[#D4AF37]/10 flex items-center justify-center shrink-0 group-hover:bg-[#D4AF37] transition-colors duration-500">
+                      <CheckCircle2 className="w-4 h-4 text-[#D4AF37] group-hover:text-black transition-colors" />
                     </div>
-                  </div>
-                  <div className="bg-[#0a0a0a] border border-white/5 rounded-xl p-4 group-hover:border-[#D4AF37]/40 transition-colors">
-                    <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold mb-1 group-hover:text-[#D4AF37] transition-colors">
-                      High Speed Diesel
-                    </p>
-                    <p className="text-2xl font-black text-white group-hover:text-[#D4AF37] transition-colors">
-                      Rs.  309.50
-                      <span className="text-xs font-normal text-zinc-500">
-                        / Ltr
-                      </span>
-                    </p>
-                    <div className="flex items-center gap-1 text-green-500 mt-2 text-[10px] font-bold uppercase">
-                      <TrendingDown className="w-3 h-3" /> Last Updated: {currentDate || "Loading..."}
-                    </div>
-                  </div>
-                </div>
-              </div>
+                    <span className="text-sm font-bold text-zinc-300 group-hover:text-white transition-colors">
+                      {item}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </motion.div>
           </div>
         </section>
