@@ -11,6 +11,7 @@ export default function CorporateTeam() {
   const containerRef = useRef<HTMLElement | any>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
 
+  // Mouse tracking engine utilizing the existing containerRef
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
