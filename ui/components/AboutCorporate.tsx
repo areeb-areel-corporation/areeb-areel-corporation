@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
-// --- DATA ARRAYS ---
 interface SliderImage {
   id: number;
   src: string;
