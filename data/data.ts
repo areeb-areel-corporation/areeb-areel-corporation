@@ -148,7 +148,7 @@ export const blogDatabase = [
     readTime: "4 Min Read",
     title: "From Fuel Station to Integrated Travel Hub",
     excerpt: "How fuel, retail, food, prayer and vehicle-care services can improve the everyday travel experience.",
-    src: "/images/petrol pump.png",
+    src: "/images/petrol-pump.png",
     sections: [
       {
         heading: "The Role of a Modern Fuel Station Is Changing",
