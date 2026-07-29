@@ -19,7 +19,7 @@ const developments = [
     id: "02",
     title: "Areeb Areel Filling Station",
     category: "Energy & Mobility",
-    src: "/images/petrol pump.png",
+    src: "/images/petrol-pump.png",
     url: "/filling-station",
     description:
       "A convenient travel destination combining fuel services, an express mart, food and refreshments, prayer facilities and essential vehicle support.",
