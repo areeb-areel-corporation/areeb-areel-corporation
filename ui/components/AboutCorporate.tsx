@@ -14,7 +14,7 @@ const sliderImages: SliderImage[] = [
   { id: 0, src: '/images/dubai-pic.jpg', alt: 'UEA' },
 
   { id: 1, src: '/images/sentosa-2.jpeg', alt: 'Areeb Areel Corporate Headquarters' },
-  { id: 2, src: '/images/petrol pump.png', alt: 'Areeb Areel Energy Networks' },
+  { id: 2, src: '/images/petrol-pump.png', alt: 'Areeb Areel Energy Networks' },
   { id: 3, src: '/images/mart.jpg', alt: 'Mart' },
   { id: 4, src: '/images/sentosa-4.jpeg', alt: 'Areeb Areel Premium Communities' },
 ];

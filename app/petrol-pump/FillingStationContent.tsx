@@ -20,7 +20,7 @@ const heroImages = [
   "/images/filling-station.jpg",
   "/images/filling-station1.jpg",
   "/images/mart.jpg",
-  "/images/mart1.jpg",
+  "/images/mart1.jpeg",
   "/images/tyre-shop.jpg",
 ];
 
