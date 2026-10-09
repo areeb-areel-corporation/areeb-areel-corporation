@@ -33,8 +33,8 @@ const navLinks: NavLink[] = [
   {name : "About Us" , href: "/about-us", icon: Info},
   { name: "Areeb Areel Corporation", href: "/areeb-areel-corporation", icon: Building2 },
   { name: "Petrol Pump", href: "/petrol-pump", icon: Fuel },
-  { name: "Naseeb Homes", href: "/naseeb-homes", icon: Home },
-  {name : "Santosa Square" , href: "/santosa-square", icon: Building2},
+ // { name: "Naseeb Homes", href: "/naseeb-homes", icon: Home },
+  {name : "Sentosa Business Hub" , href: "/santosa-square", icon: Building2},
   {name : "Blogs" , href: "/blogs", icon: FileSpreadsheet},
 
 
