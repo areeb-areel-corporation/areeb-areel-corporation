@@ -8,10 +8,9 @@ import { socialLinks } from '@/data/data';
 
 // --- NAVIGATION DATA ---
 const coreDivisions = [
-  { name: 'Naseeb Homes', href: '/naseeb-homes' }, 
   { name: 'Filling Station', href: '/filling-station' },
   { name: 'Architecture & Construction', href: '/architecture' },
-  { name: 'Santosa Square', href: '/santosa-square' },
+  { name: 'Sentosa Business Hub', href: '/santosa-square' },
 
 ];
 

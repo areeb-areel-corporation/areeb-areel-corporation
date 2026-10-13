@@ -6,17 +6,17 @@ import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
 const developments = [
+  // {
+  //   id: "01",
+  //   title: "Naseeb Homes",
+  //   category: "Residential Real Estate",
+  //   src: "/images/naseeb-homes.jpg",
+  //   url: "/naseeb-homes",
+  //   description:
+  //     "Thoughtfully planned 3.5 and 5 Marla homes created for modern family life. Naseeb Homes brings together contemporary architecture, practical layouts and structured ownership options within a community-focused residential environment.",
+  // },
   {
     id: "01",
-    title: "Naseeb Homes",
-    category: "Residential Real Estate",
-    src: "/images/naseeb-homes.jpg",
-    url: "/naseeb-homes",
-    description:
-      "Thoughtfully planned 3.5 and 5 Marla homes created for modern family life. Naseeb Homes brings together contemporary architecture, practical layouts and structured ownership options within a community-focused residential environment.",
-  },
-  {
-    id: "02",
     title: "Areeb Areel Filling Station",
     category: "Energy & Mobility",
     src: "/images/petrol-pump.png",
@@ -25,13 +25,13 @@ const developments = [
       "A convenient travel destination combining fuel services, an express mart, food and refreshments, prayer facilities and essential vehicle support.",
   },
   {
-    id: "03",
-    title: "Sentosa Square",
-    category: "Residential Real Estate",
-    src: "/images/sentosa-1.jpeg",
+    id: "02",
+    title: "Sentosa Business Hub",
+    category: "Commercial Real Estate",
+    src: "/images/Plaza 2.png",
     url: "/sentosa-square",
     description:
-      "Sentosa Square is a contemporary commercial development created for retailers, service providers, professionals and growing businesses.",
+      "Sentosa Business Hub is a contemporary commercial development created for retailers, service providers, professionals and growing businesses.",
   }
 ];
 

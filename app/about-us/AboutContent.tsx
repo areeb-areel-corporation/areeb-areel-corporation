@@ -18,9 +18,9 @@ const divisions = [
 ];
 // --- HERO BACKGROUND IMAGES ---
 const heroBackgrounds = [
-  '/images/petrol pump.png',
+  '/images/petrol-pump.png',
   '/images/mart.jpg',
-  '/images/sentosa-5.jpg'
+  '/images/Plaza 2.png',
 ];
 
 export default function AboutUsPage() {

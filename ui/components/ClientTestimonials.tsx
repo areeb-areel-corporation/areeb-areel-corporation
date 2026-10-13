@@ -17,9 +17,9 @@ const testimonials = [
     id: '02',
     sector: 'Commercial Real Estate',
     attribution: 'Commercial Client',
-    context: 'Sentosa Square Inquiry',
+    context: 'Sentosa Business Hub Inquiry',
     quote:
-      'Sentosa Square was presented around business visibility, access and day-to-day usability. We appreciated being guided toward documented unit details and current commercial terms.',
+      'Sentosa Business Hub was presented around business visibility, access and day-to-day usability. We appreciated being guided toward documented unit details and current commercial terms.',
   },
   {
     id: '03',

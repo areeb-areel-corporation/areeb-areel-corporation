@@ -97,15 +97,15 @@ export const blogDatabase = [
     tag: "Real Estate",
     date: "June 18, 2026",
     readTime: "5 Min Read",
-    title: "Designing Better Urban Living for Lahore's Growing Families",
-    excerpt: "Why successful residential development begins with practical planning, community needs and long-term usability.",
-    src: "/images/sentosa-2.jpeg",
+    title: "Designing Better Commercial Plaza's for Lahore's Growing Families",
+    excerpt: "Why successful Commercial development begins with practical planning, community needs and long-term usability.",
+    src: "/images/Plaza 2.png",
     sections: [
       {
-        heading: "Residential Development Begins with Understanding People",
+        heading: "Commercial Development Begins with Understanding People",
         paragraphs: [
           "A successful housing development is not defined by its exterior appearance alone. Its real value is experienced in the way families move through their homes, use shared spaces and remain connected to the wider city.",
-          "For Lahore's growing families, residential planning must respond to practical questions. Are the rooms proportioned for everyday use? Is privacy considered? Can natural light and ventilation reach important areas? Does the layout make efficient use of the available land? Can families access work, education, healthcare and daily services without unnecessary difficulty?",
+          "For Lahore's growing families, Commercial planning must respond to practical questions. Are the rooms proportioned for everyday use? Is privacy considered? Can natural light and ventilation reach important areas? Does the layout make efficient use of the available land? Can families access work, education, healthcare and daily services without unnecessary difficulty?",
           "These questions should guide the planning process before visual styling begins.",
         ],
       },
